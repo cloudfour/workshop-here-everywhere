@@ -1,0 +1,111 @@
+@import 'common';
+
+body {
+  background-color: $color-warm;
+  color: $color-text;
+  font-family: $font-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-title;
+}
+
+h1, h2 {
+  color: $color-title;
+  text-align: center;
+  font-variant: small-caps;
+  border-bottom: .03em solid $color-pale;
+}
+
+div.slide {
+
+  a, a:visited, a:active, a:hover {
+    color: $color-title;
+  }
+  ul {
+    // TODO: Asterisk-styled
+    padding: 0;
+    li {
+      list-style: none outside none;
+      margin: 0;
+      padding: .25em;
+      display: block;
+      &:before {
+        content: "\2217";
+        font-size: 1.75em;
+        margin-right: .5em;
+      }
+      border-bottom: 1px dashed $color-pale;
+    }
+  }
+  // Image alignment styles
+  div.figure {
+    p.caption {
+      font-family: $font-mono;
+    }
+    @include ghetto-clearfix;
+    max-width:    50%;
+    float: left;
+    border-right: .1em solid $color-accent;
+    padding-right: .5em;
+    padding: 0;
+    img {
+      max-width:  92.5%;
+      padding:    0;
+      box-shadow: .5em 1em 1.5em $color-pale;
+    }
+    & + ul {
+     margin-left: 52.5%;
+    }
+  }
+  div[id^="figure"],
+  div[id^="reverse"],
+  div[id^="illustration"] {
+    & h1, & h2, & h3 {
+      display: none;
+    }
+  }
+  div[id^='figure'],
+  div[id^='illustration'] {
+    div.figure {
+      max-width:      100%;
+      width:          100%;
+      text-align: center;
+      border:         none;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  div[id^='figure'] div.figure {
+    img {
+      border:         .1em solid $color-yellow;
+      padding:        .5em;
+    }
+  }
+  div[id^='reverse'] div.figure {
+    float:            right;
+    border-left:      .1em solid $color-accent;
+    border-right:     none;
+    img {
+      padding-left:   .5em;
+    }
+    & + ul {
+      margin: 0 .5em 0 0;
+      max-width: 47.5%;
+    }
+  }
+  div[id^='illustration'] div.figure {
+    img {
+      box-shadow: none;
+    }
+  }
+  // Title Styles
+  &.titleslide {
+    position: absolute;
+    h1 {  
+      padding-top: 10%;
+      margin-right: 0;
+    }
+  }
+}

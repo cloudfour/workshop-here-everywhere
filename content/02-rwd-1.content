@@ -1,0 +1,63 @@
+% Responsive Web Design, Part I
+% Getting Fluid
+
+## Items in this section
+
+* Intro to Sigma Stronghold website
+* What's wrong with it currently on mobile?
+* Quick hits to remove bad things (Weather, etc.)
+* Examination of structure of layout
+* Fluid Formula
+* Conversion to basic fluid layout
+
+## The zombies came
+
+### Illustration: Apocalypse
+
+![](images/02-apocalypse.png)
+
+## And it wasn't awesome
+
+### Illustration: Not Awesome
+
+![](images/02-not-awesome.png)
+
+## Havoc was Wreaked
+
+## Who will save our fair city?
+
+### Illustration: Our Fair City
+
+![](images/02-fair-city.png)
+
+## Our hero: Sergeant Dingus
+
+### Illustration: Dingus
+
+![](images/02-dingus.png)
+
+## The Sigma Stronghold
+
+### Figure: Sigma Stronghold website
+
+![The Sigma Stronghold Website](images/02-sigma-start.png)
+
+# So what's the deal?
+
+## In the beginning, after the apocalypse
+
+### Illustration: Monitors
+
+![Low-fi computer terminals were all they had](images/02-monitor.png)
+
+## But then...
+
+### Illustration: Airdrop!
+
+![But the battered government has air-dropped a whole lot of mobile devices...](images/02-airdrop.png)
+
+## And, alas!
+
+TODO: Image of site looking horrible on devices
+
+

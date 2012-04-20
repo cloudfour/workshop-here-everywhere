@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>I Got One!</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+	<script src="Lawnchair.js"></script>
+	<script src="dom.js"></script>
+	<script src="date.format.js"></script>
+	<script src="geo.js"></script>
+	<script src="zombie.js"></script>
+</head> 
+
+<body> 
+
+<div data-role="page" id="nab-zombie">
+  <div data-role="header">
+    <h1>I got one!</h1>
+  </div>
+  
+  <div data-role="content">
+    <div data-role="fieldcontain">
+      <label for="how-zombie">How'd you nab it?</label>
+      <select name="how-zombie" id="how-zombie">
+        <option value="tank">Tank</option>
+        <option value="conflagration">Conflagration</option>
+        <option value="poison">Poison</option>
+        <option value="nukes">Micro-nukes</option>
+        <option value="trickery">Trickery</option>
+        <option value="corrosive">Corrosive</option>
+        <option value="dismemberment">Dismemberment</option>
+      </select>
+    </div>
+    <input type="button" value="I got one!" id="got-one" data-theme="b" />
+    
+    <ul data-role="listview" data-inset="true" id="zombielist">
+    </ul>
+    
+  </div>
+</div>
+
+</body>
+</html>

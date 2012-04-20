@@ -1,0 +1,12 @@
+% Getting App-y
+% Building a Mobile Web App using a framework (jQuery Mobile)
+
+# In this section
+
+* Introduce jQuery Mobile
+** More in-depth, clearer info about structure of pages, widgets and `data`-elements
+* Building basic web pages in jQM
+* Using jQM to prototype quickly <-- more conceptual, less "here-paste-this-code here"
+* Et voila! Conversion of a boring old list to a jQM listview <-- becomes our nabbed zombies
+* Dropping in custom JS to make our app go
+* Lawnchair: need to re-evaluate a bit. Don't want to glaze folks over.
