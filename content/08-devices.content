@@ -1,7 +1,7 @@
-% Devices, devices, devices
+% Devices, devices, devices (and browsers)
 % Keeping ahead of the apocalypse
 
-# In this section
+## In this section
 
 * Server-side device detection
 * Supporting older devices
@@ -11,3 +11,21 @@
 * Setting content free
 * Bang the progressive enhancement drum again
 * Revisit client-side feature detection
+
+## How can we tell who supports what?
+
+* Feature detection: client- or server-side
+* Device detection: client- or server-side
+
+## Super-basic JavaScript detection
+
+In the last section, we implemented a very basic JavaScript detection of the support for geolocation.
+
+### Illustration: Geolocation Detection
+
+![](images/08-geolocation-detection.png)
+
+## More complex feature detection using JavaScript
+
+The open-source JavaScript tool **Modernizr** is very useful for performing client-side feature detection.
+

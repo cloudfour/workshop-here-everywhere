@@ -8,6 +8,25 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Device capabilities and a brief tour of Device APIs" />
   <title>Getting to the awesome parts of mobile</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
@@ -22,6 +41,350 @@
 Device capabilities and a brief tour of Device APIs
   </p>
 </div>
-<div class="section titleslide slide level1" id="in-this-section"><h1>In this section</h1></div>
+<div class="section slide level2" id="in-this-section">
+<h1>In this section</h1>
+<ul>
+<li>Light Introduction to client-side feature detection</li>
+<li>Revisit progressive enhancement</li>
+<li>Using client-side feature detection to detect device API support</li>
+<li>AppCache &lt;-- keeping it relatively light; recall that Jake Archibald is speaking the following day</li>
+<li>Geolocation &lt;-- again, light touch on this, as we have been doing</li>
+<li>Device APIs greatest hits &lt;-- A quick survey of other device APIs relevant to mobile</li>
+</ul>
+</div>
+<div class="section slide level2" id="oh-the-things-we-can-do-with-mobile">
+<h1>Oh, the things we can do with mobile!</h1>
+<div class="section level3" id="illustration-device-apis">
+<h3>Illustration: Device APIs</h3>
+<div class="figure">
+<img src="images/07-device-apis.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="another-need-for-the-troops">
+<h1>Another need for the troops</h1>
+<blockquote>
+<p>&quot;Hey, it would be nice if Sigma Stronghold troops could access parts of the site even when they are not connected to the Internet. Service can be pretty flaky in our neighborhood, especially in the zombie-dense areas where they've knocked down the antennas.&quot; —Sergeant Dingus</p>
+</blockquote>
+<div class="section level4" id="is-there-a-way-we-can-help-them-out">
+<h4>Is there a way we can help them out?</h4>
+</div>
+</div>
+<div class="section titleslide slide level1" id="creating-an-offline-mode-using-applicationcache"><h1>Creating an Offline Mode using ApplicationCache</h1></div><div class="section slide level2" id="applicationcache">
+<h1>ApplicationCache</h1>
+<ul>
+<li>An API that is part of the HTML5 spec</li>
+<li>Define what resources should (or should not be) cached using a cache manifest</li>
+<li>ApplicationCache object and its methods exposed to JavaScript</li>
+</ul>
+<div class="section level4" id="the-idea-is-to-create-an-offline-mode-for-your-web-site-or-app-by-defining-which-resources-should-be-cached-by-the-browser-and-available-offline.">
+<h4>The idea is to create an <em>offline mode</em> for your web site or app by defining which resources should be cached by the browser and available offline.</h4>
+</div>
+</div><div class="section slide level2" id="cache-manifests">
+<h1>Cache manifests</h1>
+<p>A <em>cache manifest</em> is a text file that lets you tell the client about resources that should be cached.</p>
+<p>You use cache manifests to define what ends up in the ApplicationCache.</p>
+</div><div class="section slide level2" id="cache-manifests-at-a-glance">
+<h1>Cache manifests at a glance</h1>
+<p>To create and use a cache manifest:</p>
+<ol style="list-style-type: decimal">
+<li>Write a cache manifest file that lists resources on the site that the browser should cache.</li>
+<li>Configure your web server to serve the cache manifest as the correct <code>MIME</code> type. (This requirement is going away).</li>
+<li>Tell browsers about your manifest by using the <code>manifest</code> attribute on the <code>&lt;html&gt;</code> tag.</li>
+</ol>
+</div><div class="section slide level2" id="step-1-writing-the-manifest">
+<h1>Step 1: Writing the manifest</h1>
+<div class="section level3" id="cache-manifest-syntax">
+<h3>Cache manifest syntax</h3>
+<p>Writing a cache manifest file sounds simple—in premise. In its simplest:</p>
+<pre><code>CACHE MANIFEST
+
+CACHE:
+foo.jpg
+bar.png
+index.html
+ding/dong.html</code></pre>
+<div class="section level5" id="manifest.appcache">
+<h5>manifest.appcache</h5>
+</div>
+</div>
+</div><div class="section slide level2" id="step-2-serving-cache-manifests">
+<h1>Step 2: Serving cache manifests</h1>
+<p>Cache manifest files must be served as a particular <code>MIME</code> type (<code>text/cache-manifest</code>) or browsers will not recognize them.</p>
+<p>Often this can be handled by adding the following to your <code>.htaccess</code> or other Apache configuration file:</p>
+<p><code>AddType text/cache-manifest .appcache</code></p>
+<p>(Preferred extension is <code>.appcache</code>)</p>
+</div><div class="section slide level2" id="step-3-tell-the-browser-about-your-manifest">
+<h1>Step 3: Tell the browser about your manifest</h1>
+<p>There is a <code>manifest</code> attribute on the <code>html</code> element.</p>
+<p><code>&lt;html manifest=&quot;manifest.appcache&quot;&gt;</code></p>
+</div><div class="section slide level2" id="ways-things-end-up-in-appcache">
+<h1>Ways things end up in appCache</h1>
+<ul>
+<li>Listed in the cache manifest file (explicit)</li>
+<li>Is a document with a manifest attribute defined (implicit)</li>
+</ul>
+</div><div class="section slide level2" id="be-very-wary">
+<h1>Be very wary</h1>
+<div class="section level3" id="illustration-danger">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware">
+<h1>BEWARE</h1>
+<div class="section level4" id="if-an-html-document-is-in-the-cache-any-resource-it-references-images-css-whatever-must-be-declared-in-the-cache-manifest-file.">
+<h4>If an HTML document is in the cache, any resource it references (images, CSS, whatever) <em>must</em> be declared in the cache manifest file.</h4>
+</div>
+<div class="section level3" id="illustration-danger-1">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware-1">
+<h1>BEWARE</h1>
+<div class="section level4" id="changes-to-files-listed-in-the-cache-manifest-will-be-ignored-by-browsers-unless-the-cache-manifest-file-itself-changes.">
+<h4>Changes to files listed in the cache manifest will be ignored by browsers unless the <em>cache manifest file</em> itself changes.</h4>
+</div>
+<div class="section level3" id="illustration-danger-2">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware-2">
+<h1>BEWARE</h1>
+<div class="section level4" id="any-error-in-the-cache-manifest-will-cause-the-whole-thing-not-to-work.-a-single-404-can-also-wreak-havoc.">
+<h4>Any error in the cache manifest will cause the whole thing not to work. A single 404 can also wreak havoc.</h4>
+</div>
+<div class="section level3" id="illustration-danger-3">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware-3">
+<h1>BEWARE</h1>
+<div class="section level4" id="a-changed-cache-manifest-requires-two-subsequent-requests-for-the-changes-to-be-visible.">
+<h4>A changed cache manifest requires <em>two</em> subsequent requests for the changes to be visible.</h4>
+</div>
+<div class="section level3" id="illustration-danger-4">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="so-should-we-just-list-all-of-the-files-on-a-site-in-the-cache-manifest">
+<h1>So, should we just list all of the files on a site in the cache manifest?</h1>
+<ul>
+<li>This is of course a maintenance pain.</li>
+<li>More importantly, as soon as a browser gets a cache manifest file, it will <em>immediately</em> (asynchronously) download all of the resources in that cache manifest.</li>
+</ul>
+</div><div class="section slide level2" id="conclusion">
+<h1>Conclusion</h1>
+<p>Cache manifest can be a good approach for creating offline modes of web sites and apps. It tends to be more manageable for smaller or app-like web sites.</p>
+</div><div class="section slide level2" id="manifesting-the-sigma-stronghold-site">
+<h1>Manifesting the Sigma Stronghold Site</h1>
+<p>Let's create a simple cache manifest for the Sigma Stronghold site.</p>
+<div class="section level3" id="exercise">
+<h3>Exercise</h3>
+<ol style="list-style-type: decimal">
+<li>Open the <code>index.html</code> file for the Sigma Stronghold site.</li>
+<li>Identify all of the resources we want to cache for the page.</li>
+<li>Create a basic cache manifest file (<code>manifest.appcache</code>).</li>
+<li><em>Remember</em>: All referenced resources—images, JavaScript, CSS, etc.—must be listed in the Cache Manifest.</li>
+</ol>
+</div>
+</div><div class="section slide level2" id="the-manifest-file">
+<h1>The Manifest File</h1>
+<pre><code>CACHE MANIFEST
+
+CACHE:
+index.html
+favicon.ico
+images/blip.png
+images/bomb.png
+images/moon.jpg
+styles.css
+http://fonts.googleapis.com/css?family=Nosifer|Special+Elite</code></pre>
+<div class="section level5" id="manifest.appcache-1">
+<h5>manifest.appcache</h5>
+</div>
+</div><div class="section slide level2" id="updating-the-config">
+<h1>Updating the config</h1>
+<p>Now we need to edit the <code>.htaccess</code> file to serve this file correctly. Like we said before, that looks like:</p>
+<pre><code>AddType text/cache-manifest .appcache</code></pre>
+<div class="section level5" id="htaccess">
+<h5>.htaccess</h5>
+</div>
+</div><div class="section slide level2" id="tell-index.html-all-about-it">
+<h1>Tell index.html all about it</h1>
+<div class="section level3" id="update-the-index.html-file">
+<h3>Update the index.html file:</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> manifest=</span><span class="st">&quot;manifest.appcache&quot;</span><span class="kw">&gt;</span></code></pre>
+</div>
+</div><div class="section slide level2" id="let-er-rip">
+<h1>Let 'er Rip</h1>
+<p>How'd that go?</p>
+<p>Wait a minute...</p>
+<div class="section level3" id="illustration-wtf">
+<h3>Illustration: WTF</h3>
+<div class="figure">
+<img src="images/07-wtf.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="whered-our-fonts-go">
+<h1>Where'd our fonts go?</h1>
+<p>We added the Google Fonts CSS stylesheet to our cache manifest, but the actual font files are not in the cache manifest. Uh oh! Now what?</p>
+<p>We need to add the Google Font files to the cache, explicitly:</p>
+<pre><code>http://themes.googleusercontent.com/static/fonts/nosifer/v2/7n0ZFTD4V11-kkhjuR2UIwLUuEpTyoUstqEm5AMlJo4.woff
+http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm4kaQb-UsZVONjobs91YQtw.woff</code></pre>
+<div class="section level4" id="not-far-enough...">
+<h4>Not far enough...</h4>
+</div>
+<div class="section level3" id="actually-there-are-a-bunch-more-font-files...">
+<h3>Actually, there are a bunch more font files...</h3>
+<pre><code>http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm8OV-75E7mII8OPOWd5roDg.eot
+http://themes.googleusercontent.com/static/fonts/nosifer/v2/22TLRN_sb7eGnW3UzCoN7w.eot
+http://themes.googleusercontent.com/font?kit=9-wW4zu3WNoD5Fjka35JmzyKAGS2js9R2mTcvyyc0eU#SpecialElite
+http://themes.googleusercontent.com/font?kit=D7AHdI04SWFitvSDiAIeWQ#Nosifer
+http://themes.googleusercontent.com/static/fonts/nosifer/v2/7n0ZFTD4V11-kkhjuR2UIwLUuEpTyoUstqEm5AMlJo4.woff
+http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm4kaQb-UsZVONjobs91YQtw.woff</code></pre>
+</div>
+<div class="section level3" id="what-are-our-options">
+<h3>What are our options?</h3>
+</div>
+</div><div class="section slide level2" id="tool-font-squirrel">
+<h1>Tool: Font Squirrel</h1>
+<div class="section level3" id="figure-font-squirrel-font-face-creator">
+<h3>Figure: Font Squirrel @font-face creator</h3>
+<div class="figure">
+<img src="images/07-fontsquirrel.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="rolling-our-own-fonts">
+<h1>Rolling our own fonts</h1>
+<ol style="list-style-type: decimal">
+<li>Download the Google Font as TTF</li>
+<li>Go to <a href="http://www.fontsquirrel.com/fontface/generator"><code class="url">http://www.fontsquirrel.com/fontface/generator</code></a></li>
+<li>Upload font and download generated CSS.</li>
+<li>Put CSS in our styles.css file instead of using the <code>&lt;link&gt;</code> to the Google-hosted font stylesheet(s).</li>
+</ol>
+</div><div class="section slide level2" id="font-squirrel-generated-css">
+<h1>Font Squirrel-generated CSS</h1>
+<div class="section level3" id="code">
+<h3>Code</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Generated by Font Squirrel (http://www.fontsquirrel.com) on April 1, 2012 */</span>
+<span class="dv">@font-face</span> <span class="kw">{</span>
+    <span class="kw">font-family:</span> <span class="st">&#39;NosiferRegular&#39;</span><span class="kw">;</span>
+    <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&#39;fonts/nosifer-webfont.eot&#39;</span><span class="dt">)</span><span class="kw">;</span>
+    <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&#39;fonts/nosifer-webfont.eot?#iefix&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;embedded-opentype&#39;</span><span class="dt">)</span>,
+         <span class="dt">url(</span><span class="st">&#39;fonts/nosifer-webfont.woff&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;woff&#39;</span><span class="dt">)</span>,
+         <span class="dt">url(</span><span class="st">&#39;fonts/nosifer-webfont.ttf&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;truetype&#39;</span><span class="dt">)</span>,
+         <span class="dt">url(</span><span class="st">&#39;fonts/nosifer-webfont.svg#NosiferRegular&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;svg&#39;</span><span class="dt">)</span><span class="kw">;</span>
+    <span class="kw">font-weight:</span> <span class="dt">normal</span><span class="kw">;</span>
+    <span class="kw">font-style:</span> <span class="dt">normal</span><span class="kw">;</span>
+
+<span class="kw">}</span>
+<span class="dv">@font-face</span> <span class="kw">{</span>
+    <span class="kw">font-family:</span> <span class="st">&#39;SpecialEliteRegular&#39;</span><span class="kw">;</span>
+    <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&#39;fonts/special-elite-webfont.eot&#39;</span><span class="dt">)</span><span class="kw">;</span>
+    <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&#39;fonts/special-elite-webfont.eot?#iefix&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;embedded-opentype&#39;</span><span class="dt">)</span>,
+         <span class="dt">url(</span><span class="st">&#39;fonts/special-elite-webfont.woff&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;woff&#39;</span><span class="dt">)</span>,
+         <span class="dt">url(</span><span class="st">&#39;fonts/special-elite-webfont.ttf&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;truetype&#39;</span><span class="dt">)</span>,
+         <span class="dt">url(</span><span class="st">&#39;fonts/special-elite-webfont.svg#SpecialEliteRegular&#39;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&#39;svg&#39;</span><span class="dt">)</span><span class="kw">;</span>
+    <span class="kw">font-weight:</span> <span class="dt">normal</span><span class="kw">;</span>
+    <span class="kw">font-style:</span> <span class="dt">normal</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+</div><div class="section slide level2" id="updating-our-cache-manifest">
+<h1>Updating our Cache Manifest</h1>
+<div class="section level3" id="now-we-add-these-files-to-our-cache-manifest">
+<h3>Now, we add these files to our cache manifest</h3>
+<pre><code>fonts/nosifer-webfont.eot
+fonts/nosifer-webfont.svg
+fonts/nosifer-webfont.ttf
+fonts/nosifer-webfont.woff
+fonts/special-elite-webfont.eot
+fonts/special-elite-webfont.svg
+fonts/special-elite-webfont.ttf
+fonts/special-elite-webfont.woff</code></pre>
+</div>
+</div><div class="section slide level2" id="there-are-still-some-drawbacks">
+<h1>There are still some drawbacks</h1>
+<div class="section level3" id="figure-appcache-internals">
+<h3>Figure: Appcache-internals</h3>
+<div class="figure">
+<img src="images/07-appcache-internals.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section titleslide slide level1" id="lets-have-a-bit-more-fun-with-geolocation"><h1>Let's have a bit more fun with Geolocation</h1></div><div class="section slide level2" id="w3c-geolocation-api">
+<h1>W3C Geolocation API</h1>
+<p>Geolocation is the darling of many. It's consummately mobile and easy to describe. There are oh so many ways to make good use of a user's current location to deliver adapted experiences or add functionality to applications. Whee!</p>
+<ul>
+<li>The W3C Geolocation API is a standard way of exposing geolocation information to JavaScript in the browser. It is rather well adopted.</li>
+<li>Browsers that implement the W3C Geolocation API expose the <code>navigator.geolocation</code> object and its methods to the browser.</li>
+</ul>
+</div><div class="section slide level2" id="using-the-w3c-api-to-get-the-current-location">
+<h1>Using the W3C API to get the current location</h1>
+<p>Here's what it looks like:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(successCallback, errorCallback)</code></pre>
+<div class="section level3" id="illustration-getcurrentposition">
+<h3>Illustration: getCurrentPosition</h3>
+<div class="figure">
+<img src="images/07-get-position.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="and-what-happens-in-the-success-callback">
+<h1>And what happens in the success callback?</h1>
+<div class="section level3" id="illustration-win-function">
+<h3>Illustration: Win Function</h3>
+<div class="figure">
+<img src="images/07-win-function.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="the-position-object">
+<h1>The Position object</h1>
+<div class="section level3" id="illustration-position">
+<h3>Illustration: Position</h3>
+<div class="figure">
+<img src="images/07-position.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section titleslide slide level1" id="lets-try-it-out"><h1>Let's try it out</h1></div><div class="section slide level2" id="testing-for-api-support">
+<h1>Testing for API support</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;script&gt;
+  <span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+    <span class="co">// Do something, dammit!</span>
+  }
+&lt;/script&gt;</code></pre>
+</div><div class="section slide level2" id="doing-something-dammit">
+<h1>Doing something, dammit</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
+} <span class="kw">else</span> {
+  alert(<span class="ch">&#39;Sorry, Geolocation not supported in this browser!&#39;</span>);
+}</code></pre>
+<p>In our version, we're going to use a function called <code>onGeoSuccess</code> for a success callback and <code>onGeoError</code> for an error callback.</p>
+</div><div class="section slide level2" id="and-now-what...">
+<h1>And now what...?</h1>
+<p>We need to define our success and error callbacks.</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> onGeoSuccess(position) {
+  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
+  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
+}
+<span class="kw">function</span> onGeoError(error) {
+  alert(<span class="kw">error</span>.<span class="fu">message</span>);
+}</code></pre>
+<p>In our success callback, we're looking at the <code>coords</code> on the <code>position</code> object.</p>
+<p>The error callback is always passed an <code>error</code> object.</p>
+</div><div class="section slide level2" id="so-this-doesnt-work-everywhere">
+<h1>So, this doesn't work everywhere</h1>
+<p>A lot of modern browsers implement the W3C geolocation API. But some don't. And who supports ApplicationCache? etc.? How can we tell?</p>
+</div>
 </body>
 </html>

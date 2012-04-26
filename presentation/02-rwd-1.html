@@ -8,6 +8,25 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Getting Fluid" />
   <title>Responsive Web Design, Part I</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
@@ -21,17 +40,6 @@
   <p class="author">
 Getting Fluid
   </p>
-</div>
-<div class="section slide level2" id="items-in-this-section">
-<h1>Items in this section</h1>
-<ul>
-<li>Intro to Sigma Stronghold website</li>
-<li>What's wrong with it currently on mobile?</li>
-<li>Quick hits to remove bad things (Weather, etc.)</li>
-<li>Examination of structure of layout</li>
-<li>Fluid Formula</li>
-<li>Conversion to basic fluid layout</li>
-</ul>
 </div>
 <div class="section slide level2" id="the-zombies-came">
 <h1>The zombies came</h1>
@@ -53,6 +61,12 @@ Getting Fluid
 </div>
 <div class="section slide level2" id="havoc-was-wreaked">
 <h1>Havoc was Wreaked</h1>
+<div class="section level3" id="illustration-havoc">
+<h3>Illustration: havoc</h3>
+<div class="figure">
+<img src="images/02-havoc.png" /><p class="caption"></p>
+</div>
+</div>
 </div>
 <div class="section slide level2" id="who-will-save-our-fair-city">
 <h1>Who will save our fair city?</h1>
@@ -99,7 +113,511 @@ Getting Fluid
 </div>
 </div><div class="section slide level2" id="and-alas">
 <h1>And, alas!</h1>
-<p>TODO: Image of site looking horrible on devices</p>
+<div class="section level3" id="three-sigma-broken">
+<h3>Three: Sigma Broken</h3>
+<div class="figure">
+<img src="images/02-sigma-broken-1.png" /><p class="caption"></p>
+</div>
+<div class="figure">
+<img src="images/02-sigma-broken-2.png" /><p class="caption"></p>
+</div>
+<div class="figure">
+<img src="images/02-sigma-broken-3.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="even-tablets...">
+<h1>Even Tablets...</h1>
+<div class="section level3" id="figure-tablet-bad">
+<h3>Figure: Tablet Bad</h3>
+<div class="figure">
+<img src="images/02-sigma-broken-4.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section titleslide slide level1" id="lets-talk-about-what-is-going-wrong-here"><h1>Let's talk about what is going wrong here</h1></div><div class="section slide level2" id="whats-this-broken-thing-down-here">
+<h1>What's this broken thing down here?</h1>
+<div class="figure">
+<img src="images/02-weather-widget.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>This, folks, is the weather.</li>
+<li>Or at least it would be if it worked on Sigma Stronghold's mobile browsers.</li>
+</ul>
+</div><div class="section slide level2" id="what-its-supposed-to-look-like">
+<h1>What it's supposed to look like</h1>
+<div class="section level3" id="figure-the-intended-weather">
+<h3>Figure: The intended weather</h3>
+<div class="figure">
+<img src="images/02-sigma-weather.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="behind-the-scenes-of-the-weather">
+<h1>Behind the scenes of the weather</h1>
+<div class="section level3" id="code">
+<h3>Code</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;weather&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> style=</span><span class="st">&#39;width: 240px; height: 420px; background-image: url( http://vortex.accuweather.com/adcbin/netweather_v2/backgrounds/black_240x420_bg.jpg ); background-repeat: no-repeat; background-color: #000000;&#39;</span> <span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&#39;NetweatherContainer&#39;</span><span class="ot"> style=</span><span class="st">&#39;height: 405px;&#39;</span> <span class="kw">&gt;</span>
+  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&#39;http://netweather.accuweather.com/adcbin/netweather_v2/netweatherV2ex.asp?partner=netweather</span><span class="er">&amp;</span><span class="st">tStyle=whteYell</span><span class="er">&amp;</span><span class="st">logo=1</span><span class="er">&amp;</span><span class="st">zipcode=10001</span><span class="er">&amp;</span><span class="st">lang=eng</span><span class="er">&amp;</span><span class="st">size=12</span><span class="er">&amp;</span><span class="st">theme=black</span><span class="er">&amp;</span><span class="st">metric=0</span><span class="er">&amp;</span><span class="st">target=_self&#39;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;/script&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> style=</span><span class="st">&#39;text-align: center; font-family: arial, helvetica, verdana, sans-serif; font-size: 10px; line-height: 15px; color: #FFFFFF;&#39;</span> <span class="kw">&gt;</span>
+  <span class="kw">&lt;a</span><span class="ot"> style=</span><span class="st">&#39;font-size: 10px; color: #FFFFFF&#39;</span><span class="ot"> href=</span><span class="st">&#39;http://www.accuweather.com/us/ny/new-york/10001/city-weather-forecast.asp?partner=accuweather&#39;</span> <span class="kw">&gt;</span>
+  Weather Forecast
+  <span class="kw">&lt;/a&gt;</span>
+  | <span class="kw">&lt;a</span><span class="ot"> style=</span><span class="st">&#39;color: #FFFFFF&#39;</span><span class="ot"> href=</span><span class="st">&#39;http://www.accuweather.com/maps-satellite.asp&#39;</span> <span class="kw">&gt;</span>Weather Maps<span class="kw">&lt;/a&gt;</span> | 
+  <span class="kw">&lt;a</span><span class="ot"> style=</span><span class="st">&#39;color: #FFFFFF&#39;</span><span class="ot"> href=</span><span class="st">&#39;http://www.accuweather.com/index-radar.asp?partner=accuweather</span><span class="er">&amp;</span><span class="st">zipcode=10001&#39;</span> <span class="kw">&gt;</span>
+    Weather Radar
+  <span class="kw">&lt;/a&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+</div>
+</div><div class="section slide level2" id="things-are-wrong-with-the-weather">
+<h1>Things are Wrong with the Weather</h1>
+<ul>
+<li>Flash</li>
+<li>Big</li>
+<li>Many HTTP Requests</li>
+<li>Inline styling</li>
+<li>Unescaped URL parameters</li>
+<li>Also, it doesn't work...anywhere</li>
+</ul>
+</div><div class="section slide level2" id="sergeant-dingus-responds">
+<h1>Sergeant Dingus Responds</h1>
+<blockquote>
+<p>&quot;I thought the weather widget looked kinda cool. But I admit, it hasn't had an accurate weather reading since four months ago. I guess AccuWeather HQ must have suffered a direct hit.&quot; — Sgt. Dingus</p>
+</blockquote>
+</div><div class="section slide level2" id="clarence-the-angry-performance-goat">
+<h1>Clarence the Angry Performance Goat</h1>
+<div class="figure">
+<img src="images/clarence.png" /><p class="caption"></p>
+</div>
+<p>Clarence the Angry Performance Goat butts in (hee hee) from time to time.</p>
+<blockquote>
+<p>&quot;There's so much about that weather widget that makes me want to hork up that phone book I just ate. Let me count the ways. A pile of HTTP requests. Flash?! Invalid markup...ack. Before these cadets start making web pages for mobile devices, they need to understand some basic laws of performance.&quot; —APG</p>
+</blockquote>
+</div><div class="section slide level2" id="how-does-the-goat-know-so-much">
+<h1>How does the Goat know so much?</h1>
+<div class="section level3" id="figure-invalid-markup">
+<h3>Figure: Invalid Markup</h3>
+<div class="figure">
+<img src="images/02-invalid-code.png" alt="http://validator.w3c.org" /><p class="caption">http://validator.w3c.org</p>
+</div>
+</div>
+</div><div class="section slide level2" id="yslow-is-his-best-friend">
+<h1>ySlow is his best friend</h1>
+<div class="section level3" id="reverse-yslow-stats">
+<h3>Reverse: ySlow Stats</h3>
+<div class="figure">
+<img src="images/02-yslow-start-stats.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>ySlow is available for many platforms</li>
+<li>Created by the Yahoo! Exceptional Performance Team</li>
+<li>Get it. Use it.</li>
+<li>The Goat will approve.</li>
+</ul>
+</div>
+</div><div class="section slide level2" id="web-fat">
+<h1>Web: fat</h1>
+<div class="section level3" id="illustration-the-web-is-fat">
+<h3>Illustration: The Web is fat</h3>
+<div class="figure">
+<img src="images/02-web-is-fat.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="we-want-to-avoid-this">
+<h1>We want to avoid this</h1>
+<div class="section level3" id="illustration-sad">
+<h3>Illustration: Sad</h3>
+<div class="figure">
+<img src="images/02-i-am-sad.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="instead-we-want-this">
+<h1>Instead, we want this</h1>
+<div class="section level3" id="illustration-bitchin">
+<h3>Illustration: Bitchin'</h3>
+<div class="figure">
+<img src="images/02-slow-to-bitching.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="the-goat-says-fix-yer-fonts">
+<h1>The Goat Says: Fix yer Fonts!</h1>
+<ul>
+<li>Optimize your stylesheet includes for web fonts! The site uses Google fonts—apparently Google has survived the attack so far.</li>
+</ul>
+<div class="section level3" id="instead-of">
+<h3>Instead of</h3>
+<div class="section level4" id="code-1">
+<h4>Code</h4>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Nosifer&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Butcherman&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Creepster&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Special+Elite&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
+</div>
+</div>
+<div class="section level3" id="use">
+<h3>Use</h3>
+<div class="section level4" id="code-2">
+<h4>Code</h4>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Nosifer|Special+Elite&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
+</div>
+</div>
+</div><div class="section slide level2" id="goat-missing-things-hurt-mobile-devices">
+<h1>Goat: Missing things hurt mobile devices</h1>
+<div class="figure">
+<img src="images/02-404s.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>High latency makes these HTTP requests expensive, remember.</li>
+<li>Even more annoying if the requests don't get us anywhere.</li>
+</ul>
+</div><div class="section slide level2" id="lets-look-at-those-stats-again">
+<h1>Let's look at those stats again</h1>
+<div class="figure">
+<img src="images/02-yslow-2.png" /><p class="caption"></p>
+</div>
+<div class="section level3" id="oh-how-nice">
+<h3>Oh, how nice!</h3>
+<p>By removing the weather widget, fixing our fonts and rectifying a couple of 404s, we've slimmed down by about 100k and shed some HTTP requests. That's a start.</p>
+</div>
+</div>
+<div class="section titleslide slide level1" id="now-where-were-we"><h1>Now, where were we?</h1></div><div class="section slide level2" id="ahem.">
+<h1>Ahem.</h1>
+<div class="section level3" id="figure-thats-right-its-broken">
+<h3>Figure: That's right, it's broken</h3>
+<div class="figure">
+<img src="images/02-sigma-broken-1.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="very-close-up">
+<h1>Very close up</h1>
+<blockquote>
+<p>&quot;Why's it all zoomed in like that? I thought these newer mobile browsers could display web pages like desktop browsers.&quot; —Sgt. Dingus</p>
+</blockquote>
+<div class="section level3" id="answer-because-you-told-it-to">
+<h3>Answer: Because you told it to</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span></code></pre>
+</div>
+</div><div class="section slide level2" id="viewports-are-confusing">
+<h1>Viewports are Confusing</h1>
+<div class="section level3" id="illustration-viewports">
+<h3>Illustration: Viewports</h3>
+<div class="figure">
+<img src="images/02-viewports.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="backing-up-a-few-steps">
+<h1>Backing up a few steps</h1>
+<div class="section level3" id="illustration-widths-on-site">
+<h3>Illustration: Widths on site</h3>
+<div class="figure">
+<img src="images/02-widths.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="fixed-width-layouts">
+<h1>Fixed width layouts</h1>
+<div class="section level3" id="illustration-fixed-width-elements">
+<h3>Illustration: Fixed-width elements</h3>
+<div class="figure">
+<img src="images/02-fixed-elements.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="different-viewports...">
+<h1>Different Viewports...</h1>
+<div class="section level3" id="illustration-differing-viewports">
+<h3>Illustration: Differing viewports</h3>
+<div class="figure">
+<img src="images/02-different-viewports.png" alt="Expanding and contracting a browser window changes the width of the visible viewport" /><p class="caption">Expanding and contracting a browser window changes the width of the visible viewport</p>
+</div>
+</div>
+</div><div class="section slide level2" id="these-things-are-not-the-same">
+<h1>These things are not the same</h1>
+<div class="section level3" id="illustration-layout-vs.-visible-viewports">
+<h3>Illustration: Layout vs. Visible Viewports</h3>
+<div class="figure">
+<img src="images/02-layout-visible.png" alt="On mobile devices, our visible viewport is much smaller than our layout viewport" /><p class="caption">On mobile devices, our visible viewport is much smaller than our layout viewport</p>
+</div>
+</div>
+</div><div class="section slide level2" id="viewports-are-confusing-1">
+<h1>Viewports are confusing</h1>
+<ul>
+<li><strong>Visible Viewport:</strong> The dimensions of <em>visible</em> content</li>
+<li><strong>Layout Viewport:</strong> The width of the entire layout.</li>
+</ul>
+<div class="section level3" id="fixed-width-is-harshing-our-buzz">
+<h3>Fixed width is harshing our buzz</h3>
+<p>In fixed-width layouts, the layout viewport is fixed and inflexible, even if the visible viewport changes.</p>
+<p>In our case, the Sigma Stronghold web site's <code>#container</code> element is always 920px wide, no matter what the visible viewport width.</p>
+</div>
+</div><div class="section slide level2" id="our-viewport">
+<h1>Our viewport</h1>
+<p>Remember our viewport settings:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span></code></pre>
+<ul>
+<li><code>width=device-width</code>: Set the viewport width to the width of the device, in CSS pixels.</li>
+<li><code>initial-scale=1</code>: Set initial <code>zoom</code> to <code>1</code>, that is, 100% or normal size.</li>
+</ul>
+</div><div class="section slide level2" id="what-happens-if-we-remove-the-viewport-tag">
+<h1>What happens if we remove the viewport tag?</h1>
+<p><img src="images/02-no-viewport.png" alt="No viewport tag" /> <img src="images/02-viewport.png" alt="With viewport tag" /></p>
+</div><div class="section slide level2" id="what-if-instead...">
+<h1>What if, instead...</h1>
+<p>Responsive Web Design (RWD) is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure.</p>
+<p>RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts <em>scale, flex and adapt</em> to <em>flow comfortably</em> in the user's browser, whatever size or shape it might be at the moment.</p>
+</div><div class="section slide level2" id="rwd-tenets">
+<h1>RWD Tenets</h1>
+<p>RWD arms for a three-pronged attack against those zombies:</p>
+<ol style="list-style-type: decimal">
+<li>Fluid CSS layouts</li>
+<li>Responsive Images and Objects</li>
+<li>CSS3 Media Queries</li>
+</ol>
+</div><div class="section slide level2" id="fluid-layouts-eh">
+<h1>Fluid layouts, eh?</h1>
+<p>Instead of using fixed pixel widths, fluid layouts use <em>relative, proportional units.</em> Container and column widths are defined in percentages or <code>em</code> units (or other non-absolute units).</p>
+<p>The layout stretches or shrinks proportionally with the window width.</p>
+<p>If we convert the Sigma Stronghold website to a fluid layout, we can make it scale up and down for different screen widths.</p>
+</div><div class="section slide level2" id="how">
+<h1>How?</h1>
+<p>To convert fixed-unit layout elements to fluid ones, we use the <strong>fluid formula</strong>.</p>
+<div class="section level3" id="illustration-fluid-formula">
+<h3>Illustration: Fluid Formula</h3>
+<div class="figure">
+<img src="images/02-fluid-formula.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="fluid-formula">
+<h1>Fluid Formula</h1>
+<div class="section level3" id="illustration-example">
+<h3>Illustration: Example</h3>
+<div class="figure">
+<img src="images/02-fluid-formula-explained.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="an-example">
+<h1>An example</h1>
+<div class="section level3" id="illustration-example-1">
+<h3>Illustration: Example</h3>
+<div class="figure">
+<img src="images/02-fluid-example.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="honing-in-on-context">
+<h1>Honing in on context</h1>
+<div class="section level3" id="illustration-context">
+<h3>Illustration: Context</h3>
+<div class="figure">
+<img src="images/02-fluid-context.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="current-metrics-of-sigma-stronghold-site">
+<h1>Current metrics of Sigma Stronghold site</h1>
+<div class="figure">
+<img src="images/02-widths.png" /><p class="caption"></p>
+</div>
+<ul>
+<li><code>body &gt; div</code> that contains all content: 920px</li>
+<li><code>#container</code> (all content is inside of this <code>div</code>): 900px</li>
+<li><code>#main</code>: 500px</li>
+<li><code>#sidebar</code>: No specific width set, but a left margin of 570px</li>
+</ul>
+</div><div class="section slide level2" id="to-go-fluid...">
+<h1>To go fluid...</h1>
+<p>We need to convert the pixel widths of these four elements into proportional units.</p>
+<div class="figure">
+<img src="images/02-fixed-elements.png" /><p class="caption"></p>
+</div>
+<p><em>Why these four?</em> These are the only four layout elements with width defined in fixed (pixel) units.</p>
+</div><div class="section slide level2" id="starting-with-the-layout-width">
+<h1>Starting with the layout width</h1>
+<p><code>div &gt; body</code> is the main containing element. It currently has a width of <code>920px</code>.</p>
+<blockquote>
+<p>&quot;I like to have a bit of space on the right and the left of the main content area for the moon background image to peek through and generally to give it some breathing room.&quot; —Sgt. Dingus</p>
+</blockquote>
+<div class="section level3" id="illustration-dingus-1">
+<h3>Illustration: Dingus</h3>
+<div class="figure">
+<img src="images/dingus-small.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="so-instead-of">
+<h1>So, instead of</h1>
+<pre class="sourceCode css"><code class="sourceCode css">body &gt; div <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">920px</span><span class="kw">;</span>
+  <span class="kw">margin:</span> <span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+  <span class="kw">border-color:</span> <span class="dt">rgba(255</span>, <span class="dt">255</span>, <span class="dt">255</span>, <span class="dt">0.2)</span><span class="kw">;</span>
+  <span class="kw">border-width:</span> <span class="dt">0px</span> <span class="dt">7px</span><span class="kw">;</span>
+  <span class="kw">border-style:</span> <span class="dt">solid</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<div class="section level3" id="we-can-use">
+<h3>We can use</h3>
+<pre class="sourceCode css"><code class="sourceCode css">body &gt; div <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">90%</span><span class="kw">;</span>
+  <span class="kw">margin:</span> <span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+  <span class="kw">border-color:</span> <span class="dt">rgba(255</span>, <span class="dt">255</span>, <span class="dt">255</span>, <span class="dt">0.2)</span><span class="kw">;</span>
+  <span class="kw">border-width:</span> <span class="dt">0px</span> <span class="dt">7px</span><span class="kw">;</span>
+  <span class="kw">border-style:</span> <span class="dt">solid</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+</div><div class="section slide level2" id="now-the-container-element">
+<h1>Now, the Container Element</h1>
+<p><code>#container</code> has a current width of <code>900px</code>. Its entire reason for existing is to provide some padding.</p>
+<p>If we want to convert its <code>900px</code> width to fluid:</p>
+<p>900 / 920 = .9782...</p>
+<div class="section level3" id="instead-of-1">
+<h3>Instead of</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
+  <span class="kw">padding:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">97.8%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+<div class="section level3" id="use-1">
+<h3>Use</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
+  <span class="kw">padding:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">97.8%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+</div><div class="section slide level2" id="wait-what-about-that-padding">
+<h1>Wait, what about that padding?</h1>
+<p>Watch out: Context has changed. This padding is relevant to its parent element: <code>#container</code>, which is <code>900px</code> wide.</p>
+<div class="section level3" id="so-our-fluid-equation-is">
+<h3>So Our Fluid Equation is</h3>
+<p>10 / 900 = .0111111...</p>
+</div>
+<div class="section level3" id="instead-of-2">
+<h3>Instead of</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
+  <span class="kw">padding:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">97.8%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+<div class="section level3" id="we-use">
+<h3>We Use</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
+  <span class="kw">padding:</span> <span class="dt">1.1%</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">97.8%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+</div><div class="section slide level2" id="main-column">
+<h1>Main Column</h1>
+<div class="section level3" id="fluid-equation">
+<h3>Fluid Equation</h3>
+<p>550 / 900 = .611111...</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#main</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">550px</span><span class="kw">;</span>
+  <span class="co">/* ... */</span>
+<span class="kw">}</span></code></pre>
+</div>
+<div class="section level3" id="becomes">
+<h3>Becomes</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#main</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">60%</span><span class="kw">;</span>
+  <span class="co">/* ... */</span>
+<span class="kw">}</span></code></pre>
+</div>
+</div><div class="section slide level2" id="wait-60">
+<h1>Wait, 60%?</h1>
+<div class="section level3" id="illustration-sloppy-math">
+<h3>Illustration: Sloppy math</h3>
+<div class="figure">
+<img src="images/02-sloppy.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="making-the-margin-fluid-too">
+<h1>Making the margin fluid, too</h1>
+<p>10 / 550 = .018181818</p>
+<div class="section level3" id="wait...">
+<h3>Wait...</h3>
+<p>Instead of having a bunch of padding widths that are different small percentages, maybe we should standardize on a single number. Let's say 1.5% to compromise. That gives us:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#main</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">1.5%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">60%</span><span class="kw">;</span>
+  <span class="co">/* ... */</span>
+<span class="kw">}</span></code></pre>
+<p>and, for the <code>#container</code>:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
+  <span class="kw">padding:</span> <span class="dt">1.5%</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">97%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p><strong>Note:</strong> We had to change the <code>width</code> to account for the updated padding!</p>
+</div>
+</div><div class="section slide level2" id="finally-the-sidebar">
+<h1>Finally, the sidebar</h1>
+<div class="section level3" id="take-this">
+<h3>Take this</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#sidebar</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">560px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+<div class="section level3" id="run-it-through-the-fluid-formula">
+<h3>Run it through the fluid formula</h3>
+<p>560 / 900 = ~63.25%;</p>
+</div>
+<div class="section level3" id="and-so">
+<h3>And so</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#sidebar</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">63.25%</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div>
+</div><div class="section slide level2" id="all-together-now">
+<h1>All together now</h1>
+<p>Simplified CSS (ignoring the non-structural parts!):</p>
+<pre class="sourceCode css"><code class="sourceCode css">body &gt; div <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">90%</span><span class="kw">;</span>
+  <span class="kw">margin:</span> <span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+  <span class="kw">border-color:</span> <span class="dt">rgba(255</span>, <span class="dt">255</span>, <span class="dt">255</span>, <span class="dt">0.2)</span><span class="kw">;</span>
+  <span class="kw">border-width:</span> <span class="dt">0px</span> <span class="dt">7px</span><span class="kw">;</span>
+  <span class="kw">border-style:</span> <span class="dt">solid</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+<span class="fl">#container</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
+  <span class="kw">padding:</span> <span class="dt">1.5%</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">97%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+<span class="fl">#main</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">1.5%</span><span class="kw">;</span>
+  <span class="kw">clear:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">60%</span><span class="kw">;</span>
+  <span class="co">/* ... */</span>
+<span class="kw">}</span>
+
+<span class="fl">#sidebar</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">63.25%</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="take-it-for-a-spin">
+<h1>Take it for a spin</h1>
+<div class="section level3" id="figure-fluid-layout">
+<h3>Figure: Fluid Layout</h3>
+<div class="figure">
+<img src="images/02-sigma-fluid.png" alt="The fluid layout" /><p class="caption">The <a href="../examples/02-fluid">fluid layout</a></p>
+</div>
+</div>
 </div>
 </body>
 </html>

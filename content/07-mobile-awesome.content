@@ -1,7 +1,7 @@
 % Getting to the awesome parts of mobile
 % Device capabilities and a brief tour of Device APIs
 
-# In this section
+## In this section
 
 * Light Introduction to client-side feature detection
 * Revisit progressive enhancement
@@ -9,3 +9,356 @@
 * AppCache <-- keeping it relatively light; recall that Jake Archibald is speaking the following day
 * Geolocation <-- again, light touch on this, as we have been doing
 * Device APIs greatest hits <-- A quick survey of other device APIs relevant to mobile
+
+## Oh, the things we can do with mobile!
+
+### Illustration: Device APIs
+
+![](images/07-device-apis.png)
+
+## Another need for the troops
+
+> "Hey, it would be nice if Sigma Stronghold troops could access parts of the site even when they are not connected to the Internet. Service can be pretty flaky in our neighborhood, especially in the zombie-dense areas where they've knocked down the antennas." —Sergeant Dingus
+
+#### Is there a way we can help them out?
+
+# Creating an Offline Mode using ApplicationCache
+
+## ApplicationCache
+
+* An API that is part of the HTML5 spec
+* Define what resources should (or should not be) cached using a cache manifest
+* ApplicationCache object and its methods exposed to JavaScript
+
+#### The idea is to create an *offline mode* for your web site or app by defining which resources should be cached by the browser and available offline.
+
+##  Cache manifests
+
+A *cache manifest* is a text file that lets you tell the client about resources that should be cached.
+
+You use cache manifests to define what ends up in the ApplicationCache.
+
+## Cache manifests at a glance
+
+To create and use a cache manifest:
+
+1. Write a cache manifest file that lists resources on the site that the browser should cache.
+2. Configure your web server to serve the cache manifest as the correct `MIME` type. (This requirement is going away).
+3. Tell browsers about your manifest by using the `manifest` attribute on the `<html>` tag.
+
+
+## Step 1: Writing the manifest
+
+### Cache manifest syntax
+
+Writing a cache manifest file sounds simple—in premise. In its simplest:
+
+~~~
+CACHE MANIFEST
+
+CACHE:
+foo.jpg
+bar.png
+index.html
+ding/dong.html
+~~~
+
+##### manifest.appcache
+
+## Step 2: Serving cache manifests
+
+Cache manifest files must be served as a particular `MIME` type (`text/cache-manifest`) or browsers will not recognize them.
+
+Often this can be handled by adding the following to your `.htaccess` or other Apache configuration file:
+
+`AddType text/cache-manifest .appcache`
+
+(Preferred extension is `.appcache`)
+
+## Step 3: Tell the browser about your manifest
+
+There is a `manifest` attribute on the `html` element.
+
+`<html manifest="manifest.appcache">`
+
+## Ways things end up in appCache
+
+* Listed in the cache manifest file (explicit)
+* Is a document with a manifest attribute defined (implicit)
+
+## Be very wary
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### If an HTML document is in the cache, any resource it references (images, CSS, whatever) *must* be declared in the cache manifest file.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### Changes to files listed in the cache manifest will be ignored by browsers unless the *cache manifest file* itself changes.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### Any error in the cache manifest will cause the whole thing not to work. A single 404 can also wreak havoc.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### A changed cache manifest requires *two* subsequent requests for the changes to be visible.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+
+## So, should we just list all of the files on a site in the cache manifest?
+
+* This is of course a maintenance pain.
+* More importantly, as soon as a browser gets a cache manifest file, it will *immediately* (asynchronously) download all of the resources in that cache manifest.
+
+
+## Conclusion
+
+Cache manifest can be a good approach for creating offline modes of web sites and apps. It tends to be more manageable for smaller or app-like web sites.
+
+## Manifesting the Sigma Stronghold Site
+
+Let's create a simple cache manifest for the Sigma Stronghold site.
+
+### Exercise
+
+1. Open the `index.html` file for the Sigma Stronghold site.
+2. Identify all of the resources we want to cache for the page.
+3. Create a basic cache manifest file (`manifest.appcache`).
+4. *Remember*: All referenced resources—images, JavaScript, CSS, etc.—must be listed in the Cache Manifest.
+
+## The Manifest File
+
+~~~
+CACHE MANIFEST
+
+CACHE:
+index.html
+favicon.ico
+images/blip.png
+images/bomb.png
+images/moon.jpg
+styles.css
+http://fonts.googleapis.com/css?family=Nosifer|Special+Elite
+~~~
+
+##### manifest.appcache 
+
+## Updating the config
+
+Now we need to edit the `.htaccess` file to serve this file correctly. Like we said before, that looks like:
+
+    AddType text/cache-manifest .appcache
+
+##### .htaccess
+
+
+## Tell index.html all about it
+
+### Update the index.html file:
+
+~~~{.html}
+<html manifest="manifest.appcache">
+~~~
+
+## Let 'er Rip
+
+How'd that go?
+
+Wait a minute...
+
+### Illustration: WTF
+
+![](images/07-wtf.png)
+
+## Where'd our fonts go?
+
+We added the Google Fonts CSS stylesheet to our cache manifest, but the actual font files are not in the cache manifest. Uh oh! Now what?
+
+We need to add the Google Font files to the cache, explicitly:
+
+~~~
+http://themes.googleusercontent.com/static/fonts/nosifer/v2/7n0ZFTD4V11-kkhjuR2UIwLUuEpTyoUstqEm5AMlJo4.woff
+http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm4kaQb-UsZVONjobs91YQtw.woff
+~~~
+
+#### Not far enough...
+
+### Actually, there are a bunch more font files...
+
+~~~
+http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm8OV-75E7mII8OPOWd5roDg.eot
+http://themes.googleusercontent.com/static/fonts/nosifer/v2/22TLRN_sb7eGnW3UzCoN7w.eot
+http://themes.googleusercontent.com/font?kit=9-wW4zu3WNoD5Fjka35JmzyKAGS2js9R2mTcvyyc0eU#SpecialElite
+http://themes.googleusercontent.com/font?kit=D7AHdI04SWFitvSDiAIeWQ#Nosifer
+http://themes.googleusercontent.com/static/fonts/nosifer/v2/7n0ZFTD4V11-kkhjuR2UIwLUuEpTyoUstqEm5AMlJo4.woff
+http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm4kaQb-UsZVONjobs91YQtw.woff
+~~~
+
+### What are our options?
+
+## Tool: Font Squirrel
+
+### Figure: Font Squirrel @font-face creator
+
+![](images/07-fontsquirrel.png)
+
+
+## Rolling our own fonts
+
+1. Download the Google Font as TTF
+2. Go to <http://www.fontsquirrel.com/fontface/generator>
+3. Upload font and download generated CSS.
+4. Put CSS in our styles.css file instead of using the `<link>` to the Google-hosted font stylesheet(s).
+
+## Font Squirrel-generated CSS
+
+
+### Code
+
+~~~{.css}
+/* Generated by Font Squirrel (http://www.fontsquirrel.com) on April 1, 2012 */
+@font-face {
+    font-family: 'NosiferRegular';
+    src: url('fonts/nosifer-webfont.eot');
+    src: url('fonts/nosifer-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/nosifer-webfont.woff') format('woff'),
+         url('fonts/nosifer-webfont.ttf') format('truetype'),
+         url('fonts/nosifer-webfont.svg#NosiferRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'SpecialEliteRegular';
+    src: url('fonts/special-elite-webfont.eot');
+    src: url('fonts/special-elite-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/special-elite-webfont.woff') format('woff'),
+         url('fonts/special-elite-webfont.ttf') format('truetype'),
+         url('fonts/special-elite-webfont.svg#SpecialEliteRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+~~~
+
+
+## Updating our Cache Manifest
+
+### Now, we add these files to our cache manifest
+
+~~~
+fonts/nosifer-webfont.eot
+fonts/nosifer-webfont.svg
+fonts/nosifer-webfont.ttf
+fonts/nosifer-webfont.woff
+fonts/special-elite-webfont.eot
+fonts/special-elite-webfont.svg
+fonts/special-elite-webfont.ttf
+fonts/special-elite-webfont.woff
+~~~
+
+## There are still some drawbacks
+
+### Figure: Appcache-internals
+
+![](images/07-appcache-internals.png)
+
+# Let's have a bit more fun with Geolocation
+
+## W3C Geolocation API
+
+Geolocation is the darling of many. It's consummately mobile and easy to describe. There are oh so many ways to make good use of a user's current location to deliver adapted experiences or add functionality to applications. Whee!
+
+* The W3C Geolocation API is a standard way of exposing geolocation information to JavaScript in the browser. It is rather well adopted.
+* Browsers that implement the W3C Geolocation API expose the `navigator.geolocation` object and its methods to the browser.
+
+## Using the W3C API to get the current location
+
+Here's what it looks like:
+
+~~~ {.javascript}
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+~~~
+
+### Illustration: getCurrentPosition
+
+![](images/07-get-position.png)
+
+## And what happens in the success callback?
+
+### Illustration: Win Function
+
+![](images/07-win-function.png)
+
+## The Position object
+
+### Illustration: Position
+
+![](images/07-position.png)
+
+# Let's try it out
+
+Hey, let's build a basic geolocation test page to see how that geolocation API works.
+
+## Testing for API support
+
+~~~ {.javascript}
+<script>
+  if (navigator.geolocation) {
+    // Do something, dammit!
+  }
+</script>
+~~~
+
+## Doing something, dammit
+
+~~~ {.javascript}
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+} else {
+  alert('Sorry, Geolocation not supported in this browser!');
+}
+~~~
+
+In our version, we're going to use a function called `onGeoSuccess` for a success callback and `onGeoError` for an error callback.
+
+## And now what...?
+
+We need to define our success and error callbacks.
+
+~~~ {.javascript}
+function onGeoSuccess(position) {
+  var coordinates = position.coords;
+  alert(coordinates.latitude + ", " + coordinates.longitude);
+}
+function onGeoError(error) {
+  alert(error.message);
+}
+~~~
+
+In our success callback, we're looking at the `coords` on the `position` object.
+
+The error callback is always passed an `error` object.
+
+## So, this doesn't work everywhere
+
+A lot of modern browsers implement the W3C geolocation API. But some don't. And who supports ApplicationCache? etc.? How can we tell?

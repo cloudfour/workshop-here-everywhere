@@ -8,6 +8,25 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="When RWD goes wrong" />
   <title>Responsive Web Design, Part IV</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
@@ -22,6 +41,165 @@
 When RWD goes wrong
   </p>
 </div>
-<div class="section titleslide slide level1" id="in-this-section"><h1>In This Section</h1></div>
+<div class="section slide level2" id="most-rwd-sites-are-not-mobile-first">
+<h1>Most RWD sites are not mobile First</h1>
+<div class="section level3" id="reverse-mobile-rwd">
+<h3>Reverse: Mobile RWD?</h3>
+<div class="figure">
+<img src="images/05-rwd-compare.png" /><p class="caption"></p>
+</div>
+<p>Reviewed over 100 RWD sites. Found that:</p>
+<ul>
+<li>38% had a mobile site that was &lt; 10% smaller than the desktop</li>
+<li>4% mobile was the same size</li>
+<li>25% mobile was LARGER than the desktop</li>
+</ul>
+</div>
+</div>
+<div class="section slide level2" id="screen-size-bandwidth">
+<h1>Screen size != bandwidth</h1>
+<p>Yes, this is true, but so what?</p>
+<p>On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users.</p>
+</div>
+<div class="section slide level2" id="why-are-they-so-big">
+<h1>Why are they so big?</h1>
+<ul>
+<li>Hiding a background image by using display:none on the element will not prevent it from downloading.</li>
+<li>Large desktop-size images are delivered to all devices even if they never use the image at that size.</li>
+<li>Mediaqueries don’t impact JavaScript so even if you hide a Google Map, the code still downloads.</li>
+</ul>
+</div>
+<div class="section slide level2" id="get-your-media-queries-in-order">
+<h1>Get your media queries in order</h1>
+<p>First thing to fix media queries is to put them in order. Small screen before large screens.</p>
+<p>This causes means the fallback for images will be the small images, not the large ones.</p>
+<blockquote>
+<p>The absence of support for media queries is in fact the first media query. — Bryan Rieger</p>
+</blockquote>
+</div>
+<div class="section slide level2" id="the-first-zombie-was-ie">
+<h1>The first zombie was IE</h1>
+<p>IE8 and below don’t support media queries.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;taps.css&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;layout.css&quot;</span><span class="ot"> media=</span><span class="st">&quot;all and min-width: 481px)&quot;</span><span class="kw">&gt;</span>
+<span class="co">&lt;!--[if (lt IE 9) &amp; (!IEMobile)]&gt;</span>
+<span class="co">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;layout.css&quot; media=&quot;all&quot; /&gt;</span>
+<span class="co">&lt;![endif]--&gt;</span></code></pre>
+</div>
+<div class="section slide level2" id="or-use-a-javascript-polyfill">
+<h1>Or use a JavaScript Polyfill</h1>
+<ul>
+<li>Respond.js: <a href="https://github.com/scottjehl/Respond">https://github.com/scottjehl/Respond</a></li>
+<li>CSS3MediaQueries.js: <a href="http://code.google.com/p/css3-mediaqueries-js/">http://code.google.com/p/css3-mediaqueries-js/</a></li>
+</ul>
+<p>Respond is faster, but only contains a subset of CSS support. Start with it.</p>
+</div>
+<div class="section slide level2" id="prevent-extra-background-image-downloads">
+<h1>Prevent extra background image downloads</h1>
+<p>Things that work:</p>
+<ul>
+<li>Use display:none on the parent element</li>
+<li>Media queries that don’t overlap:</li>
+</ul>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">500px)</span> <span class="dv">{</span>
+    <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;small.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
+<span class="dv">}</span>
+<span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">501px)</span> <span class="dv">{</span>
+    <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;large.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
+<span class="dv">}</span></code></pre>
+</div>
+<div class="section slide level2" id="newer-browsers-support-more">
+<h1>Newer browsers support more</h1>
+<p>As of iOS 4.2:</p>
+<ul>
+<li>background-image:none on the element will override image without an extra download</li>
+<li>replacing a background-image will only result in one image being downloaded</li>
+</ul>
+<p>But, display:none on element still downloads images.</p>
+</div>
+<div class="section titleslide slide level1" id="what-about-image-tags"><h1>What about image tags?</h1></div><div class="section slide level2" id="the-img-tag-conundrum">
+<h1>The <code>img</code> tag conundrum</h1>
+<ul>
+<li>&lt;img&gt; can only have one src attribute</li>
+<li>First load problem -- server knows nothing about the client. How do you know what src to use?</li>
+<li>Delivering the right-sized image can mean huge savings (up to 80%) on file size.</li>
+</ul>
+<p>Many people are seeking a solution for responsive images.</p>
+</div><div class="section slide level2" id="responsive-images-option-1">
+<h1>Responsive images: Option 1</h1>
+<ul>
+<li>JavaScript checks the width of the screen and sets a cookie.</li>
+<li>Image requests contain that cookie giving the server the information it needs.</li>
+<li>.htaccess file on server checks for cookie and routes requests to the correct file depending on screen size.</li>
+</ul>
+</div><div class="section slide level2" id="option-1-problems">
+<h1>Option 1 Problems</h1>
+<ul>
+<li>Sometimes the browser requests images before the JavaScript executes which means the cookie isn’t set. Race condition.</li>
+<li>What is the fallback if cookies aren’t enabled?</li>
+<li>Relies on the current way browsers load content which could change. No contract between the browser and the developer.</li>
+</ul>
+</div><div class="section slide level2" id="responsive-images-option-2">
+<h1>Responsive images: Option 2</h1>
+<ul>
+<li>Put small image inside noscript tag.</li>
+<li>Put info for other images in data-* on noscript tag.</li>
+<li>Use javascript to build correct img tag for screen size.</li>
+</ul>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;noscript</span><span class="ot"> data-large=</span><span class="st">&quot;Koala.jpg&quot;</span><span class="ot"> data-small=</span><span class="st">&quot;Koala-small.jpg&quot;</span><span class="ot"> data-alt=</span><span class="st">&quot;Koala&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;img</span><span class="ot"> scr=</span><span class="st">&quot;Koala.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Koala&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;/noscript&gt;</span></code></pre>
+</div><div class="section slide level2" id="option-2-problems">
+<h1>Option 2 Problems</h1>
+<ul>
+<li>Markup has been changed in a way that only makes sense for this solution.</li>
+<li>No longer semantic.</li>
+</ul>
+</div><div class="section slide level2" id="responsive-images-option-3">
+<h1>Responsive images: Option 3</h1>
+<ul>
+<li>Use or build a service like Sencha.io SRC to deliver the correctly sized image:</li>
+</ul>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;http://src.sencha.io/[ORIGINAL IMAGE URL]&quot;</span> <span class="kw">/&gt;</span></code></pre>
+</div><div class="section slide level2" id="option-3-problems">
+<h1>Option 3 Problems</h1>
+<ul>
+<li>All of your images are being routed through a third-party service.</li>
+<li>How does Sencha know what size image to use anyways? It relies on device detection which some developers dislike.</li>
+</ul>
+</div><div class="section slide level2" id="only-real-solution-is-new-standard">
+<h1>Only real solution is new standard</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;picture</span><span class="ot"> alt=</span><span class="st">&quot;Giraffe&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;giraffe-sml.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;(max-width:480px)&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;giraffe-lrg.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;(min-width:481px)&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;giraffe-sml.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Giraffe&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;p&gt;</span>Long description<span class="kw">&lt;/p&gt;</span>
+<span class="kw">&lt;/picture&gt;</span></code></pre>
+</div><div class="section slide level2" id="picture-doesnt-solve-everything">
+<h1>Picture doesn’t solve everything</h1>
+<p>There are two separate issues when it comes to the img tag:</p>
+<ul>
+<li>Ability to authors to provide img art direction based on breakpoints</li>
+<li>Ensuring that the right image size is downloaded based on a combo of bandwidth, screen size, pixel density and user preference.</li>
+</ul>
+<p>The picture element is focused on solving the first issue. There are a lot of different ways to address the second.</p>
+</div><div class="section slide level2" id="other-rwd-challenges">
+<h1>Other RWD Challenges</h1>
+<ul>
+<li>Delivering the right size video</li>
+<li>Breakpoint management and zoom levels</li>
+<li>Progressively enhancing from XHTML-MP to HTML5</li>
+<li>Content ordering (Flexbox can’t come soon enough)</li>
+<li>Third-party widgets (particularly ad networks)</li>
+<li>Integrating with content management systems</li>
+</ul>
+</div><div class="section slide level2" id="this-is-all-very-new">
+<h1>This is all very new</h1>
+<p>No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.</p>
+<p>Is it even possible?</p>
+</div><div class="section slide level2" id="taking-it-to-a-whole-nuther-level">
+<h1>Taking it to a whole 'nuther level</h1>
+<p>Now we're trained, we've got a bit of flight time under our belt. It's time to specialize, to look at some mobile-specific nifty techniques and technologies.</p>
+</div>
 </body>
 </html>

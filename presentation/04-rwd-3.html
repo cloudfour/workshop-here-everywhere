@@ -8,6 +8,25 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Mobile-first RWD" />
   <title>Responsive Web Design, Part III</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
@@ -22,6 +41,146 @@
 Mobile-first RWD
   </p>
 </div>
-<div class="section titleslide slide level1" id="in-this-section"><h1>In this Section</h1></div>
+<div class="section slide level2" id="content--and-mobile-first-thinking">
+<h1>Content- and Mobile-first thinking</h1>
+<p>We're responsive now, but we've built a responsive layout based upon whittling down a desktop-scale layout to fit into smaller screens.</p>
+<p><strong>Mobile First</strong> responsive designs flip this around, starting with a simple, mobile baseline and progressively working <em>up</em> to larger screen widths.</p>
+<blockquote>
+<p>&quot;The absence of support for media queries is indeed the first media query.&quot; —Bryan Rieger, Yiibu</p>
+</blockquote>
+</div>
+<div class="section slide level2" id="what-is-sigma-strongholds-baseline">
+<h1>What is Sigma Stronghold's baseline?</h1>
+<div class="figure">
+<img src="images/04-starting-baseline.png" /><p class="caption"></p>
+</div>
+<p>Right now, the <em>baseline</em> layout for the site is:</p>
+<ul>
+<li>Two columns</li>
+<li>Tabbed (horizontal) navigation</li>
+<li>A big moon background image</li>
+</ul>
+</div>
+<div class="section slide level2" id="oh-and...">
+<h1>Oh, and...</h1>
+<blockquote>
+<p>&quot;I know I'm attached to the moon background image. But on the narrow screens of my troops' mobile units, it seems a bit too much. Can we hide it on those narrow screens?&quot; —Sgt. Dingus</p>
+</blockquote>
+<p>Instead of having a single media query for &quot;mobile devices&quot;, let's do some more advanced Reponsive things:</p>
+<ul>
+<li>Let's build multiple <strong>breakpoints</strong></li>
+<li>Let's make the baseline CSS mobile-first</li>
+</ul>
+</div>
+<div class="section slide level2" id="exercise">
+<h1>Exercise</h1>
+<ol style="list-style-type: decimal">
+<li>Install the window resizer extension</li>
+<li>View the current version of the site</li>
+<li>Play with the window size in your browser</li>
+<li>At what window width does the two-column navigation start looking awkward to you?</li>
+<li>At what window width does it seem like the vertical navigation should kick in?</li>
+<li>At what window width does it feel like the moon background image should show up again?</li>
+<li>Write the media queries that you'd use to contain the rules for the different layouts (no need to write the actual CSS or anything; just the media queries).</li>
+</ol>
+</div>
+<div class="section slide level2" id="heres-one-way-it-could-be-done">
+<h1>Here's one way it could be done</h1>
+<pre class="sourceCode css"><code class="sourceCode css">// Baseline CSS
+// Single column layout for <span class="fl">#main</span> and <span class="fl">#sidebar</span>
+// No background moon image
+// Tabbed nav (horizontal)
+
+<span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">550px)</span> <span class="dv">{</span>
+  // Vertical navigation
+  // Proportion adjustments for padding and fonts
+<span class="dv">}</span>
+<span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">880px)</span> <span class="dv">{</span>
+  // Two-column view
+  // Moon background image
+  // Proportion adjustments for padding and fonts
+<span class="dv">}</span></code></pre>
+<p>Let's <a href="../examples/08-mobile-first/styles.css">look at this in practice</a>.</p>
+</div>
+<div class="section slide level2" id="sgt-dingus-weighs-in">
+<h1>Sgt Dingus weighs in</h1>
+<blockquote>
+<p>&quot;Looks better, thanks. But what about the really wide-screen layout? It still looks odd to me. Look, we don't have a lot of time. I don't really want you to go off and cook up a whole layout for this...what's a really quick way to get this done?&quot; —Sgt Dingus</p>
+</blockquote>
+</div>
+<div class="section slide level2" id="heres-one-way-it-could-be-done-1">
+<h1>Here's one way it could be done</h1>
+<p>If Sergeant Dingus wants expediency, we can deliver. By adding a <code>max-width</code> property to the <code>body &gt; div</code> rule for wider screens, we can constrain the width of the layout to a certain maximum:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">880px)</span> <span class="dv">{</span>
+  <span class="co">/* ... */</span>
+  body &gt; div <span class="kw">{</span>
+    <span class="kw">width:</span> <span class="dt">90%</span><span class="kw">;</span>
+    <span class="kw">border-color:</span> <span class="dt">rgba(255</span>, <span class="dt">255</span>, <span class="dt">255</span>, <span class="dt">0.2)</span><span class="kw">;</span>
+    <span class="kw">border-width:</span> <span class="dt">0px</span> <span class="dt">7px</span><span class="kw">;</span>
+    <span class="kw">border-style:</span> <span class="dt">solid</span><span class="kw">;</span>
+    <span class="kw">padding:</span> <span class="dt">0</span><span class="kw">;</span>
+    <span class="kw">max-width:</span> <span class="dt">960px</span><span class="kw">;</span>
+  <span class="kw">}</span>
+  <span class="co">/* ... */</span>
+<span class="dv">}</span></code></pre>
+<p>As you know, the web is all about compromise! Sometimes it's a messy job.</p>
+</div>
+<div class="section slide level2" id="really-putting-content-first">
+<h1>Really putting content first</h1>
+<p>So, we've got a fluid layout (with the possible exception of that <code>max-width</code> restriction for wide screens), but we're still using the following media queries:</p>
+<pre class="sourceCode css"><code class="sourceCode css">
+<span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">550px)</span> <span class="dv">{</span>
+
+<span class="dv">}</span>
+
+<span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">880px)</span> <span class="dv">{</span>
+
+<span class="dv">}</span></code></pre>
+<p>But what really defines where the breakpoints fit? If you think about it, it's about line lengths and having enough room for the (textual) navigation items. Maybe it makes sense to build our media queries using relative units as well.</p>
+</div>
+<div class="section slide level2" id="ems-for-the-win">
+<h1>ems for the win</h1>
+<ul>
+<li>An <code>em</code> is a relative unit of length that corresponds to the width and height of an 'M' in a given typeface and size. Or, at least, that's the historical definition.</li>
+<li>An <code>em</code> is a square with sides the length of the current font size. If you're using a 16-pixel font, <code>1em</code> is 16px.</li>
+<li>Defining lengths in <code>em</code>s is useful when trying to create spaces that contain a certain amount of text characters.</li>
+<li>Thus, <code>em</code> units are content-friendly.</li>
+</ul>
+</div>
+<div class="section slide level2" id="a-useful-baseline">
+<h1>A useful baseline</h1>
+<div class="section level3" id="illustration-ems">
+<h3>Illustration: Ems</h3>
+<div class="figure">
+<img src="images/04-em.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="rethinking-our-media-queries">
+<h1>Rethinking our media queries</h1>
+<p>So, when we fold down from two columns to one (in our case at 880px), we could equivalently think of this as:</p>
+<pre><code>880px / 16px = 55em</code></pre>
+<p>Assuming that <code>1em ~= 16px</code> at the document's root.</p>
+<p>(With media queries, you are always referencing root-level ems; even if you resize your font smaller than that for your <code>&lt;body&gt;</code> or other elements. Nice and straightforward).</p>
+<p>Equivalently, our navigation change breakpoint is at 550px. The math is ever so slightly nicer if we use 560px:</p>
+<pre><code>560px / 16px = 35em</code></pre>
+</div>
+<div class="section slide level2" id="updated-media-queries">
+<h1>Updated media queries</h1>
+<p>Our updated media queries would thus look like:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">35em)</span> <span class="dv">{</span>
+  <span class="co">/* Vertical navigation */</span>
+<span class="dv">}</span>
+<span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">55em)</span> <span class="dv">{</span>
+  <span class="co">/* Two columns */</span>
+<span class="dv">}</span></code></pre>
+</div>
+<div class="section slide level2" id="but-really-what-did-that-get-us">
+<h1>But really, what did that get us?</h1>
+<ul>
+<li>Well, with the <a href="../examples/08-mobile-first">pixel version in a Webkit browser...</a></li>
+<li>But with the <a href="../examples/09-relative-queries">em-based media queries...</a></li>
+</ul>
+</div>
 </body>
 </html>

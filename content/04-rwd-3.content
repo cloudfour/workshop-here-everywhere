@@ -1,10 +1,152 @@
 % Responsive Web Design, Part III
 % Mobile-first RWD
 
-# In this Section
+## Content- and Mobile-first thinking
 
-* Introduction to content- and mobile-first thinking
-* Re-evaluation of Sigma Stronghold baseline
-* Update baseline CSS
-* Introduction to breakpoints
-* Finding breakpoints, design maxims
+We're responsive now, but we've built a responsive layout based upon whittling down a desktop-scale layout to fit into smaller screens.
+
+**Mobile First** responsive designs flip this around, starting with a simple, mobile baseline and progressively working *up* to larger screen widths.
+
+> "The absence of support for media queries is indeed the first media query." —Bryan Rieger, Yiibu
+
+## What is Sigma Stronghold's baseline?
+
+![](images/04-starting-baseline.png)
+
+Right now, the *baseline* layout for the site is:
+
+* Two columns
+* Tabbed (horizontal) navigation
+* A big moon background image
+
+## Oh, and...
+
+> "I know I'm attached to the moon background image. But on the narrow screens of my troops' mobile units, it seems a bit too much. Can we hide it on those narrow screens?" —Sgt. Dingus
+
+Instead of having a single media query for "mobile devices", let's do some more advanced Reponsive things:
+
+* Let's build multiple **breakpoints**
+* Let's make the baseline CSS mobile-first
+
+## Exercise
+
+1. Install the window resizer extension
+2. View the current version of the site
+3. Play with the window size in your browser
+4. At what window width does the two-column navigation start looking awkward to you?
+5. At what window width does it seem like the vertical navigation should kick in?
+6. At what window width does it feel like the moon background image should show up again?
+7. Write the media queries that you'd use to contain the rules for the different layouts (no need to write the actual CSS or anything; just the media queries).
+
+
+## Here's one way it could be done
+
+~~~ {.css}
+// Baseline CSS
+// Single column layout for #main and #sidebar
+// No background moon image
+// Tabbed nav (horizontal)
+
+@media screen and (max-width: 550px) {
+  // Vertical navigation
+  // Proportion adjustments for padding and fonts
+}
+@media screen and (min-width: 880px) {
+  // Two-column view
+  // Moon background image
+  // Proportion adjustments for padding and fonts
+}
+~~~
+
+Let's [look at this in practice](../examples/08-mobile-first/styles.css).
+
+## Sgt Dingus weighs in
+
+> "Looks better, thanks. But what about the really wide-screen layout? It still looks odd to me. Look, we don't have a lot of time. I don't really want you to go off and cook up a whole layout for this...what's a really quick way to get this done?" —Sgt Dingus
+
+## Here's one way it could be done
+
+If Sergeant Dingus wants expediency, we can deliver. By adding a `max-width` property to the `body > div` rule for wider screens, we can constrain the width of the layout to a certain maximum:
+
+~~~{.css}
+@media screen and (min-width: 880px) {
+  /* ... */
+  body > div {
+    width: 90%;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-width: 0px 7px;
+    border-style: solid;
+    padding: 0;
+    max-width: 960px;
+  }
+  /* ... */
+}
+~~~
+
+As you know, the web is all about compromise! Sometimes it's a messy job.
+
+## Really putting content first
+
+So, we've got a fluid layout (with the possible exception of that `max-width` restriction for wide screens), but we're still using the following media queries:
+
+~~~{.css}
+
+@media screen and (max-width: 550px) {
+
+}
+
+@media screen and (min-width: 880px) {
+
+}
+~~~
+
+But what really defines where the breakpoints fit? If you think about it, it's about line lengths and having enough room for the (textual) navigation items. Maybe it makes sense to build our media queries using relative units as well.
+
+## ems for the win
+
+* An `em` is a relative unit of length that corresponds to the width and height of an 'M' in a given typeface and size. Or, at least, that's the historical definition.
+* An `em` is a square with sides the length of the current font size. If you're using a 16-pixel font, `1em` is 16px.
+* Defining lengths in `em`s is useful when trying to create spaces that contain a certain amount of text characters.
+* Thus, `em` units are content-friendly.
+
+## A useful baseline
+
+### Illustration: Ems
+
+![](images/04-em.png)
+
+## Rethinking our media queries
+
+So, when we fold down from two columns to one (in our case at 880px), we could equivalently think of this as:
+
+~~~
+880px / 16px = 55em
+~~~
+
+Assuming that `1em ~= 16px` at the document's root.
+
+(With media queries, you are always referencing root-level ems; even if you resize your font smaller than that for your `<body>` or other elements. Nice and straightforward).
+
+Equivalently, our navigation change breakpoint is at 550px. The math is ever so slightly nicer if we use 560px:
+
+~~~
+560px / 16px = 35em
+~~~
+
+## Updated media queries
+
+Our updated media queries would thus look like:
+
+~~~{.css}
+@media screen and (max-width: 35em) {
+  /* Vertical navigation */
+}
+@media screen and (min-width: 55em) {
+  /* Two columns */
+}
+~~~
+
+## But really, what did that get us?
+
+* Well, with the [pixel version in a Webkit browser...](../examples/08-mobile-first)
+* But with the [em-based media queries...](../examples/09-relative-queries)

@@ -9,5 +9,9 @@
 ** Content reordering
 ** JS enhancement
 ** Questions of navigation
-* em-based media queries
 * Beyond phones
+
+## Notes
+
+Could probably put a flexbox layout on `#container` to get nav at bottom. In very modern browsers.
+

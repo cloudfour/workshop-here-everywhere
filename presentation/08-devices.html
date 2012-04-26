@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Keeping ahead of the apocalypse" />
-  <title>Devices, devices, devices</title>
+  <title>Devices, devices, devices (and browsers)</title>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
@@ -17,11 +17,44 @@
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Devices, devices, devices</h1>
+  <h1 class="title">Devices, devices, devices (and browsers)</h1>
   <p class="author">
 Keeping ahead of the apocalypse
   </p>
 </div>
-<div class="section titleslide slide level1" id="in-this-section"><h1>In this section</h1></div>
+<div class="section slide level2" id="in-this-section">
+<h1>In this section</h1>
+<ul>
+<li>Server-side device detection</li>
+<li>Supporting older devices</li>
+<li>Deciding which devices to support</li>
+<li>Analytics about devices</li>
+<li>Looking toward the future</li>
+<li>Setting content free</li>
+<li>Bang the progressive enhancement drum again</li>
+<li>Revisit client-side feature detection</li>
+</ul>
+</div>
+<div class="section slide level2" id="how-can-we-tell-who-supports-what">
+<h1>How can we tell who supports what?</h1>
+<ul>
+<li>Feature detection: client- or server-side</li>
+<li>Device detection: client- or server-side</li>
+</ul>
+</div>
+<div class="section slide level2" id="super-basic-javascript-detection">
+<h1>Super-basic JavaScript detection</h1>
+<p>In the last section, we implemented a very basic JavaScript detection of the support for geolocation.</p>
+<div class="section level3" id="illustration-geolocation-detection">
+<h3>Illustration: Geolocation Detection</h3>
+<div class="figure">
+<img src="images/08-geolocation-detection.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="more-complex-feature-detection-using-javascript">
+<h1>More complex feature detection using JavaScript</h1>
+<p>The open-source JavaScript tool <strong>Modernizr</strong> is very useful for performing client-side feature detection.</p>
+</div>
 </body>
 </html>

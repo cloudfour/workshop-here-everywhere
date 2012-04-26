@@ -1,15 +1,6 @@
 % Responsive Web Design, Part I
 % Getting Fluid
 
-## Items in this section
-
-* Intro to Sigma Stronghold website
-* What's wrong with it currently on mobile?
-* Quick hits to remove bad things (Weather, etc.)
-* Examination of structure of layout
-* Fluid Formula
-* Conversion to basic fluid layout
-
 ## The zombies came
 
 ### Illustration: Apocalypse
@@ -23,6 +14,10 @@
 ![](images/02-not-awesome.png)
 
 ## Havoc was Wreaked
+
+### Illustration: havoc
+
+![](images/02-havoc.png)
 
 ## Who will save our fair city?
 
@@ -58,6 +53,511 @@
 
 ## And, alas!
 
-TODO: Image of site looking horrible on devices
+### Three: Sigma Broken
+
+![](images/02-sigma-broken-1.png)
+
+![](images/02-sigma-broken-2.png)
+
+![](images/02-sigma-broken-3.png)
+
+## Even Tablets...
+
+### Figure: Tablet Bad
+
+![](images/02-sigma-broken-4.png)
+
+# Let's talk about what is going wrong here
+
+## What's this broken thing down here?
+
+![](images/02-weather-widget.png)
+
+* This, folks, is the weather.
+* Or at least it would be if it worked on Sigma Stronghold's mobile browsers.
+
+## What it's supposed to look like
+
+### Figure: The intended weather
+
+![](images/02-sigma-weather.png)
+
+## Behind the scenes of the weather
+
+### Code
+
+~~~{.html}
+<div id="weather">
+  <div style='width: 240px; height: 420px; background-image: url( http://vortex.accuweather.com/adcbin/netweather_v2/backgrounds/black_240x420_bg.jpg ); background-repeat: no-repeat; background-color: #000000;' >
+  <div id='NetweatherContainer' style='height: 405px;' >
+  <script src='http://netweather.accuweather.com/adcbin/netweather_v2/netweatherV2ex.asp?partner=netweather&tStyle=whteYell&logo=1&zipcode=10001&lang=eng&size=12&theme=black&metric=0&target=_self'>
+  </script>
+  </div>
+  <div style='text-align: center; font-family: arial, helvetica, verdana, sans-serif; font-size: 10px; line-height: 15px; color: #FFFFFF;' >
+  <a style='font-size: 10px; color: #FFFFFF' href='http://www.accuweather.com/us/ny/new-york/10001/city-weather-forecast.asp?partner=accuweather' >
+  Weather Forecast
+  </a>
+  | <a style='color: #FFFFFF' href='http://www.accuweather.com/maps-satellite.asp' >Weather Maps</a> | 
+  <a style='color: #FFFFFF' href='http://www.accuweather.com/index-radar.asp?partner=accuweather&zipcode=10001' >
+    Weather Radar
+  </a>
+  </div>
+  </div>
+</div>
+~~~
+
+## Things are Wrong with the Weather
+
+* Flash
+* Big
+* Many HTTP Requests
+* Inline styling
+* Unescaped URL parameters
+* Also, it doesn't work...anywhere
+
+## Sergeant Dingus Responds
+
+> "I thought the weather widget looked kinda cool. But I admit, it hasn't had an accurate weather reading since four months ago. I guess AccuWeather HQ must have suffered a direct hit." — Sgt. Dingus
+
+## Clarence the Angry Performance Goat
+
+![](images/clarence.png)
+
+Clarence the Angry Performance Goat butts in (hee hee) from time to time.
+
+> "There's so much about that weather widget that makes me want to hork up that phone book I just ate. Let me count the ways. A pile of HTTP requests. Flash?! Invalid markup...ack. Before these cadets start making web pages for mobile devices, they need to understand some basic laws of performance." —APG
+
+## How does the Goat know so much?
+
+### Figure: Invalid Markup
+
+![http://validator.w3c.org](images/02-invalid-code.png)
+
+## ySlow is his best friend
+
+### Reverse: ySlow Stats
+
+![](images/02-yslow-start-stats.png)
+
+* ySlow is available for many platforms
+* Created by the Yahoo! Exceptional Performance Team
+* Get it. Use it.
+* The Goat will approve.
+
+## Web: fat
+
+### Illustration: The Web is fat
+
+![](images/02-web-is-fat.png)
+
+## We want to avoid this
+
+### Illustration: Sad
+
+![](images/02-i-am-sad.png)
+
+## Instead, we want this
+
+### Illustration: Bitchin'
+
+![](images/02-slow-to-bitching.png)
+
+## The Goat Says: Fix yer Fonts!
+
+* Optimize your stylesheet includes for web fonts! The site uses Google fonts—apparently Google has survived the attack so far.
+
+### Instead of
+
+#### Code
+
+~~~~{.html}
+<link href="http://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Butcherman" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+
+~~~~
+
+### Use
+
+#### Code
+
+~~~~{.html}
+<link href="http://fonts.googleapis.com/css?family=Nosifer|Special+Elite" rel="stylesheet">
+~~~~
+
+## Goat: Missing things hurt mobile devices
+
+![](images/02-404s.png)
+
+* High latency makes these HTTP requests expensive, remember.
+* Even more annoying if the requests don't get us anywhere.
+
+## Let's look at those stats again
+
+![](images/02-yslow-2.png)
+
+### Oh, how nice!
+
+By removing the weather widget, fixing our fonts and rectifying a couple of 404s, we've slimmed down by about 100k and shed some HTTP requests. That's a start.
+
+# Now, where were we?
+
+## Ahem.
+
+### Figure: That's right, it's broken
+
+![](images/02-sigma-broken-1.png)
+
+## Very close up
+
+> "Why's it all zoomed in like that? I thought these newer mobile browsers could display web pages like desktop browsers." —Sgt. Dingus
+
+### Answer: Because you told it to
+
+~~~{.html}
+<meta name="viewport" content="width=device-width,initial-scale=1">
+~~~
+
+## Viewports are Confusing
+
+### Illustration: Viewports
+
+![](images/02-viewports.png)
+
+## Backing up a few steps
+
+### Illustration: Widths on site
+
+![](images/02-widths.png)
+
+## Fixed width layouts
+
+### Illustration: Fixed-width elements
+
+![](images/02-fixed-elements.png)
+
+## Different Viewports...
+
+### Illustration: Differing viewports
+
+![Expanding and contracting a browser window changes the width of the visible viewport](images/02-different-viewports.png)
+
+## These things are not the same
+
+### Illustration: Layout vs. Visible Viewports
+
+![On mobile devices, our visible viewport is much smaller than our layout viewport](images/02-layout-visible.png)
+
+## Viewports are confusing
+
+* **Visible Viewport:** The dimensions of *visible* content
+* **Layout Viewport:** The width of the entire layout. 
+
+### Fixed width is harshing our buzz
+
+In fixed-width layouts, the layout viewport is fixed and inflexible, even if the visible viewport changes.
+
+In our case, the Sigma Stronghold web site's `#container` element is always 920px wide, no matter what the visible viewport width.
+
+## Our viewport
+
+Remember our viewport settings:
+
+~~~{.html}
+<meta name="viewport" content="width=device-width,initial-scale=1">
+~~~
+
+* `width=device-width`: Set the viewport width to the width of the device, in CSS pixels.
+* `initial-scale=1`: Set initial `zoom` to `1`, that is, 100% or normal size.
+
+## What happens if we remove the viewport tag?
+
+![No `viewport` tag](images/02-no-viewport.png)
+![With `viewport` tag](images/02-viewport.png)
+
+## What if, instead...
+
+Responsive Web Design (RWD) is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure.
+
+RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts *scale, flex and adapt* to *flow comfortably* in the user's browser, whatever size or shape it might be at the moment.
+
+## RWD Tenets
+
+RWD arms for a three-pronged attack against those zombies:
+
+1. Fluid CSS layouts
+2. Responsive Images and Objects
+3. CSS3 Media Queries
+
+## Fluid layouts, eh?
+
+Instead of using fixed pixel widths, fluid layouts use *relative, proportional units.* Container and column widths are defined in percentages or `em` units (or other non-absolute units).
+
+The layout stretches or shrinks proportionally with the window width.
+
+If we convert the Sigma Stronghold website to a fluid layout, we can make it scale up and down for different screen widths.
+
+## How?
+
+To convert fixed-unit layout elements to fluid ones, we use the **fluid formula**.
+
+### Illustration: Fluid Formula
+
+![](images/02-fluid-formula.png)
+
+## Fluid Formula
+
+### Illustration: Example
+
+![](images/02-fluid-formula-explained.png)
+
+## An example
+
+### Illustration: Example
+
+![](images/02-fluid-example.png)
+
+## Honing in on context
+
+### Illustration: Context
+
+![](images/02-fluid-context.png)
+
+## Current metrics of Sigma Stronghold site
+
+![](images/02-widths.png)
+
+* `body > div` that contains all content: 920px
+* `#container` (all content is inside of this `div`): 900px
+* `#main`: 500px
+* `#sidebar`: No specific width set, but a left margin of 570px
+
+## To go fluid...
+
+We need to convert the pixel widths of these four elements into proportional units. 
+
+![](images/02-fixed-elements.png)
+
+*Why these four?* These are the only four layout elements with width defined in fixed (pixel) units.
+
+## Starting with the layout width
+
+`div > body` is the main containing element. It currently has a width of `920px`. 
+
+> "I like to have a bit of space on the right and the left of the main content area for the moon background image to peek through and generally to give it some breathing room." —Sgt. Dingus
 
 
+### Illustration: Dingus
+
+![](images/dingus-small.png)
+
+## So, instead of
+
+~~~{.css}
+body > div {
+  width: 920px;
+  margin: 0 auto;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 0px 7px;
+  border-style: solid;
+}
+~~~
+
+### We can use
+
+~~~{.css}
+body > div {
+  width: 90%;
+  margin: 0 auto;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 0px 7px;
+  border-style: solid;
+}
+~~~
+
+## Now, the Container Element
+
+`#container` has a current width of `900px`. Its entire reason for existing is to provide some padding.
+
+If we want to convert its `900px` width to fluid: 
+
+900 / 920 = .9782...
+
+### Instead of 
+
+~~~{.css}
+#container {
+  background: black;
+  padding: 10px;
+  width: 97.8%;
+  clear: both;
+}
+~~~
+
+### Use
+
+~~~{.css}
+#container {
+  background: black;
+  padding: 10px;
+  width: 97.8%;
+  clear: both;
+}
+~~~
+
+## Wait, what about that padding?
+
+Watch out: Context has changed. This padding is relevant to its parent element: `#container`, which is `900px` wide.
+
+### So Our Fluid Equation is
+
+10 / 900 = .0111111...
+
+### Instead of
+
+~~~{.css}
+#container {
+  background: black;
+  padding: 10px;
+  width: 97.8%;
+  clear: both;
+}
+~~~
+
+### We Use
+
+~~~{.css}
+#container {
+  background: black;
+  padding: 1.1%;
+  width: 97.8%;
+  clear: both;
+}
+~~~
+
+## Main Column
+
+### Fluid Equation
+
+550 / 900 = .611111...
+
+~~~{.css}
+#main {
+  margin-left: 10px;
+  clear: left;
+  float: left;
+  width: 550px;
+  /* ... */
+}
+~~~
+
+### Becomes
+
+~~~{.css}
+#main {
+  margin-left: 10px;
+  clear: left;
+  float: left;
+  width: 60%;
+  /* ... */
+}
+~~~
+
+## Wait, 60%?
+
+### Illustration: Sloppy math
+
+![](images/02-sloppy.png)
+
+## Making the margin fluid, too
+
+10 / 550 = .018181818
+
+### Wait...
+
+Instead of having a bunch of padding widths that are different small percentages, maybe we should standardize on a single number. Let's say 1.5% to compromise. That gives us:
+
+~~~{.css}
+#main {
+  margin-left: 1.5%;
+  clear: left;
+  float: left;
+  width: 60%;
+  /* ... */
+}
+~~~
+
+and, for the `#container`:
+
+~~~{.css}
+#container {
+  background: black;
+  padding: 1.5%;
+  width: 97%;
+  clear: both;
+}
+~~~
+
+**Note:** We had to change the `width` to account for the updated padding!
+
+## Finally, the sidebar
+
+### Take this
+
+~~~{.css}
+#sidebar {
+  margin-left: 560px;
+}
+~~~
+
+### Run it through the fluid formula
+
+560 / 900 = ~63.25%;
+
+### And so
+
+~~~{.css}
+#sidebar {
+  margin-left: 63.25%;
+}
+~~~
+
+## All together now
+
+Simplified CSS (ignoring the non-structural parts!):
+
+~~~{.css}
+body > div {
+  width: 90%;
+  margin: 0 auto;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 0px 7px;
+  border-style: solid;
+}
+
+#container {
+  background: black;
+  padding: 1.5%;
+  width: 97%;
+  clear: both;
+}
+
+#main {
+  margin-left: 1.5%;
+  clear: left;
+  float: left;
+  width: 60%;
+  /* ... */
+}
+
+#sidebar {
+  margin-left: 63.25%;
+}
+~~~
+
+## Take it for a spin
+
+### Figure: Fluid Layout
+
+![The [fluid layout](../examples/02-fluid)](images/02-sigma-fluid.png)

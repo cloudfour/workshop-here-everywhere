@@ -3,7 +3,403 @@
 
 # In this section
 
+* Responsive images (basic)
 * Intro to media types and media queries
 * In-depth on media queries
 * Addition of media queries to Sigma Stronghold site
-* Responsive images (basic)
+* More performance Hits
+
+## It's not all milk and honey
+
+### Figure: It's escaping
+
+![](images/03-image-escape.png)
+
+## What gives?
+
+~~~{.html}
+<div id="nozombies">
+  <img src="images/zombie-girl.png" width="295" height="295" alt="NO ZOMBIES ALLOWED!!!" />
+</div>
+~~~
+
+* Explicit `width` and `height` attributes in `img` tag don't scale
+* When `#sidebar` is narrower than the width of the image, it breaks free
+
+## Solution: Responsive Images
+
+*Responsive Images* are the second tenet of Responsive Web Design. By adding this rule to our CSS, we can keep unruly images from breaking free of the confines of their parent elements:
+
+~~~{.css}
+img {
+  max-width: 100%;
+}
+~~~
+
+## And...
+
+Let's [take a look](../examples/03-responsive-images-partial), shall we?
+
+### Figure: Smushed
+
+![](images/03-smushed.png)
+
+## Unsmush
+
+~~~{.html}
+<div id="nozombies">
+  <img src="images/zombie-girl.png" width="295" height="295" alt="NO ZOMBIES ALLOWED!!!" />
+</div>
+~~~
+
+To make responsive images work, we have to remove the `width` and `height` attributes from our `img` tag:
+
+~~~{.html}
+<div id="nozombies">
+  <img src="images/zombie-girl.png" alt="NO ZOMBIES ALLOWED!!!" />
+</div>
+~~~
+
+Let's [try that](../examples/04-responsive-images).
+
+## Better
+
+### Illustration: Unsmush
+
+![](images/03-not-smushed.png)
+
+## But.
+
+### Figure: This looks really awkward
+
+![](images/03-awkward.png)
+
+## It's doing what we told it to
+
+### Illustration: In Viewport
+
+![](images/03-in-viewport.png)
+
+## Sergeant Dingus Weighs in
+
+> "Whoa. That narrow-screen view is ugly. I think it looks kind of weird when the window is really wide, too." —Sgt. Dingus
+
+### Illustration: Wide
+
+![](images/03-wide.png)
+
+## Clarence the Angry Performance Goat barges in
+
+### Illustration: Goat
+
+![](images/clarence.png)
+
+## He is complaining
+
+> "The zombie girl image is enormous!! It's not optimized at all! The HQ image is an image that has text content in it! And the moon background image is also enormous! Do something!" —Clarence the Angry Performance Goat
+
+## OK, so we've got problems
+
+1. Layout is proportional, all right, but it looks odd at certain screen widths.
+2. We have some runaway big images.
+3. We have some content that is non-semantic (inside an image).
+
+We've heard what Sgt. Dingus has to say about the layout, but what about these images?
+
+## Sgt. Dingus' Editorial
+
+> I'm a bit embarrassed about the HQ address image. I didn't even really think about it. Also, we've had some of the troops complain about too much specific zombie imagery on the site overall. I'm attached to the moon photo because my brother took it and I think it's kind of cool. The other images, meh. — Sgt. Dingus.
+
+## Smushing the moon
+
+### Figure: Smush.it
+
+![http://smush.it — Nice tool but not a replacement for by-hand compression](images/03-smushit.png "Smushing the moon")
+
+## Making the Contact information Meaningful
+
+### Instead of
+
+~~~{.html}
+<div>
+  <h2>Contact HQ</h2>
+  <img src="images/contact-sigma-stronghold.png" alt="Contact HQ" />
+</div>
+~~~
+
+### We can use
+
+~~~{.html}
+<div>
+  <h2>Contact HQ</h2>
+  <p>Abandoned Post Office<br />
+  23 Daryl Dixon Road<br />
+  Manhattan Offset Zone<br />
+  <a href="mailto:help@sigma-stronghold.com">help@sigma-stronghold.com</a><br />
+  CB Channel 32.6</p>
+</div>
+~~~
+
+## OK, we've been sidetracked by the goat
+
+> "However, I'd like to point out, we have now removed several hundred kilobytes from the page." —Clarence
+
+### Figure: Smaller
+
+![](images/03-yslow-smaller.png)
+
+
+## And now back to our main problem
+
+![](images/03-awkward.png)
+
+* At narrow widths, the content looks smushy and awkward.
+
+## Media Queries to the rescuce
+
+CSS3 **Media Queries** are the third leg of the RWD tripod.
+
+Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.
+
+## Media Types
+
+Media types have been around a while. It's how we make print stylesheets, e.g.
+
+~~~ {.html}
+<link rel="stylesheet" media="print" href="print.css">
+~~~
+
+## Media Features
+
+#### Media types have media features.
+
+* For example, `width` is a media feature of several media types. `orientation` is a media feature of various bitmap media types. `color` and `monochrome' are more examples.
+* Different media types have different types of values. `color` and `monochrome` are Boolean (TRUE/FALSE) values. `width` is an integer.
+
+
+
+The most relevant media types are:
+
+* `all`
+* `screen`
+* `print`
+
+## Logical expressions
+
+#### CSS media queries evaluate the current value of *media features* in logical expressions to determine whether to apply the enclosed CSS.
+
+~~~ {.css}
+@media screen and (min-width: 600px) {
+  // In browsers that support media queries,
+  // rules in here will only be applied if the
+  // query expression evaluates as true
+}
+~~~
+
+### Also
+
+~~~ {.html}
+<link rel="stylesheet" media="screen and (min-width:600px)" href="thing.css">
+~~~
+
+* `@import` syntax is also supported.
+
+## Media Queries
+
+### Illustration: Syntax
+
+![](images/02-media-query-syntax.png)
+
+## Media Queries
+
+### Illustration: Example
+
+![](images/02-media-query-example.png)
+
+## What can media queries do for us?
+
+With media queries, we can apply different CSS in different circumstances. For the Sigma Stronghold site, we can create a CSS layout appropriate for narrower screens and only apply it when the window is narrower than a certain threshold, for example.
+
+## Our crafted media query
+
+`@media screen and (max-width: 700px) { }`
+
+### ...Now, what goes in it?
+
+We need to craft some CSS to create a single-column, comfortable layout for narrower screens. Let's get to it!
+
+## What needs to change?
+
+* We don't have to create entirely different CSS for the narrow-screen layout.
+* We only need to define the rules that we wish to *override* from the wider layout.
+
+## Step 1: Container elements span full width
+
+~~~{.css}
+@media screen and (max-width: 700px) {
+  body > div,
+  #container
+  {
+    width: 100%;
+    float: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+}
+~~~
+
+## Step 1, Continued
+
+~~~{.css}
+@media screen and (max-width: 700px) {
+  body > div,
+  #container
+  {
+    width: 100%;
+    float: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  #main, #sidebar {
+    width: 95%;
+    margin: 0;
+    padding: 0 2.5%;
+    float: none;
+  }
+}
+~~~
+
+## And let's check it out!
+
+### Figure: Checking it out
+
+![Let's [check it out](../exercises/06-narrow-layout)](images/03-single-column.png)
+
+## Where to from here?
+
+### Reverse: Check it out
+![](images/03-single-column.png)
+
+* Do something about the navigation
+* Adjust fonts, line heights, padding...
+
+## Fix navigation
+
+TODO: Drawing
+
+## Navigation Rules in Media query
+
+~~~{.css}
+@media screen and (max-width: 700px) {
+  /* ... */
+  #header nav ul li {
+    float: none;
+    clear: both;
+    width: 100%;
+    margin: .5em 0;
+  }
+  #header nav ul li a {
+    margin: 0;
+    padding: .75em;  
+  }
+}
+~~~
+
+## An eye for proportion
+
+Proportional balance doesn't end at container elements. On narrow screens, our font sizes and line heights and padding look a bit uncomfortable. Let's fix:
+
+~~~{.css}
+@media screen and (max-width: 700px) {
+  /*...layout rules here */
+  /* Padding and proportion adjustment */
+  #header nav ul li a {
+    margin: 0;
+    padding: .75em;  
+  }
+  
+  #header h1, #header h3 {
+    padding: 0 .375em;
+  }
+  
+  #header {
+    padding: 1em 0;
+  }
+  
+  h1 {
+    font-size: 1.75em;
+    line-height: 1.25em;
+  }
+  
+  h3 {
+    font-size: 1.1em;
+    line-height: 1.2em;
+  }
+  
+  p {
+    font-size: .9em;
+    line-height: 1.4em;
+  }
+}
+~~~
+
+## All together, now
+
+### Code
+
+~~~{.css}
+@media screen and (max-width: 700px) {
+  body > div,
+  #container
+  {
+    width: 100%;
+    float: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  #main, #sidebar {
+    width: 95%;
+    margin: 0;
+    padding: 0 2.5%;
+    float: none;
+  }
+  #header nav ul li {
+    float: none;
+    clear: both;
+    width: 100%;
+    margin: .5em 0;
+  }
+  #header nav ul li a {
+    margin: 0;
+    padding: .75em;  
+  }
+  /* Padding and proportion adjustment */
+  #header h1, #header h3 {
+    padding: 0 .375em;
+  }
+  #header {
+    padding: 1em 0;
+  }
+  h1 {
+    font-size: 1.75em;
+    line-height: 1.25em;
+  }
+  h3 {
+    font-size: 1.1em;
+    line-height: 1.2em;
+  }
+  p {
+    font-size: .9em;
+    line-height: 1.4em;
+  }
+}
+~~~
+
+## Et, voila
+
+### Figure: Done
+
+![And, [voila!](../examples/07-responsive)](images/03-done.png)

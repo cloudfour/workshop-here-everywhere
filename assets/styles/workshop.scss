@@ -17,6 +17,30 @@ h1, h2 {
   border-bottom: .03em solid $color-pale;
 }
 
+h3 {
+  color:      $color-title;
+  font-style: italic;
+}
+
+blockquote {
+  line-height:    1.5em;
+  margin:         .5em 2em;
+  padding:        .25em;
+  border:         .1em solid $color-green;
+}
+
+strong, b {
+  font-family:    $font-bold;
+}
+
+em, i {
+  font-family:    $font-italic;
+}
+
+p, li {
+  line-height:    1.35em;
+}
+
 div.slide {
 
   a, a:visited, a:active, a:hover {
@@ -39,17 +63,24 @@ div.slide {
     }
   }
   // Image alignment styles
+  ///////////////////
   div.figure {
     p.caption {
       font-family: $font-mono;
     }
     @include ghetto-clearfix;
     max-width:    50%;
+    min-width:    35%;
+    min-height:   50%;
     float: left;
     border-right: .1em solid $color-accent;
     padding-right: .5em;
-    padding: 0;
+    margin-right:  .5em;
     img {
+      max-width: 100%;
+      max-height: 80%;
+    }
+    img:only-of-type {
       max-width:  92.5%;
       padding:    0;
       box-shadow: .5em 1em 1.5em $color-pale;
@@ -88,7 +119,7 @@ div.slide {
     border-left:      .1em solid $color-accent;
     border-right:     none;
     img {
-      padding-left:   .5em;
+      padding-left:   1em;
     }
     & + ul {
       margin: 0 .5em 0 0;
@@ -100,6 +131,20 @@ div.slide {
       box-shadow: none;
     }
   }
+  div[id^='three'] {
+    h1, h2, h3, h4 {
+      display: none;
+    }
+    p > img {
+      max-width: 30%;
+      padding: 0 1%;
+    }
+    div.figure {
+      padding: 0 1%;
+      max-width: 30%;
+    }
+  }
+  //////// End Image alignment styles //////
   // Title Styles
   &.titleslide {
     position: absolute;
@@ -108,4 +153,55 @@ div.slide {
       margin-right: 0;
     }
   }
+  ///// CODE //////
+  div[id^='code'] {
+    h1, h2, h3, h4 {
+      display: none;
+    }
+    pre code.sourceCode {
+      font-size: .65em;
+    }
+    pre {
+      line-height:  70%;
+    }
+  }
+  pre {
+    overflow:         scroll;
+    font-weight:      normal;
+    border:           .2em $color-green;
+    box-shadow:       inset 0 0 .5em $color-text;
+    background-color: $color-background-mid;
+    padding:          .5em;
+    code {
+      color:          $color-text;
+      font-size:      .8em;
+      padding:        0;
+      background-color: transparent;
+    }
+    .sourceCode {
+      color:          $color-text;
+    }
+  }
+  
+  code {
+    background-color: $color-background-mid;
+    padding:          0 .35em;
+    border:           .05em dashed $color-pale;
+  }
+  
+  // Syntax highlighting
+  code > span.kw { @include color-muted($color-red); 
+                   font-weight: bold; }
+  code > span.dt { color: $color-blue; }
+  code > span.dv { color: #40a070; }
+  code > span.bn { color: #40a070; }
+  code > span.fl { @include color-muted($color-green); }
+  code > span.ch { color: #4070a0; }
+  code > span.st { color: $color-blue; } // Attribute values
+  code > span.co { @include color-muted($color-blue); font-style: italic; }
+  code > span.ot { @include color-muted($color-green); } // Attributes
+  code > span.al { color: #ff0000; font-weight: bold; }
+  code > span.fu { color: #06287e; }
+  code > span.er { @include color-muted($color-yellow); 
+                  font-weight: bold; }
 }
