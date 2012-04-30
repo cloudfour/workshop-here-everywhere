@@ -1,6 +1,117 @@
 % Going Hybrid
 % Hybrid native app development using web technologies (PhoneGap Build)
 
-# In This Section
+## A blistering quick ride through hybrid-land
 
-* Not much adaptation from present Zombie version
+### Reverse: Hybrid structure
+
+TODO: IMAGE
+
+Sometimes you need to do something that you just can't quite pull off (yet) on the mobile web.
+
+Sometimes zombies mate with the populace at large and the offspring get the best of both worlds—web-based technologies wrapped in native app goodness.
+
+Giddyup!
+
+## PhoneGap and PhoneGap Build
+
+### Figure: PhoneGap Platforms
+
+![](images/10-phonegap-platforms.png)
+
+![](images/10-phonegap-logo.png) 
+
+
+* PhoneGap is one option for using HTML5 technologies to create native apps for multiple platforms.
+
+## PhoneGap Build
+
+![](images/10-phonegapbuild-logo.png)
+
+* With PhoneGap Build you can build your projects in the cloud (that is, you don't have to compile/build natively for each platform yourself).
+
+## Anatomy of a PhoneGap project
+
+TODO: IMAGE
+
+* Web stuff: HTML, JS, CSS, images, whatever!
+* A config.xml file
+* For PhoneGap Build, ZIP it up and then upload it.
+
+## The PhoneGap API
+
+In our quick example, we're simply going to wrap the existing "I Got One!" application and make it native. But that doesn't use PhoneGap to its true advantage...
+
+Phonegap.js provides a universal JavaScript API to access device features not exposed to the browser (yet).
+
+## No really, it's pretty danged easy
+
+Let's see how fast we can bust out a native Android version of "I Got One!".
+
+### How to make a PhoneGap Build project
+
+1. Create a config.xml file.
+2. ZIP up our files.
+3. Upload and build.
+4. Install on device.
+
+## Anatomy of a config.xml
+
+### Code
+
+~~~ {.xml}
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.cloudfour.gotone"
+        versionCode="10"
+        version   = "1.0.0">
+
+    <name>I Got One</name>
+
+    <description>
+       Track your zombie kills!
+    </description>
+
+    <author href="https://www.cloudfour.com" email="info@cloudfour.com">
+        Lyza Gardner and Jason Grigsby
+    </author>
+
+    <preference name="orientation" value="portrait" />
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+
+</widget>
+~~~
+
+##### config.xml
+
+## Let's add some icons
+
+### Code
+
+~~~ {.xml}
+    <preference name="orientation" value="portrait" />
+
+    <icon src="app-icons/touch-icon-iphone.png" width="57" height="57"/>
+    <icon src="app-icons/touch-icon-ipad.png" width="72" height="72"/>
+    <icon src="app-icons/touch-icon-iphone4.png" width="114" height="114"/>
+
+    <gap:splash src="app-icons/splash.png" width="320" height="480" />
+    <gap:splash src="app-icons/splash-2x.png" width="640" height="960"/>
+</widget>
+~~~
+
+##### config.xml
+
+## ZIP, Upload, Build
+
+### Figure: PhoneGap Build screen shot
+
+![](images/10-phonegap-build-screenshot.png)
+
+
+## Install on device or emulator
+
+### Figure: "I Got One!" running on a Galaxy S
+
+![](images/10-galaxy-screenshot.png)

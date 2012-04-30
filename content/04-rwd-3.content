@@ -58,7 +58,7 @@ Instead of having a single media query for "mobile devices", let's do some more 
 }
 ~~~
 
-Let's [look at this in practice](../examples/08-mobile-first/styles.css).
+Let's [look at this in practice](../examples/04/01-mobile-first/styles.css).
 
 ## Sgt Dingus weighs in
 
@@ -148,5 +148,5 @@ Our updated media queries would thus look like:
 
 ## But really, what did that get us?
 
-* Well, with the [pixel version in a Webkit browser...](../examples/08-mobile-first)
-* But with the [em-based media queries...](../examples/09-relative-queries)
+* Well, with the [pixel version in a Webkit browser...](../examples/04/01-mobile-first)
+* But with the [em-based media queries...](../examples/04/02-relative-queries)

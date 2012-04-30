@@ -1,17 +1,6 @@
 % Devices, devices, devices (and browsers)
 % Keeping ahead of the apocalypse
 
-## In this section
-
-* Server-side device detection
-* Supporting older devices
-* Deciding which devices to support
-* Analytics about devices
-* Looking toward the future
-* Setting content free
-* Bang the progressive enhancement drum again
-* Revisit client-side feature detection
-
 ## How can we tell who supports what?
 
 * Feature detection: client- or server-side
@@ -27,5 +16,381 @@ In the last section, we implemented a very basic JavaScript detection of the sup
 
 ## More complex feature detection using JavaScript
 
+![](images/08-modernizr.png)
+
 The open-source JavaScript tool **Modernizr** is very useful for performing client-side feature detection.
 
+### Test for support of many features.
+
+* HTML5 feature support.
+* DeviceAPI feature support.
+* CSS3 support.
+
+## Modernizr
+
+![](images/08-modernizr-2.png)
+
+### Modernizr can
+
+* Provide information about browser support in a JavaScript object
+* Add relevant classes to the `<html>` element of the page (useful for CSS)
+* Be configured just for the needed tests (keeps JS smaller and faster)
+
+## So let's say we want to enhance something for touch-enabled devices
+
+> "Hey, I realize this is sort of hypothetical, but we're between big zombie battles right now. What do you think about making it so all touch-enabled devices get the vertical navigation on the Sigma Stronghold site, even tablets?" —Sgt. Dingus
+
+#### We can use Modernizr to accomplish this mission
+
+
+1. We can go to [http://modernizr.com/download/](http://modernizr.com/download/) and put together our custom Modernizr build.
+2. Include the Modernizr JavaScript in our web page.
+3. We're going to use the CSS classes it assigns...
+
+## Simple HTML Page
+
+### Code
+
+~~~{.html}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="Modernizr-touch.js"></script>
+  <link rel="stylesheet" type="text/stylesheet" href="../../workshop.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <title>Device and Feature Detection!</title>
+</head>
+<body>
+<h1><strike>Device</strike> Zombie Detection</h1>
+
+<h2 id="modernizr">Current Browser: Modernizr</h2>
+
+<ul>
+  <li class="touchdetails" id="details-notouch">Does <em>not</em> support touch events</li>
+  <li class="touchdetails" id="details-touch"><em>Does</em> support touch events</li>
+</ul>
+
+</body>
+
+</html>
+~~~
+
+## Add some CSS Styling...
+
+### Code
+
+~~~{.html}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="Modernizr-touch.js"></script>
+  <link rel="stylesheet" type="text/stylesheet" href="../../workshop.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  
+  <style type="text/css">
+    .touchdetails { display: none; }
+    .touch #details-touch { display: list-item; }
+    .no-touch #details-notouch { display: list-item; }
+  </style>
+  
+  <title>Device and Feature Detection!</title>
+</head>
+<body>
+<h1><strike>Device</strike> Zombie Detection</h1>
+
+<h2 id="modernizr">Current Browser: Modernizr</h2>
+
+<ul>
+  <li class="touchdetails" id="details-notouch">Does <em>not</em> support touch events</li>
+  <li class="touchdetails" id="details-touch"><em>Does</em> support touch events</li>
+</ul>
+
+</body>
+</html>
+~~~
+
+## Results
+
+![From a desktop browser (Chrome)](images/08-notouch.png)
+
+![From my iPhone (via Shadow)](images/08-touch.png)
+
+## Classes assigned
+
+![](images/08-inspector.png)
+
+![](images/08-inspector-touch.png)
+
+You can see these from the Web Inspector in webkit, for example.
+
+## Doing some good with it
+
+### Step 1: Add Modernizr to Sigma Stronghold's page:
+
+~~~{.html}
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="http://fonts.googleapis.com/css?family=Nosifer|Special+Elite" rel="stylesheet">
+<script src="Modernizr-touch.js"></script>
+<link rel="stylesheet" href="styles.css">
+<title>Sigma Stronghold</title>
+</head>
+~~~
+
+##### index.html
+
+## Step 2: Edit CSS
+
+### Code
+
+~~~{.css}
+/* Vertical navigation for touch devices */
+html.touch #header {
+  padding: 1em 0;
+}
+html.touch #header h1, #header h3 {
+  padding: 0 .5em;
+}
+html.touch #header nav ul li {
+  float: none;
+  clear: both;
+  width: 100%;
+  margin: .5em 0;
+}
+html.touch #header nav ul li a {
+  margin: 0;
+  padding: .75em;
+}
+~~~
+
+##### styles.css
+
+## And now touch devices...
+
+### Figure: Sigma on iPad
+
+![iPad used to get tabs, but gets touch navigation now](images/08-ipad.png)
+
+## Detecting other things
+
+To detect various client-side features, you can use a combination of third-party testing tools like Modernizr and your own JS savvy.
+
+### Pixel Density
+
+Say you want to know the pixel density of the current device. This is relatively straightforward in JavaScript:
+
+#### In its simplest form...
+
+~~~{.javascript}
+if (window.devicePixelRatio) {
+  alert(window.devicePixelRatio);
+}
+~~~~
+
+## And doing a little something with the info
+
+Going back to our simple HTML page...
+
+### Code
+~~~{.html}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    if (window.devicePixelRatio) {
+      var $li = $('<li></li>').html('Device Pixel Ratio: ' + window.devicePixelRatio);
+      $("#javascript").next('ul').append($li);
+    }
+  });
+</script>
+
+<style type="text/css">
+  .touchdetails { display: none; }
+  .touch #details-touch { display: list-item; }
+  .no-touch #details-notouch { display: list-item; }
+</style>
+
+<title>Device and Feature Detection!</title>
+~~~
+
+## Giving it a `<ul>` to Populate
+
+~~~{.html}
+<h2 id="modernizr">Current Browser: Modernizr</h2>
+
+<ul>
+  <li class="touchdetails" id="details-notouch">Does <em>not</em> support touch events</li>
+  <li class="touchdetails" id="details-touch"><em>Does</em> support touch events</li>
+</ul>
+
+<h2 id="javascript">Current Browser: Other JavaScript Info</h2>
+
+<ul>
+
+</ul>
+~~~
+
+## Et, Voila!
+
+![](images/08-pixel.png)
+
+![](images/08-pixel-iphone.png)
+
+## So that's client-side detection, but what about when...
+
+Sometimes you may need to know information about your device and browser before you serve content. Maybe you want to redirect mobile devices entirely. Maybe you want to know details about the device's support.
+
+## Zombie Detection Databases
+
+Mobile device databases contain detailed information about the browser, platform, and hardware features of mobile devices. All a device detection database needs is a user agent string and it can tell you a lot about the device.
+
+## Unique DNA string
+
+Every browser in the world has a user agent string. This string tells us a lot about the browser.
+
+~~~
+Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) 
+Chrome/14.0.792.0 Safari/535.1
+~~~
+
+That’s the user agent string for Chrome 14 running on Windows Vista. Obvious, right?
+
+## User agent sniffing is evil, right?
+
+You’ve heard the propaganda that says user agent switching is a bad practice. And who can forget the many web sites left behind during the "runs best on IE6" era.
+
+But you're fighting zombies here! Religion takes a back seat to survival.
+
+Plus, 25 of Alexa’s Top 30 sites use device detection. The five that don’t? They don’t have mobile sites at all.
+
+## Many device detection database options
+
+* [WURFL][wurfl] (Wireless Universal Resource FiLe) by [ScientiaMobile][scientiamobile]
+* [DeviceAtlas][deviceatlas] by [dotMobi][dotmobi]
+* New Apache [DeviceMap][devicemap] Project
+* [51degrees][51]
+
+Pay special attention to the licenses.
+
+## Get an ID on those zombies
+
+Let’s do a test run using a device detection database.
+
+1. Go to the [ScientiaMobile WURFL Explorer][explorer] on your mobile phone
+2. Check out the various attributes. What do you see that would be useful?
+3. Can you find the screen resolution of your phone?
+4. Go to the [ScientiaMobile WURFL Explorer][explorer] on your laptop
+
+## Testing capabilities
+
+Device databases are most useful for testing capabilities. Once you have a user agent string, you can things like:
+
+### Is this a mobile device?
+
+~~~{.php}
+$value = $device->getCapability('is_wireless_device');
+~~~
+
+OR
+
+### Does this browser-device combo support cookies?
+
+~~~{.php}
+$value = $device->getCapability('cookie_support');
+~~~
+
+## Putting it to work
+
+### Writing some code to interact with the WURFL data
+
+#### Code
+
+~~~{.php}
+<?php
+
+// Include the WURFL Cloud Client 
+require_once 'WurflCloudClient-PHP-1.0.2-Simple/Client/Client.php';
+$api_key        = 'YOUR API KEY HERE';
+$is_phone_like  = NULL;
+$is_touch       = NULL;
+
+// Create a configuration object  
+$config = new WurflCloud_Client_Config();  
+ 
+// Set your WURFL Cloud API Key  
+$config->api_key = $api_key;   
+ 
+if ($api_key) {
+  // Create the WURFL Cloud Client  
+  $client = new WurflCloud_Client_Client($config);  
+  
+  // Detect your device  
+  $client->detectDevice();
+  
+  $is_phone_like = ($client->getDeviceCapability('has_cellular_radio')) ? "Has a cellular radio" : "Does NOT have a cellular radio";
+  $is_touch = ($client->getDeviceCapability('is_touchscreen')) ? "Touchscreen" : "NOT touchscreen";
+}
+
+?>
+~~~
+
+## Displaying the information gathered
+
+### Code
+
+~~~{.php}
+<?php require_once('zombie-detect.php'); ?>
+<!doctype html>
+<html>
+<head>
+<!-- ... -->
+  <title>Device Detection!</title>
+</head>
+<body>
+<h1><strike>Device</strike> Zombie Detection</h1>
+
+<h2 id="wurfl">Current User Agent/Device/Browser: WURFL</h2>
+
+<ul>
+<li><?php print $is_phone_like; ?></li>
+<li><?php print $is_touch; ?></li>
+</ul>
+
+<h2 id="modernizr">Current Browser: Modernizr</h2>
+
+<ul>
+  <li class="touchdetails" id="details-notouch">Does <em>not</em> support touch events</li>
+  <li class="touchdetails" id="details-touch"><em>Does</em> support touch events</li>
+</ul>
+
+<h2 id="javascript">Current Browser: Other JavaScript Info</h2>
+
+<ul>
+
+</ul>
+
+</body>
+</html>
+~~~
+
+##### index.html
+
+## And
+
+![Desktop browser](images/08-wurfl-data.png)
+
+![iPhone](images/08-wurfl-data-iphone.png)
+
+[zombie-types]: http://uncyclopedia.wikia.com/wiki/Zombie_Types
+[wurfl]: http://wurfl.sourceforge.net/
+[scientiamobile]: http://www.scientiamobile.com/
+[deviceatlas]: http://deviceatlas.com/
+[dotmobi]: http://mtld.mobi/
+[51]: http://51degrees.mobi/Products/DeviceData.aspx
+[devicemap]: http://wiki.apache.org/incubator/DeviceMapProposal
+[explorer]: http://www.tera-wurfl.com/explore/
+[ress]: http://www.lukew.com/ff/entry.asp?1392
+[openddr]: http://openddr.org
