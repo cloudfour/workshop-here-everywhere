@@ -1,0 +1,283 @@
+% Slightly More Advanced Web App Techniques
+% Plugging in Behavior to our jQuery Mobile Example
+
+## Our page structure is set up
+
+### Figure: Structure
+
+![](images/09-mockup.png)
+
+## Now it needs to do something
+
+Add some more JavaScript!
+
+~~~{.html}
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<link rel="stylesheet" href="gotone.css" />
+<script src="Lawnchair.js"></script>
+<script src="dom.js"></script>
+<script src="date.format.js"></script>
+<script src="geo.js"></script>
+<script src="zombie.js"></script>
+~~~
+
+Whew!
+
+## Zombie.js
+
+### A closure
+
+~~~{.javascript}
+(function() {
+
+}();
+~~~
+
+### Some variables
+
+~~~{.javascript}
+(function() {
+  var zombies       = new Array(),
+  geoSupported,
+  zombieChair       = Lawnchair({name: 'zombies'}, function() {}),
+  zombie_icons      = {   // Each killing method has a corresponding icon
+    'nukes'         : 'z2.png',
+    'conflagration' : 'z5.png',
+    'tank'          : 'z7.png',
+    'trickery'      : 'z11.png',
+    'poison'        : 'z13.png',
+    'corrosive'     : 'z8.png',
+    'dismemberment' : 'z14.png'
+  },
+  //...
+}();
+~~~
+
+## Zombie.js
+
+~~~{.javascript}
+(function() { 
+
+  var zombies       = new Array(),
+  geoSupported,
+  zombieChair       = Lawnchair({name: 'zombies'}, function() {}),
+  zombie_icons      = { ... },
+  
+  init = function() {
+    geoSupported = geo_position_js.init();  // Is Geolocation supported?
+    $("#got-one").click(bakeZombie); // Handle clicks on the "I got one!" button
+    zombieChair.get('zombies', function(zombiesOnIce) {
+      if (zombiesOnIce) {
+        zombies = zombiesOnIce.value;
+      }
+    });
+    showZombies(); 
+  },
+~~~
+
+## Zombie.js
+
+### More supporting methods...
+
+~~~{.javascript}
+(function() { 
+
+  var zombies       = new Array(),
+  geoSupported,
+  zombieChair       = Lawnchair({name: 'zombies'}, function() {}),
+  zombie_icons      = { ... },
+  
+  init              = function() { ... },
+  bakeZombie        = function() { ... },
+  addZombie         = function(when, where, how) { ... },
+  showZombies       = function() { ... },
+  displayZombie     = function(zombie, zombieID) { ... },
+  addResetButton    = function() { ... },
+  resetZombies      = function() { ... }
+  
+}();
+~~~
+
+## And finally...
+
+### When the jQM page is ready, initalize the whole thing
+
+~~~{.javascript}
+(function() { 
+
+  var zombies       = new Array(),
+  geoSupported,
+  zombieChair       = Lawnchair({name: 'zombies'}, function() {}),
+  zombie_icons      = { ... },
+  
+  init              = function() { ... },
+  bakeZombie        = function() { ... },
+  addZombie         = function(when, where, how) { ... },
+  showZombies       = function() { ... },
+  displayZombie     = function(zombie, zombieID) { ... },
+  addResetButton    = function() { ... },
+  resetZombies      = function() { ... }
+  
+  $('#nab-zombie').live('pageinit', function() {
+    init();   // Spin this sucker up
+  });
+  
+}();
+~~~
+
+## jQuery Mobile events
+
+~~~{.javascript}
+$('#nab-zombie').live('pageinit', function() {
+  init();   // Spin this sucker up
+});
+~~~
+
+### For those familiar with jQuery...
+
+~~~{.javascript}
+$(document).ready(function() {
+  // Do something
+});
+~~~
+
+
+## It *IS* a bit confusing
+
+### Figure: Confusing
+
+![An example of some of the documentation for jQM events](images/10-confusing.png)
+
+## Relying on our bros
+
+~~~{.html}
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<link rel="stylesheet" href="gotone.css" />
+<script src="Lawnchair.js"></script>
+<script src="dom.js"></script>
+<script src="date.format.js"></script>
+<script src="geo.js"></script>
+<script src="zombie.js"></script>
+~~~
+
+* `Lawnchair` : Simple JSON storage library
+* `dom` : Lets Lawnchair live on top of the LocalStorage API
+* `date.format.js` : Working with JS `Date` objects sucks. This makes it a bit better.
+* `geo.js` : Not all browsers implement geolocation the same way. This abstracts it nicely.
+* `zombie.js` : Our own JavaScript that we've been looking at
+
+## A quick look at LocalStorage
+
+### LocalStorage API Methods
+
+~~~{.javascript}
+getItem(key)
+setItem(key, value)
+removeItem(key)
+clear()
+~~~
+
+* Strings only
+* Support: decent. None in Opera Mini. IE since 8.
+
+### So why Lawnchair?
+
+* Lawnchair allows for persistent storage of more than strings. We can store (and retrieve) dead zombie information as JSON.
+* Instead of just storing dead zombies in a JS Array (non-persistent), we stuff them in a Lawnchair so they're there when we come back.
+* We're using the `dom` adapter to build atop of `LocalStorage`
+
+# OK. Enough of that complexity...onward
+
+## Where jQuery Mobile shines: Navigation model
+
+### Illustration: Navigation Model
+
+![](images/10-navigation-model.png)
+
+## jQM's page loading mechanism
+
+### Advantages of this approach
+
+* Degrades gracefully for browsers that don't support AJAX
+* Reduces HTTP requests
+* Reduces processing time for scripts
+
+### But watch out
+
+* Items in the `<head>` are not loaded from subsequent pages.
+* That means all JS you need for your web app/site needs to be in the `<head>` of every page :(
+
+## Adding another page to our Li'l App
+
+### Navbars in jQM
+
+~~~{.html}
+<div data-role="footer" data-position="fixed">
+  <div data-role="navbar">
+  	<ul>
+  		<li><a href="index.html" class="ui-btn-active">Nab</a></li>
+  		<li><a href="list.html">Recent Nabs</a></li>
+  	</ul>
+  </div>
+</div>
+~~~
+
+* Adding a `data-role="footer"` element
+* Adding a navbar: do this by adding a `<div>` with a `data-role` of `navbar`
+* Note the `data-position="fixed"` on the footer
+
+## A dummy page for an example
+
+### Figure: List
+
+![](images/10-list.png)
+
+## Another riff on `listview`s
+
+### Code
+
+~~~{.html}
+<div data-role="page" id="nab-zombie">
+  <div data-role="header">
+    <h1>Recently Nabbed!</h1>
+  </div>
+  
+  <div data-role="content">
+    <ul data-role="listview" data-inset="true">
+      <li data-role="list-divider" data-theme="b">Newest Zombies</li>
+      <li><h3>Zombie #2398</h3>
+      <p>Nabbed at <em>14:58</em> today.</p></li>
+      <li><h3>Zombie #2397</h3>
+      <p>Nabbed at <em>14:31</em> today.</p></li>
+      <li><h3>Zombie #2396</h3>
+      <p>Nabbed at <em>14:09</em> today.</p></li>
+      <li data-role="list-divider" data-theme="b">Today</li>
+      <li><h3>Zombie #2395</h3>
+      <p>Nabbed at <em>13:45</em> today.</p></li>
+      <li><h3>Zombie #2394</h3>
+      <p>Nabbed at <em>13:12</em> today.</p></li>
+      <li><h3>Zombie #2393</h3>
+      <p>Nabbed at <em>12:32</em> today.</p></li>
+    </ul>
+    
+  </div>
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+    	<ul>
+    		<li><a href="index.html">Nab</a></li>
+    		<li><a href="list.html" class="ui-btn-active">Recent Nabs</a></li>
+    	</ul>
+    </div>
+  </div>
+</div>
+~~~
+
+##### `data-role="page"` element of list.html
+
+## All together now
+
+### Figure: Done
+
+![](images/10-done.png)

@@ -41,44 +41,152 @@ code > span.er { color: #ff0000; font-weight: bold; }
 A Quick Introduction to jQuery Mobile
   </p>
 </div>
-<div class="section titleslide slide level1" id="i-got-one"><h1>I got one!</h1></div><div class="section slide level2" id="illustration-where-when-how">
-<h1>Illustration: WHERE WHEN HOW</h1>
+<div class="section slide level2" id="tracking-dead-zombies">
+<h1>Tracking Dead Zombies</h1>
+<p>Sigma Stronghold leaders want a way for agents in the field to be able to record their zombie kills.</p>
+<p>App-like web sites.</p>
+<div class="section level3" id="illustration-where-when-how">
+<h3>Illustration: WHERE WHEN HOW</h3>
 <div class="figure">
-<img src="images/06-3ws.png" /><p class="caption"></p>
+<img src="images/09-3ws.png" /><p class="caption"></p>
 </div>
-</div><div class="section slide level2" id="speaker-notes">
-<h1>Speaker Notes</h1>
-<p>Each time a soldier nabs a zombie out there, he or she should be able to record when, where and how that zombie met its fate. Kind of like a zombie kill board.</p>
 </div>
-<div class="section titleslide slide level1" id="were-going-to-build-this"><h1>We're going to build this!</h1></div><div class="section slide level2" id="figure-the-end-result">
-<h1>Figure: The end result</h1>
+</div>
+<div class="section slide level2" id="the-general-idea">
+<h1>The general Idea</h1>
+<div class="section level3" id="illustration-sketch">
+<h3>Illustration: Sketch</h3>
 <div class="figure">
-<img src="images/06-screen.png" /><p class="caption"></p>
+<img src="images/09-sketch.png" /><p class="caption"></p>
 </div>
 </div>
-<div class="section titleslide slide level1" id="frameworks"><h1>Frameworks</h1></div><div class="section slide level2" id="so-how-do-we-build-something-like-this">
-<h1>So, <em>how</em> do we build something like this?</h1>
+</div>
+<div class="section slide level2" id="nabbing-a-zombie">
+<h1>Nabbing a Zombie</h1>
+<div class="section level3" id="illustration-data-sources">
+<h3>Illustration: Data Sources</h3>
+<div class="figure">
+<img src="images/09-data-sources.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="where-were-headed">
+<h1>Where we're headed</h1>
+<div class="section level3" id="figure-end-result">
+<h3>Figure: End Result</h3>
+<div class="figure">
+<img src="images/09-done.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="frameworks">
+<h1>Frameworks</h1>
+<div class="section level3" id="so-how-do-we-build-something-like-this">
+<h3>So, <em>how</em> do we build something like this?</h3>
 <p>Frameworks, libraries, tools, templates...all of these can give you a leg up.</p>
-</div><div class="section slide level2" id="speaker-notes-1">
-<h1>Speaker Notes</h1>
-<p>Sometimes you don't want to keep re-inventing the same zombie-blasting cannon over and over again. We zombie fighters might be a ragtag bunch, but we stick together.</p>
 </div>
-<div class="section titleslide slide level1" id="jquery-mobile"><h1>jQuery Mobile</h1></div><div class="section slide level2" id="figure-jqm">
-<h1>Figure: JQM</h1>
+</div>
+<div class="section slide level2" id="what-frameworks-give-you">
+<h1>What frameworks give you</h1>
+<ul>
+<li>Mobile-like styling and widgets</li>
+<li>&quot;App-like&quot; polish and feel</li>
+<li>Development shortcuts, tools, hooks, libraries</li>
+<li>Consistency</li>
+<li>Cross-platform reliability</li>
+</ul>
+</div>
+<div class="section slide level2" id="things-to-keep-in-mind">
+<h1>Things to keep in mind</h1>
+<ul>
+<li>Platform support</li>
+<li>Performance</li>
+<li>Community</li>
+<li>Goals</li>
+<li>The future</li>
+</ul>
+</div>
+<div class="section slide level2" id="jquery-mobile">
+<h1>jQuery Mobile</h1>
 <div class="figure">
-<img src="images/06-jquerymobile-com.png" /><p class="caption"></p>
+<img src="images/09-jquerymobile-com.png" /><p class="caption"></p>
 </div>
-</div><div class="section slide level2" id="speaker-notes-2">
-<h1>Speaker Notes</h1>
 <ul>
 <li>jQuery Mobile is a mobile web framework built atop the popular jQuery library.</li>
 <li>jQuery Mobile works hand-in-hand with semantic HTML5 markup.</li>
 </ul>
 </div>
-<div class="section titleslide slide level1" id="to-build-our-app"><h1>To Build our app</h1></div>
-<div class="section titleslide slide level1" id="building-with-jquery-mobile"><h1>Building with jQuery Mobile</h1></div>
-<div class="section titleslide slide level1" id="jquery-mobile-page-structure"><h1>jQuery Mobile Page Structure</h1></div>
-<div class="section titleslide slide level1" id="starting-super-basic"><h1>Starting <em>super</em> Basic</h1></div><div class="section level5" id="index.html">
+<div class="section slide level2" id="steps-to-building-our-kill-board">
+<h1>Steps to building our Kill Board</h1>
+<ol style="list-style-type: decimal">
+<li>Build a basic jQuery Mobile page and understand how it's put together.</li>
+<li>Mock up our markup (controls, layout)</li>
+<li>Add some basic behavior with JavaScript (don't worry if JS is not your cup of tea)</li>
+<li>Add some more advanced behavior to take advantage of device localStorage (ditto)</li>
+</ol>
+</div>
+<div class="section slide level2" id="building-with-jquery-mobile">
+<h1>Building with jQuery Mobile</h1>
+<p>Content and applications with jQuery Mobile are constructed from:</p>
+<ol style="list-style-type: decimal">
+<li>HTML5 markup.</li>
+<li>jQM's CSS (for mobile-like styling) and JS (for navigation behavior and more)</li>
+<li>Your custom JS for app-like stuff.</li>
+</ol>
+</div>
+<div class="section slide level2" id="jquery-mobile-page-structure">
+<h1>jQuery Mobile page structure</h1>
+<div class="section level3" id="so-what-does-a-jquery-mobile-page-look-like">
+<h3>So, what does a jQuery Mobile page look like?</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;page&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;footer&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="section slide level2" id="jquery-mobile-page-structure-1">
+<h1>jQuery Mobile Page Structure</h1>
+<div class="section level3" id="illustration-page-structure">
+<h3>Illustration: Page Structure</h3>
+<div class="figure">
+<img src="images/09-structure.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="breaking-this-down">
+<h1>Breaking this down</h1>
+<div class="section level3" id="the-html5-data--attribute">
+<h3>The HTML5 <code>data-*</code> attribute</h3>
+</div>
+</div>
+<div class="section slide level2" id="breaking-this-down-1">
+<h1>Breaking this down</h1>
+<div class="section level3" id="giving-clues-to-jqm">
+<h3>Giving clues to jQM</h3>
+<div class="section level4" id="jqm-pages">
+<h4>jQM &quot;pages&quot;</h4>
+<p><code>&lt;div data-role=&quot;page&quot;&gt;</code></p>
+</div>
+<div class="section level4" id="jqm-page-elementschunks">
+<h4>jQM page elements/chunks</h4>
+<ul>
+<li>Header: <code>&lt;div data-role=&quot;header&quot;&gt;</code></li>
+<li>Content Area: <code>&lt;div data-role=&quot;content&quot;&gt;</code></li>
+<li>Footer: <code>&lt;div data-role=&quot;footer&quot;&gt;</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="why-not-use-html5-elements">
+<h1>Why not use HTML5 elements?</h1>
+<blockquote>
+<p>&quot;I don't understand why jQM doesn't just use HTML5 elements like <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code> and whatnot instead of plopping <code>data-*</code> attributes everywhere.&quot; —Over-zealous Joe</p>
+</blockquote>
+</div>
+<div class="section slide level2" id="starting-super-basic">
+<h1>Starting <em>super</em> Basic</h1>
+<div class="section level5" id="index.html">
 <h5>index.html</h5>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span> 
 <span class="kw">&lt;html&gt;</span> 
@@ -93,68 +201,94 @@ A Quick Introduction to jQuery Mobile
 
 <span class="kw">&lt;/body&gt;</span>
 <span class="kw">&lt;/html&gt;</span></code></pre>
-</div><div class="section slide level2" id="speaker-notes-3">
-<h1>Speaker Notes</h1>
-<ul>
-<li>We'll start with this crazy-basic page in Step 1 and make it a jQuery Mobile-ized page very quickly.</li>
-<li>Open the file in my editor (<code>missions/08-got-one/index.html</code>)</li>
-</ul>
 </div>
-<div class="section titleslide slide level1" id="relying-on-our-bros"><h1>Relying on our bros</h1></div><div class="section slide level2" id="speaker-notes-4">
-<h1>Speaker Notes</h1>
-<ul>
-<li><code>date.format.js</code> (Date.format) lets us do much easier date formatting with JavaScript.</li>
-<li>The <code>geo-location-js</code> library makes cross-platform geolocation a snap.</li>
-<li>Note the maximum scale on the <code>meta-viewport</code></li>
-<li>TODO TODO: DESCRIBE VIEWPORT</li>
-</ul>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css&quot;</span> <span class="kw">/&gt;</span>
+</div>
+<div class="section slide level2" id="relying-on-our-bros">
+<h1>Relying on our bros</h1>
+<p>Adding in the CSS and JavaScript to make our jQM page go.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/jquery-1.6.4.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-<span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;date.format.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;geo.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
 </div>
-<div class="section titleslide slide level1" id="add-a-header"><h1>Add a header</h1></div><div class="section slide level2" id="speaker-notes-5">
-<h1>Speaker Notes</h1>
-<ul>
-<li>Let's add a header.</li>
-<li>jQuery Mobile's CSS and JS will stye this into a (rather iOS-esque) header element.</li>
-</ul>
-<pre class="sourceCode html"><code class="sourceCode html">  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;</span>
+<div class="section slide level2" id="adding-a-viewport-tag">
+<h1>Adding a viewport tag</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;</span><span class="kw">&gt;</span></code></pre>
+</div>
+<div class="section slide level2" id="hay-wait">
+<h1>Hay, Wait!</h1>
+<blockquote>
+<p>&quot;You've disabled user zooming. That is so bad!&quot; —Over-zealous Joe</p>
+</blockquote>
+</div>
+<div class="section slide level2" id="add-a-header">
+<h1>Add a header</h1>
+<p>At the outset, our jQM page is empty. Let's put some stuff in it.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;page&quot;</span><span class="ot"> id=</span><span class="st">&quot;nab-zombie&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;h1&gt;</span>I got one!<span class="kw">&lt;/h1&gt;</span>
-  <span class="kw">&lt;/div&gt;</span></code></pre>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
 </div>
-<div class="section titleslide slide level1" id="and-now-a-content-area..."><h1>And now, a content area...</h1></div><div class="section slide level2" id="speaker-notes-6">
-<h1>Speaker Notes</h1>
-<pre class="sourceCode html"><code class="sourceCode html">  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span>
+<div class="section slide level2" id="and-now-a-content-area...">
+<h1>And now, a content area...</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;page&quot;</span><span class="ot"> id=</span><span class="st">&quot;nab-zombie&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>I got one!<span class="kw">&lt;/h1&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span>
     <span class="co">&lt;!-- Our content will go here! --&gt;</span>
-  <span class="kw">&lt;/div&gt;</span></code></pre>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
 <div class="section level3" id="try-it-out">
 <h3>Try it out!</h3>
 </div>
 </div>
-<div class="section titleslide slide level1" id="et-voila"><h1>Et Voila!</h1></div><div class="section slide level2" id="figure-a-header-in-jqm">
-<h1>Figure: A header in jQM</h1>
+<div class="section slide level2" id="et-voila">
+<h1>Et Voila!</h1>
+<div class="section level3" id="figure-a-header-in-jqm">
+<h3>Figure: A header in jQM</h3>
 <div class="figure">
-<img src="images/06-header.png" /><p class="caption"></p>
+<img src="images/09-header.png" /><p class="caption"></p>
 </div>
 <div class="section level4" id="ok-so-theres-no-content-yet">
 <h4>...OK, so there's no content yet</h4>
 </div>
 </div>
-<div class="section titleslide slide level1" id="step-2-dropping-in-our-controls"><h1>Step 2: Dropping in our controls</h1></div><div class="section slide level2" id="speaker-notes-7">
-<h1>Speaker Notes</h1>
-<ul>
-<li>Moving into step 2 in the field notes.</li>
-</ul>
 </div>
-<div class="section titleslide slide level1" id="how-do-we-do-that-adding-a-select-input"><h1>How do we do that? Adding a select input</h1></div><div class="section slide level2" id="speaker-notes-8">
-<h1>Speaker Notes</h1>
-<ul>
-<li>First, let's add a <code>&lt;select&gt;</code> element, just like you would do for any HTML form (except in our case, we don't have a containing form). Add this to the <code>&lt;div data-role=&quot;content&quot;&gt;</code> area.</li>
-<li>Don't worry about typing this code into the file...or on the following slides.</li>
-</ul>
+<div class="section slide level2" id="step-2-dropping-in-our-controls">
+<h1>Step 2: Dropping in our controls</h1>
+<div class="section level3" id="illustration-controls">
+<h3>Illustration: Controls</h3>
+<div class="figure">
+<img src="images/09-controls.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="data-rolefieldcontain">
+<h1><code>data-role=&quot;fieldcontain&quot;</code></h1>
+<div class="section level3" id="illustration-fieldcontain">
+<h3>Illustration: Fieldcontain</h3>
+<div class="figure">
+<img src="images/09-fieldcontain.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="form-controls">
+<h1>Form controls</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;fieldcontain&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;how-zombie&quot;</span><span class="kw">&gt;</span>How&#39;d you nab it?<span class="kw">&lt;/label&gt;</span>
+    <span class="kw">&lt;select</span><span class="ot"> name=</span><span class="st">&quot;how-zombie&quot;</span><span class="ot"> id=</span><span class="st">&quot;how-zombie&quot;</span><span class="kw">&gt;&lt;/select&gt;</span>
+  <span class="kw">&lt;/div&gt;</span> 
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<ol style="list-style-type: decimal">
+<li>Add the <code>div data-role=&quot;fieldcontain&quot;</code></li>
+<li>Add a label</li>
+<li>Add the structure of the <code>select</code> element</li>
+</ol>
+</div>
+<div class="section slide level2" id="and-add-the-select-options">
+<h1>And add the <code>&lt;select&gt;</code> options</h1>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;fieldcontain&quot;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;how-zombie&quot;</span><span class="kw">&gt;</span>How&#39;d you nab it?<span class="kw">&lt;/label&gt;</span>
@@ -170,56 +304,86 @@ A Quick Introduction to jQuery Mobile
   <span class="kw">&lt;/div&gt;</span> 
 
 <span class="kw">&lt;/div&gt;</span></code></pre>
-</div>
-<div class="section titleslide slide level1" id="now-well-add-a-button"><h1>Now, we'll add a button</h1></div><div class="section slide level2" id="speaker-notes-9">
-<h1>Speaker Notes</h1>
 <ul>
-<li>Again, jQuery Mobile will create a styled, mobile-ish button from this <code>&lt;input&gt;</code> field.</li>
+<li>Add <code>&lt;option&gt;</code> elements like you do...</li>
 </ul>
+</div>
+<div class="section slide level2" id="now-well-add-a-button">
+<h1>Now, we'll add a button</h1>
 <pre class="sourceCode html"><code class="sourceCode html">      <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;dismemberment&quot;</span><span class="kw">&gt;</span>Dismemberment<span class="kw">&lt;/option&gt;</span>
     <span class="kw">&lt;/select&gt;</span>
   <span class="kw">&lt;/div&gt;</span> 
   <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot;I got one!&quot;</span><span class="ot"> id=</span><span class="st">&quot;got-one&quot;</span><span class="ot"> data-theme=</span><span class="st">&quot;b&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
+<ul>
+<li>We don't need a <code>fieldcontain</code> <code>&lt;div&gt;</code> because there's no label to group with our button.</li>
+<li>What's that <code>data-theme</code> thing?...</li>
+</ul>
 </div>
-<div class="section titleslide slide level1" id="dead-zombie-storage"><h1>Dead Zombie Storage</h1></div><div class="section slide level2" id="speaker-notes-10">
-<h1>Speaker Notes</h1>
+<div class="section slide level2" id="theme-rolling">
+<h1>Theme rolling</h1>
+<div class="section level3" id="figure-theme-roller">
+<h3>Figure: Theme Roller</h3>
+<div class="figure">
+<img src="images/09-themeroller.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="adding-a-custom-theme">
+<h1>Adding a custom theme</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/jquery-1.6.4.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;gotone.css&quot;</span> <span class="kw">/&gt;</span></code></pre>
+</div>
+<div class="section slide level2" id="step-2-complete">
+<h1>Step 2 Complete!</h1>
+<div class="figure">
+<img src="images/09-with-controls.png" /><p class="caption"></p>
+</div>
+<p>Now our fighters have a way to input nabbed-zombie input.</p>
+</div>
+<div class="section slide level2" id="dead-zombie-storage">
+<h1>Dead Zombie Storage</h1>
+<p>When a soldier nabs a zombie by tapping the &quot;I Got One!&quot; button, we'll need a place to display the info about that poor zombie.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;/div&gt;</span> 
 <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot;I got one!&quot;</span><span class="ot"> id=</span><span class="st">&quot;got-one&quot;</span><span class="ot"> data-theme=</span><span class="st">&quot;b&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;ul</span><span class="ot"> data-role=</span><span class="st">&quot;listview&quot;</span><span class="ot"> data-inset=</span><span class="st">&quot;true&quot;</span><span class="ot"> id=</span><span class="st">&quot;zombielist&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;/ul&gt;</span>
 <span class="kw">&lt;/div&gt;</span> <span class="co">&lt;!-- /End &lt;div data-role=&quot;content&quot;&gt; --&gt;</span></code></pre>
+<p><code>data-role=&quot;listview&quot;</code> indicates to jQuery Mobile that this list should be styled as a list widget.</p>
 </div>
-<div class="section titleslide slide level1" id="a-list-widget-what-now"><h1>A list widget what now?</h1></div><div class="section level3" id="jquery-mobile-turns-this">
+<div class="section slide level2" id="a-list-widget-what-now">
+<h1>A list widget what now?</h1>
+<div class="section level3" id="jquery-mobile-turns-this">
 <h3>jQuery Mobile Turns This</h3>
 <div class="section level4" id="code">
 <h4>Code</h4>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;ul</span><span class="ot"> data-role=</span><span class="st">&quot;listview&quot;</span><span class="ot"> data-inset=</span><span class="st">&quot;true&quot;</span><span class="ot"> id=</span><span class="st">&quot;zombielist&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;li&gt;&lt;img</span><span class="ot"> src=</span><span class="st">&quot;icons/z2.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Killed by micro-nukes&quot;</span> <span class="kw">/&gt;&lt;h3&gt;</span>Zombie Nabbed!<span class="kw">&lt;/h3&gt;</span>
-  <span class="kw">&lt;p&gt;&lt;strong&gt;</span>01/18/12 13:44<span class="kw">&lt;/strong&gt;&lt;/p&gt;</span>
-  <span class="kw">&lt;p&gt;</span>Coordinates: 40.7678494, -73.9853328<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
+  <span class="kw">&lt;p&gt;&lt;strong&gt;</span>04/30/12<span class="kw">&lt;/strong&gt;&lt;/p&gt;</span>
+  <span class="kw">&lt;p&gt;</span>Coordinates: 45.5256227, -122.6820616<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
 <span class="kw">&lt;/ul&gt;</span></code></pre>
 </div>
-</div><div class="section level3" id="reverse-example-of-listview">
+</div>
+<div class="section level3" id="reverse-example-of-listview">
 <h3>Reverse: Example of Listview</h3>
 <div class="figure">
-<img src="images/06-li-example.png" /><p class="caption"></p>
+<img src="images/09-listitem.png" /><p class="caption"></p>
 </div>
-</div><div class="section level3" id="into-this">
+</div>
+<div class="section level3" id="into-this">
 <h3>Into this</h3>
 <p>So...each added zombie, ultimately, will get added as a <code>&lt;li&gt;</code> element in that empty <code>&lt;ul&gt;</code> we just added.</p>
-</div><div class="section slide level2" id="speaker-notes-11">
-<h1>Speaker Notes</h1>
-<ul>
-<li>Do copy-and-paste work.</li>
-<li>This HTML is in the Snippet section of step 2 in the field notes.</li>
-<li>Stop now, and load updated file in browser.</li>
-</ul>
 </div>
-<div class="section titleslide slide level1" id="and-now-we-have-a-starting-point"><h1>And now we have a starting point</h1></div><div class="section slide level2" id="figure-screen-shot-of-our-current-page">
-<h1>Figure: Screen shot of our current page</h1>
+</div>
+<div class="section slide level2" id="putting-list-items-together">
+<h1>Putting list items together</h1>
+<div class="section level3" id="figure-list-example">
+<h3>Figure: List example</h3>
 <div class="figure">
-<img src="images/06-starting-point.png" /><p class="caption"></p>
+<img src="images/09-mockup.png" /><p class="caption"></p>
+</div>
 </div>
 </div>
 </body>

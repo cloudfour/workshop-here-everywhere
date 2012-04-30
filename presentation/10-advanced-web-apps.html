@@ -6,7 +6,27 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <meta name="author" content="Plugging in Behavior to our jQuery Mobile Example" />
+  <title>Slightly More Advanced Web App Techniques</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
@@ -15,8 +35,290 @@
     charset="utf-8" type="text/javascript"></script>
 </head>
 <body>
-<div class="section slide level2" id="section">
-<h1></h1>
+<div class="slide titlepage">
+  <h1 class="title">Slightly More Advanced Web App Techniques</h1>
+  <p class="author">
+Plugging in Behavior to our jQuery Mobile Example
+  </p>
+</div>
+<div class="section slide level2" id="our-page-structure-is-set-up">
+<h1>Our page structure is set up</h1>
+<div class="section level3" id="figure-structure">
+<h3>Figure: Structure</h3>
+<div class="figure">
+<img src="images/09-mockup.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="now-it-needs-to-do-something">
+<h1>Now it needs to do something</h1>
+<p>Add some more JavaScript!</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/jquery-1.6.4.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;gotone.css&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Lawnchair.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;dom.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;date.format.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;geo.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;zombie.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<p>Whew!</p>
+</div>
+<div class="section slide level2" id="zombie.js">
+<h1>Zombie.js</h1>
+<div class="section level3" id="a-closure">
+<h3>A closure</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>() {
+
+}();</code></pre>
+</div>
+<div class="section level3" id="some-variables">
+<h3>Some variables</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>() {
+  <span class="kw">var</span> zombies       = <span class="kw">new</span> <span class="kw">Array</span>(),
+  geoSupported,
+  zombieChair       = Lawnchair({<span class="dt">name</span>: <span class="ch">&#39;zombies&#39;</span>}, <span class="kw">function</span>() {}),
+  zombie_icons      = {   <span class="co">// Each killing method has a corresponding icon</span>
+    <span class="ch">&#39;nukes&#39;</span>         : <span class="ch">&#39;z2.png&#39;</span>,
+    <span class="ch">&#39;conflagration&#39;</span> : <span class="ch">&#39;z5.png&#39;</span>,
+    <span class="ch">&#39;tank&#39;</span>          : <span class="ch">&#39;z7.png&#39;</span>,
+    <span class="ch">&#39;trickery&#39;</span>      : <span class="ch">&#39;z11.png&#39;</span>,
+    <span class="ch">&#39;poison&#39;</span>        : <span class="ch">&#39;z13.png&#39;</span>,
+    <span class="ch">&#39;corrosive&#39;</span>     : <span class="ch">&#39;z8.png&#39;</span>,
+    <span class="ch">&#39;dismemberment&#39;</span> : <span class="ch">&#39;z14.png&#39;</span>
+  },
+  <span class="co">//...</span>
+}();</code></pre>
+</div>
+</div>
+<div class="section slide level2" id="zombie.js-1">
+<h1>Zombie.js</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>() { 
+
+  <span class="kw">var</span> zombies       = <span class="kw">new</span> <span class="kw">Array</span>(),
+  geoSupported,
+  zombieChair       = Lawnchair({<span class="dt">name</span>: <span class="ch">&#39;zombies&#39;</span>}, <span class="kw">function</span>() {}),
+  zombie_icons      = { ... },
+
+  init = <span class="kw">function</span>() {
+    geoSupported = <span class="kw">geo_position_js</span>.<span class="fu">init</span>();  <span class="co">// Is Geolocation supported?</span>
+    $(<span class="st">&quot;#got-one&quot;</span>).<span class="fu">click</span>(bakeZombie); <span class="co">// Handle clicks on the &quot;I got one!&quot; button</span>
+    <span class="kw">zombieChair</span>.<span class="fu">get</span>(<span class="ch">&#39;zombies&#39;</span>, <span class="kw">function</span>(zombiesOnIce) {
+      <span class="kw">if</span> (zombiesOnIce) {
+        zombies = <span class="kw">zombiesOnIce</span>.<span class="fu">value</span>;
+      }
+    });
+    showZombies(); 
+  },</code></pre>
+</div>
+<div class="section slide level2" id="zombie.js-2">
+<h1>Zombie.js</h1>
+<div class="section level3" id="more-supporting-methods...">
+<h3>More supporting methods...</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>() { 
+
+  <span class="kw">var</span> zombies       = <span class="kw">new</span> <span class="kw">Array</span>(),
+  geoSupported,
+  zombieChair       = Lawnchair({<span class="dt">name</span>: <span class="ch">&#39;zombies&#39;</span>}, <span class="kw">function</span>() {}),
+  zombie_icons      = { ... },
+
+  init              = <span class="kw">function</span>() { ... },
+  bakeZombie        = <span class="kw">function</span>() { ... },
+  addZombie         = <span class="kw">function</span>(when, where, how) { ... },
+  showZombies       = <span class="kw">function</span>() { ... },
+  displayZombie     = <span class="kw">function</span>(zombie, zombieID) { ... },
+  addResetButton    = <span class="kw">function</span>() { ... },
+  resetZombies      = <span class="kw">function</span>() { ... }
+
+}();</code></pre>
+</div>
+</div>
+<div class="section slide level2" id="and-finally...">
+<h1>And finally...</h1>
+<div class="section level3" id="when-the-jqm-page-is-ready-initalize-the-whole-thing">
+<h3>When the jQM page is ready, initalize the whole thing</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>() { 
+
+  <span class="kw">var</span> zombies       = <span class="kw">new</span> <span class="kw">Array</span>(),
+  geoSupported,
+  zombieChair       = Lawnchair({<span class="dt">name</span>: <span class="ch">&#39;zombies&#39;</span>}, <span class="kw">function</span>() {}),
+  zombie_icons      = { ... },
+
+  init              = <span class="kw">function</span>() { ... },
+  bakeZombie        = <span class="kw">function</span>() { ... },
+  addZombie         = <span class="kw">function</span>(when, where, how) { ... },
+  showZombies       = <span class="kw">function</span>() { ... },
+  displayZombie     = <span class="kw">function</span>(zombie, zombieID) { ... },
+  addResetButton    = <span class="kw">function</span>() { ... },
+  resetZombies      = <span class="kw">function</span>() { ... }
+
+  $(<span class="ch">&#39;#nab-zombie&#39;</span>).<span class="fu">live</span>(<span class="ch">&#39;pageinit&#39;</span>, <span class="kw">function</span>() {
+    init();   <span class="co">// Spin this sucker up</span>
+  });
+
+}();</code></pre>
+</div>
+</div>
+<div class="section slide level2" id="jquery-mobile-events">
+<h1>jQuery Mobile events</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$(<span class="ch">&#39;#nab-zombie&#39;</span>).<span class="fu">live</span>(<span class="ch">&#39;pageinit&#39;</span>, <span class="kw">function</span>() {
+  init();   <span class="co">// Spin this sucker up</span>
+});</code></pre>
+<div class="section level3" id="for-those-familiar-with-jquery...">
+<h3>For those familiar with jQuery...</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+  <span class="co">// Do something</span>
+});</code></pre>
+</div>
+</div>
+<div class="section slide level2" id="it-is-a-bit-confusing">
+<h1>It <em>IS</em> a bit confusing</h1>
+<div class="section level3" id="figure-confusing">
+<h3>Figure: Confusing</h3>
+<div class="figure">
+<img src="images/10-confusing.png" alt="An example of some of the documentation for jQM events" /><p class="caption">An example of some of the documentation for jQM events</p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="relying-on-our-bros">
+<h1>Relying on our bros</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/jquery-1.6.4.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;gotone.css&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Lawnchair.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;dom.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;date.format.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;geo.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;zombie.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<ul>
+<li><code>Lawnchair</code> : Simple JSON storage library</li>
+<li><code>dom</code> : Lets Lawnchair live on top of the LocalStorage API</li>
+<li><code>date.format.js</code> : Working with JS <code>Date</code> objects sucks. This makes it a bit better.</li>
+<li><code>geo.js</code> : Not all browsers implement geolocation the same way. This abstracts it nicely.</li>
+<li><code>zombie.js</code> : Our own JavaScript that we've been looking at</li>
+</ul>
+</div>
+<div class="section slide level2" id="a-quick-look-at-localstorage">
+<h1>A quick look at LocalStorage</h1>
+<div class="section level3" id="localstorage-api-methods">
+<h3>LocalStorage API Methods</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">getItem(key)
+setItem(key, value)
+removeItem(key)
+clear()</code></pre>
+<ul>
+<li>Strings only</li>
+<li>Support: decent. None in Opera Mini. IE since 8.</li>
+</ul>
+</div>
+<div class="section level3" id="so-why-lawnchair">
+<h3>So why Lawnchair?</h3>
+<ul>
+<li>Lawnchair allows for persistent storage of more than strings. We can store (and retrieve) dead zombie information as JSON.</li>
+<li>Instead of just storing dead zombies in a JS Array (non-persistent), we stuff them in a Lawnchair so they're there when we come back.</li>
+<li>We're using the <code>dom</code> adapter to build atop of <code>LocalStorage</code></li>
+</ul>
+</div>
+</div>
+<div class="section titleslide slide level1" id="ok.-enough-of-that-complexity...onward"><h1>OK. Enough of that complexity...onward</h1></div><div class="section slide level2" id="where-jquery-mobile-shines-navigation-model">
+<h1>Where jQuery Mobile shines: Navigation model</h1>
+<div class="section level3" id="illustration-navigation-model">
+<h3>Illustration: Navigation Model</h3>
+<div class="figure">
+<img src="images/10-navigation-model.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="jqms-page-loading-mechanism">
+<h1>jQM's page loading mechanism</h1>
+<div class="section level3" id="advantages-of-this-approach">
+<h3>Advantages of this approach</h3>
+<ul>
+<li>Degrades gracefully for browsers that don't support AJAX</li>
+<li>Reduces HTTP requests</li>
+<li>Reduces processing time for scripts</li>
+</ul>
+</div>
+<div class="section level3" id="but-watch-out">
+<h3>But watch out</h3>
+<ul>
+<li>Items in the <code>&lt;head&gt;</code> are not loaded from subsequent pages.</li>
+<li>That means all JS you need for your web app/site needs to be in the <code>&lt;head&gt;</code> of every page :(</li>
+</ul>
+</div>
+</div><div class="section slide level2" id="adding-another-page-to-our-lil-app">
+<h1>Adding another page to our Li'l App</h1>
+<div class="section level3" id="navbars-in-jqm">
+<h3>Navbars in jQM</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;footer&quot;</span><span class="ot"> data-position=</span><span class="st">&quot;fixed&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;navbar&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;ul&gt;</span>
+        <span class="kw">&lt;li&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;index.html&quot;</span><span class="ot"> class=</span><span class="st">&quot;ui-btn-active&quot;</span><span class="kw">&gt;</span>Nab<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="kw">&lt;li&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;list.html&quot;</span><span class="kw">&gt;</span>Recent Nabs<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="kw">&lt;/ul&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<ul>
+<li>Adding a <code>data-role=&quot;footer&quot;</code> element</li>
+<li>Adding a navbar: do this by adding a <code>&lt;div&gt;</code> with a <code>data-role</code> of <code>navbar</code></li>
+<li>Note the <code>data-position=&quot;fixed&quot;</code> on the footer</li>
+</ul>
+</div>
+</div><div class="section slide level2" id="a-dummy-page-for-an-example">
+<h1>A dummy page for an example</h1>
+<div class="section level3" id="figure-list">
+<h3>Figure: List</h3>
+<div class="figure">
+<img src="images/10-list.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="another-riff-on-listviews">
+<h1>Another riff on <code>listview</code>s</h1>
+<div class="section level3" id="code">
+<h3>Code</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;page&quot;</span><span class="ot"> id=</span><span class="st">&quot;nab-zombie&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>Recently Nabbed!<span class="kw">&lt;/h1&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;ul</span><span class="ot"> data-role=</span><span class="st">&quot;listview&quot;</span><span class="ot"> data-inset=</span><span class="st">&quot;true&quot;</span><span class="kw">&gt;</span>
+      <span class="kw">&lt;li</span><span class="ot"> data-role=</span><span class="st">&quot;list-divider&quot;</span><span class="ot"> data-theme=</span><span class="st">&quot;b&quot;</span><span class="kw">&gt;</span>Newest Zombies<span class="kw">&lt;/li&gt;</span>
+      <span class="kw">&lt;li&gt;&lt;h3&gt;</span>Zombie #2398<span class="kw">&lt;/h3&gt;</span>
+      <span class="kw">&lt;p&gt;</span>Nabbed at <span class="kw">&lt;em&gt;</span>14:58<span class="kw">&lt;/em&gt;</span> today.<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
+      <span class="kw">&lt;li&gt;&lt;h3&gt;</span>Zombie #2397<span class="kw">&lt;/h3&gt;</span>
+      <span class="kw">&lt;p&gt;</span>Nabbed at <span class="kw">&lt;em&gt;</span>14:31<span class="kw">&lt;/em&gt;</span> today.<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
+      <span class="kw">&lt;li&gt;&lt;h3&gt;</span>Zombie #2396<span class="kw">&lt;/h3&gt;</span>
+      <span class="kw">&lt;p&gt;</span>Nabbed at <span class="kw">&lt;em&gt;</span>14:09<span class="kw">&lt;/em&gt;</span> today.<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
+      <span class="kw">&lt;li</span><span class="ot"> data-role=</span><span class="st">&quot;list-divider&quot;</span><span class="ot"> data-theme=</span><span class="st">&quot;b&quot;</span><span class="kw">&gt;</span>Today<span class="kw">&lt;/li&gt;</span>
+      <span class="kw">&lt;li&gt;&lt;h3&gt;</span>Zombie #2395<span class="kw">&lt;/h3&gt;</span>
+      <span class="kw">&lt;p&gt;</span>Nabbed at <span class="kw">&lt;em&gt;</span>13:45<span class="kw">&lt;/em&gt;</span> today.<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
+      <span class="kw">&lt;li&gt;&lt;h3&gt;</span>Zombie #2394<span class="kw">&lt;/h3&gt;</span>
+      <span class="kw">&lt;p&gt;</span>Nabbed at <span class="kw">&lt;em&gt;</span>13:12<span class="kw">&lt;/em&gt;</span> today.<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
+      <span class="kw">&lt;li&gt;&lt;h3&gt;</span>Zombie #2393<span class="kw">&lt;/h3&gt;</span>
+      <span class="kw">&lt;p&gt;</span>Nabbed at <span class="kw">&lt;em&gt;</span>12:32<span class="kw">&lt;/em&gt;</span> today.<span class="kw">&lt;/p&gt;&lt;/li&gt;</span>
+    <span class="kw">&lt;/ul&gt;</span>
+
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;footer&quot;</span><span class="ot"> data-position=</span><span class="st">&quot;fixed&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;navbar&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;ul&gt;</span>
+            <span class="kw">&lt;li&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;index.html&quot;</span><span class="kw">&gt;</span>Nab<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="kw">&lt;li&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;list.html&quot;</span><span class="ot"> class=</span><span class="st">&quot;ui-btn-active&quot;</span><span class="kw">&gt;</span>Recent Nabs<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="kw">&lt;/ul&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<div class="section level5" id="data-rolepage-element-of-list.html">
+<h5><code>data-role=&quot;page&quot;</code> element of list.html</h5>
+</div>
+</div>
+</div><div class="section slide level2" id="all-together-now">
+<h1>All together now</h1>
+<div class="section level3" id="figure-done">
+<h3>Figure: Done</h3>
+<div class="figure">
+<img src="images/10-done.png" /><p class="caption"></p>
+</div>
+</div>
 </div>
 </body>
 </html>

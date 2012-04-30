@@ -1,69 +1,82 @@
 % Making Mobile Goodness with Frameworks
 % A Quick Introduction to jQuery Mobile
 
-
-# I got one!
+## Tracking Dead Zombies
 
 Sigma Stronghold leaders want a way for agents in the field to be able to record their zombie kills.
 
-## Illustration: WHERE WHEN HOW
+App-like web sites.
 
-![](images/06-3ws.png)
+### Illustration: WHERE WHEN HOW
 
-## Speaker Notes
+![](images/09-3ws.png)
 
-Each time a soldier nabs a zombie out there, he or she should be able to record when, where and how that zombie met its fate. Kind of like a zombie kill board.
+## The general Idea
 
-# We're going to build this!
+### Illustration: Sketch
 
-## Figure: The end result
+![](images/09-sketch.png)
 
-![](images/06-screen.png)
+## Nabbing a Zombie
 
-# Frameworks
+### Illustration: Data Sources
 
-## So, *how* do we build something like this?
+![](images/09-data-sources.png)
+
+## Where we're headed
+
+### Figure: End Result
+
+![](images/09-done.png)
+
+## Frameworks
+
+### So, *how* do we build something like this?
 
 Frameworks, libraries, tools, templates...all of these can give you a leg up.
 
-## Speaker Notes
+## What frameworks give you
 
-Sometimes you don't want to keep re-inventing the same zombie-blasting cannon over and over again. We zombie fighters might be a ragtag bunch, but we stick together.
+* Mobile-like styling and widgets
+* "App-like" polish and feel
+* Development shortcuts, tools, hooks, libraries
+* Consistency
+* Cross-platform reliability
 
+## Things to keep in mind
 
-# jQuery Mobile
+* Platform support
+* Performance
+* Community
+* Goals
+* The future
 
-## Figure: JQM
+## jQuery Mobile
 
-![](images/06-jquerymobile-com.png)
-
-## Speaker Notes
+![](images/09-jquerymobile-com.png)
 
 * jQuery Mobile is a mobile web framework built atop the popular jQuery library.
 * jQuery Mobile works hand-in-hand with semantic HTML5 markup.
 
-# To Build our app
+## Steps to building our Kill Board
 
-1. Build a basic jQuery Mobile page.
-2. Add the special sauce to create our "I got one!" app
-3. Use a JavaScript library to make our zombie-kill data persistent.
+1. Build a basic jQuery Mobile page and understand how it's put together.
+2. Mock up our markup (controls, layout)
+3. Add some basic behavior with JavaScript (don't worry if JS is not your cup of tea)
+4. Add some more advanced behavior to take advantage of device localStorage (ditto)
 
-# Building with jQuery Mobile
+## Building with jQuery Mobile
 
 Content and applications with jQuery Mobile are constructed from:
 
 1. HTML5 markup.
-2. JavaScript: jQuery core and jQuery Mobile
-3. CSS: jQuery Mobile's CSS
-4. Your own custom stuff
+2. jQM's CSS (for mobile-like styling) and JS (for navigation behavior and more)
+3. Your custom JS for app-like stuff.
 
 
-# jQuery Mobile Page Structure
+## jQuery Mobile page structure
 
-![](images/06-jqm.png)
-
-* Delineated by HTML5 `data-` attributes.
-* Enables content loading via AJAX.
+### So, what does a jQuery Mobile page look like?
 
 ~~~ {.html}
 <div data-role="page">
@@ -73,7 +86,37 @@ Content and applications with jQuery Mobile are constructed from:
 </div>
 ~~~
 
-# Starting *super* Basic
+
+## jQuery Mobile Page Structure
+
+### Illustration: Page Structure
+
+![](images/09-structure.png)
+
+
+## Breaking this down
+
+### The HTML5 `data-*` attribute
+
+## Breaking this down
+
+### Giving clues to jQM
+
+#### jQM "pages"
+
+`<div data-role="page">`
+
+#### jQM page elements/chunks
+
+* Header: `<div data-role="header">`
+* Content Area: `<div data-role="content">`
+* Footer: `<div data-role="footer">`
+
+## Why not use HTML5 elements?
+
+> "I don't understand why jQM doesn't just use HTML5 elements like `<header>`, `<footer>` and whatnot instead of plopping `data-*` attributes everywhere." —Over-zealous Joe
+
+## Starting *super* Basic
 
 
 ##### index.html
@@ -95,41 +138,30 @@ Content and applications with jQuery Mobile are constructed from:
 </html>
 ~~~
 
-## Speaker Notes
-
-* We'll start with this crazy-basic page in Step 1 and make it a jQuery Mobile-ized page very quickly.
-* Open the file in my editor (`missions/08-got-one/index.html`)
-
-# Relying on our bros
+## Relying on our bros
 
 Adding in the CSS and JavaScript to make our jQM page go.
 
 ~~~ {.html}
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
-<script src="date.format.js"></script>
-<script src="geo.js"></script>
 ~~~
 
-## Speaker Notes
 
-* `date.format.js` (Date.format) lets us do much easier date formatting with JavaScript.
-* The `geo-location-js` library makes cross-platform geolocation a snap.
-* Note the maximum scale on the `meta-viewport`
-* TODO TODO: DESCRIBE VIEWPORT
+## Adding a viewport tag
 
-~~~ {.html}
+~~~{.html}
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
-<script src="date.format.js"></script>
-<script src="geo.js"></script>
 ~~~
 
-# Add a header
+## Hay, Wait!
+
+> "You've disabled user zooming. That is so bad!" —Over-zealous Joe
+
+
+
+## Add a header
 
 At the outset, our jQM page is empty. Let's put some stuff in it.
 
@@ -141,19 +173,8 @@ At the outset, our jQM page is empty. Let's put some stuff in it.
 </div>
 ~~~
 
-## Speaker Notes
 
-* Let's add a header.
-* jQuery Mobile's CSS and JS will stye this into a (rather iOS-esque) header element.
-
-~~~ {.html}
-  <div data-role="header">
-    <h1>I got one!</h1>
-  </div>
-~~~
-
-
-# And now, a content area...
+## And now, a content area...
 
 ~~~ {.html}
 <div data-role="page" id="nab-zombie">
@@ -166,35 +187,44 @@ At the outset, our jQM page is empty. Let's put some stuff in it.
 </div>
 ~~~
 
-## Speaker Notes
-
-~~~ {.html}
-  <div data-role="content">
-    <!-- Our content will go here! -->
-  </div>
-~~~
-
 ### Try it out!
 
-# Et Voila!
+## Et Voila!
 
-## Figure: A header in jQM
+### Figure: A header in jQM
 
-![](images/06-header.png)
+![](images/09-header.png)
 
 #### ...OK, so there's no content yet
 
-# Step 2: Dropping in our controls
+## Step 2: Dropping in our controls
 
-![](images/06-starting-point.png)
+### Illustration: Controls
 
-Easy, but not too exciting. Let's put in some UI elements that will let Sigma Stronghold fighters record a nabbed zombie.
+![](images/09-controls.png)
 
-## Speaker Notes
+## `data-role="fieldcontain"`
 
-* Moving into step 2 in the field notes.
+### Illustration: Fieldcontain
 
-# How do we do that? Adding a select input
+![](images/09-fieldcontain.png)
+
+## Form controls
+
+~~~ {.html}
+<div data-role="content">
+  <div data-role="fieldcontain">
+    <label for="how-zombie">How'd you nab it?</label>
+    <select name="how-zombie" id="how-zombie"></select>
+  </div> 
+</div>
+~~~
+
+1. Add the `div data-role="fieldcontain"`
+2. Add a label
+3. Add the structure of the `select` element
+
+## And add the `<select>` options
 
 ~~~ {.html}
 <div data-role="content">
@@ -214,30 +244,10 @@ Easy, but not too exciting. Let's put in some UI elements that will let Sigma St
 </div>
 ~~~
 
-## Speaker Notes
+* Add `<option>` elements like you do...
 
-* First, let's add a `<select>` element, just like you would do for any HTML form (except in our case, we don't have a containing form). Add this to the `<div data-role="content">` area.
-* Don't worry about typing this code into the file...or on the following slides.
 
-~~~ {.html}
-<div data-role="content">
-  <div data-role="fieldcontain">
-    <label for="how-zombie">How'd you nab it?</label>
-    <select name="how-zombie" id="how-zombie">
-      <option value="tank">Tank</option>
-      <option value="conflagration">Conflagration</option>
-      <option value="poison">Poison</option>
-      <option value="nukes">Micro-nukes</option>
-      <option value="trickery">Trickery</option>
-      <option value="corrosive">Corrosive</option>
-      <option value="dismemberment">Dismemberment</option>
-    </select>
-  </div> 
-
-</div>
-~~~
-
-# Now, we'll add a button
+## Now, we'll add a button
 
 ~~~ {.html}
       <option value="dismemberment">Dismemberment</option>
@@ -247,19 +257,32 @@ Easy, but not too exciting. Let's put in some UI elements that will let Sigma St
 </div>
 ~~~
 
-## Speaker Notes
+* We don't need a `fieldcontain` `<div>` because there's no label to group with our button.
+* What's that `data-theme` thing?...
 
-* Again, jQuery Mobile will create a styled, mobile-ish button from this `<input>` field.
+## Theme rolling
 
-~~~ {.html}
-      <option value="dismemberment">Dismemberment</option>
-    </select>
-  </div> 
-  <input type="button" value="I got one!" id="got-one" data-theme="b" />
-</div>
+### Figure: Theme Roller
+
+![](images/09-themeroller.png)
+
+## Adding a custom theme
+
+~~~{.html}
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+<link rel="stylesheet" href="gotone.css" />
 ~~~
 
-# Dead Zombie Storage
+## Step 2 Complete!
+
+![](images/09-with-controls.png)
+
+Now our fighters have a way to input nabbed-zombie input.
+
+
+## Dead Zombie Storage
 
 When a soldier nabs a zombie by tapping the "I Got One!" button, we'll need a place to display the info about that poor zombie.
 
@@ -273,17 +296,8 @@ When a soldier nabs a zombie by tapping the "I Got One!" button, we'll need a pl
 
 `data-role="listview"` indicates to jQuery Mobile that this list should be styled as a list widget.
 
-## Speaker Notes
 
-~~~ {.html}
-</div> 
-<input type="button" value="I got one!" id="got-one" data-theme="b" />
-<ul data-role="listview" data-inset="true" id="zombielist">
-</ul>
-</div> <!-- /End <div data-role="content"> -->
-~~~
-
-# A list widget what now?
+## A list widget what now?
 
 ### jQuery Mobile Turns This
 
@@ -292,28 +306,21 @@ When a soldier nabs a zombie by tapping the "I Got One!" button, we'll need a pl
 ~~~ {.html}
 <ul data-role="listview" data-inset="true" id="zombielist">
   <li><img src="icons/z2.png" alt="Killed by micro-nukes" /><h3>Zombie Nabbed!</h3>
-  <p><strong>01/18/12 13:44</strong></p>
-  <p>Coordinates: 40.7678494, -73.9853328</p></li>
+  <p><strong>04/30/12</strong></p>
+  <p>Coordinates: 45.5256227, -122.6820616</p></li>
 </ul>
 ~~~
 
 ### Reverse: Example of Listview
 
-![](images/06-li-example.png)
+![](images/09-listitem.png)
 
 ### Into this
 
 So...each added zombie, ultimately, will get added as a `<li>` element in that empty `<ul>` we just added.
 
-## Speaker Notes
+## Putting list items together
 
-* Do copy-and-paste work.
-* This HTML is in the Snippet section of step 2 in the field notes.
-* Stop now, and load updated file in browser.
+### Figure: List example
 
-# And now we have a starting point
-
-## Figure: Screen shot of our current page
-
-![](images/06-starting-point.png)
-
+![](images/09-mockup.png)
