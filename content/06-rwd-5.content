@@ -1,17 +1,248 @@
 % Responsive Web Design, Part V
 % Cutting-Edge RWD
 
-# In this section
+## Responsive Design is a Human Process
 
-* RWD workflow
-* Advanced Topics
-** Flexbox
-** Content reordering
-** JS enhancement
-** Questions of navigation
-* Beyond phones
+### Illustration: Design is a human process
 
-## Notes
+![](images/06-human.png)
 
-Could probably put a flexbox layout on `#container` to get nav at bottom. In very modern browsers.
+## Responsive Design calls for new workflows
 
+### Illustration: Workflows
+
+![](images/06-workflows.png)
+
+## And new ways to communicate design
+
+### Illustration: Design
+
+![](images/06-design.png)
+
+## Design is iterative
+
+### Illustration: iterative
+
+![](images/06-iteration.png)
+
+## So we started with a desktop layout
+
+### Illustration: Desktop layout
+
+![](images/06-desktop.png)
+
+## And after some convolutions...
+
+### ...ended up with a mobile first design...
+
+### Illustration: Mobile First
+
+![](images/06-mobile-first.png)
+
+## What if we could move things around a bit?
+
+### Illustration: flip
+
+![](images/06-flip.png)
+
+## Maybe in the future, we can
+
+### Figure: spec
+
+![](images/06-flexbox-spec.png)
+
+## Gentle Introduction to flexbox
+
+* It's early yet
+* It keeps changing
+* Very sparse adoption yet
+* Is a bit of a trick to get your head around this one
+
+### By way of example...
+
+* At time of writing, Chrome stable 18.0.1025 supports the elements of flexbox in this example
+
+## First, a bit of iterative housekeeping
+
+We want to retain the header at the top of the page. Thus, we need to decouple the `<header>` and `<nav>` elements (whoops?).
+
+~~~{.html}
+<div>
+  <div id="header">
+    <h1>Sigma Stronghold</h1>
+    <h3>Several hundred patriots who take the zombie situation seriously</h3>
+  </div>
+  
+  <nav id="menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="killboard.html">Exploits</a></li>
+      <li><a href="squad.html">The Squad</a></li>
+      <li><a href="prep.html">Prepare Yourself</a></li>
+    </ul>
+  </nav>
+  
+  <div id="container">
+    <div id="main">
+    <!-- AND SO ON -->
+~~~
+
+The `<nav>` also has an `id` attribute now. I'll get back to that.
+
+## It's a CSS Thing
+
+### And now we'll edit our CSS for the narrow breakpoint
+
+~~~{.css}
+@media screen and (max-width: 35em) {
+  body>div {
+    display:        -webkit-flexbox;
+  }
+
+  /** Other Rules below **/
+}
+~~~
+
+##### styles.css
+
+* `flexbox` introduces new values for the `display` property.
+* Instead of `block`, we'll be using `flexbox` for the `body > div` element.
+* For now, `-webkit-flexbox` with the vendor extension. Later, after adoption, just `flexbox`
+
+
+## Extra Broken
+
+### Figure: Extra Broken
+
+![](images/06-extra-broken.png)
+
+## Fix it!
+
+By default, `flexbox` flow is horizontal—this page is being laid out in a `row`. Instead, we need to set the `flex-flow` property (using the vendor prefix here, too):
+
+~~~{.css}
+@media screen and (max-width: 35em) {
+  body>div {
+    display:            -webkit-flexbox;
+    -webkit-flex-flow:  column;
+  }
+  /** And so on... **/
+~~~
+
+## Back to an equilibrium
+
+### Figure: Equalized
+
+![](images/06-flow.png)
+
+## Now for the magic
+
+~~~{.css}
+@media screen and (max-width: 35em) {
+  body>div {
+    display:    -webkit-flexbox;
+    -webkit-flex-flow: column;
+  }
+  
+  body>div nav {
+    -webkit-flex-order: 1;
+  }
+  /** And so on... **/
+~~~
+
+### Flexbox ordering
+
+* Items with no `webkit-flex-order` value are assigned to group `0`
+* By assigning the `nav` element to group `1`, it will appear *after* the other children of `body>div` in the flexbox flow.
+
+## And so, the nav...
+
+### Figure: Nav
+
+![The nav element is now the last element in the flexbox flow in `body>div`](images/06-bottom.png)
+
+## Helping our users find the nav
+
+![](images/06-top.png)
+
+#### Hmmm, where's the navigation for this site?
+
+## Menu helper
+
+### Add a Link in the Header...
+
+#### Code
+
+~~~{.html}
+  <div id="header">
+    <h1>Sigma Stronghold</h1>
+    <h3>Several hundred patriots who take the zombie situation seriously</h3>
+    <h4 id="menulink"><a href="#menu">Menu</a></h4>
+  </div>
+~~~
+
+### Make it not display in baseline CSS
+
+~~~{.css}
+h4#menulink {
+  display: none;
+}
+~~~
+
+### Turn it on and give it some styling in the narrow breakpoint
+
+#### Code
+
+~~~{.css}
+  h4#menulink {
+    display: block;
+    margin: .25em;
+    background-color: #e43d3d;
+    padding: .5em;
+  }
+  h4#menulink a {
+    display: block;
+    width: 100%;
+    color: #fff;
+    font-size: 1.2em;
+  }
+~~~
+
+## A menu button!
+
+### Figure: Menu Button
+
+![](images/06-menu-button.png)
+
+## Being inclusive
+
+~~~{.css}
+@media screen and (max-width: 35em) {
+  body>div {
+    display:    -webkit-flexbox;
+    -webkit-flex-flow: column;
+    
+    display: -moz-flexbox;
+    -moz-flex-flow: column;
+    
+    display: -o-flexbox;
+    -o-flex-flow: column;
+    
+    display: flexbox;
+  }
+  
+  body>div nav {
+    -webkit-flex-order: 1;
+    -moz-flex-order: 1;
+    -o-flex-order: 1;
+    flex-order: 1;
+  }
+  /** ... **/
+}
+~~~
+
+## Not quite ready for prime time
+
+### Figure: In Firefox
+
+![Firefox doesn't support flex-order. Opera also has the same problem at present.](images/06-firefox.png)
