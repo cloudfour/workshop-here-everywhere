@@ -1,12 +1,319 @@
-% Getting App-y
-% Building a Mobile Web App using a framework (jQuery Mobile)
+% Making Mobile Goodness with Frameworks
+% A Quick Introduction to jQuery Mobile
 
-# In this section
 
-* Introduce jQuery Mobile
-** More in-depth, clearer info about structure of pages, widgets and `data`-elements
-* Building basic web pages in jQM
-* Using jQM to prototype quickly <-- more conceptual, less "here-paste-this-code here"
-* Et voila! Conversion of a boring old list to a jQM listview <-- becomes our nabbed zombies
-* Dropping in custom JS to make our app go
-* Lawnchair: need to re-evaluate a bit. Don't want to glaze folks over.
+# I got one!
+
+Sigma Stronghold leaders want a way for agents in the field to be able to record their zombie kills.
+
+## Illustration: WHERE WHEN HOW
+
+![](images/06-3ws.png)
+
+## Speaker Notes
+
+Each time a soldier nabs a zombie out there, he or she should be able to record when, where and how that zombie met its fate. Kind of like a zombie kill board.
+
+# We're going to build this!
+
+## Figure: The end result
+
+![](images/06-screen.png)
+
+# Frameworks
+
+## So, *how* do we build something like this?
+
+Frameworks, libraries, tools, templates...all of these can give you a leg up.
+
+## Speaker Notes
+
+Sometimes you don't want to keep re-inventing the same zombie-blasting cannon over and over again. We zombie fighters might be a ragtag bunch, but we stick together.
+
+
+# jQuery Mobile
+
+## Figure: JQM
+
+![](images/06-jquerymobile-com.png)
+
+## Speaker Notes
+
+* jQuery Mobile is a mobile web framework built atop the popular jQuery library.
+* jQuery Mobile works hand-in-hand with semantic HTML5 markup.
+
+# To Build our app
+
+1. Build a basic jQuery Mobile page.
+2. Add the special sauce to create our "I got one!" app
+3. Use a JavaScript library to make our zombie-kill data persistent.
+
+# Building with jQuery Mobile
+
+Content and applications with jQuery Mobile are constructed from:
+
+1. HTML5 markup.
+2. JavaScript: jQuery core and jQuery Mobile
+3. CSS: jQuery Mobile's CSS
+4. Your own custom stuff
+
+
+# jQuery Mobile Page Structure
+
+![](images/06-jqm.png)
+
+* Delineated by HTML5 `data-` attributes.
+* Enables content loading via AJAX.
+
+~~~ {.html}
+<div data-role="page">
+  <div data-role="header"></div>
+  <div data-role="content"></div>
+  <div data-role="footer"></div>
+</div>
+~~~
+
+# Starting *super* Basic
+
+
+##### index.html
+
+
+~~~{.html}
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>I Got One!</title> 
+</head> 
+<body> 
+
+<div data-role="page" id="nab-zombie">
+
+</div>
+
+</body>
+</html>
+~~~
+
+## Speaker Notes
+
+* We'll start with this crazy-basic page in Step 1 and make it a jQuery Mobile-ized page very quickly.
+* Open the file in my editor (`missions/08-got-one/index.html`)
+
+# Relying on our bros
+
+Adding in the CSS and JavaScript to make our jQM page go.
+
+~~~ {.html}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+<script src="date.format.js"></script>
+<script src="geo.js"></script>
+~~~
+
+## Speaker Notes
+
+* `date.format.js` (Date.format) lets us do much easier date formatting with JavaScript.
+* The `geo-location-js` library makes cross-platform geolocation a snap.
+* Note the maximum scale on the `meta-viewport`
+* TODO TODO: DESCRIBE VIEWPORT
+
+~~~ {.html}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+<script src="date.format.js"></script>
+<script src="geo.js"></script>
+~~~
+
+# Add a header
+
+At the outset, our jQM page is empty. Let's put some stuff in it.
+
+~~~ {.html}
+<div data-role="page" id="nab-zombie">
+  <div data-role="header">
+    <h1>I got one!</h1>
+  </div>
+</div>
+~~~
+
+## Speaker Notes
+
+* Let's add a header.
+* jQuery Mobile's CSS and JS will stye this into a (rather iOS-esque) header element.
+
+~~~ {.html}
+  <div data-role="header">
+    <h1>I got one!</h1>
+  </div>
+~~~
+
+
+# And now, a content area...
+
+~~~ {.html}
+<div data-role="page" id="nab-zombie">
+  <div data-role="header">
+    <h1>I got one!</h1>
+  </div>
+  <div data-role="content">
+    <!-- Our content will go here! -->
+  </div>
+</div>
+~~~
+
+## Speaker Notes
+
+~~~ {.html}
+  <div data-role="content">
+    <!-- Our content will go here! -->
+  </div>
+~~~
+
+### Try it out!
+
+# Et Voila!
+
+## Figure: A header in jQM
+
+![](images/06-header.png)
+
+#### ...OK, so there's no content yet
+
+# Step 2: Dropping in our controls
+
+![](images/06-starting-point.png)
+
+Easy, but not too exciting. Let's put in some UI elements that will let Sigma Stronghold fighters record a nabbed zombie.
+
+## Speaker Notes
+
+* Moving into step 2 in the field notes.
+
+# How do we do that? Adding a select input
+
+~~~ {.html}
+<div data-role="content">
+  <div data-role="fieldcontain">
+    <label for="how-zombie">How'd you nab it?</label>
+    <select name="how-zombie" id="how-zombie">
+      <option value="tank">Tank</option>
+      <option value="conflagration">Conflagration</option>
+      <option value="poison">Poison</option>
+      <option value="nukes">Micro-nukes</option>
+      <option value="trickery">Trickery</option>
+      <option value="corrosive">Corrosive</option>
+      <option value="dismemberment">Dismemberment</option>
+    </select>
+  </div> 
+
+</div>
+~~~
+
+## Speaker Notes
+
+* First, let's add a `<select>` element, just like you would do for any HTML form (except in our case, we don't have a containing form). Add this to the `<div data-role="content">` area.
+* Don't worry about typing this code into the file...or on the following slides.
+
+~~~ {.html}
+<div data-role="content">
+  <div data-role="fieldcontain">
+    <label for="how-zombie">How'd you nab it?</label>
+    <select name="how-zombie" id="how-zombie">
+      <option value="tank">Tank</option>
+      <option value="conflagration">Conflagration</option>
+      <option value="poison">Poison</option>
+      <option value="nukes">Micro-nukes</option>
+      <option value="trickery">Trickery</option>
+      <option value="corrosive">Corrosive</option>
+      <option value="dismemberment">Dismemberment</option>
+    </select>
+  </div> 
+
+</div>
+~~~
+
+# Now, we'll add a button
+
+~~~ {.html}
+      <option value="dismemberment">Dismemberment</option>
+    </select>
+  </div> 
+  <input type="button" value="I got one!" id="got-one" data-theme="b" />
+</div>
+~~~
+
+## Speaker Notes
+
+* Again, jQuery Mobile will create a styled, mobile-ish button from this `<input>` field.
+
+~~~ {.html}
+      <option value="dismemberment">Dismemberment</option>
+    </select>
+  </div> 
+  <input type="button" value="I got one!" id="got-one" data-theme="b" />
+</div>
+~~~
+
+# Dead Zombie Storage
+
+When a soldier nabs a zombie by tapping the "I Got One!" button, we'll need a place to display the info about that poor zombie.
+
+~~~ {.html}
+</div> 
+<input type="button" value="I got one!" id="got-one" data-theme="b" />
+<ul data-role="listview" data-inset="true" id="zombielist">
+</ul>
+</div> <!-- /End <div data-role="content"> -->
+~~~
+
+`data-role="listview"` indicates to jQuery Mobile that this list should be styled as a list widget.
+
+## Speaker Notes
+
+~~~ {.html}
+</div> 
+<input type="button" value="I got one!" id="got-one" data-theme="b" />
+<ul data-role="listview" data-inset="true" id="zombielist">
+</ul>
+</div> <!-- /End <div data-role="content"> -->
+~~~
+
+# A list widget what now?
+
+### jQuery Mobile Turns This
+
+#### Code
+
+~~~ {.html}
+<ul data-role="listview" data-inset="true" id="zombielist">
+  <li><img src="icons/z2.png" alt="Killed by micro-nukes" /><h3>Zombie Nabbed!</h3>
+  <p><strong>01/18/12 13:44</strong></p>
+  <p>Coordinates: 40.7678494, -73.9853328</p></li>
+</ul>
+~~~
+
+### Reverse: Example of Listview
+
+![](images/06-li-example.png)
+
+### Into this
+
+So...each added zombie, ultimately, will get added as a `<li>` element in that empty `<ul>` we just added.
+
+## Speaker Notes
+
+* Do copy-and-paste work.
+* This HTML is in the Snippet section of step 2 in the field notes.
+* Stop now, and load updated file in browser.
+
+# And now we have a starting point
+
+## Figure: Screen shot of our current page
+
+![](images/06-starting-point.png)
+

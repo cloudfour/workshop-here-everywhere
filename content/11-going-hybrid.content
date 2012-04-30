@@ -17,16 +17,16 @@ Giddyup!
 
 ### Figure: PhoneGap Platforms
 
-![](images/10-phonegap-platforms.png)
+![](images/11-phonegap-platforms.png)
 
-![](images/10-phonegap-logo.png) 
+![](images/11-phonegap-logo.png) 
 
 
 * PhoneGap is one option for using HTML5 technologies to create native apps for multiple platforms.
 
 ## PhoneGap Build
 
-![](images/10-phonegapbuild-logo.png)
+![](images/11-phonegapbuild-logo.png)
 
 * With PhoneGap Build you can build your projects in the cloud (that is, you don't have to compile/build natively for each platform yourself).
 
@@ -107,11 +107,11 @@ Let's see how fast we can bust out a native Android version of "I Got One!".
 
 ### Figure: PhoneGap Build screen shot
 
-![](images/10-phonegap-build-screenshot.png)
+![](images/11-phonegap-build-screenshot.png)
 
 
 ## Install on device or emulator
 
 ### Figure: "I Got One!" running on a Galaxy S
 
-![](images/10-galaxy-screenshot.png)
+![](images/11-galaxy-screenshot.png)
