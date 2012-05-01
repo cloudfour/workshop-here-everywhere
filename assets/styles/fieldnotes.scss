@@ -1,0 +1,61 @@
+@import 'common';
+
+body {
+  max-width: 90%;
+  margin: 0 auto;
+}
+h2, h3 {
+  text-align: left;
+}
+
+a, a:visited, a:active, a:hover {
+  color: $color-title;
+}
+ul {
+  li {
+    list-style: none outside none;
+
+    padding: .25em;
+    display: block;
+    &:before {
+      content: "\2217";
+      font-size: 1.75em;
+      margin-right: .5em;
+    }
+
+  }
+}
+ol {
+  li {
+    margin: 1em 0;
+  }
+}
+///// CODE //////
+
+pre {
+  overflow:         scroll;
+  font-weight:      normal;
+  border:           .2em $color-green;
+  box-shadow:       inset 0 0 .5em $color-text;
+  background-color: $color-background-mid;
+  padding:          .5em;
+  line-height:      1.5em;
+  code {
+    color:          $color-text;
+    border:         none;
+    padding:        0;
+    background-color: transparent;
+  }
+  .sourceCode {
+    color:          $color-text;
+  }
+}
+
+code {
+  background-color: $color-background-mid;
+  padding:          0 .35em;
+  border:           .1em dashed $color-pale;
+}
+
+// Syntax highlighting
+@include code-colors;

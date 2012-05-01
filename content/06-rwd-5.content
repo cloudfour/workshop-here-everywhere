@@ -246,3 +246,7 @@ h4#menulink {
 ### Figure: In Firefox
 
 ![Firefox doesn't support flex-order. Opera also has the same problem at present.](images/06-firefox.png)
+
+## Something to Think about
+
+How could we possibly create a flexbox layout without breaking the layout in browsers that don't support flexbox?

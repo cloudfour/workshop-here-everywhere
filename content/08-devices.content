@@ -337,6 +337,8 @@ if ($api_key) {
 ?>
 ~~~
 
+##### zombie-detect.php (`examples/08/04-wurfl`)
+
 ## Displaying the information gathered
 
 ### Code

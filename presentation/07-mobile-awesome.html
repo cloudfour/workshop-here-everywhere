@@ -382,6 +382,20 @@ fonts/special-elite-webfont.woff</code></pre>
 }</code></pre>
 <p>In our success callback, we're looking at the <code>coords</code> on the <code>position</code> object.</p>
 <p>The error callback is always passed an <code>error</code> object.</p>
+</div><div class="section slide level2" id="all-together-now">
+<h1>All together, now</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
+} <span class="kw">else</span> {
+  alert(<span class="ch">&#39;Sorry, Geolocation not supported in this browser!&#39;</span>);
+}
+<span class="kw">function</span> onGeoSuccess(position) {
+  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
+  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
+}
+<span class="kw">function</span> onGeoError(error) {
+  alert(<span class="kw">error</span>.<span class="fu">message</span>);
+}</code></pre>
 </div><div class="section slide level2" id="so-this-doesnt-work-everywhere">
 <h1>So, this doesn't work everywhere</h1>
 <p>A lot of modern browsers implement the W3C geolocation API. But some don't. And who supports ApplicationCache? etc.? How can we tell?</p>

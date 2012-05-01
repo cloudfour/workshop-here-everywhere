@@ -25,7 +25,9 @@ my $basepath = $dir->parent;
 $content_path       = $basepath . "/content";
 $slide_path         = $basepath . "/presentation";
 $src_path           = $basepath . "/assets";
+$student_path       = $basepath . "/examples";
 $flags              = '--from=markdown --to=slidy --standalone --slide-level=2';
+$fieldnotes_flags   = '--from=markdown --to=html5 --standalone --section-divs --css=fieldnotes.css';
 
 ## When was the last time a shared/common resource was updated?
 my $common_mtime = 0;
@@ -46,7 +48,7 @@ find( sub {
 ## more later...
 
 sub build_presentation {
-  if ($_ =~ /\.content/) {
+  if ($_ =~ /\.content/ && $_ !~ /fieldnotes/) {
     ($base, $dir, $ext) = fileparse($File::Find::name, '\..*'); # Split path into dir, file basename, extension
     my $pageid      = $base; # The page ID
     my $output = $slide_path . '/' . $base . '.html';
@@ -60,6 +62,21 @@ sub build_presentation {
     elsif ($opts{v}) {
       print "$_ not updated \n";
     }
+  }
+}
+
+sub build_fieldnotes {
+  my $output = $student_path . "/fieldnotes.html";
+  my $content = $content_path . "/fieldnotes.content";
+  my $test_update = needs_update($content, $output);
+  if ($test_update) {
+    system("$pandoc $fieldnotes_flags $content > $output");
+    if ($opts{v}) {
+      print "Updated Fieldnotes --> $output \n";
+    }
+  }
+  elsif ($opts{v}) {
+    print "Fieldnotes not updated \n";
   }
 }
 
@@ -106,3 +123,5 @@ EOF
 my @dirlist = $content_path;
 
 find(\&build_presentation, @dirlist);
+
+&build_fieldnotes();

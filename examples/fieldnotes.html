@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Field Notes: From Here to Everywhere: Taking your web skills mobile</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="fieldnotes.css">
+</head>
+<body>
+<header>
+<h1 class="title">Field Notes: From Here to Everywhere: Taking your web skills mobile</h1>
+</header>
+<section class="level1" id="section-1-assess-the-threat">
+<h1>Section 1: Assess the Threat</h1>
+</section>
+<section class="level1" id="section-2-responsive-web-design-getting-fluid">
+<h1>Section 2: Responsive Web Design: Getting Fluid</h1>
+<ul>
+<li>Starting point of Sigma Stronghold Website</li>
+</ul>
+<section class="level2" id="references">
+<h2>References</h2>
+<ul>
+<li><a href="http://www.quirksmode.org/mobile/viewports.html">A Tale of two Viewports by @ppk</a></li>
+<li>See Ethan's (<a href="http://twitter.com/beep">@beep</a>) original article about RWD on <a href="http://www.alistapart.com/articles/responsive-web-design/">A List Apart</a></li>
+<li>Fluid formula: <code>result = target / context</code></li>
+<li>Percentages (%) and <code>em</code>s are both fluid units, <code>pt</code>s, <code>px</code>, inches and pica are fixed. (Technically, <code>px</code> are not <em>absolute</em> absolute, as the size of a pixel varies with different devices and screens and are not <em>fixed</em>, per se. However, for our purposes, they are effectively absolute, as they do not scale).</li>
+<li><a href="http://developer.yahoo.com/yslow/">ySlow</a></li>
+<li><a href="http://validator.w3.org/" title="W3C Validator">W3C validator</a></li>
+<li><a href="https://developer.mozilla.org/en/mobile/viewport_meta_tag">Viewport documentation on Mozilla Developer Network</a></li>
+<li><a href="http://mashable.com/2010/07/29/google-font-api-guide/">Using the Google Font API</a> on Mashable (details on <code>link</code> tag syntax)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-3-getting-responsive">
+<h1>Section 3: Getting Responsive</h1>
+<section class="level2" id="responsive-images">
+<h2>Responsive Images</h2>
+<section class="level3" id="snippet-reference-responsive-images">
+<h3>Snippet reference: Responsive Images</h3>
+<pre class="sourceCode css"><code class="sourceCode css">img <span class="kw">{</span>
+  <span class="kw">max-width:</span> <span class="dt">100%</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<section class="level5" id="styles.css">
+<h5>styles.css</h5>
+</section>
+</section>
+</section>
+<section class="level2" id="media-queries">
+<h2>Media Queries</h2>
+<section class="level3" id="snippet-reference-a-couple-of-examples">
+<h3>Snippet Reference: A couple of examples</h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">600px)</span> <span class="dv">{</span>
+  // In browsers that support media queries,
+  // rules in here will only be applied if the
+  // query expression evaluates as true
+<span class="dv">}</span></code></pre>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> media=</span><span class="st">&quot;screen and (min-width:600px)&quot;</span><span class="ot"> href=</span><span class="st">&quot;thing.css&quot;</span><span class="kw">&gt;</span></code></pre>
+<ul>
+<li>For the full CSS, see <code>examples/02/02-fluid/styles.css</code>.</li>
+</ul>
+</section>
+</section>
+<section class="level2" id="references-1">
+<h2>References</h2>
+<ul>
+<li>You can always <a href="http://www.w3.org/TR/css3-mediaqueries/">read the CSS3 Media Queries spec</a></li>
+<li><a href="http://smush.it">Smush.it</a></li>
+<li><a href="http://reference.sitepoint.com/css/mediaqueries">CSS3 Media Queries cheat sheet</a> on Sitepoint</li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-4-mobile-first-rwd">
+<h1>Section 4: Mobile-First RWD</h1>
+<section class="level2" id="exercise">
+<h2>Exercise</h2>
+<ol type="1">
+<li>Install the window resizer extension <a href="https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh">Chrome</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/window-resizer/">FireFox</a> (Firefox version is being discontinued; Chrome preferred)</li>
+<li>View the <a href="examples/03/05-responsive">current version of the site</a></li>
+<li>Play with the window size in your browser</li>
+<li>At what window width does the two-column navigation start looking awkward to you?</li>
+<li>At what window width does it seem like the vertical navigation should kick in?</li>
+<li>At what window width does it feel like the moon background image should show up again?</li>
+<li>Write the media queries that you'd use to contain the rules for the different layouts (no need to write the actual CSS or anything; just the media queries).</li>
+</ol>
+<section class="level3" id="mobile-first-css">
+<h3>Mobile-first CSS</h3>
+<ol type="1">
+<li>For the pixel-based media query mobile-first CSS, see <code>examples/04/01-mobile-first/styles.css</code>.</li>
+<li>For the em-based media query mobile-first CSS, see <code>examples/04/02-relative-queries/styles.css</code>.</li>
+</ol>
+</section>
+</section>
+<section class="level2" id="references-2">
+<h2>References</h2>
+<ul>
+<li><a href="http://mediaqueri.es/">Mediaqueri.es</a> Examples of media-query driven designs.</li>
+<li>Rough rule of thumb for font sizes: <code>1em = 100% ~= 16px ~= 12pt</code>. <em>Approximately</em>.</li>
+<li><a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/">The Ems Have it</a>, a blog post on our blog about em-based media queries.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-5-when-rwd-goes-wrong">
+<h1>Section 5: When RWD Goes Wrong</h1>
+<hr>
+</section>
+<section class="level1" id="section-6-advanced-rwd-topics">
+<h1>Section 6: Advanced RWD Topics</h1>
+<section class="level2" id="flexbox-css">
+<h2>Flexbox CSS</h2>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">35em)</span> <span class="dv">{</span>
+  body&gt;div <span class="kw">{</span>
+    <span class="kw">display:</span>    -webkit-flexbox<span class="kw">;</span>
+    <span class="kw">-webkit-flex-flow:</span> column<span class="kw">;</span>
+
+    <span class="kw">display:</span> -moz-flexbox<span class="kw">;</span>
+    <span class="kw">-moz-flex-flow:</span> column<span class="kw">;</span>
+
+    <span class="kw">display:</span> -o-flexbox<span class="kw">;</span>
+    <span class="kw">-o-flex-flow:</span> column<span class="kw">;</span>
+
+    <span class="kw">display:</span> flexbox<span class="kw">;</span>
+  <span class="kw">}</span>
+
+  body&gt;div nav <span class="kw">{</span>
+    <span class="kw">-webkit-flex-order:</span> <span class="dt">1</span><span class="kw">;</span>
+    <span class="kw">-moz-flex-order:</span> <span class="dt">1</span><span class="kw">;</span>
+    <span class="kw">-o-flex-order:</span> <span class="dt">1</span><span class="kw">;</span>
+    <span class="kw">flex-order:</span> <span class="dt">1</span><span class="kw">;</span>
+  <span class="kw">}</span>
+  <span class="co">/** ...and so on... **/</span></code></pre>
+<p>For the final CSS, with the menu button, see <code>examples/06/02-flexbox/styles.css</code>.</p>
+</section>
+<section class="level2" id="references-3">
+<h2>References</h2>
+<ul>
+<li><a href="styletil.es">Styletil.es</a>, a new approach of visual design workflow for websites</li>
+<li><a href="http://www.w3.org/TR/css3-flexbox">Flexbox Spec</a>, the W3C's CSS3 flexbox spec at present</li>
+<li><a href="http://www.the-haystack.com/2012/01/04/learn-you-a-flexbox/">Stephen Hay's Flexbox Tutorial</a> A great place to start.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-7-mobile-awesome">
+<h1>Section 7: Mobile Awesome</h1>
+<section class="level2" id="applicationcache">
+<h2>ApplicationCache</h2>
+<section class="level3" id="steps-to-appcache">
+<h3>Steps to AppCache</h3>
+<ol type="1">
+<li>Write a <code>cache manifest</code> file</li>
+<li>Configure web server to serve cache manifest file(s) as MIME-type <code>text/cache-manifest</code></li>
+<li>Tell browsers about the manifest by using the <code>manifest</code> attribute on the <code>html</code> element.</li>
+</ol>
+</section>
+<section class="level3" id="snippet-reference-basic-cache-manifest">
+<h3>Snippet Reference: Basic Cache Manifest</h3>
+<pre><code>CACHE MANIFEST
+
+CACHE:
+foo.jpg
+bar.png
+index.html
+ding/dong.html</code></pre>
+</section>
+<section class="level3" id="snippet-reference-apache-configuration">
+<h3>Snippet Reference: Apache configuration</h3>
+<pre><code>AddType text/cache-manifest .appcache</code></pre>
+<section class="level5" id="htaccess">
+<h5>.htaccess</h5>
+</section>
+</section>
+<section class="level3" id="snippet-reference-manifest-attribute">
+<h3>Snippet Reference: <code>manifest</code> attribute</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> manifest=</span><span class="st">&quot;manifest.appcache&quot;</span><span class="kw">&gt;</span></code></pre>
+</section>
+</section>
+<section class="level2" id="exercise-1">
+<h2>Exercise</h2>
+<section class="level3" id="exercise-2">
+<h3>Exercise</h3>
+<ol type="1">
+<li>Open the <code>index.html</code> file for the Sigma Stronghold site in <code>examples/07/01-appcache</code>.</li>
+<li>Identify all of the resources we want to cache for the page. (<em>hint</em>: You'll also want to look at the CSS file, <code>styles.css</code>)</li>
+<li>Create a basic cache manifest file (<code>manifest.appcache</code>).</li>
+<li><em>Remember</em>: All referenced resources—images, JavaScript, CSS, etc.—must be listed in the Cache Manifest.</li>
+</ol>
+</section>
+</section>
+<section class="level2" id="geolocation">
+<h2>Geolocation</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
+} <span class="kw">else</span> {
+  alert(<span class="ch">&#39;Sorry, Geolocation not supported in this browser!&#39;</span>);
+}
+<span class="kw">function</span> onGeoSuccess(position) {
+  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
+  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
+}
+<span class="kw">function</span> onGeoError(error) {
+  alert(<span class="kw">error</span>.<span class="fu">message</span>);
+}</code></pre>
+</section>
+<section class="level2" id="references-4">
+<h2>References</h2>
+<section class="level3" id="applicationcache-1">
+<h3>ApplicationCache</h3>
+<ul>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html">WHATWG Offline Web Applications Spec</a> (AppCache spec)</li>
+<li><a href="http://www.html5rocks.com/en/tutorials/appcache/beginner/">Beginner's Guide to AppCache</a> on HTML5Rocks</li>
+<li><a href="http://appcachefacts.info/">AppCacheFacts.info</a></li>
+<li><a href="http://www.fontsquirrel.com/fontface/generator">FontSquirrel fontface generator</a></li>
+<li>Useful: Use <code>chrome://appcache-internals</code> to inspect the contents of AppCache in Chrome</li>
+<li>Useful: Use WebInspector in other Webkit browsers to inspect AppCache</li>
+</ul>
+</section>
+<section class="level3" id="a-bit-on-font-face">
+<h3>A bit on <code>@font-face</code></h3>
+<ul>
+<li><a href="http://sixrevisions.com/css/font-face-guide/">Essential Guide to @font-face</a> (A bit out of date, but decent)</li>
+<li>Paul Irish's <a href="http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/">Bulletproof @font-face</a></li>
+<li><a href="http://www.fontsquirrel.com/fontface/generator">Font Squirrel</a></li>
+</ul>
+</section>
+<section class="level3" id="geolocation-1">
+<h3>Geolocation</h3>
+<ul>
+<li>The spec for the <a href="http://dev.w3.org/geo/api/spec-source.html">W3C Geolocation API spec</a> is relatively short and easy to understand (as specs go).</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section class="level1" id="section-8-devices-devices-devices-and-browsers">
+<h1>Section 8: Devices, devices, devices (and browsers)</h1>
+<section class="level2" id="feature-detection-using-javascript">
+<h2>Feature Detection using JavaScript</h2>
+<p>You can find the source code for these examples in <code>examples/08/</code>.</p>
+<ul>
+<li><code>01-modernizr</code> : Touch event support via Modernizr.</li>
+<li><code>02-touch</code>: Using Modernizr touch support test to change layout of Sigma Stronghold.</li>
+<li><code>03-javascript</code>: More feature testing with JS</li>
+<li><code>04-wurfl</code>: Server-side device detection using the WURFL Cloud Service. <em>Note</em>: PHP and a valid WURFL Cloud API key required.<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></li>
+</ul>
+</section>
+<section class="level2" id="exercise-3">
+<h2>Exercise</h2>
+<p>Let’s do a test run using a device detection database.</p>
+<ol type="1">
+<li>Go to the <a href="http://www.tera-wurfl.com/explore/">ScientiaMobile WURFL Explorer</a> on your mobile phone</li>
+<li>Check out the various attributes. What do you see that would be useful?</li>
+<li>Can you find the screen resolution of your phone?</li>
+<li>Go to the <a href="http://www.tera-wurfl.com/explore/">ScientiaMobile WURFL Explorer</a> on your laptop</li>
+</ol>
+</section>
+<section class="level2" id="resources">
+<h2>Resources</h2>
+<ul>
+<li><a href="http://www.modernizr.com">Modernizr</a></li>
+<li><a href="http://modernizr.com/download/">Download Custom Modernizr Build</a></li>
+<li><a href="http://wurfl.sourceforge.net/">WURFL</a> (Wireless Universal Resource FiLe) by <a href="http://www.scientiamobile.com/">ScientiaMobile</a></li>
+<li><a href="http://deviceatlas.com/">DeviceAtlas</a> by <a href="http://mtld.mobi/">dotMobi</a></li>
+<li>New Apache <a href="http://wiki.apache.org/incubator/DeviceMapProposal">DeviceMap</a> Project</li>
+<li><a href="http://51degrees.mobi/Products/DeviceData.aspx">51degrees</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-9-mobile-web-applications-using-frameworks-a-brief-intro-to-jquery-mobile">
+<h1>Section 9: Mobile Web Applications Using Frameworks; a brief intro to jQuery Mobile</h1>
+<section class="level3" id="see-examples0901-mockup-for-an-end-result-example">
+<h3>See <code>examples/09/01-mockup</code> for an end result example</h3>
+</section>
+<section class="level2" id="references-5">
+<h2>References</h2>
+<ul>
+<li><a href="http://jquerymobile.com/demos/1.1.0/">jQuery Mobile 1.1 Documentation</a></li>
+<li><a href="http://html5doctor.com/html5-custom-data-attributes/">HTML5 data-* attribute</a> on the HTML5Doctor</li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-10-advanced-mobile-web-apps">
+<h1>Section 10: Advanced Mobile Web Apps</h1>
+<p>If you want to follow along, see <code>examples/10/01-functional</code>.</p>
+<section class="level2" id="references-6">
+<h2>References</h2>
+<ul>
+<li><a href="http://westcoastlogic.com/lawnchair/">Lawnchair</a> Simple JSON storage</li>
+<li><a href="http://westcoastlogic.com/lawnchair/adapters/">Lawnchair adapters</a> (We used the <code>dom</code> adapter in this example)</li>
+<li><a href="http://code.google.com/p/myroundcube/source/browse/plugins/calendar/program/js/date.format.js?spec=svn74&amp;r=70">date.format.js</a> on Google Code</li>
+<li><a href="http://code.google.com/p/geo-location-javascript/">geo-location-javascript</a> Cross-browser geolocation in JavaScript</li>
+<li>LocalStorage</li>
+<li><a href="http://coding.smashingmagazine.com/2010/10/11/local-storage-and-how-to-use-it/">Smashing Magazine Article on using LocalStorage</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-11-going-hybrid">
+<h1>Section 11: Going Hybrid</h1>
+<section class="level2" id="references-7">
+<h2>References</h2>
+<ul>
+<li><a href="http://build.phonegap.com">PhoneGap Build</a></li>
+<li><a href="https://build.phonegap.com/docs/config-xml">PhoneGap config.xml syntax</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="level1" id="section-12-testing">
+<h1>Section 12: Testing</h1>
+<hr>
+</section>
+<section class="level1" id="section-13-future-friendly">
+<h1>Section 13: Future Friendly</h1>
+</section>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>You can get a free API key at <a href="http://www.scientiamobile.com/cloud"><code class="url">http://www.scientiamobile.com/cloud</code></a>. The capabilities used in the example are <code>is_touchscreen</code> and <code>has_cellular_radio</code>. This is likely more trouble than you want to go to to follow along; no worries!<a href="#fnref1">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>

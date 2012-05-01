@@ -129,3 +129,62 @@ $font-italic: 'OpenSansItalic';
     clear:              both;
   }
 }
+
+@mixin code-colors {
+  code > span.kw { @include color-muted($color-red); 
+                   font-weight: bold; }
+  code > span.dt { color: $color-blue; }
+  code > span.dv { color: #40a070; }
+  code > span.bn { color: #40a070; }
+  code > span.fl { @include color-muted($color-green); }
+  code > span.ch { color: #4070a0; }
+  code > span.st { color: $color-blue; } // Attribute values
+  code > span.co { @include color-muted($color-purple); font-style: italic; }
+  code > span.ot { @include color-muted($color-green); } // Attributes
+  code > span.al { color: #ff0000; font-weight: bold; }
+  code > span.fu { color: $color-brown;}
+  code > span.er { @include color-muted($color-yellow); 
+                  font-weight: bold; }
+}
+
+
+body {
+  background-color: $color-warm;
+  color: $color-text;
+  font-family: $font-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-title;
+}
+
+h1, h2 {
+  color: $color-title;
+  text-align: center;
+  font-variant: small-caps;
+  border-bottom: .03em solid $color-pale;
+}
+
+h3 {
+  color:      $color-title;
+  font-style: italic;
+}
+
+blockquote {
+  line-height:    1.5em;
+  margin:         .5em 2em;
+  padding:        .25em;
+  border:         .1em solid $color-green;
+}
+
+strong, b {
+  font-family:    $font-bold;
+}
+
+em, i {
+  font-family:    $font-italic;
+}
+
+p, li {
+  line-height:    1.35em;
+}

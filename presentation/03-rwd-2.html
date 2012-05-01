@@ -41,7 +41,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 Getting Responsive
   </p>
 </div>
-<div class="section titleslide slide level1" id="in-this-section"><h1>In this section</h1></div><div class="section slide level2" id="its-not-all-milk-and-honey">
+<div class="section slide level2" id="its-not-all-milk-and-honey">
 <h1>It's not all milk and honey</h1>
 <div class="section level3" id="figure-its-escaping">
 <h3>Figure: It's escaping</h3>
@@ -49,7 +49,8 @@ Getting Responsive
 <img src="images/03-image-escape.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="what-gives">
+</div>
+<div class="section slide level2" id="what-gives">
 <h1>What gives?</h1>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;nozombies&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/zombie-girl.png&quot;</span><span class="ot"> width=</span><span class="st">&quot;295&quot;</span><span class="ot"> height=</span><span class="st">&quot;295&quot;</span><span class="ot"> alt=</span><span class="st">&quot;NO ZOMBIES ALLOWED!!!&quot;</span> <span class="kw">/&gt;</span>
@@ -58,13 +59,15 @@ Getting Responsive
 <li>Explicit <code>width</code> and <code>height</code> attributes in <code>img</code> tag don't scale</li>
 <li>When <code>#sidebar</code> is narrower than the width of the image, it breaks free</li>
 </ul>
-</div><div class="section slide level2" id="solution-responsive-images">
+</div>
+<div class="section slide level2" id="solution-responsive-images">
 <h1>Solution: Responsive Images</h1>
 <p><em>Responsive Images</em> are the second tenet of Responsive Web Design. By adding this rule to our CSS, we can keep unruly images from breaking free of the confines of their parent elements:</p>
 <pre class="sourceCode css"><code class="sourceCode css">img <span class="kw">{</span>
   <span class="kw">max-width:</span> <span class="dt">100%</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-</div><div class="section slide level2" id="and...">
+</div>
+<div class="section slide level2" id="and...">
 <h1>And...</h1>
 <p>Let's <a href="../examples/03/01-responsive-images-partial">take a look</a>, shall we?</p>
 <div class="section level3" id="figure-smushed">
@@ -73,7 +76,8 @@ Getting Responsive
 <img src="images/03-smushed.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="unsmush">
+</div>
+<div class="section slide level2" id="unsmush">
 <h1>Unsmush</h1>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;nozombies&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/zombie-girl.png&quot;</span><span class="ot"> width=</span><span class="st">&quot;295&quot;</span><span class="ot"> height=</span><span class="st">&quot;295&quot;</span><span class="ot"> alt=</span><span class="st">&quot;NO ZOMBIES ALLOWED!!!&quot;</span> <span class="kw">/&gt;</span>
@@ -83,7 +87,8 @@ Getting Responsive
   <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/zombie-girl.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;NO ZOMBIES ALLOWED!!!&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
 <p>Let's <a href="../examples/03/02-responsive-images">try that</a>.</p>
-</div><div class="section slide level2" id="better">
+</div>
+<div class="section slide level2" id="better">
 <h1>Better</h1>
 <div class="section level3" id="illustration-unsmush">
 <h3>Illustration: Unsmush</h3>
@@ -91,7 +96,8 @@ Getting Responsive
 <img src="images/03-not-smushed.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="but.">
+</div>
+<div class="section slide level2" id="but.">
 <h1>But.</h1>
 <div class="section level3" id="figure-this-looks-really-awkward">
 <h3>Figure: This looks really awkward</h3>
@@ -99,7 +105,8 @@ Getting Responsive
 <img src="images/03-awkward.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="its-doing-what-we-told-it-to">
+</div>
+<div class="section slide level2" id="its-doing-what-we-told-it-to">
 <h1>It's doing what we told it to</h1>
 <div class="section level3" id="illustration-in-viewport">
 <h3>Illustration: In Viewport</h3>
@@ -107,7 +114,8 @@ Getting Responsive
 <img src="images/03-in-viewport.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="sergeant-dingus-weighs-in">
+</div>
+<div class="section slide level2" id="sergeant-dingus-weighs-in">
 <h1>Sergeant Dingus Weighs in</h1>
 <blockquote>
 <p>&quot;Whoa. That narrow-screen view is ugly. I think it looks kind of weird when the window is really wide, too.&quot; —Sgt. Dingus</p>
@@ -118,7 +126,8 @@ Getting Responsive
 <img src="images/03-wide.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="clarence-the-angry-performance-goat-barges-in">
+</div>
+<div class="section slide level2" id="clarence-the-angry-performance-goat-barges-in">
 <h1>Clarence the Angry Performance Goat barges in</h1>
 <div class="section level3" id="illustration-goat">
 <h3>Illustration: Goat</h3>
@@ -126,12 +135,14 @@ Getting Responsive
 <img src="images/clarence.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="he-is-complaining">
+</div>
+<div class="section slide level2" id="he-is-complaining">
 <h1>He is complaining</h1>
 <blockquote>
 <p>&quot;The zombie girl image is enormous!! It's not optimized at all! The HQ image is an image that has text content in it! And the moon background image is also enormous! Do something!&quot; —Clarence the Angry Performance Goat</p>
 </blockquote>
-</div><div class="section slide level2" id="ok-so-weve-got-problems">
+</div>
+<div class="section slide level2" id="ok-so-weve-got-problems">
 <h1>OK, so we've got problems</h1>
 <ol style="list-style-type: decimal">
 <li>Layout is proportional, all right, but it looks odd at certain screen widths.</li>
@@ -139,12 +150,14 @@ Getting Responsive
 <li>We have some content that is non-semantic (inside an image).</li>
 </ol>
 <p>We've heard what Sgt. Dingus has to say about the layout, but what about these images?</p>
-</div><div class="section slide level2" id="sgt.-dingus-editorial">
+</div>
+<div class="section slide level2" id="sgt.-dingus-editorial">
 <h1>Sgt. Dingus' Editorial</h1>
 <blockquote>
 <p>I'm a bit embarrassed about the HQ address image. I didn't even really think about it. Also, we've had some of the troops complain about too much specific zombie imagery on the site overall. I'm attached to the moon photo because my brother took it and I think it's kind of cool. The other images, meh. — Sgt. Dingus.</p>
 </blockquote>
-</div><div class="section slide level2" id="smushing-the-moon">
+</div>
+<div class="section slide level2" id="smushing-the-moon">
 <h1>Smushing the moon</h1>
 <div class="section level3" id="figure-smush.it">
 <h3>Figure: Smush.it</h3>
@@ -152,7 +165,8 @@ Getting Responsive
 <img src="images/03-smushit.png" title="Smushing the moon" alt="http://smush.it — Nice tool but not a replacement for by-hand compression" /><p class="caption">http://smush.it — Nice tool but not a replacement for by-hand compression</p>
 </div>
 </div>
-</div><div class="section slide level2" id="making-the-contact-information-meaningful">
+</div>
+<div class="section slide level2" id="making-the-contact-information-meaningful">
 <h1>Making the Contact information Meaningful</h1>
 <div class="section level3" id="instead-of">
 <h3>Instead of</h3>
@@ -172,7 +186,8 @@ Getting Responsive
   CB Channel 32.6<span class="kw">&lt;/p&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
 </div>
-</div><div class="section slide level2" id="ok-weve-been-sidetracked-by-the-goat">
+</div>
+<div class="section slide level2" id="ok-weve-been-sidetracked-by-the-goat">
 <h1>OK, we've been sidetracked by the goat</h1>
 <blockquote>
 <p>&quot;However, I'd like to point out, we have now removed several hundred kilobytes from the page.&quot; —Clarence</p>
@@ -183,7 +198,8 @@ Getting Responsive
 <img src="images/03-yslow-smaller.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="and-now-back-to-our-main-problem">
+</div>
+<div class="section slide level2" id="and-now-back-to-our-main-problem">
 <h1>And now back to our main problem</h1>
 <div class="figure">
 <img src="images/03-awkward.png" /><p class="caption"></p>
@@ -191,15 +207,18 @@ Getting Responsive
 <ul>
 <li>At narrow widths, the content looks smushy and awkward.</li>
 </ul>
-</div><div class="section slide level2" id="media-queries-to-the-rescuce">
+</div>
+<div class="section slide level2" id="media-queries-to-the-rescuce">
 <h1>Media Queries to the rescuce</h1>
 <p>CSS3 <strong>Media Queries</strong> are the third leg of the RWD tripod.</p>
 <p>Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.</p>
-</div><div class="section slide level2" id="media-types">
+</div>
+<div class="section slide level2" id="media-types">
 <h1>Media Types</h1>
 <p>Media types have been around a while. It's how we make print stylesheets, e.g.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> media=</span><span class="st">&quot;print&quot;</span><span class="ot"> href=</span><span class="st">&quot;print.css&quot;</span><span class="kw">&gt;</span></code></pre>
-</div><div class="section slide level2" id="media-features">
+</div>
+<div class="section slide level2" id="media-features">
 <h1>Media Features</h1>
 <div class="section level4" id="media-types-have-media-features.">
 <h4>Media types have media features.</h4>
@@ -214,7 +233,8 @@ Getting Responsive
 <li><code>print</code></li>
 </ul>
 </div>
-</div><div class="section slide level2" id="logical-expressions">
+</div>
+<div class="section slide level2" id="logical-expressions">
 <h1>Logical expressions</h1>
 <div class="section level4" id="css-media-queries-evaluate-the-current-value-of-media-features-in-logical-expressions-to-determine-whether-to-apply-the-enclosed-css.">
 <h4>CSS media queries evaluate the current value of <em>media features</em> in logical expressions to determine whether to apply the enclosed CSS.</h4>
@@ -231,7 +251,8 @@ Getting Responsive
 <li><code>@import</code> syntax is also supported.</li>
 </ul>
 </div>
-</div><div class="section slide level2" id="media-queries">
+</div>
+<div class="section slide level2" id="media-queries">
 <h1>Media Queries</h1>
 <div class="section level3" id="illustration-syntax">
 <h3>Illustration: Syntax</h3>
@@ -239,7 +260,8 @@ Getting Responsive
 <img src="images/02-media-query-syntax.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="media-queries-1">
+</div>
+<div class="section slide level2" id="media-queries-1">
 <h1>Media Queries</h1>
 <div class="section level3" id="illustration-example">
 <h3>Illustration: Example</h3>
@@ -247,23 +269,27 @@ Getting Responsive
 <img src="images/02-media-query-example.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="what-can-media-queries-do-for-us">
+</div>
+<div class="section slide level2" id="what-can-media-queries-do-for-us">
 <h1>What can media queries do for us?</h1>
 <p>With media queries, we can apply different CSS in different circumstances. For the Sigma Stronghold site, we can create a CSS layout appropriate for narrower screens and only apply it when the window is narrower than a certain threshold, for example.</p>
-</div><div class="section slide level2" id="our-crafted-media-query">
+</div>
+<div class="section slide level2" id="our-crafted-media-query">
 <h1>Our crafted media query</h1>
 <p><code>@media screen and (max-width: 700px) { }</code></p>
 <div class="section level3" id="now-what-goes-in-it">
 <h3>...Now, what goes in it?</h3>
 <p>We need to craft some CSS to create a single-column, comfortable layout for narrower screens. Let's get to it!</p>
 </div>
-</div><div class="section slide level2" id="what-needs-to-change">
+</div>
+<div class="section slide level2" id="what-needs-to-change">
 <h1>What needs to change?</h1>
 <ul>
 <li>We don't have to create entirely different CSS for the narrow-screen layout.</li>
 <li>We only need to define the rules that we wish to <em>override</em> from the wider layout.</li>
 </ul>
-</div><div class="section slide level2" id="step-1-container-elements-span-full-width">
+</div>
+<div class="section slide level2" id="step-1-container-elements-span-full-width">
 <h1>Step 1: Container elements span full width</h1>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">700px)</span> <span class="dv">{</span>
   body &gt; div,
@@ -276,7 +302,8 @@ Getting Responsive
     <span class="kw">border:</span> <span class="dt">none</span><span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
-</div><div class="section slide level2" id="step-1-continued">
+</div>
+<div class="section slide level2" id="step-1-continued">
 <h1>Step 1, Continued</h1>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">700px)</span> <span class="dv">{</span>
   body &gt; div,
@@ -295,7 +322,8 @@ Getting Responsive
     <span class="kw">float:</span> <span class="dt">none</span><span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
-</div><div class="section slide level2" id="and-lets-check-it-out">
+</div>
+<div class="section slide level2" id="and-lets-check-it-out">
 <h1>And let's check it out!</h1>
 <div class="section level3" id="figure-checking-it-out">
 <h3>Figure: Checking it out</h3>
@@ -303,7 +331,8 @@ Getting Responsive
 <img src="images/03-single-column.png" alt="Let&#39;s check it out" /><p class="caption">Let's <a href="../exercises/06-narrow-layout">check it out</a></p>
 </div>
 </div>
-</div><div class="section slide level2" id="where-to-from-here">
+</div>
+<div class="section slide level2" id="where-to-from-here">
 <h1>Where to from here?</h1>
 <div class="section level3" id="reverse-check-it-out">
 <h3>Reverse: Check it out</h3>
@@ -315,10 +344,12 @@ Getting Responsive
 <li>Adjust fonts, line heights, padding...</li>
 </ul>
 </div>
-</div><div class="section slide level2" id="fix-navigation">
+</div>
+<div class="section slide level2" id="fix-navigation">
 <h1>Fix navigation</h1>
 <p>TODO: Drawing</p>
-</div><div class="section slide level2" id="navigation-rules-in-media-query">
+</div>
+<div class="section slide level2" id="navigation-rules-in-media-query">
 <h1>Navigation Rules in Media query</h1>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">700px)</span> <span class="dv">{</span>
   <span class="co">/* ... */</span>
@@ -333,7 +364,8 @@ Getting Responsive
     <span class="kw">padding:</span> <span class="dt">.75em</span><span class="kw">;</span>  
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
-</div><div class="section slide level2" id="an-eye-for-proportion">
+</div>
+<div class="section slide level2" id="an-eye-for-proportion">
 <h1>An eye for proportion</h1>
 <p>Proportional balance doesn't end at container elements. On narrow screens, our font sizes and line heights and padding look a bit uncomfortable. Let's fix:</p>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">700px)</span> <span class="dv">{</span>
@@ -367,7 +399,8 @@ Getting Responsive
     <span class="kw">line-height:</span> <span class="dt">1.4em</span><span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
-</div><div class="section slide level2" id="all-together-now">
+</div>
+<div class="section slide level2" id="all-together-now">
 <h1>All together, now</h1>
 <div class="section level3" id="code">
 <h3>Code</h3>
@@ -418,7 +451,8 @@ Getting Responsive
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
 </div>
-</div><div class="section slide level2" id="et-voila">
+</div>
+<div class="section slide level2" id="et-voila">
 <h1>Et, voila</h1>
 <div class="section level3" id="figure-done">
 <h3>Figure: Done</h3>
