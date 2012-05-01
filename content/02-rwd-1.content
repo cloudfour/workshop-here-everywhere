@@ -561,3 +561,5 @@ body > div {
 ### Figure: Fluid Layout
 
 ![The [fluid layout](../examples/02/02-fluid)](images/02-sigma-fluid.png)
+
+# Now it's time to [Go Responsive](03-rwd-2.html)

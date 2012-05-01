@@ -250,3 +250,5 @@ h4#menulink {
 ## Something to Think about
 
 How could we possibly create a flexbox layout without breaking the layout in browsers that don't support flexbox?
+
+# Time to change gears and get [Mobile Awesome](07-mobile-awesome.html).

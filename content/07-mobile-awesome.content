@@ -380,3 +380,5 @@ function onGeoError(error) {
 ## So, this doesn't work everywhere
 
 A lot of modern browsers implement the W3C geolocation API. But some don't. And who supports ApplicationCache? etc.? How can we tell?
+
+# It's time to [understand our browsers and devices](08-devices.html)
