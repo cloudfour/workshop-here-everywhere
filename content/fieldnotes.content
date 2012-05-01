@@ -229,6 +229,7 @@ You can find the source code for these examples in `examples/08/`.
 * `02-touch`: Using Modernizr touch support test to change layout of Sigma Stronghold.
 * `03-javascript`: More feature testing with JS
 * `04-wurfl`: Server-side device detection using the WURFL Cloud Service. *Note*: PHP and a valid WURFL Cloud API key required.[^wurfl]
+* `05-flexbox`: Could Modernizr tests help us with our flexbox example?
 
 ## Exercise
 

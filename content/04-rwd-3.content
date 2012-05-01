@@ -64,6 +64,10 @@ Let's [look at this in practice](../examples/04/01-mobile-first/styles.css).
 
 > "Looks better, thanks. But what about the really wide-screen layout? It still looks odd to me. Look, we don't have a lot of time. I don't really want you to go off and cook up a whole layout for this...what's a really quick way to get this done?" —Sgt Dingus
 
+### Illustration: Dingus
+
+![](images/dingus-small.png)
+
 ## Here's one way it could be done
 
 If Sergeant Dingus wants expediency, we can deliver. By adding a `max-width` property to the `body > div` rule for wider screens, we can constrain the width of the layout to a certain maximum:

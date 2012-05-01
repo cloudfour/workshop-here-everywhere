@@ -57,8 +57,6 @@
 
 ![](images/02-sigma-broken-1.png)
 
-![](images/02-sigma-broken-2.png)
-
 ![](images/02-sigma-broken-3.png)
 
 ## Even Tablets...
@@ -119,13 +117,21 @@
 
 > "I thought the weather widget looked kinda cool. But I admit, it hasn't had an accurate weather reading since four months ago. I guess AccuWeather HQ must have suffered a direct hit." — Sgt. Dingus
 
+### Illustration: Dingus
+
+![](images/dingus-small.png)
+
 ## Clarence the Angry Performance Goat
+
+### Reverse: Clarence
 
 ![](images/clarence.png)
 
 Clarence the Angry Performance Goat butts in (hee hee) from time to time.
 
 > "There's so much about that weather widget that makes me want to hork up that phone book I just ate. Let me count the ways. A pile of HTTP requests. Flash?! Invalid markup...ack. Before these cadets start making web pages for mobile devices, they need to understand some basic laws of performance." —APG
+
+
 
 ## How does the Goat know so much?
 
@@ -380,8 +386,6 @@ body > div {
 
 `#container` has a current width of `900px`. Its entire reason for existing is to provide some padding.
 
-If we want to convert its `900px` width to fluid: 
-
 900 / 920 = .9782...
 
 ### Instead of 
@@ -526,6 +530,9 @@ and, for the `#container`:
 ## All together now
 
 Simplified CSS (ignoring the non-structural parts!):
+
+
+### Code
 
 ~~~{.css}
 body > div {

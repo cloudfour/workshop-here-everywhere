@@ -386,6 +386,26 @@ if ($api_key) {
 
 ![iPhone](images/08-wurfl-data-iphone.png)
 
+## Circling back to advanced RWD Topics
+
+We could also create a Modernizr build that tests for `flexbox` support. What would that give us?
+
+### Expanding our Tests
+
+~~~{.javascript}
+$(document).ready(function() {
+  if (window.devicePixelRatio) {
+    var $li = $('<li></li>').html('Device Pixel Ratio: ' + window.devicePixelRatio);
+    $("#javascript").next('ul').append($li);
+  }
+  var $li = $('<li></li>').html('Flexbox Support: ' + Modernizr.flexbox);
+  $("#javascript").next('ul').append($li);        
+});
+~~~
+
+And [what does it report](../examples/08/05-flexbox)?
+
+
 # Wanna [build a mobile web app](09-web-apps.html)?
 
 [zombie-types]: http://uncyclopedia.wikia.com/wiki/Zombie_Types

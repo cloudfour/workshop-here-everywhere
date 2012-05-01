@@ -439,6 +439,22 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 <img src="images/08-wurfl-data-iphone.png" alt="iPhone" /><p class="caption">iPhone</p>
 </div>
 </div>
+<div class="section slide level2" id="circling-back-to-advanced-rwd-topics">
+<h1>Circling back to advanced RWD Topics</h1>
+<p>We could also create a Modernizr build that tests for <code>flexbox</code> support. What would that give us?</p>
+<div class="section level3" id="expanding-our-tests">
+<h3>Expanding our Tests</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+  <span class="kw">if</span> (<span class="kw">window</span>.<span class="fu">devicePixelRatio</span>) {
+    <span class="kw">var</span> $li = $(<span class="ch">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span>).<span class="fu">html</span>(<span class="ch">&#39;Device Pixel Ratio: &#39;</span> + <span class="kw">window</span>.<span class="fu">devicePixelRatio</span>);
+    $(<span class="st">&quot;#javascript&quot;</span>).<span class="fu">next</span>(<span class="ch">&#39;ul&#39;</span>).<span class="fu">append</span>($li);
+  }
+  <span class="kw">var</span> $li = $(<span class="ch">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span>).<span class="fu">html</span>(<span class="ch">&#39;Flexbox Support: &#39;</span> + <span class="kw">Modernizr</span>.<span class="fu">flexbox</span>);
+  $(<span class="st">&quot;#javascript&quot;</span>).<span class="fu">next</span>(<span class="ch">&#39;ul&#39;</span>).<span class="fu">append</span>($li);        
+});</code></pre>
+<p>And <a href="../examples/08/05-flexbox">what does it report</a>?</p>
+</div>
+</div>
 <div class="section titleslide slide level1" id="wanna-build-a-mobile-web-app"><h1>Wanna <a href="09-web-apps.html">build a mobile web app</a>?</h1></div>
 </body>
 </html>

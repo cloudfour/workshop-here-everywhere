@@ -119,9 +119,6 @@ Getting Fluid
 <img src="images/02-sigma-broken-1.png" /><p class="caption"></p>
 </div>
 <div class="figure">
-<img src="images/02-sigma-broken-2.png" /><p class="caption"></p>
-</div>
-<div class="figure">
 <img src="images/02-sigma-broken-3.png" /><p class="caption"></p>
 </div>
 </div>
@@ -188,8 +185,16 @@ Getting Fluid
 <blockquote>
 <p>&quot;I thought the weather widget looked kinda cool. But I admit, it hasn't had an accurate weather reading since four months ago. I guess AccuWeather HQ must have suffered a direct hit.&quot; — Sgt. Dingus</p>
 </blockquote>
+<div class="section level3" id="illustration-dingus-1">
+<h3>Illustration: Dingus</h3>
+<div class="figure">
+<img src="images/dingus-small.png" /><p class="caption"></p>
+</div>
+</div>
 </div><div class="section slide level2" id="clarence-the-angry-performance-goat">
 <h1>Clarence the Angry Performance Goat</h1>
+<div class="section level3" id="reverse-clarence">
+<h3>Reverse: Clarence</h3>
 <div class="figure">
 <img src="images/clarence.png" /><p class="caption"></p>
 </div>
@@ -197,6 +202,7 @@ Getting Fluid
 <blockquote>
 <p>&quot;There's so much about that weather widget that makes me want to hork up that phone book I just ate. Let me count the ways. A pile of HTTP requests. Flash?! Invalid markup...ack. Before these cadets start making web pages for mobile devices, they need to understand some basic laws of performance.&quot; —APG</p>
 </blockquote>
+</div>
 </div><div class="section slide level2" id="how-does-the-goat-know-so-much">
 <h1>How does the Goat know so much?</h1>
 <div class="section level3" id="figure-invalid-markup">
@@ -437,7 +443,7 @@ Getting Fluid
 <blockquote>
 <p>&quot;I like to have a bit of space on the right and the left of the main content area for the moon background image to peek through and generally to give it some breathing room.&quot; —Sgt. Dingus</p>
 </blockquote>
-<div class="section level3" id="illustration-dingus-1">
+<div class="section level3" id="illustration-dingus-2">
 <h3>Illustration: Dingus</h3>
 <div class="figure">
 <img src="images/dingus-small.png" /><p class="caption"></p>
@@ -465,7 +471,6 @@ Getting Fluid
 </div><div class="section slide level2" id="now-the-container-element">
 <h1>Now, the Container Element</h1>
 <p><code>#container</code> has a current width of <code>900px</code>. Its entire reason for existing is to provide some padding.</p>
-<p>If we want to convert its <code>900px</code> width to fluid:</p>
 <p>900 / 920 = .9782...</p>
 <div class="section level3" id="instead-of-1">
 <h3>Instead of</h3>
@@ -584,6 +589,8 @@ Getting Fluid
 </div><div class="section slide level2" id="all-together-now">
 <h1>All together now</h1>
 <p>Simplified CSS (ignoring the non-structural parts!):</p>
+<div class="section level3" id="code-3">
+<h3>Code</h3>
 <pre class="sourceCode css"><code class="sourceCode css">body &gt; div <span class="kw">{</span>
   <span class="kw">width:</span> <span class="dt">90%</span><span class="kw">;</span>
   <span class="kw">margin:</span> <span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
@@ -610,6 +617,7 @@ Getting Fluid
 <span class="fl">#sidebar</span> <span class="kw">{</span>
   <span class="kw">margin-left:</span> <span class="dt">63.25%</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+</div>
 </div><div class="section slide level2" id="take-it-for-a-spin">
 <h1>Take it for a spin</h1>
 <div class="section level3" id="figure-fluid-layout">

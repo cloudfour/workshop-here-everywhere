@@ -1,14 +1,6 @@
 % Getting to the awesome parts of mobile
 % Device capabilities and a brief tour of Device APIs
 
-## In this section
-
-* Light Introduction to client-side feature detection
-* Revisit progressive enhancement
-* Using client-side feature detection to detect device API support
-* AppCache <-- keeping it relatively light; recall that Jake Archibald is speaking the following day
-* Geolocation <-- again, light touch on this, as we have been doing
-* Device APIs greatest hits <-- A quick survey of other device APIs relevant to mobile
 
 ## Oh, the things we can do with mobile!
 
@@ -20,7 +12,9 @@
 
 > "Hey, it would be nice if Sigma Stronghold troops could access parts of the site even when they are not connected to the Internet. Service can be pretty flaky in our neighborhood, especially in the zombie-dense areas where they've knocked down the antennas." —Sergeant Dingus
 
-#### Is there a way we can help them out?
+### Illustration: Dingus
+
+![](images/dingus-small.png)
 
 # Creating an Offline Mode using ApplicationCache
 
