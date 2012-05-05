@@ -37,7 +37,7 @@ div.slide {
     margin-right:  .5em;
     img {
       max-width: 100%;
-      max-height: 80%;
+      max-height: 70%;
     }
     img:only-of-type {
       max-width:  92.5%;
@@ -53,6 +53,9 @@ div.slide {
   div[id^="illustration"] {
     & h1, & h2, & h3 {
       display: none;
+    }
+    img {
+      max-height: 80%;
     }
   }
   div[id^='figure'],
