@@ -35,7 +35,7 @@
 
 ### Figure: Sigma Stronghold website
 
-![The Sigma Stronghold Website](images/02-sigma-start.png)
+![[The Sigma Stronghold Website](../presenter-examples/02/00-start)](images/02-sigma-start.png)
 
 # So what's the deal?
 
@@ -567,6 +567,6 @@ body > div {
 
 ### Figure: Fluid Layout
 
-![The [fluid layout](../examples/02/02-fluid)](images/02-sigma-fluid.png)
+![The [fluid layout](../presenter-examples/02/02-fluid)](images/02-sigma-fluid.png)
 
 # Now it's time to [Go Responsive](03-rwd-2.html)
