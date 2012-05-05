@@ -209,6 +209,12 @@ clear()
 * Items in the `<head>` are not loaded from subsequent pages.
 * That means all JS you need for your web app/site needs to be in the `<head>` of every page :(
 
+## Without JavaScript
+
+### Figure: Without JavaScript
+
+![](images/10-no-js.png)
+
 ## Adding another page to our Li'l App
 
 ### Navbars in jQM

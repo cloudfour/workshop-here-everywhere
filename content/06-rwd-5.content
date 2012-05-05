@@ -51,6 +51,14 @@
 
 ![](images/06-flexbox-spec.png)
 
+## What is Flexbox?
+
+* A CSS spec concerned with visual layout
+* Introduces two new CSS `display` types: `flexbox` and `inline-flexbox`
+* Allows for a certain amount of source order independence
+* Children of an element with a `flexbox` display can be reordered and resized, horizontally or vertically
+* Often applicable where you would normally use floats
+
 ## Gentle Introduction to flexbox
 
 * It's early yet

@@ -310,6 +310,8 @@ We need to craft some CSS to create a single-column, comfortable layout for narr
 
 Proportional balance doesn't end at container elements. On narrow screens, our font sizes and line heights and padding look a bit uncomfortable. Let's fix:
 
+### Code
+
 ~~~{.css}
 @media screen and (max-width: 700px) {
   /*...layout rules here */
