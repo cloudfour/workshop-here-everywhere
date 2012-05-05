@@ -31,7 +31,7 @@ img {
 
 ## And...
 
-Let's [take a look](../examples/03/01-responsive-images-partial), shall we?
+Let's [take a look](../presenter-examples/03/01-responsive-images-partial), shall we?
 
 ### Figure: Smushed
 
@@ -53,7 +53,7 @@ To make responsive images work, we have to remove the `width` and `height` attri
 </div>
 ~~~
 
-Let's [try that](../examples/03/02-responsive-images).
+Let's [try that](../presenter-examples/03/02-responsive-images).
 
 ## Better
 
@@ -403,6 +403,6 @@ Proportional balance doesn't end at container elements. On narrow screens, our f
 
 ### Figure: Done
 
-![And, [voila!](../examples/02/05-responsive)](images/03-done.png)
+![And, [voila!](../presenter-examples/03/05-responsive)](images/03-done.png)
 
 # Let's get [Mobile-first](04-rwd-3.html)

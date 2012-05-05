@@ -58,7 +58,8 @@ Instead of having a single media query for "mobile devices", let's do some more 
 }
 ~~~
 
-Let's [look at this in practice](../examples/04/01-mobile-first/styles.css).
+* Let's [look at the CSS in practice](../presenter-examples/04/01-mobile-first/styles.css)
+* And let's look at [the result](../presenter-examples/04/01-mobile-first)
 
 ## Sgt Dingus weighs in
 
@@ -87,7 +88,7 @@ If Sergeant Dingus wants expediency, we can deliver. By adding a `max-width` pro
 }
 ~~~
 
-As you know, the web is all about compromise! Sometimes it's a messy job.
+As you know, the web is all about compromise! Sometimes it's a [messy job](../presenter-examples/04/02-max-width).
 
 ## Really putting content first
 
@@ -152,7 +153,7 @@ Our updated media queries would thus look like:
 
 ## But really, what did that get us?
 
-* Well, with the [pixel version in a Webkit browser...](../examples/04/01-mobile-first)
-* But with the [em-based media queries...](../examples/04/02-relative-queries)
+* Well, with the [pixel version in a Webkit browser...](../presenter-examples/04/01-mobile-first)
+* But with the [em-based media queries...](../presenter-examples/04/03-relative-queries)
 
 # But what happens when [RWD goes wrong](05-rwd-4.html)?
