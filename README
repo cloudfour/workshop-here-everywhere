@@ -1,9 +1,0 @@
-# Structure
-
-* `assets`: Web fonts and CSS SASS source styles, primarily. OUTPUT for CSS: `workshop.css` stays here. `fieldnotes.css` goes into `examples` directory (this is from settings in my SASS compiler). `common.scss` doesn't have an output; it is included and wrapped into both `workshop.css` and `fieldnotes.css`.
-* `bin`: Build script
-* `content`: Content files for presentation *and* field notes. Put relevant images for content in `content/images`.
-* `examples`: Files for attendees. `fieldnotes.html` outputs here (from `fieldnotes.content` in `content` directory). Any images necessary for fieldnotes should go in `examples/images`.
-* `presentation`: Presentation HTML files (slidy HTML5 presentation)
-* `presenter-examples`: Examples for presenters to use; not necessary for attendees
-* `workshop.zip`: Doesn't exist at time of writing, but if it is there now, it's a ZIP of the `examples` directory for easier download.
