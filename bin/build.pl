@@ -27,7 +27,7 @@ $slide_path         = $basepath . "/presentation";
 $src_path           = $basepath . "/assets";
 $student_path       = $basepath . "/examples";
 $flags              = '--from=markdown --to=slidy --standalone --slide-level=2';
-$fieldnotes_flags   = '--from=markdown --to=html5 --standalone --section-divs --toc --css=fieldnotes.css';
+$fieldnotes_flags   = '--from=markdown --to=html5 --standalone --section-divs --toc --css=styles/fieldnotes.css';
 
 ## When was the last time a shared/common resource was updated?
 my $common_mtime = 0;
