@@ -475,6 +475,23 @@ Getting Responsive
 </div>
 </div>
 </div>
+<div class="section slide level2" id="a-few-notes-on-more-advanced-media-queries">
+<h1>A few notes on more advanced media queries</h1>
+<div class="section level3" id="constructing-media-queries-with-logical-and">
+<h3>Constructing media queries with logical <code>AND</code></h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">35em)</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">25em)</span> <span class="dv">{</span> <span class="dv">}</span>
+
+<span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(color)</span> <span class="dv">{</span> <span class="dv">}</span></code></pre>
+</div>
+<div class="section level3" id="constructing-media-queries-with-logical-or">
+<h3>Constructing media queries with logical <code>OR</code></h3>
+<ul>
+<li><code>OR</code> is represented by a comma <code>,</code></li>
+</ul>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">print</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">450px),</span>
+       <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">20em)</span> <span class="dv">{</span> <span class="dv">}</span></code></pre>
+</div>
+</div>
 <div class="section titleslide slide level1" id="lets-get-mobile-first"><h1>Let's get <a href="04-rwd-3.html">Mobile-first</a></h1></div>
 </body>
 </html>
