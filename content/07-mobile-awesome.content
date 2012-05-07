@@ -276,6 +276,70 @@ fonts/special-elite-webfont.woff
 
 ![](images/07-appcache-internals.png)
 
+## Clarence has something to say
+
+![](images/clarence.png)
+
+> "I should mention, if we're worried about performance for our web sites, we should consider making some of the server-side tweaks that the ySlow tool suggests." —Clarence the Angry Performance Goat
+
+
+
+## When in battle, remember three things
+
+Yahoo has 14 rules and there are even more things that improve performance, but majority of sites benefit most from four things:
+
+1. Well-compressed images
+2. Turning on GZIP
+3. Reducing HTTP requests
+4. Setting Far Future Expires headers
+
+## Drop-in .htaccess/Apache solutions
+
+### Turn off eTags and Turn *ON* GZip
+
+~~~~
+FileETag none
+
+<IfModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+  # Don’t compress
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+  #Dealing with proxy servers
+  <IfModule mod_headers.c>
+    Header append Vary User-Agent
+  </IfModule>
+</IfModule>
+
+AddOutputFilterByType DEFLATE image/x-icon
+~~~~
+
+##### .htaccess
+
+## Configure far-future expires headers
+
+~~~~
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/html "access plus 1 seconds"
+ExpiresByType image/gif "access plus 2 years"
+ExpiresByType image/jpeg "access plus 2 years"
+ExpiresByType image/png "access plus 2 years"
+ExpiresByType text/css "access plus 2 years"
+ExpiresByType text/javascript "access plus 2 years"
+ExpiresByType application/x-javascript "access plus 2 years"
+ExpiresByType image/x-icon "access plus 2 years"
+</IfModule>
+~~~~
+
+##### .htaccess (cont.)
+
+## Hey, look at that
+
+### Figure: ySlow Final stats
+
+![](images/07-yslow-final.png)
+
 # Let's have a bit more fun with Geolocation
 
 ## W3C Geolocation API

@@ -312,6 +312,69 @@ fonts/special-elite-webfont.woff</code></pre>
 <img src="images/07-appcache-internals.png" /><p class="caption"></p>
 </div>
 </div>
+</div><div class="section slide level2" id="clarence-has-something-to-say">
+<h1>Clarence has something to say</h1>
+<div class="figure">
+<img src="images/clarence.png" /><p class="caption"></p>
+</div>
+<blockquote>
+<p>&quot;I should mention, if we're worried about performance for our web sites, we should consider making some of the server-side tweaks that the ySlow tool suggests.&quot; —Clarence the Angry Performance Goat</p>
+</blockquote>
+</div><div class="section slide level2" id="when-in-battle-remember-three-things">
+<h1>When in battle, remember three things</h1>
+<p>Yahoo has 14 rules and there are even more things that improve performance, but majority of sites benefit most from four things:</p>
+<ol style="list-style-type: decimal">
+<li>Well-compressed images</li>
+<li>Turning on GZIP</li>
+<li>Reducing HTTP requests</li>
+<li>Setting Far Future Expires headers</li>
+</ol>
+</div><div class="section slide level2" id="drop-in-.htaccessapache-solutions">
+<h1>Drop-in .htaccess/Apache solutions</h1>
+<div class="section level3" id="turn-off-etags-and-turn-on-gzip">
+<h3>Turn off eTags and Turn <em>ON</em> GZip</h3>
+<pre><code>FileETag none
+
+&lt;IfModule mod_deflate.c&gt;
+  SetOutputFilter DEFLATE
+  # Don’t compress
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+  #Dealing with proxy servers
+  &lt;IfModule mod_headers.c&gt;
+    Header append Vary User-Agent
+  &lt;/IfModule&gt;
+&lt;/IfModule&gt;
+
+AddOutputFilterByType DEFLATE image/x-icon</code></pre>
+<div class="section level5" id="htaccess-1">
+<h5>.htaccess</h5>
+</div>
+</div>
+</div><div class="section slide level2" id="configure-far-future-expires-headers">
+<h1>Configure far-future expires headers</h1>
+<pre><code>&lt;IfModule mod_expires.c&gt;
+ExpiresActive On
+ExpiresByType text/html &quot;access plus 1 seconds&quot;
+ExpiresByType image/gif &quot;access plus 2 years&quot;
+ExpiresByType image/jpeg &quot;access plus 2 years&quot;
+ExpiresByType image/png &quot;access plus 2 years&quot;
+ExpiresByType text/css &quot;access plus 2 years&quot;
+ExpiresByType text/javascript &quot;access plus 2 years&quot;
+ExpiresByType application/x-javascript &quot;access plus 2 years&quot;
+ExpiresByType image/x-icon &quot;access plus 2 years&quot;
+&lt;/IfModule&gt;</code></pre>
+<div class="section level5" id="htaccess-cont.">
+<h5>.htaccess (cont.)</h5>
+</div>
+</div><div class="section slide level2" id="hey-look-at-that">
+<h1>Hey, look at that</h1>
+<div class="section level3" id="figure-yslow-final-stats">
+<h3>Figure: ySlow Final stats</h3>
+<div class="figure">
+<img src="images/07-yslow-final.png" /><p class="caption"></p>
+</div>
+</div>
 </div>
 <div class="section titleslide slide level1" id="lets-have-a-bit-more-fun-with-geolocation"><h1>Let's have a bit more fun with Geolocation</h1></div><div class="section slide level2" id="w3c-geolocation-api">
 <h1>W3C Geolocation API</h1>
