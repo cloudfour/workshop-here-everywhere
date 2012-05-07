@@ -103,8 +103,6 @@ Keeping ahead of the apocalypse
 </div>
 <div class="section slide level2" id="simple-html-page">
 <h1>Simple HTML Page</h1>
-<div class="section level3" id="code">
-<h3>Code</h3>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="er">&lt;</span>!doctype html&gt;
 <span class="kw">&lt;html&gt;</span>
 <span class="kw">&lt;head&gt;</span>
@@ -128,10 +126,9 @@ Keeping ahead of the apocalypse
 
 <span class="kw">&lt;/html&gt;</span></code></pre>
 </div>
-</div>
 <div class="section slide level2" id="add-some-css-styling...">
 <h1>Add some CSS Styling...</h1>
-<div class="section level3" id="code-1">
+<div class="section level3" id="code">
 <h3>Code</h3>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="er">&lt;</span>!doctype html&gt;
 <span class="kw">&lt;html&gt;</span>
@@ -184,6 +181,7 @@ Keeping ahead of the apocalypse
 </div>
 <div class="section slide level2" id="doing-some-good-with-it">
 <h1>Doing some good with it</h1>
+<p>Let's use Modernizr touch tests to change the navigation experience for touch-enabled devices on the Sigma Stronghold site, by way of demonstration.</p>
 <div class="section level3" id="step-1-add-modernizr-to-sigma-strongholds-page">
 <h3>Step 1: Add Modernizr to Sigma Stronghold's page:</h3>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
@@ -201,7 +199,7 @@ Keeping ahead of the apocalypse
 </div>
 <div class="section slide level2" id="step-2-edit-css">
 <h1>Step 2: Edit CSS</h1>
-<div class="section level3" id="code-2">
+<div class="section level3" id="code-1">
 <h3>Code</h3>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Vertical navigation for touch devices */</span>
 html<span class="fl">.touch</span> <span class="fl">#header</span> <span class="kw">{</span>
@@ -251,8 +249,6 @@ html<span class="fl">.touch</span> <span class="fl">#header</span> nav ul li a <
 <div class="section slide level2" id="and-doing-a-little-something-with-the-info">
 <h1>And doing a little something with the info</h1>
 <p>Going back to our simple HTML page...</p>
-<div class="section level3" id="code-3">
-<h3>Code</h3>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
 
 <span class="kw">&lt;script&gt;</span>
@@ -271,7 +267,6 @@ html<span class="fl">.touch</span> <span class="fl">#header</span> nav ul li a <
 <span class="kw">&lt;/style&gt;</span>
 
 <span class="kw">&lt;title&gt;</span>Device and Feature Detection!<span class="kw">&lt;/title&gt;</span></code></pre>
-</div>
 </div>
 <div class="section slide level2" id="giving-it-a-ul-to-populate">
 <h1>Giving it a <code>&lt;ul&gt;</code> to Populate</h1>
@@ -355,7 +350,7 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 <h1>Putting it to work</h1>
 <div class="section level3" id="writing-some-code-to-interact-with-the-wurfl-data">
 <h3>Writing some code to interact with the WURFL data</h3>
-<div class="section level4" id="code-4">
+<div class="section level4" id="code-2">
 <h4>Code</h4>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 
@@ -391,7 +386,7 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 </div>
 <div class="section slide level2" id="displaying-the-information-gathered">
 <h1>Displaying the information gathered</h1>
-<div class="section level3" id="code-5">
+<div class="section level3" id="code-3">
 <h3>Code</h3>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">require_once</span><span class="ot">(</span><span class="st">&#39;zombie-detect.php&#39;</span><span class="ot">);</span> <span class="kw">?&gt;</span>
 &lt;!doctype html&gt;

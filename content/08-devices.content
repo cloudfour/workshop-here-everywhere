@@ -49,8 +49,6 @@ The open-source JavaScript tool **Modernizr** is very useful for performing clie
 
 ## Simple HTML Page
 
-### Code
-
 ~~~{.html}
 <!doctype html>
 <html>
@@ -127,6 +125,8 @@ You can see these from the Web Inspector in webkit, for example.
 
 ## Doing some good with it
 
+Let's use Modernizr touch tests to change the navigation experience for touch-enabled devices on the Sigma Stronghold site, by way of demonstration.
+
 ### Step 1: Add Modernizr to Sigma Stronghold's page:
 
 ~~~{.html}
@@ -194,7 +194,6 @@ if (window.devicePixelRatio) {
 
 Going back to our simple HTML page...
 
-### Code
 ~~~{.html}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
