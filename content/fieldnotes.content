@@ -1,7 +1,5 @@
 % Field Notes: From Here to Everywhere: Taking your web skills mobile
 
-# Section 1: Assess the Threat
-
 # Section 2: Responsive Web Design: Getting Fluid
 
 * [Starting point](02/01-start) of Sigma Stronghold Website
@@ -258,7 +256,7 @@ Let’s do a test run using a device detection database.
 
 --------------------------------------------------------------
 
-# Section 9: Mobile Web Applications Using Frameworks; a brief intro to jQuery Mobile
+# Section 9: Mobile Web Applications Using Frameworks; jQuery Mobile
 
 
 ### See `examples/09/01-mockup` for an end result example

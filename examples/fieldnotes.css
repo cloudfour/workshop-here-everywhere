@@ -96,7 +96,8 @@ h2, h3 {
   text-align: left; }
 
 a, a:visited, a:active, a:hover {
-  color: #58858b; }
+  color: #58858b;
+  text-decoration: none; }
 
 ul li {
   list-style: none outside none;
@@ -109,6 +110,31 @@ ul li {
 
 ol li {
   margin: 1em 0; }
+
+hr {
+  border: 0;
+  color: #534f44;
+  height: .1em;
+  background-color: #534f44; }
+
+nav#TOC {
+  border: 1px solid #bc98b4;
+  padding: .5em;
+  width: 50%;
+  float: right;
+  margin: 1em; }
+  nav#TOC ul li {
+    line-height: 1em;
+    margin: 0;
+    padding: 0 .25em; }
+  nav#TOC ul li ul {
+    display: none; }
+  nav#TOC:before {
+    display: block;
+    content: "Table of Contents";
+    font-size: 1.25em;
+    font-style: italic;
+    color: #534f44; }
 
 pre {
   overflow: scroll;

@@ -10,6 +10,7 @@ h2, h3 {
 
 a, a:visited, a:active, a:hover {
   color: $color-title;
+  text-decoration: none;
 }
 ul {
   li {
@@ -28,6 +29,39 @@ ul {
 ol {
   li {
     margin: 1em 0;
+  }
+}
+
+hr {
+  border: 0;
+  color: $color-text;
+  height: .1em;
+  background-color: $color-text;
+}
+
+
+nav#TOC {
+  border: 1px solid $color-purple;
+  padding: .5em;
+  width: 50%;
+  float: right;
+  margin: 1em;
+  ul {
+    li {
+      line-height: 1em;
+      margin: 0;
+      padding: 0 .25em;
+    }
+    li ul {
+      display: none;
+    }
+  }
+  &:before {
+    display: block;
+    content: "Table of Contents";
+    font-size: 1.25em;
+    font-style: italic;
+    color: $color-text;
   }
 }
 ///// CODE //////
