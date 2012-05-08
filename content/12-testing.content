@@ -72,6 +72,7 @@
 ## Beefing up your desktop browser
 
 * [User agent switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/)
+* [User agent switcher config file](http://techpatterns.com/forums/about304.html)
 * [Resizer](https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh) / [Web Developer Toolkit](http://chrispederick.com/work/web-developer/)
 * [Mobile Performance Bookmarklets](http://stevesouders.com/mobileperf/mobileperfbkm.php)
 * [jDrop](http://jdrop.org/)
@@ -95,4 +96,4 @@
 > The dirty little secret is that the more you test—the more accurately you will determine when it’s ok not to.
 —Stephanie Rieger
 
-# Some catchy phrase to transition to the next bunch of slides
+# Some catchy phrase to transition to the [next bunch of slides](13-future-friendly.html)
