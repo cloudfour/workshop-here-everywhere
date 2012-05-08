@@ -296,10 +296,9 @@ Let’s do a test run using a device detection database.
 # Section 9: Mobile Web Apps with Frameworks; jQuery Mobile
 
 
-### See `examples/09/01-mockup` for an end result example
-
 ## References
 
+* See `examples/09/01-mockup` for an end result example
 * [jQuery Mobile 1.1 Documentation](http://jquerymobile.com/demos/1.1.0/)
 * [HTML5 data-* attribute](http://html5doctor.com/html5-custom-data-attributes/) on the HTML5Doctor
 

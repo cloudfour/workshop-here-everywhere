@@ -187,7 +187,7 @@ At the outset, our jQM page is empty. Let's put some stuff in it.
 </div>
 ~~~
 
-### Try it out!
+### [Try it out!](../presenter-examples/09/01-build-page)
 
 ## Et Voila!
 
@@ -279,7 +279,7 @@ At the outset, our jQM page is empty. Let's put some stuff in it.
 
 ![](images/09-with-controls.png)
 
-Now our fighters have a way to input nabbed-zombie input.
+Now our fighters [have a way to input](../presenter-examples/09/01-build-page) nabbed-zombie input.
 
 
 ## Dead Zombie Storage
@@ -301,7 +301,6 @@ When a soldier nabs a zombie by tapping the "I Got One!" button, we'll need a pl
 
 ### jQuery Mobile Turns This
 
-#### Code
 
 ~~~ {.html}
 <ul data-role="listview" data-inset="true" id="zombielist">
@@ -323,6 +322,6 @@ So...each added zombie, ultimately, will get added as a `<li>` element in that e
 
 ### Figure: List example
 
-![](images/09-mockup.png)
+![Now we have a nice jQM [mockup](../examples/09/01-mockup)](images/09-mockup.png)
 
 # Let's [get a bit more advanced now](10-advanced-web-apps.html)
