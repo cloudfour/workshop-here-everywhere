@@ -60,7 +60,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="#references-2">References</a></li>
 </ul></li>
-<li><a href="#section-5-when-rwd-goes-wrong">Section 5: When RWD Goes Wrong</a></li>
+<li><a href="#section-5-when-rwd-goes-wrong">Section 5: When RWD Goes Wrong</a><ul>
+<li><a href="#mobile-first-responsive-web-designs">Mobile First Responsive Web Designs?</a></li>
+<li><a href="#the-first-zombie-was-ie">The first zombie was IE</a></li>
+<li><a href="#prevent-extra-background-image-downloads">Prevent extra background image downloads</a></li>
+<li><a href="#responsive-images">Responsive images</a></li>
+</ul></li>
 <li><a href="#section-6-advanced-rwd-topics">Section 6: Advanced RWD Topics</a><ul>
 <li><a href="#flexbox-css">Flexbox CSS</a></li>
 <li><a href="#references-3">References</a></li>
@@ -233,7 +238,58 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section class="level1" id="section-5-when-rwd-goes-wrong">
 <h1><a href="#TOC">Section 5: When RWD Goes Wrong</a></h1>
+<section class="level2" id="mobile-first-responsive-web-designs">
+<h2><a href="#TOC">Mobile First Responsive Web Designs?</a></h2>
+<p>Everyone talks about Mobile First Responsive Web Design, but no one does it.</p>
+<ul>
+<li><a href="http://blog.cloudfour.com/where-are-the-mobile-first-responsive-web-designs/">Where are the Mobile First Responsive Web Designs?</a></li>
+<li><a href="http://www.slideshare.net/guypod/performance-implications-of-mobile-design">Performance Implications of Mobile Design</a></li>
+</ul>
+</section>
+<section class="level2" id="the-first-zombie-was-ie">
+<h2><a href="#TOC">The first zombie was IE</a></h2>
+<p>IE8 and below don’t support media queries. Use conditional comments.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;taps.css&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;layout.css&quot;</span><span class="ot"> media=</span><span class="st">&quot;all and min-width: 481px)&quot;</span><span class="kw">&gt;</span>
+<span class="co">&lt;!--[if (lt IE 9) &amp; (!IEMobile)]&gt;</span>
+<span class="co">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;layout.css&quot; media=&quot;all&quot; /&gt;</span>
+<span class="co">&lt;![endif]--&gt;</span></code></pre>
+<p>Or use a JavaScript Polyfill</p>
+<ul>
+<li>Respond.js: <a href="https://github.com/scottjehl/Respond">https://github.com/scottjehl/Respond</a></li>
+<li>CSS3MediaQueries.js: <a href="http://code.google.com/p/css3-mediaqueries-js/">http://code.google.com/p/css3-mediaqueries-js/</a></li>
+</ul>
+</section>
+<section class="level2" id="prevent-extra-background-image-downloads">
+<h2><a href="#TOC">Prevent extra background image downloads</a></h2>
+<p>Things that work:</p>
+<ul>
+<li>Use display:none on the parent element</li>
+<li>Media queries that don’t overlap:</li>
+</ul>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">500px)</span> <span class="dv">{</span>
+    <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;small.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
+<span class="dv">}</span>
+<span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">501px)</span> <span class="dv">{</span>
+    <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;large.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
+<span class="dv">}</span></code></pre>
+<ul>
+<li><a href="http://timkadlec.com/2012/04/media-query-asset-downloading-results/">Comprehensive test results for background images</a></li>
+</ul>
+</section>
+<section class="level2" id="responsive-images">
+<h2><a href="#TOC">Responsive images</a></h2>
+<ul>
+<li><a href="http://blog.cloudfour.com/responsive-imgs/">Background on responsive images problem - multiple blog posts</a></li>
+<li><a href="http://blog.cloudfour.com/responsive-imgs-part-2/">Various responsive images solutions</a></li>
+<li><a href="https://github.com/filamentgroup/Responsive-Images/tree/data-attribute-based">Filament Group’s responsive images</a></li>
+<li><a href="http://adaptive-images.com/">Adaptive Images</a></li>
+<li><a href="http://blog.cloudfour.com/a-framework-for-discussing-responsive-images-solutions/">A framework for discussing responsive images solutions</a></li>
+<li><a href="http://www.w3.org/community/respimg/">Responsive Images Community Group</a></li>
+<li><a href="http://blog.cloudfour.com/responsive-web-design-business-challenges/">Responsive Web Design Business Challenges</a></li>
+</ul>
 <hr>
+</section>
 </section>
 <section class="level1" id="section-6-advanced-rwd-topics">
 <h1><a href="#TOC">Section 6: Advanced RWD Topics</a></h1>

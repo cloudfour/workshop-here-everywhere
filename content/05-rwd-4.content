@@ -73,10 +73,12 @@ Things that work:
 
 As of iOS 4.2:
 
-* background-image:none on the element will override image without an extra download
 * replacing a background-image will only result in one image being downloaded
 
-But, display:none on element still downloads images.
+But, display:none on the element itself still downloads images.
+
+* [Tim Kadlec’s comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
+
 
 # What about image tags?
 

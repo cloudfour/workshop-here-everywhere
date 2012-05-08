@@ -124,6 +124,58 @@ img {
 
 # Section 5: When RWD Goes Wrong
 
+## Mobile First Responsive Web Designs?
+
+Everyone talks about Mobile First Responsive Web Design, but no one does it. 
+
+* [Where are the Mobile First Responsive Web Designs?](http://blog.cloudfour.com/where-are-the-mobile-first-responsive-web-designs/)
+* [Performance Implications of Mobile Design](http://www.slideshare.net/guypod/performance-implications-of-mobile-design)
+
+## The first zombie was IE
+
+IE8 and below don’t support media queries. Use conditional comments.
+
+~~~ {.html}
+<link rel="stylesheet" type="text/css" href="taps.css" />
+<link rel="stylesheet" type="text/css" href="layout.css" media="all and min-width: 481px)">
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" type="text/css" href="layout.css" media="all" />
+<![endif]-->
+~~~
+
+Or use a JavaScript Polyfill
+
+* Respond.js: [https://github.com/scottjehl/Respond]( https://github.com/scottjehl/Respond)
+* CSS3MediaQueries.js: [http://code.google.com/p/css3-mediaqueries-js/](http://code.google.com/p/css3-mediaqueries-js/)
+
+## Prevent extra background image downloads
+
+Things that work:
+
+* Use display:none on the parent element
+* Media queries that don’t overlap:
+
+~~~ {.css }
+@media all and (max-width: 500px) {
+    #logo {background-image:url('small.png');}
+}
+@media all and (min-width: 501px) {
+    #logo {background-image:url('large.png');}
+}
+~~~
+
+* [Comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
+
+## Responsive images
+
+* [Background on responsive images problem - multiple blog posts](http://blog.cloudfour.com/responsive-imgs/)
+* [Various responsive images solutions](http://blog.cloudfour.com/responsive-imgs-part-2/)
+* [Filament Group’s responsive images](https://github.com/filamentgroup/Responsive-Images/tree/data-attribute-based)
+* [Adaptive Images](http://adaptive-images.com/)
+* [A framework for discussing responsive images solutions](http://blog.cloudfour.com/a-framework-for-discussing-responsive-images-solutions/)
+* [Responsive Images Community Group](http://www.w3.org/community/respimg/)
+* [Responsive Web Design Business Challenges](http://blog.cloudfour.com/responsive-web-design-business-challenges/)
+
 ----------------------------------------------------------------
 
 # Section 6: Advanced RWD Topics
