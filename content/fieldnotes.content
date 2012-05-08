@@ -161,10 +161,12 @@ For the final CSS, with the menu button, see `examples/06/01-flexbox/styles.css`
 * [Styletil.es](styletil.es), a new approach of visual design workflow for websites
 * [Flexbox Spec](http://www.w3.org/TR/css3-flexbox), the W3C's CSS3 flexbox spec at present
 * [Stephen Hay's Flexbox Tutorial](http://www.the-haystack.com/2012/01/04/learn-you-a-flexbox/) A great place to start.
+* [CSS-Tricks Article: Viewport Sized Typography](http://css-tricks.com/viewport-sized-typography/) from [@chriscoyier](http://twitter.com/chriscoyier)
+* [FitText JavaScript plugin](http://fittextjs.com/)
 
 ---------------------------------------------------------------------
 
-# Section 7: Mobile Awesome
+# Section 7: Awesomesauce: AppCache and Geolocation
 
 ## ApplicationCache
 
@@ -209,38 +211,6 @@ AddType text/cache-manifest .appcache
 3. Create a basic cache manifest file (`manifest.appcache`).
 4. *Remember*: All referenced resources—images, JavaScript, CSS, etc.—must be listed in the Cache Manifest.
 
-## Server-side performance tweaks
-
-
-~~~~
-FileETag none
-
-<IfModule mod_deflate.c>
-  SetOutputFilter DEFLATE
-  # Don’t compress
-  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
-  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
-  #Dealing with proxy servers
-  <IfModule mod_headers.c>
-    Header append Vary User-Agent
-  </IfModule>
-</IfModule>
-
-AddOutputFilterByType DEFLATE image/x-icon
-
-<IfModule mod_expires.c>
-ExpiresActive On
-ExpiresByType text/html "access plus 1 seconds"
-ExpiresByType image/gif "access plus 2 years"
-ExpiresByType image/jpeg "access plus 2 years"
-ExpiresByType image/png "access plus 2 years"
-ExpiresByType text/css "access plus 2 years"
-ExpiresByType text/javascript "access plus 2 years"
-ExpiresByType application/x-javascript "access plus 2 years"
-ExpiresByType image/x-icon "access plus 2 years"
-</IfModule>
-~~~~
-
 ##### .htaccess example
 
 ## Geolocation
@@ -262,7 +232,8 @@ function onGeoError(error) {
 
 ## References
 
-* Final version of cache manifest file and font files can be found in `examples/07/02-appcache-fonts`
+* Final version of cache manifest file and font files can be found in `examples/07/02-appcache-fonts` (This includes final cache manifest file *and* updated .htaccess file with performance tweaks and appCache handler).
+* Geolocation example can be found in `07/03-geolocation`. *Note*: If you are not running a local web server, you may not be able to get the geolocation example to work; many browsers' security settings disallow JS-based geolocation for local files.
 
 ### ApplicationCache
 

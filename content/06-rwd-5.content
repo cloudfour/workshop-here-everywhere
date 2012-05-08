@@ -261,4 +261,22 @@ h4#menulink {
 
 How could we possibly create a flexbox layout without breaking the layout in browsers that don't support flexbox?
 
+## More new fun with CSS
+
+### Viewport length units
+
+#### `vw`, `vh` and `vmin`
+
+* `vw`: Viewport width unit. `1vw` = 1% of the viewport width.
+* `vh`: Viewport height unit. `1vw` = 1% of the viewport height.
+* `vmin`: The smaller of the two dimensions (width or height) of the viewport. If height > width, then `1vmin` = `1vw`, for example.
+
+## So what?
+
+Might eliminate the need to create font scaling in media queries, and make font sizing flex comfortably with viewport size changes.
+
+### Want it now?
+
+There is the FitText JavaScript plugin, as well.
+
 # Time to change gears and get [Mobile Awesome](07-mobile-awesome.html).
