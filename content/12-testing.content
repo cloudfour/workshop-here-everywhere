@@ -1,9 +1,79 @@
 % Ugh, Testing
 % Getting started in the scary world of testing
 
-# In this section
+## Some perspective
 
-* New section
-* Building a basic testing lab
-* Emulators
-* Tools: Shadow, Dragonfly, others
+> If you think your web site works, you just haven’t tested enough. It is broken somewhere.
+> —Lyza Gardner
+
+## We can’t test everything
+
+* No one tests every possible device and browser combination.
+* Even on desktop, we don’t test every possible combination.
+* So we have to make practical decisions about what we can reasonably test and develop sites in a way that minimizes potential issues.
+
+## What does it mean to “support” a device?
+
+* We think of support as coming in three tiers:
+    * Devices and browsers that we explicitly support.
+    * Devices and browsers that we don’t explicitly support, but that we expect to work in some fashion because we’ve built the site with best practices.
+    * Devices and browsers we cannot support because they don’t meet a minimum bar for the application or site.
+* The devices and browsers that we explicitly support are the ones we need to test on.
+
+## How do you decide what devices to support?
+
+### Requirements & Audience
+
+## Requirements
+
+## Audience
+
+## Beware of the analytics trap:
+
+### We can’t predict future behavior from a current experience that sucks.
+
+## Device support decision matrix
+
+# Building a device testing library.
+
+## Priority of devices will depend on what you support
+
+* Let your project work dictate the order in which you buy devices.
+* Once you have a foundation, plan for buying devices on a regular basis. Make it a known recurring expense. Include buying devices in project budgets.
+* Save money by buying used devices.
+* Buy GSM phones so you can use a single SIM card for all the phones.
+* Get a microSIM adapter so you can move a microSIM into a regular-sized SIM slot.
+* Work with others in your community to share devices.
+
+## A suggested starter kit.
+
+* iOS devices: focus on old devices like the original iPod Touch and older iPhones. It is very likely that you or your co-workers already own iOS devices that you can borrow.
+* Android: Buy unlocked GSM versions of each Nexus device. Get a Samsung Galaxy S and a more recent Galaxy device.
+* Blackberry: Vary the input between those that have touch and those that don’t. BB6.0 and above are WebKit and substantially better. 5.0 is ok. 4.x is horrible.
+* Windows Phone: Nokia Lumia line is the best option.
+* Symbian: ?
+* VERIFY WITH BRAD’S LIST.
+
+# Tools for testing.
+
+## Beefing up your desktop browser
+
+* User agent switcher
+* Resizer / Web Developer Toolkit
+* Mobile Performance Bookmarklets
+* jDrop
+* Blaze.io Mobile Test
+
+## Adobe Shadow
+
+* Remote testing for iOS and Android
+* Demonstration
+
+## Other tools
+
+* Weinre: Foundation for Adobe Shadow
+* Debug.phonegap.com: Free hosted version of weinre. Demo. Good for using on platforms that Adobe Shadow doesn’t support or if you need to test the actual browser.
+* Shim.js: Push pages like Adobe Shadow
+* Device Anywhere and Perfecto Mobile: real remote debugging
+
+# Stephanie quote
