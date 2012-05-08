@@ -71,6 +71,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#exercise-1">Exercise</a><ul>
 <li><a href="#exercise-2">Exercise</a></li>
 </ul></li>
+<li><a href="#server-side-performance-tweaks">Server-side performance tweaks</a><ul>
+<li><a href="#htaccess-example">.htaccess example</a></li>
+</ul></li>
 <li><a href="#geolocation">Geolocation</a></li>
 <li><a href="#references-4">References</a><ul>
 <li><a href="#applicationcache-1">ApplicationCache</a></li>
@@ -274,6 +277,38 @@ ding/dong.html</code></pre>
 <li>Create a basic cache manifest file (<code>manifest.appcache</code>).</li>
 <li><em>Remember</em>: All referenced resources—images, JavaScript, CSS, etc.—must be listed in the Cache Manifest.</li>
 </ol>
+</section>
+</section>
+<section class="level2" id="server-side-performance-tweaks">
+<h2><a href="#TOC">Server-side performance tweaks</a></h2>
+<pre><code>FileETag none
+
+&lt;IfModule mod_deflate.c&gt;
+  SetOutputFilter DEFLATE
+  # Don’t compress
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+  #Dealing with proxy servers
+  &lt;IfModule mod_headers.c&gt;
+    Header append Vary User-Agent
+  &lt;/IfModule&gt;
+&lt;/IfModule&gt;
+
+AddOutputFilterByType DEFLATE image/x-icon
+
+&lt;IfModule mod_expires.c&gt;
+ExpiresActive On
+ExpiresByType text/html &quot;access plus 1 seconds&quot;
+ExpiresByType image/gif &quot;access plus 2 years&quot;
+ExpiresByType image/jpeg &quot;access plus 2 years&quot;
+ExpiresByType image/png &quot;access plus 2 years&quot;
+ExpiresByType text/css &quot;access plus 2 years&quot;
+ExpiresByType text/javascript &quot;access plus 2 years&quot;
+ExpiresByType application/x-javascript &quot;access plus 2 years&quot;
+ExpiresByType image/x-icon &quot;access plus 2 years&quot;
+&lt;/IfModule&gt;</code></pre>
+<section class="level5" id="htaccess-example">
+<h5><a href="#TOC">.htaccess example</a></h5>
 </section>
 </section>
 <section class="level2" id="geolocation">
