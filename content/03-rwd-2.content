@@ -162,9 +162,10 @@ Can you think of a way to make the contact information even better? (*Hint*: Thi
 
 ## And now back to our main problem
 
-![](images/03-awkward.png)
 
-* At narrow widths, the content looks smushy and awkward.
+### Figure: Awkward layout
+![At narrow widths, the content looks smushy and awkward.](images/03-awkward.png)
+
 
 ## Media Queries to the rescuce
 
@@ -231,6 +232,12 @@ The most relevant media types are:
 
 With media queries, we can apply different CSS in different circumstances. For the Sigma Stronghold site, we can create a CSS layout appropriate for narrower screens and only apply it when the window is narrower than a certain threshold, for example.
 
+### Let's build a media-query driven layout for widths 700px width or narrower.
+
+#### Extra Credit
+
+Can someone tell me what the media query for this should look like?
+
 ## Our crafted media query
 
 `@media screen and (max-width: 700px) { }`
@@ -286,7 +293,7 @@ We need to craft some CSS to create a single-column, comfortable layout for narr
 
 ### Figure: Checking it out
 
-![Let's [check it out](../exercises/06-narrow-layout)](images/03-single-column.png)
+![Let's [check it out](../presenter-examples/03/04-narrow-layout)](images/03-single-column.png)
 
 ## Where to from here?
 
