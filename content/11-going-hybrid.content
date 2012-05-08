@@ -5,7 +5,7 @@
 
 ### Reverse: Hybrid structure
 
-TODO: IMAGE
+![](images/11-hybrid.png)
 
 Sometimes you need to do something that you just can't quite pull off (yet) on the mobile web.
 
@@ -32,11 +32,10 @@ Giddyup!
 
 ## Anatomy of a PhoneGap project
 
-TODO: IMAGE
+### Illustration: PhoneGap Anatomy
 
-* Web stuff: HTML, JS, CSS, images, whatever!
-* A config.xml file
-* For PhoneGap Build, ZIP it up and then upload it.
+![](images/11-anatomy.png)
+
 
 ## The PhoneGap API
 
