@@ -35,9 +35,9 @@ What improvements (not mentioned in the slides) do you see to `02/02-fluid/index
 
 # Section 3: Getting Responsive
 
-## Responsive Images
+## Flexible Images
 
-### Snippet reference: Responsive Images
+### Snippet reference: Flexible Images
 
 ~~~{.css}
 img {

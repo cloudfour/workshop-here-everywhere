@@ -19,9 +19,9 @@
 * Explicit `width` and `height` attributes in `img` tag don't scale
 * When `#sidebar` is narrower than the width of the image, it breaks free
 
-## Solution: Responsive Images
+## Solution: Flexible Images
 
-*Responsive Images* are the second tenet of Responsive Web Design. By adding this rule to our CSS, we can keep unruly images from breaking free of the confines of their parent elements:
+*Flexible Images* are the second tenet of Responsive Web Design. By adding this rule to our CSS, we can keep unruly images from breaking free of the confines of their parent elements:
 
 ~~~{.css}
 img {
@@ -29,7 +29,7 @@ img {
 }
 ~~~
 
-### Also Responsive Objects
+### Also Flexible Objects
 
 You can also use this same approach for embedded objects, like
 
@@ -55,7 +55,7 @@ Let's [take a look](../presenter-examples/03/01-responsive-images-partial), shal
 </div>
 ~~~
 
-To make responsive images work, we have to remove the `width` and `height` attributes from our `img` tag:
+To make flexible images work, we have to remove the `width` and `height` attributes from our `img` tag:
 
 ~~~{.html}
 <div id="nozombies">

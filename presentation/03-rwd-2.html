@@ -60,14 +60,14 @@ Getting Responsive
 <li>When <code>#sidebar</code> is narrower than the width of the image, it breaks free</li>
 </ul>
 </div>
-<div class="section slide level2" id="solution-responsive-images">
-<h1>Solution: Responsive Images</h1>
-<p><em>Responsive Images</em> are the second tenet of Responsive Web Design. By adding this rule to our CSS, we can keep unruly images from breaking free of the confines of their parent elements:</p>
+<div class="section slide level2" id="solution-flexible-images">
+<h1>Solution: Flexible Images</h1>
+<p><em>Flexible Images</em> are the second tenet of Responsive Web Design. By adding this rule to our CSS, we can keep unruly images from breaking free of the confines of their parent elements:</p>
 <pre class="sourceCode css"><code class="sourceCode css">img <span class="kw">{</span>
   <span class="kw">max-width:</span> <span class="dt">100%</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-<div class="section level3" id="also-responsive-objects">
-<h3>Also Responsive Objects</h3>
+<div class="section level3" id="also-flexible-objects">
+<h3>Also Flexible Objects</h3>
 <p>You can also use this same approach for embedded objects, like</p>
 <pre class="sourceCode css"><code class="sourceCode css">img, obj <span class="kw">{</span>
   <span class="kw">max-width:</span> <span class="dt">100%</span><span class="kw">;</span>
@@ -89,7 +89,7 @@ Getting Responsive
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;nozombies&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/zombie-girl.png&quot;</span><span class="ot"> width=</span><span class="st">&quot;295&quot;</span><span class="ot"> height=</span><span class="st">&quot;295&quot;</span><span class="ot"> alt=</span><span class="st">&quot;NO ZOMBIES ALLOWED!!!&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
-<p>To make responsive images work, we have to remove the <code>width</code> and <code>height</code> attributes from our <code>img</code> tag:</p>
+<p>To make flexible images work, we have to remove the <code>width</code> and <code>height</code> attributes from our <code>img</code> tag:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;nozombies&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/zombie-girl.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;NO ZOMBIES ALLOWED!!!&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
