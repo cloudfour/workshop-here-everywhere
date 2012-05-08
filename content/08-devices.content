@@ -121,7 +121,7 @@ The open-source JavaScript tool **Modernizr** is very useful for performing clie
 
 ![](images/08-inspector-touch.png)
 
-You can see these from the Web Inspector in webkit, for example.
+You can see these from the [Web Inspector in webkit](../examples/08/01-modernizr), for example.
 
 ## Doing some good with it
 
@@ -412,7 +412,7 @@ if ($api_key) {
 
 ##### index.html
 
-## And
+## [And](../presenter-examples/08/04-wurfl)
 
 ![Desktop browser](images/08-wurfl-data.png)
 

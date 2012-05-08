@@ -286,6 +286,7 @@ Let’s do a test run using a device detection database.
 * [DeviceAtlas][deviceatlas] by [dotMobi][dotmobi]
 * New Apache [DeviceMap][devicemap] Project
 * [51degrees][51]
+* [RESS: Responsive Design + Server-Side Components](http://www.lukew.com/ff/entry.asp?1392) from Luke Wroblewski
 
 
 [^wurfl]: You can get a free API key at <http://www.scientiamobile.com/cloud>. The capabilities used in the example are `is_touchscreen` and `has_cellular_radio`. This is likely more trouble than you want to go to to follow along; no worries!
