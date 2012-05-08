@@ -285,6 +285,7 @@ Remember our viewport settings:
 ## What happens if we remove the viewport tag?
 
 ![No `viewport` tag](images/02-no-viewport.png)
+
 ![With `viewport` tag](images/02-viewport.png)
 
 ## What if, instead...
@@ -395,6 +396,8 @@ body > div {
 
 ### Instead of 
 
+#### Code
+
 ~~~{.css}
 #container {
   background: black;
@@ -405,6 +408,8 @@ body > div {
 ~~~
 
 ### Use
+
+#### Code
 
 ~~~{.css}
 #container {
@@ -425,6 +430,8 @@ Watch out: Context has changed. This padding is relevant to its parent element: 
 
 ### Instead of
 
+#### Code
+
 ~~~{.css}
 #container {
   background: black;
@@ -435,6 +442,8 @@ Watch out: Context has changed. This padding is relevant to its parent element: 
 ~~~
 
 ### We Use
+
+#### Code
 
 ~~~{.css}
 #container {
@@ -487,6 +496,8 @@ Watch out: Context has changed. This padding is relevant to its parent element: 
 
 Instead of having a bunch of padding widths that are different small percentages, maybe we should standardize on a single number. Let's say 1.5% to compromise. That gives us:
 
+#### Code
+
 ~~~{.css}
 #main {
   margin-left: 1.5%;
@@ -498,6 +509,8 @@ Instead of having a bunch of padding widths that are different small percentages
 ~~~
 
 and, for the `#container`:
+
+#### Code
 
 ~~~{.css}
 #container {

@@ -370,7 +370,12 @@ Getting Fluid
 </ul>
 </div><div class="section slide level2" id="what-happens-if-we-remove-the-viewport-tag">
 <h1>What happens if we remove the viewport tag?</h1>
-<p><img src="images/02-no-viewport.png" alt="No viewport tag" /> <img src="images/02-viewport.png" alt="With viewport tag" /></p>
+<div class="figure">
+<img src="images/02-no-viewport.png" alt="No viewport tag" /><p class="caption">No <code>viewport</code> tag</p>
+</div>
+<div class="figure">
+<img src="images/02-viewport.png" alt="With viewport tag" /><p class="caption">With <code>viewport</code> tag</p>
+</div>
 </div><div class="section slide level2" id="what-if-instead...">
 <h1>What if, instead...</h1>
 <p>Responsive Web Design (RWD) is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure.</p>
@@ -476,6 +481,8 @@ Getting Fluid
 <p>900 / 920 = .9782...</p>
 <div class="section level3" id="instead-of-1">
 <h3>Instead of</h3>
+<div class="section level4" id="code-2">
+<h4>Code</h4>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
   <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
   <span class="kw">padding:</span> <span class="dt">10px</span><span class="kw">;</span>
@@ -483,14 +490,18 @@ Getting Fluid
   <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 </div>
+</div>
 <div class="section level3" id="use-1">
 <h3>Use</h3>
+<div class="section level4" id="code-3">
+<h4>Code</h4>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
   <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
   <span class="kw">padding:</span> <span class="dt">10px</span><span class="kw">;</span>
   <span class="kw">width:</span> <span class="dt">97.8%</span><span class="kw">;</span>
   <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+</div>
 </div>
 </div><div class="section slide level2" id="wait-what-about-that-padding">
 <h1>Wait, what about that padding?</h1>
@@ -501,6 +512,8 @@ Getting Fluid
 </div>
 <div class="section level3" id="instead-of-2">
 <h3>Instead of</h3>
+<div class="section level4" id="code-4">
+<h4>Code</h4>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
   <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
   <span class="kw">padding:</span> <span class="dt">10px</span><span class="kw">;</span>
@@ -508,14 +521,18 @@ Getting Fluid
   <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 </div>
+</div>
 <div class="section level3" id="we-use">
 <h3>We Use</h3>
+<div class="section level4" id="code-5">
+<h4>Code</h4>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
   <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
   <span class="kw">padding:</span> <span class="dt">1.1%</span><span class="kw">;</span>
   <span class="kw">width:</span> <span class="dt">97.8%</span><span class="kw">;</span>
   <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+</div>
 </div>
 </div><div class="section slide level2" id="main-column">
 <h1>Main Column</h1>
@@ -554,6 +571,8 @@ Getting Fluid
 <div class="section level3" id="wait...">
 <h3>Wait...</h3>
 <p>Instead of having a bunch of padding widths that are different small percentages, maybe we should standardize on a single number. Let's say 1.5% to compromise. That gives us:</p>
+<div class="section level4" id="code-6">
+<h4>Code</h4>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#main</span> <span class="kw">{</span>
   <span class="kw">margin-left:</span> <span class="dt">1.5%</span><span class="kw">;</span>
   <span class="kw">clear:</span> <span class="dt">left</span><span class="kw">;</span>
@@ -562,6 +581,9 @@ Getting Fluid
   <span class="co">/* ... */</span>
 <span class="kw">}</span></code></pre>
 <p>and, for the <code>#container</code>:</p>
+</div>
+<div class="section level4" id="code-7">
+<h4>Code</h4>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#container</span> <span class="kw">{</span>
   <span class="kw">background:</span> <span class="dt">black</span><span class="kw">;</span>
   <span class="kw">padding:</span> <span class="dt">1.5%</span><span class="kw">;</span>
@@ -569,6 +591,7 @@ Getting Fluid
   <span class="kw">clear:</span> <span class="dt">both</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p><strong>Note:</strong> We had to change the <code>width</code> to account for the updated padding!</p>
+</div>
 </div>
 </div><div class="section slide level2" id="finally-the-sidebar">
 <h1>Finally, the sidebar</h1>
@@ -591,7 +614,7 @@ Getting Fluid
 </div><div class="section slide level2" id="all-together-now">
 <h1>All together now</h1>
 <p>Simplified CSS (ignoring the non-structural parts!):</p>
-<div class="section level3" id="code-2">
+<div class="section level3" id="code-8">
 <h3>Code</h3>
 <pre class="sourceCode css"><code class="sourceCode css">body &gt; div <span class="kw">{</span>
   <span class="kw">width:</span> <span class="dt">90%</span><span class="kw">;</span>
