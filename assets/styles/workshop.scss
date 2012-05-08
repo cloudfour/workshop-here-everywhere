@@ -6,19 +6,17 @@ div.slide {
     color: $color-title;
   }
   ul {
-    // TODO: Asterisk-styled
-    padding: 0;
+    list-style-type: none;
     li {
-      list-style: none outside none;
-      margin: 0;
       padding: .25em;
-      display: block;
-      &:before {
-        content: "\2217";
-        font-size: 1.75em;
-        margin-right: .5em;
+      list-style-type: none;
+      background-image: url('bullet.png');
+      background-repeat: no-repeat;
+      padding-left: 50px;
+      background-position: 0.5em .5em;
+      &:nth-of-type(odd) {
+        background-color: $color-background-pale;
       }
-      border-bottom: 1px dashed $color-pale;
     }
   }
   // Image alignment styles

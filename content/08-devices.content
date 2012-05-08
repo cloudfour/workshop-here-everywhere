@@ -301,6 +301,39 @@ OR
 $value = $device->getCapability('cookie_support');
 ~~~
 
+## Zombie are like snowflakes
+
+Each one is unique, but for the most part, you don’t care. You can’t build a specific tool for each one, even if a specialized weapon would be most effective.
+
+Instead, you need to group them into categories that are similar enough that you can treat them similarly.
+
+## Herd them into device classes
+
+![](images/08-herd-devices.png)
+
+A *device class* is an abstract collection of common characteristics that define a group of devices and their browsers.
+
+## As few device classes as possible
+
+### Figure: Typical device classes
+
+![](images/08-typical-classes.png)
+
+## Tips for device detection
+
+* Responsive web design still makes sense within device classes
+* Overlap as much as you can between templates. No need to maintain wholly separate templates.
+* Think about what you fallback to if the device isn’t found in the database.
+
+## Best practices
+
+* Support every URL regardless of device
+* Don’t dumb it down just because the screen is smaller
+* Allow people to select a different experience
+* Use JavaScript to verify the detection and correct errors
+* Feed the corrections back into your database
+* [RESS: Responsive Design + Server Side Components][ress]
+
 ## Putting it to work
 
 ### Writing some code to interact with the WURFL data
@@ -403,6 +436,8 @@ $(document).ready(function() {
 ~~~
 
 And [what does it report](../examples/08/05-flexbox)?
+
+
 
 
 # Wanna [build a mobile web app](09-web-apps.html)?

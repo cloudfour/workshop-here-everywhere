@@ -77,7 +77,7 @@ blockquote {
   line-height: 1.5em;
   margin: .5em 2em;
   padding: .25em;
-  border: 0.1em solid #9eab7d; }
+  color: #9e6a92; }
 
 strong, b {
   font-family: "OpenSansBold"; }
@@ -88,20 +88,33 @@ em, i {
 p, li {
   line-height: 1.35em; }
 
+ol {
+  counter-reset: orderedlist; }
+  ol li {
+    list-style-type: none; }
+    ol li:before {
+      font-size: .75em;
+      counter-increment: orderedlist;
+      content: counter(orderedlist);
+      color: #f5f4f0;
+      background-color: #58858b;
+      padding: .5em .8em;
+      border-radius: 1.75em;
+      margin: 1em 1em 1em -1em; }
+
 div.slide a, div.slide a:visited, div.slide a:active, div.slide a:hover {
   color: #58858b; }
 div.slide ul {
-  padding: 0; }
+  list-style-type: none; }
   div.slide ul li {
-    list-style: none outside none;
-    margin: 0;
     padding: .25em;
-    display: block;
-    border-bottom: 1px dashed #b9b5aa; }
-    div.slide ul li:before {
-      content: "\2217";
-      font-size: 1.75em;
-      margin-right: .5em; }
+    list-style-type: none;
+    background-image: url("bullet.png");
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    background-position: 0.5em .5em; }
+    div.slide ul li:nth-of-type(odd) {
+      background-color: #efede7; }
 div.slide div.figure {
   max-width: 50%;
   min-width: 35%;

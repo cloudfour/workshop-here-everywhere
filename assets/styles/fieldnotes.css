@@ -77,7 +77,7 @@ blockquote {
   line-height: 1.5em;
   margin: .5em 2em;
   padding: .25em;
-  border: 0.1em solid #9eab7d; }
+  color: #9e6a92; }
 
 strong, b {
   font-family: "OpenSansBold"; }
@@ -87,6 +87,20 @@ em, i {
 
 p, li {
   line-height: 1.35em; }
+
+ol {
+  counter-reset: orderedlist; }
+  ol li {
+    list-style-type: none; }
+    ol li:before {
+      font-size: .75em;
+      counter-increment: orderedlist;
+      content: counter(orderedlist);
+      color: #f5f4f0;
+      background-color: #58858b;
+      padding: .5em .8em;
+      border-radius: 1.75em;
+      margin: 1em 1em 1em -1em; }
 
 body {
   max-width: 90%;

@@ -1,6 +1,7 @@
 $color-warm:#f5f4f0;
 $color-pale: #b9b5aa;
 $color-background-mid: darken($color-warm, 5%);
+$color-background-pale: darken($color-warm, 3%);
 $color-text:darken($color-pale, 40%);
 $color-title:#58858b;
 $color-accent:#e44b0f;
@@ -174,7 +175,7 @@ blockquote {
   line-height:    1.5em;
   margin:         .5em 2em;
   padding:        .25em;
-  border:         .1em solid $color-green;
+  color: darken($color-purple, 15%);
 }
 
 strong, b {
@@ -187,4 +188,23 @@ em, i {
 
 p, li {
   line-height:    1.35em;
+}
+
+ol {
+  counter-reset: orderedlist;
+  li {
+    list-style-type: none;
+    &:before {
+      font-size: .75em;
+      counter-increment: orderedlist;
+      content: counter(orderedlist);
+      color: $color-warm;
+      background-color: $color-title;
+      padding: .5em .8em;
+      border-radius: 1.75em;
+      margin: 1em 1em 1em -1em;
+      
+    }
+  }
+  
 }
