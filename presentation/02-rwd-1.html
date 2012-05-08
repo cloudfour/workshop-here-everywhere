@@ -131,7 +131,15 @@ Getting Fluid
 </div>
 </div>
 </div>
-<div class="section titleslide slide level1" id="lets-talk-about-what-is-going-wrong-here"><h1>Let's talk about what is going wrong here</h1></div><div class="section slide level2" id="whats-this-broken-thing-down-here">
+<div class="section titleslide slide level1" id="lets-talk-about-what-is-going-wrong-here"><h1>Let's talk about what is going wrong here</h1></div><div class="section slide level2" id="exercise">
+<h1>Exercise</h1>
+<p>Spend a little time getting to know the starting point of the Sigma Stronghold website's HTML.</p>
+<ol style="list-style-type: decimal">
+<li>Open <code>02/01-start/index.html</code> in a text editor. Spend a bit of time looking at the markup here.</li>
+<li>Do you see any potential issues with this HTML markup that might hinder Sergeant Dingus from getting the website to work well on mobile devices?</li>
+<li>Does anything stick out at you in general that doesn't seem like a best practice?</li>
+</ol>
+</div><div class="section slide level2" id="whats-this-broken-thing-down-here">
 <h1>What's this broken thing down here?</h1>
 <div class="figure">
 <img src="images/02-weather-widget.png" /><p class="caption"></p>
@@ -150,8 +158,6 @@ Getting Fluid
 </div>
 </div><div class="section slide level2" id="behind-the-scenes-of-the-weather">
 <h1>Behind the scenes of the weather</h1>
-<div class="section level3" id="code">
-<h3>Code</h3>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;weather&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;div</span><span class="ot"> style=</span><span class="st">&#39;width: 240px; height: 420px; background-image: url( http://vortex.accuweather.com/adcbin/netweather_v2/backgrounds/black_240x420_bg.jpg ); background-repeat: no-repeat; background-color: #000000;&#39;</span> <span class="kw">&gt;</span>
   <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&#39;NetweatherContainer&#39;</span><span class="ot"> style=</span><span class="st">&#39;height: 405px;&#39;</span> <span class="kw">&gt;</span>
@@ -169,7 +175,6 @@ Getting Fluid
   <span class="kw">&lt;/div&gt;</span>
   <span class="kw">&lt;/div&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
-</div>
 </div><div class="section slide level2" id="things-are-wrong-with-the-weather">
 <h1>Things are Wrong with the Weather</h1>
 <ul>
@@ -253,7 +258,7 @@ Getting Fluid
 </ul>
 <div class="section level3" id="instead-of">
 <h3>Instead of</h3>
-<div class="section level4" id="code-1">
+<div class="section level4" id="code">
 <h4>Code</h4>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Nosifer&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Butcherman&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
@@ -263,7 +268,7 @@ Getting Fluid
 </div>
 <div class="section level3" id="use">
 <h3>Use</h3>
-<div class="section level4" id="code-2">
+<div class="section level4" id="code-1">
 <h4>Code</h4>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://fonts.googleapis.com/css?family=Nosifer|Special+Elite&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
 </div>
@@ -586,7 +591,7 @@ Getting Fluid
 </div><div class="section slide level2" id="all-together-now">
 <h1>All together now</h1>
 <p>Simplified CSS (ignoring the non-structural parts!):</p>
-<div class="section level3" id="code-3">
+<div class="section level3" id="code-2">
 <h3>Code</h3>
 <pre class="sourceCode css"><code class="sourceCode css">body &gt; div <span class="kw">{</span>
   <span class="kw">width:</span> <span class="dt">90%</span><span class="kw">;</span>
@@ -623,6 +628,10 @@ Getting Fluid
 <img src="images/02-sigma-fluid.png" alt="The fluid layout" /><p class="caption">The <a href="../presenter-examples/02/02-fluid">fluid layout</a></p>
 </div>
 </div>
+</div><div class="section slide level2" id="a-little-extra-credit">
+<h1>A little extra credit</h1>
+<p>We made a number of other improvements to the <code>index.html</code> file for the Sigma Stronghold website to make it adhere better to best practices (though it is not perfect yet!).</p>
+<p>Can you spot some of the improvements in <code>02/02-fluid/index.html</code>?</p>
 </div>
 <div class="section titleslide slide level1" id="now-its-time-to-go-responsive"><h1>Now it's time to <a href="03-rwd-2.html">Go Responsive</a></h1></div>
 </body>

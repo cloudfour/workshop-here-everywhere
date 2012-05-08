@@ -67,6 +67,14 @@
 
 # Let's talk about what is going wrong here
 
+## Exercise
+
+Spend a little time getting to know the starting point of the Sigma Stronghold website's HTML.
+
+1. Open `02/01-start/index.html` in a text editor. Spend a bit of time looking at the markup here.
+2. Do you see any potential issues with this HTML markup that might hinder Sergeant Dingus from getting the website to work well on mobile devices?
+3. Does anything stick out at you in general that doesn't seem like a best practice?
+
 ## What's this broken thing down here?
 
 ![](images/02-weather-widget.png)
@@ -81,8 +89,6 @@
 ![](images/02-sigma-weather.png)
 
 ## Behind the scenes of the weather
-
-### Code
 
 ~~~{.html}
 <div id="weather">
@@ -567,5 +573,12 @@ body > div {
 ### Figure: Fluid Layout
 
 ![The [fluid layout](../presenter-examples/02/02-fluid)](images/02-sigma-fluid.png)
+
+## A little extra credit
+
+We made a number of other improvements to the `index.html` file for the Sigma Stronghold website to make it adhere better to best practices (though it is not perfect yet!).
+
+Can you spot some of the improvements in `02/02-fluid/index.html`?
+
 
 # Now it's time to [Go Responsive](03-rwd-2.html)

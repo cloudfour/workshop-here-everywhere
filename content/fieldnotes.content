@@ -5,6 +5,18 @@
 * [Starting point](02/01-start) of Sigma Stronghold Website
 * Sigma Stronghold Site [with performance improvements and fluid layout](02/02-fluid)
 
+## Exercise
+
+Spend a little time getting to know the starting point of the Sigma Stronghold website's HTML.
+
+1. Open `02/01-start/index.html` in a text editor. Spend a bit of time looking at the markup here.
+2. Do you see any potential issues with this HTML markup that might hinder Sergeant Dingus from getting the website to work well on mobile devices?
+3. Does anything stick out at you in general that doesn't seem like best practices?
+
+## Extra Credit
+
+What improvements (not mentioned in the slides) do you see to `02/02-fluid/index.html` versus the starting point in `02/01-fluid/index.html`?
+
 
 ## References
 
@@ -290,7 +302,7 @@ Let’s do a test run using a device detection database.
 
 --------------------------------------------------------------
 
-# Section 9: Mobile Web Applications Using Frameworks; jQuery Mobile
+# Section 9: Mobile Web Apps with Frameworks; jQuery Mobile
 
 
 ### See `examples/09/01-mockup` for an end result example
