@@ -314,7 +314,6 @@ If you want to follow along, see `examples/10/01-functional`.
 * [Lawnchair adapters](http://westcoastlogic.com/lawnchair/adapters/) (We used the `dom` adapter in this example)
 * [date.format.js](http://code.google.com/p/myroundcube/source/browse/plugins/calendar/program/js/date.format.js?spec=svn74&r=70) on Google Code
 * [geo-location-javascript](http://code.google.com/p/geo-location-javascript/) Cross-browser geolocation in JavaScript
-* LocalStorage
 * [Smashing Magazine Article on using LocalStorage](http://coding.smashingmagazine.com/2010/10/11/local-storage-and-how-to-use-it/)
 
 -------------------------------------------------------------------------

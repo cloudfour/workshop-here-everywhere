@@ -30,7 +30,6 @@ Whew!
 
 ~~~{.javascript}
 (function() {
-
 }();
 ~~~
 
@@ -286,6 +285,6 @@ clear()
 
 ### Figure: Done
 
-![](images/10-done.png)
+![We're [done here](../examples/10/02-navbar)](images/10-done.png)
 
 # What about [hybrid development](11-going-hybrid.html)?
