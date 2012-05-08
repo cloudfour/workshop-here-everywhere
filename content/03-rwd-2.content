@@ -29,6 +29,16 @@ img {
 }
 ~~~
 
+### Also Responsive Objects
+
+You can also use this same approach for embedded objects, like
+
+~~~{.css}
+img, obj {
+  max-width: 100%;
+}
+~~~
+
 ## And...
 
 Let's [take a look](../presenter-examples/03/01-responsive-images-partial), shall we?
@@ -136,6 +146,10 @@ We've heard what Sgt. Dingus has to say about the layout, but what about these i
   CB Channel 32.6</p>
 </div>
 ~~~
+
+## A little extra credit
+
+Can you think of a way to make the contact information even better? (*Hint*: This isn't mobile-specific).
 
 ## OK, we've been sidetracked by the goat
 

@@ -48,6 +48,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#media-queries">Media Queries</a><ul>
 <li><a href="#snippet-reference-a-couple-of-examples">Snippet Reference: A couple of examples</a></li>
 </ul></li>
+<li><a href="#more-media-query-syntax">More Media Query Syntax</a><ul>
+<li><a href="#constructing-media-queries-with-logical-and">Constructing media queries with logical <code>AND</code></a></li>
+<li><a href="#constructing-media-queries-with-logical-or">Constructing media queries with logical <code>OR</code></a></li>
+</ul></li>
 <li><a href="#references-1">References</a></li>
 </ul></li>
 <li><a href="#section-4-mobile-first-rwd">Section 4: Mobile-First RWD</a><ul>
@@ -164,6 +168,23 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>For the full CSS, see <code>examples/02/02-fluid/styles.css</code>.</li>
 <li>See the <a href="03/01-responsive">responsive version of the site</a></li>
 </ul>
+</section>
+</section>
+<section class="level2" id="more-media-query-syntax">
+<h2><a href="#TOC">More Media Query Syntax</a></h2>
+<section class="level3" id="constructing-media-queries-with-logical-and">
+<h3><a href="#TOC">Constructing media queries with logical <code>AND</code></a></h3>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">35em)</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">25em)</span> <span class="dv">{</span> <span class="dv">}</span>
+
+<span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(color)</span> <span class="dv">{</span> <span class="dv">}</span></code></pre>
+</section>
+<section class="level3" id="constructing-media-queries-with-logical-or">
+<h3><a href="#TOC">Constructing media queries with logical <code>OR</code></a></h3>
+<ul>
+<li><code>OR</code> is represented by a comma <code>,</code></li>
+</ul>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">print</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">450px),</span>
+       <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">20em)</span> <span class="dv">{</span> <span class="dv">}</span></code></pre>
 </section>
 </section>
 <section class="level2" id="references-1">
