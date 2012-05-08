@@ -329,9 +329,46 @@ If you want to follow along, see `examples/10/01-functional`.
 
 # Section 12: Testing
 
+## A decision matrix for what devices to support.
+
+### Project requirements
+
+* Browser features
+* Device capabilities
+* Hardware performance
+* Network speed & availability
+
+### Audience characteristics
+
+* Analytics
+* Surveying
+* Geographic Trends
+* Demographics
+
+## References
+
+* [A “Comprehensive” Guide to Mobile Statistics](http://blog.cloudfour.com/a-comprehensive-guide-to-mobile-statistics/)
+* [User agent switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/)
+* [User agent switcher config file](http://techpatterns.com/forums/about304.html)
+* [Resizer](https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh) / [Web Developer Toolkit](http://chrispederick.com/work/web-developer/)
+* [Mobile Performance Bookmarklets](http://stevesouders.com/mobileperf/mobileperfbkm.php)
+* [jDrop](http://jdrop.org/)
+* [Blaze.io Mobile Test](http://blaze.io/mobile)
+* [Adobe Shadow](http://labs.adobe.com/downloads/shadow.html)
+* [Weinre](http://people.apache.org/~pmuellr/weinre/)
+* [Debug.phonegap.com](http://debug.phonegap.com/)
+* [Drive-in](https://github.com/scottjehl/Drive-In)
+* [Shim](https://github.com/marstall/shim#readme)
+* [Device Anywhere](http://www.keynotedeviceanywhere.com/)
+* [Perfecto Mobile](http://www.perfectomobile.com/)
+
+
+
 -------------------------------------------------------------------------
 
 # Section 13: Future Friendly
+
+* [Future Friendly](http://futurefriend.ly)
 
 
 [zombie-types]: http://uncyclopedia.wikia.com/wiki/Zombie_Types
