@@ -154,10 +154,8 @@ div.slide div[id^="figure"] img,
 div.slide div[id^="reverse"] img,
 div.slide div[id^="illustration"] img {
   max-height: 75%; }
-div.slide div[id^="figure"], div.slide div[id^='reverse'] {
-  text-align: center; }
-  div.slide div[id^="figure"] img, div.slide div[id^='reverse'] img {
-    max-height: 70%; }
+div.slide div[id^="figure"] img, div.slide div[id^='reverse'] img {
+  max-height: 70%; }
 div.slide div[id^='figure'] div.figure,
 div.slide div[id^='illustration'] div.figure {
   max-width: 100%;
