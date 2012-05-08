@@ -102,12 +102,11 @@ img {
 ## Exercise
 
 1. Install the window resizer extension [Chrome](https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh) or [FireFox](https://addons.mozilla.org/en-US/firefox/addon/window-resizer/) (Firefox version is being discontinued; Chrome preferred)
-2. View the [current version of the site](examples/03/05-responsive)
+2. Go back and view the [original *fluid* layout version of the site](02/02-fluid)
 3. Play with the window size in your browser
 4. At what window width does the two-column navigation start looking awkward to you?
 5. At what window width does it seem like the vertical navigation should kick in?
-6. At what window width does it feel like the moon background image should show up again?
-7. Write the media queries that you'd use to contain the rules for the different layouts (no need to write the actual CSS or anything; just the media queries).
+6. Write the media queries that you'd use to contain the rules for the different layouts (no need to write the actual CSS or anything; just the media queries).
 
 ### Mobile-first CSS
 
