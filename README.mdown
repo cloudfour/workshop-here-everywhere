@@ -29,6 +29,13 @@ To get options/help.
 
 *Hint*: You can use the `LiveReload` app (available on the Mac AppStore) to automatically run the build script when files in the repo/directory change.
 
+# ZIP File
+
+The ZIP file in the archive is created with the command
+
+    zip -r workshop.zip examples
+    
+
 # Slide Levels
 
 A second-level header will create a normal content slide, e.g.
