@@ -309,7 +309,7 @@ Instead, you need to group them into categories that are similar enough that you
 
 ## Herd them into device classes
 
-![](images/08-herd-devices.png)
+![](images/device-herds.jpg)
 
 A *device class* is an abstract collection of common characteristics that define a group of devices and their browsers.
 
@@ -317,7 +317,7 @@ A *device class* is an abstract collection of common characteristics that define
 
 ### Figure: Typical device classes
 
-![](images/08-typical-classes.png)
+![](images/device-classes.jpg)
 
 ## Tips for device detection
 
