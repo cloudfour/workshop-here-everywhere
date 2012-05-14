@@ -54,7 +54,7 @@ sub build_presentation {
     my $output = $slide_path . '/' . $base . '.html';
     my $test_update = needs_update($_, $output);
     if ($test_update) {
-      system("$pandoc $flags --section-divs --css=../assets/styles/workshop.css $_ > $output");
+      system("$pandoc $flags --section-divs --css=styles/workshop.css $_ > $output");
       if ($opts{v}) {
         print "Updated $_ --> $output \n";
       }
