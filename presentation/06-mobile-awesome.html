@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Device capabilities" />
+  <title>Getting to the awesome parts of mobile</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="styles/workshop.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Getting to the awesome parts of mobile</h1>
+  <p class="author">
+Device capabilities
+  </p>
+</div>
+<div class="section slide level2" id="oh-the-things-we-can-do-with-mobile">
+<h1>Oh, the things we can do with mobile!</h1>
+<div class="section level3" id="illustration-device-apis">
+<h3>Illustration: Device APIs</h3>
+<div class="figure">
+<img src="images/07-device-apis.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="device-apis-and-more">
+<h1>Device APIs and More</h1>
+<ul>
+<li>Geolocation</li>
+<li>localStorage</li>
+<li>mediaCapture</li>
+</ul>
+</div>
+<div class="section slide level2" id="another-need-for-the-troops">
+<h1>Another need for the troops</h1>
+<blockquote>
+<p>&quot;Hey, it would be nice if Sigma Stronghold troops could access parts of the site even when they are not connected to the Internet. Service can be pretty flaky in our neighborhood, especially in the zombie-dense areas where they've knocked down the antennas.&quot; —Sergeant Dingus</p>
+</blockquote>
+<div class="section level3" id="illustration-dingus">
+<h3>Illustration: Dingus</h3>
+<div class="figure">
+<img src="images/dingus-small.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section titleslide slide level1" id="creating-an-offline-mode-using-applicationcache"><h1>Creating an Offline Mode using ApplicationCache</h1></div><div class="section slide level2" id="applicationcache">
+<h1>ApplicationCache</h1>
+<ul>
+<li>An API that is part of the HTML5 spec</li>
+<li>Define what resources should (or should not be) cached using a cache manifest</li>
+<li>ApplicationCache object and its methods exposed to JavaScript</li>
+</ul>
+<div class="section level4" id="the-idea-is-to-create-an-offline-mode-for-your-web-site-or-app-by-defining-which-resources-should-be-cached-by-the-browser-and-available-offline.">
+<h4>The idea is to create an <em>offline mode</em> for your web site or app by defining which resources should be cached by the browser and available offline.</h4>
+</div>
+</div><div class="section slide level2" id="cache-manifests">
+<h1>Cache manifests</h1>
+<p>A <em>cache manifest</em> is a text file that lets you tell the client about resources that should be cached.</p>
+<p>You use cache manifests to define what ends up in the ApplicationCache.</p>
+</div><div class="section slide level2" id="cache-manifests-at-a-glance">
+<h1>Cache manifests at a glance</h1>
+<p>To create and use a cache manifest:</p>
+<ol style="list-style-type: decimal">
+<li>Write a cache manifest file that lists resources on the site that the browser should cache.</li>
+<li>Configure your web server to serve the cache manifest as the correct <code>MIME</code> type. (This requirement is going away).</li>
+<li>Tell browsers about your manifest by using the <code>manifest</code> attribute on the <code>&lt;html&gt;</code> tag.</li>
+</ol>
+</div><div class="section slide level2" id="step-1-writing-the-manifest">
+<h1>Step 1: Writing the manifest</h1>
+<div class="section level3" id="cache-manifest-syntax">
+<h3>Cache manifest syntax</h3>
+<p>Writing a cache manifest file sounds simple—in premise. In its simplest:</p>
+<pre><code>CACHE MANIFEST
+
+CACHE:
+foo.jpg
+bar.png
+index.html
+ding/dong.html</code></pre>
+<div class="section level5" id="manifest.appcache">
+<h5>manifest.appcache</h5>
+</div>
+</div>
+</div><div class="section slide level2" id="step-2-serving-cache-manifests">
+<h1>Step 2: Serving cache manifests</h1>
+<p>Cache manifest files must be served as a particular <code>MIME</code> type (<code>text/cache-manifest</code>) or browsers will not recognize them.</p>
+<p>Often this can be handled by adding the following to your <code>.htaccess</code> or other Apache configuration file:</p>
+<p><code>AddType text/cache-manifest .appcache</code></p>
+<p>(Preferred extension is <code>.appcache</code>)</p>
+</div><div class="section slide level2" id="step-3-tell-the-browser-about-your-manifest">
+<h1>Step 3: Tell the browser about your manifest</h1>
+<p>There is a <code>manifest</code> attribute on the <code>html</code> element.</p>
+<p><code>&lt;html manifest=&quot;manifest.appcache&quot;&gt;</code></p>
+</div><div class="section slide level2" id="ways-things-end-up-in-appcache">
+<h1>Ways things end up in appCache</h1>
+<ul>
+<li>Listed in the cache manifest file (explicit)</li>
+<li>Is a document with a manifest attribute defined (implicit)</li>
+</ul>
+</div><div class="section slide level2" id="be-very-wary">
+<h1>Be very wary</h1>
+<div class="section level3" id="illustration-danger">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware">
+<h1>BEWARE</h1>
+<div class="section level4" id="if-an-html-document-is-in-the-cache-any-resource-it-references-images-css-whatever-must-be-declared-in-the-cache-manifest-file.">
+<h4>If an HTML document is in the cache, any resource it references (images, CSS, whatever) <em>must</em> be declared in the cache manifest file.</h4>
+</div>
+<div class="section level3" id="illustration-danger-1">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware-1">
+<h1>BEWARE</h1>
+<div class="section level4" id="changes-to-files-listed-in-the-cache-manifest-will-be-ignored-by-browsers-unless-the-cache-manifest-file-itself-changes.">
+<h4>Changes to files listed in the cache manifest will be ignored by browsers unless the <em>cache manifest file</em> itself changes.</h4>
+</div>
+<div class="section level3" id="illustration-danger-2">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware-2">
+<h1>BEWARE</h1>
+<div class="section level4" id="any-error-in-the-cache-manifest-will-cause-the-whole-thing-not-to-work.-a-single-404-can-also-wreak-havoc.">
+<h4>Any error in the cache manifest will cause the whole thing not to work. A single 404 can also wreak havoc.</h4>
+</div>
+<div class="section level3" id="illustration-danger-3">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="beware-3">
+<h1>BEWARE</h1>
+<div class="section level4" id="a-changed-cache-manifest-requires-two-subsequent-requests-for-the-changes-to-be-visible.">
+<h4>A changed cache manifest requires <em>two</em> subsequent requests for the changes to be visible.</h4>
+</div>
+<div class="section level3" id="illustration-danger-4">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="so-should-we-just-list-all-of-the-files-on-a-site-in-the-cache-manifest">
+<h1>So, should we just list all of the files on a site in the cache manifest?</h1>
+<ul>
+<li>This is of course a maintenance pain.</li>
+<li>More importantly, as soon as a browser gets a cache manifest file, it will <em>immediately</em> (asynchronously) download all of the resources in that cache manifest.</li>
+</ul>
+</div><div class="section slide level2" id="conclusion">
+<h1>Conclusion</h1>
+<p>Cache manifest can be a good approach for creating offline modes of web sites and apps. It tends to be more manageable for smaller or app-like web sites.</p>
+</div><div class="section slide level2" id="clarence-has-something-to-say">
+<h1>Clarence has something to say</h1>
+<div class="figure">
+<img src="images/clarence.png" /><p class="caption"></p>
+</div>
+<blockquote>
+<p>&quot;I should mention, if we're worried about performance for our web sites, we should consider making some of the server-side tweaks that the ySlow tool suggests.&quot; —Clarence the Angry Performance Goat</p>
+</blockquote>
+</div><div class="section slide level2" id="when-in-battle-remember-three-things">
+<h1>When in battle, remember three things</h1>
+<p>Yahoo has 14 rules and there are even more things that improve performance, but majority of sites benefit most from four things:</p>
+<ol style="list-style-type: decimal">
+<li>Well-compressed images</li>
+<li>Turning on GZIP</li>
+<li>Reducing HTTP requests</li>
+<li>Setting Far Future Expires headers</li>
+</ol>
+</div><div class="section slide level2" id="drop-in-.htaccessapache-solutions">
+<h1>Drop-in .htaccess/Apache solutions</h1>
+<div class="section level3" id="turn-off-etags-and-turn-on-gzip">
+<h3>Turn off eTags and Turn <em>ON</em> GZip</h3>
+<pre><code>FileETag none
+
+&lt;IfModule mod_deflate.c&gt;
+  SetOutputFilter DEFLATE
+  # Don’t compress
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+  #Dealing with proxy servers
+  &lt;IfModule mod_headers.c&gt;
+    Header append Vary User-Agent
+  &lt;/IfModule&gt;
+&lt;/IfModule&gt;
+
+AddOutputFilterByType DEFLATE image/x-icon</code></pre>
+<div class="section level5" id="htaccess">
+<h5>.htaccess</h5>
+</div>
+</div>
+</div><div class="section slide level2" id="configure-far-future-expires-headers">
+<h1>Configure far-future expires headers</h1>
+<pre><code>&lt;IfModule mod_expires.c&gt;
+ExpiresActive On
+ExpiresByType text/html &quot;access plus 1 seconds&quot;
+ExpiresByType image/gif &quot;access plus 2 years&quot;
+ExpiresByType image/jpeg &quot;access plus 2 years&quot;
+ExpiresByType image/png &quot;access plus 2 years&quot;
+ExpiresByType text/css &quot;access plus 2 years&quot;
+ExpiresByType text/javascript &quot;access plus 2 years&quot;
+ExpiresByType application/x-javascript &quot;access plus 2 years&quot;
+ExpiresByType image/x-icon &quot;access plus 2 years&quot;
+&lt;/IfModule&gt;</code></pre>
+<div class="section level5" id="htaccess-cont.">
+<h5>.htaccess (cont.)</h5>
+</div>
+</div><div class="section slide level2" id="hey-look-at-that">
+<h1>Hey, look at that</h1>
+<div class="section level3" id="figure-yslow-final-stats">
+<h3>Figure: ySlow Final stats</h3>
+<div class="figure">
+<img src="images/07-yslow-final.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section titleslide slide level1" id="lets-have-a-bit-more-fun-with-geolocation"><h1>Let's have a bit more fun with Geolocation</h1></div><div class="section slide level2" id="w3c-geolocation-api">
+<h1>W3C Geolocation API</h1>
+<p>Geolocation is the darling of many. It's consummately mobile and easy to describe. There are oh so many ways to make good use of a user's current location to deliver adapted experiences or add functionality to applications. Whee!</p>
+<ul>
+<li>The W3C Geolocation API is a standard way of exposing geolocation information to JavaScript in the browser. It is rather well adopted.</li>
+<li>Browsers that implement the W3C Geolocation API expose the <code>navigator.geolocation</code> object and its methods to the browser.</li>
+</ul>
+</div><div class="section slide level2" id="using-the-w3c-api-to-get-the-current-location">
+<h1>Using the W3C API to get the current location</h1>
+<p>Here's what it looks like:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(successCallback, errorCallback)</code></pre>
+<div class="section level3" id="illustration-getcurrentposition">
+<h3>Illustration: getCurrentPosition</h3>
+<div class="figure">
+<img src="images/07-get-position.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="and-what-happens-in-the-success-callback">
+<h1>And what happens in the success callback?</h1>
+<div class="section level3" id="illustration-win-function">
+<h3>Illustration: Win Function</h3>
+<div class="figure">
+<img src="images/07-win-function.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="the-position-object">
+<h1>The Position object</h1>
+<div class="section level3" id="illustration-position">
+<h3>Illustration: Position</h3>
+<div class="figure">
+<img src="images/07-position.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section titleslide slide level1" id="lets-try-it-out"><h1>Let's try it out</h1></div><div class="section slide level2" id="testing-for-api-support">
+<h1>Testing for API support</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;script&gt;
+  <span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+    <span class="co">// Do something, dammit!</span>
+  }
+&lt;/script&gt;</code></pre>
+</div><div class="section slide level2" id="doing-something-dammit">
+<h1>Doing something, dammit</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
+} <span class="kw">else</span> {
+  alert(<span class="ch">&#39;Sorry, Geolocation not supported in this browser!&#39;</span>);
+}</code></pre>
+<p>In our version, we're going to use a function called <code>onGeoSuccess</code> for a success callback and <code>onGeoError</code> for an error callback.</p>
+</div><div class="section slide level2" id="and-now-what...">
+<h1>And now what...?</h1>
+<p>We need to define our success and error callbacks.</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> onGeoSuccess(position) {
+  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
+  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
+}
+<span class="kw">function</span> onGeoError(error) {
+  alert(<span class="kw">error</span>.<span class="fu">message</span>);
+}</code></pre>
+<p>In our success callback, we're looking at the <code>coords</code> on the <code>position</code> object.</p>
+<p>The error callback is always passed an <code>error</code> object.</p>
+</div><div class="section slide level2" id="all-together-now">
+<h1>All together, now</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
+} <span class="kw">else</span> {
+  alert(<span class="ch">&#39;Sorry, Geolocation not supported in this browser!&#39;</span>);
+}
+<span class="kw">function</span> onGeoSuccess(position) {
+  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
+  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
+}
+<span class="kw">function</span> onGeoError(error) {
+  alert(<span class="kw">error</span>.<span class="fu">message</span>);
+}</code></pre>
+</div><div class="section slide level2" id="so-this-doesnt-work-everywhere">
+<h1>So, this doesn't work everywhere</h1>
+<p>A lot of modern browsers implement the W3C geolocation API. But some don't. And who supports ApplicationCache? etc.? How can we tell?</p>
+</div>
+<div class="section titleslide slide level1" id="its-time-to-understand-our-browsers-and-devices"><h1>It's time to <a href="07-devices.html">understand our browsers and devices</a></h1></div>
+</body>
+</html>

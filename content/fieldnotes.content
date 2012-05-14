@@ -176,49 +176,9 @@ Things that work:
 * [Responsive Images Community Group](http://www.w3.org/community/respimg/)
 * [Responsive Web Design Business Challenges](http://blog.cloudfour.com/responsive-web-design-business-challenges/)
 
-----------------------------------------------------------------
+------------------------------------------------------------
 
-# Section 6: Advanced RWD Topics
-
-## Flexbox CSS
-
-~~~{.css}
-@media screen and (max-width: 35em) {
-  body>div {
-    display:    -webkit-flexbox;
-    -webkit-flex-flow: column;
-
-    display: -moz-flexbox;
-    -moz-flex-flow: column;
-
-    display: -o-flexbox;
-    -o-flex-flow: column;
-
-    display: flexbox;
-  }
-
-  body>div nav {
-    -webkit-flex-order: 1;
-    -moz-flex-order: 1;
-    -o-flex-order: 1;
-    flex-order: 1;
-  }
-  /** ...and so on... **/
-~~~
-
-For the final CSS, with the menu button, see `examples/06/01-flexbox/styles.css`.
-
-## References
-
-* [Styletil.es](styletil.es), a new approach of visual design workflow for websites
-* [Flexbox Spec](http://www.w3.org/TR/css3-flexbox), the W3C's CSS3 flexbox spec at present
-* [Stephen Hay's Flexbox Tutorial](http://www.the-haystack.com/2012/01/04/learn-you-a-flexbox/) A great place to start.
-* [CSS-Tricks Article: Viewport Sized Typography](http://css-tricks.com/viewport-sized-typography/) from [@chriscoyier](http://twitter.com/chriscoyier)
-* [FitText JavaScript plugin](http://fittextjs.com/)
-
----------------------------------------------------------------------
-
-# Section 7: Awesomesauce: AppCache and Geolocation
+# Section 6: Mobile Awesomesauce
 
 ## ApplicationCache
 
@@ -309,7 +269,7 @@ function onGeoError(error) {
 
 --------------------------------------------------------------
 
-# Section 8: Devices, devices, devices (and browsers)
+# Section 7: Devices, devices, devices (and browsers)
 
 ## Feature Detection using JavaScript
 

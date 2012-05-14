@@ -1,0 +1,301 @@
+% Getting to the awesome parts of mobile
+% Device capabilities
+
+
+## Oh, the things we can do with mobile!
+
+### Illustration: Device APIs
+
+![](images/07-device-apis.png)
+
+## Device APIs and More
+
+* Geolocation
+* localStorage
+* mediaCapture
+
+## Another need for the troops
+
+> "Hey, it would be nice if Sigma Stronghold troops could access parts of the site even when they are not connected to the Internet. Service can be pretty flaky in our neighborhood, especially in the zombie-dense areas where they've knocked down the antennas." —Sergeant Dingus
+
+### Illustration: Dingus
+
+![](images/dingus-small.png)
+
+# Creating an Offline Mode using ApplicationCache
+
+## ApplicationCache
+
+* An API that is part of the HTML5 spec
+* Define what resources should (or should not be) cached using a cache manifest
+* ApplicationCache object and its methods exposed to JavaScript
+
+#### The idea is to create an *offline mode* for your web site or app by defining which resources should be cached by the browser and available offline.
+
+##  Cache manifests
+
+A *cache manifest* is a text file that lets you tell the client about resources that should be cached.
+
+You use cache manifests to define what ends up in the ApplicationCache.
+
+## Cache manifests at a glance
+
+To create and use a cache manifest:
+
+1. Write a cache manifest file that lists resources on the site that the browser should cache.
+2. Configure your web server to serve the cache manifest as the correct `MIME` type. (This requirement is going away).
+3. Tell browsers about your manifest by using the `manifest` attribute on the `<html>` tag.
+
+
+## Step 1: Writing the manifest
+
+### Cache manifest syntax
+
+Writing a cache manifest file sounds simple—in premise. In its simplest:
+
+~~~
+CACHE MANIFEST
+
+CACHE:
+foo.jpg
+bar.png
+index.html
+ding/dong.html
+~~~
+
+##### manifest.appcache
+
+## Step 2: Serving cache manifests
+
+Cache manifest files must be served as a particular `MIME` type (`text/cache-manifest`) or browsers will not recognize them.
+
+Often this can be handled by adding the following to your `.htaccess` or other Apache configuration file:
+
+`AddType text/cache-manifest .appcache`
+
+(Preferred extension is `.appcache`)
+
+## Step 3: Tell the browser about your manifest
+
+There is a `manifest` attribute on the `html` element.
+
+`<html manifest="manifest.appcache">`
+
+## Ways things end up in appCache
+
+* Listed in the cache manifest file (explicit)
+* Is a document with a manifest attribute defined (implicit)
+
+## Be very wary
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### If an HTML document is in the cache, any resource it references (images, CSS, whatever) *must* be declared in the cache manifest file.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### Changes to files listed in the cache manifest will be ignored by browsers unless the *cache manifest file* itself changes.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### Any error in the cache manifest will cause the whole thing not to work. A single 404 can also wreak havoc.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+## BEWARE
+
+#### A changed cache manifest requires *two* subsequent requests for the changes to be visible.
+
+### Illustration: Danger
+
+![](images/07-danger.png)
+
+
+## So, should we just list all of the files on a site in the cache manifest?
+
+* This is of course a maintenance pain.
+* More importantly, as soon as a browser gets a cache manifest file, it will *immediately* (asynchronously) download all of the resources in that cache manifest.
+
+
+## Conclusion
+
+Cache manifest can be a good approach for creating offline modes of web sites and apps. It tends to be more manageable for smaller or app-like web sites.
+
+## Clarence has something to say
+
+![](images/clarence.png)
+
+> "I should mention, if we're worried about performance for our web sites, we should consider making some of the server-side tweaks that the ySlow tool suggests." —Clarence the Angry Performance Goat
+
+
+
+## When in battle, remember three things
+
+Yahoo has 14 rules and there are even more things that improve performance, but majority of sites benefit most from four things:
+
+1. Well-compressed images
+2. Turning on GZIP
+3. Reducing HTTP requests
+4. Setting Far Future Expires headers
+
+## Drop-in .htaccess/Apache solutions
+
+### Turn off eTags and Turn *ON* GZip
+
+~~~~
+FileETag none
+
+<IfModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+  # Don’t compress
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+  #Dealing with proxy servers
+  <IfModule mod_headers.c>
+    Header append Vary User-Agent
+  </IfModule>
+</IfModule>
+
+AddOutputFilterByType DEFLATE image/x-icon
+~~~~
+
+##### .htaccess
+
+## Configure far-future expires headers
+
+~~~~
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/html "access plus 1 seconds"
+ExpiresByType image/gif "access plus 2 years"
+ExpiresByType image/jpeg "access plus 2 years"
+ExpiresByType image/png "access plus 2 years"
+ExpiresByType text/css "access plus 2 years"
+ExpiresByType text/javascript "access plus 2 years"
+ExpiresByType application/x-javascript "access plus 2 years"
+ExpiresByType image/x-icon "access plus 2 years"
+</IfModule>
+~~~~
+
+##### .htaccess (cont.)
+
+## Hey, look at that
+
+### Figure: ySlow Final stats
+
+![](images/07-yslow-final.png)
+
+# Let's have a bit more fun with Geolocation
+
+## W3C Geolocation API
+
+Geolocation is the darling of many. It's consummately mobile and easy to describe. There are oh so many ways to make good use of a user's current location to deliver adapted experiences or add functionality to applications. Whee!
+
+* The W3C Geolocation API is a standard way of exposing geolocation information to JavaScript in the browser. It is rather well adopted.
+* Browsers that implement the W3C Geolocation API expose the `navigator.geolocation` object and its methods to the browser.
+
+## Using the W3C API to get the current location
+
+Here's what it looks like:
+
+~~~ {.javascript}
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+~~~
+
+### Illustration: getCurrentPosition
+
+![](images/07-get-position.png)
+
+## And what happens in the success callback?
+
+### Illustration: Win Function
+
+![](images/07-win-function.png)
+
+## The Position object
+
+### Illustration: Position
+
+![](images/07-position.png)
+
+# Let's try it out
+
+Hey, let's build a basic geolocation test page to see how that geolocation API works.
+
+## Testing for API support
+
+~~~ {.javascript}
+<script>
+  if (navigator.geolocation) {
+    // Do something, dammit!
+  }
+</script>
+~~~
+
+## Doing something, dammit
+
+~~~ {.javascript}
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+} else {
+  alert('Sorry, Geolocation not supported in this browser!');
+}
+~~~
+
+In our version, we're going to use a function called `onGeoSuccess` for a success callback and `onGeoError` for an error callback.
+
+## And now what...?
+
+We need to define our success and error callbacks.
+
+~~~ {.javascript}
+function onGeoSuccess(position) {
+  var coordinates = position.coords;
+  alert(coordinates.latitude + ", " + coordinates.longitude);
+}
+function onGeoError(error) {
+  alert(error.message);
+}
+~~~
+
+In our success callback, we're looking at the `coords` on the `position` object.
+
+The error callback is always passed an `error` object.
+
+## All together, now
+
+~~~{.javascript}
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+} else {
+  alert('Sorry, Geolocation not supported in this browser!');
+}
+function onGeoSuccess(position) {
+  var coordinates = position.coords;
+  alert(coordinates.latitude + ", " + coordinates.longitude);
+}
+function onGeoError(error) {
+  alert(error.message);
+}
+~~~
+
+
+## So, this doesn't work everywhere
+
+A lot of modern browsers implement the W3C geolocation API. But some don't. And who supports ApplicationCache? etc.? How can we tell?
+
+# It's time to [understand our browsers and devices](07-devices.html)

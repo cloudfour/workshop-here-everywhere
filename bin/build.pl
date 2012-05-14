@@ -32,7 +32,8 @@ $fieldnotes_flags   = '--from=markdown --to=html5 --standalone --section-divs --
 ## When was the last time a shared/common resource was updated?
 my $common_mtime = 0;
 my @common_dirs = (
-  "$basepath/assets",
+  "$basepath/assets/styles",
+  "$basepath/assets/fonts",
   "$content_path/images"
 );
 # What's the newest mtime on the source HTML?

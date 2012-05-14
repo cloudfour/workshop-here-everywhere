@@ -1,0 +1,87 @@
+% Bracing for the Future
+% Thinking in a future-friendly manner
+
+## Don’t give into despair
+
+* It’s easy to give up in the face of the zombie hoards
+* Don’t be paralyzed by the choice of weapons:
+    * Responsive web design
+    * Device detection
+    * Mobile web apps
+    * PhoneGap
+* When faced with an immediate problem, grab the weapon closest to you and get your kill in.
+
+## But when fortifying your camp, think strategically
+
+* We don’t know what devices are coming.
+* We can’t guarentee success against the next wave of zombies.
+* But we can build fortifications that are more likely to withstand the test.
+* We know it’s hard when staring into the eyes of the undead, but you’ve got to think…
+
+## Future Friendly
+
+### Figure: Future Friendly Website
+
+![](images/13-futurefriendly.png)
+
+[FutureFriend.ly][futurefriendly]
+
+## Laser Focus
+
+We can't be all things on all devices. To manage in a world of ever-increasing device complexity, we need to focus on what matters most to our customers and businesses. Not by building lowest common-denominator solutions but by creating meaningful content and services. 
+
+People are also increasingly tired of excessive noise and finding ways to simplify things for themselves. Focus your service before your customers and increasing diversity do it for you.
+
+## Orbit Around Data
+
+An ecosystem of devices demands to be interoperable, and robust data exchange is the easiest way to get going. Be responsive to existing and emerging opportunities by defining your data in a way that:
+
+* Enables multiple (flexible) forms of access and notifications
+* Uses standards to be interoperable
+* Focuses on long term integrity
+* Includes meaningful and permanent references to all content
+* Supports both read and write operations
+
+## Universal Content
+
+Well-structured content is now an essential part of art direction. Consider how it can flow into a variety of containers by being mindful of their constraints and capabilities. Be bold and explore new possibilities but know the future is likely to head in many directions.
+
+Highly capable smart devices, simple constrained devices, interoperable devices and (a whole lot) more are part of our future. Structure and store your content accordingly.
+
+## Unknown Vessel, Identify
+
+Reacting to every device variance makes inclusive design extremely challenging. A high-level, close-enough set of standards for device types can simplify the process of adaptation. Additional, detailed profile information can supplement these standards.
+
+A taxonomy of device types can align manufacturers today while still allowing new devices types to emerge tomorrow.
+
+## Command Your Fleet
+
+Having a wide range of devices in our lives enables us to distribute tasks and information between them. When an experience is managed within a device collection, each device can tackle the interactions it does best. This negates the need to tailor all aspects of a service to every device and allows us to work within an ecosystem of device capabilities instead.
+
+## When the authorities fail to react with due speed
+
+Does this sound familiar?
+
+> The response of authorities to the threat is slower than its rate of growth, giving the
+> zombie plague time to expand beyond containment. This results in the collapse of the given
+> society. Zombies take full control while small groups of the living must fight
+> for their survival. -- [Wikipedia][wiki-apocalypse]
+
+## Mobile web lags behind
+
+> The standards process will be painfully slow. We will struggle with
+> (and eventually agree upon) appropriate standards. During this period,
+> the web will fall even further behind proprietary solutions. -- [FutureFriend.ly][futurefriendly]
+
+## There is hope
+
+We can work together to build a better mobile web and tame these zombies. Some day, we may even find that living in a world with all these devices is no longer terrifying.
+
+In fact, it might be a lot of fun.
+
+## Congratulations cadets!
+
+You’ve survived boot camp. Grab your weapons and your rucksack and go help others prepare for the zombie onslaught before it is too late!
+
+[wiki-apocalypse]: http://en.wikipedia.org/wiki/Zombie_apocalypse "Wikipedia article on Zombie Apocalypse"
+[futurefriendly]: http://futurefriend.ly "Future Friendly"
