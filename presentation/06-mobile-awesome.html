@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Device capabilities" />
+  <meta name="author" content="Device capabilities, tools and more" />
   <title>Getting to the awesome parts of mobile</title>
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
@@ -38,7 +38,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div class="slide titlepage">
   <h1 class="title">Getting to the awesome parts of mobile</h1>
   <p class="author">
-Device capabilities
+Device capabilities, tools and more
   </p>
 </div>
 <div class="section slide level2" id="oh-the-things-we-can-do-with-mobile">
@@ -50,204 +50,55 @@ Device capabilities
 </div>
 </div>
 </div>
-<div class="section slide level2" id="device-apis-and-more">
-<h1>Device APIs and More</h1>
+<div class="section slide level2" id="html5">
+<h1>HTML5</h1>
+<div class="section level3" id="figure-html5">
+<h3>Figure: HTML5</h3>
+<div class="figure">
+<img src="images/06-html5.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="html5-apis-and-features-for-the-web">
+<h1>HTML5 APIs and features for the Web</h1>
 <ul>
-<li>Geolocation</li>
-<li>localStorage</li>
-<li>mediaCapture</li>
+<li>Device APIs</li>
+<li>HTML Programmable APIs</li>
+<li>HTML5 Elements</li>
+<li>Other HTML Goodies</li>
 </ul>
 </div>
-<div class="section slide level2" id="another-need-for-the-troops">
-<h1>Another need for the troops</h1>
+<div class="section slide level2" id="device-apis">
+<h1>Device APIs</h1>
 <blockquote>
-<p>&quot;Hey, it would be nice if Sigma Stronghold troops could access parts of the site even when they are not connected to the Internet. Service can be pretty flaky in our neighborhood, especially in the zombie-dense areas where they've knocked down the antennas.&quot; —Sergeant Dingus</p>
+<p>&quot;Cross-platform...Sensors, data and outputs&quot; —Brian LeRoux (PhoneGap)</p>
 </blockquote>
-<div class="section level3" id="illustration-dingus">
-<h3>Illustration: Dingus</h3>
-<div class="figure">
-<img src="images/dingus-small.png" /><p class="caption"></p>
-</div>
-</div>
-</div>
-<div class="section titleslide slide level1" id="creating-an-offline-mode-using-applicationcache"><h1>Creating an Offline Mode using ApplicationCache</h1></div><div class="section slide level2" id="applicationcache">
-<h1>ApplicationCache</h1>
 <ul>
-<li>An API that is part of the HTML5 spec</li>
-<li>Define what resources should (or should not be) cached using a cache manifest</li>
-<li>ApplicationCache object and its methods exposed to JavaScript</li>
+<li>Media Capture</li>
+<li>Contacts API</li>
+<li>Network Information API</li>
+<li>Battery Status API</li>
+<li>GeoLocation API</li>
+<li>Accelerometer, vibration, etc.</li>
 </ul>
-<div class="section level4" id="the-idea-is-to-create-an-offline-mode-for-your-web-site-or-app-by-defining-which-resources-should-be-cached-by-the-browser-and-available-offline.">
-<h4>The idea is to create an <em>offline mode</em> for your web site or app by defining which resources should be cached by the browser and available offline.</h4>
 </div>
-</div><div class="section slide level2" id="cache-manifests">
-<h1>Cache manifests</h1>
-<p>A <em>cache manifest</em> is a text file that lets you tell the client about resources that should be cached.</p>
-<p>You use cache manifests to define what ends up in the ApplicationCache.</p>
-</div><div class="section slide level2" id="cache-manifests-at-a-glance">
-<h1>Cache manifests at a glance</h1>
-<p>To create and use a cache manifest:</p>
-<ol style="list-style-type: decimal">
-<li>Write a cache manifest file that lists resources on the site that the browser should cache.</li>
-<li>Configure your web server to serve the cache manifest as the correct <code>MIME</code> type. (This requirement is going away).</li>
-<li>Tell browsers about your manifest by using the <code>manifest</code> attribute on the <code>&lt;html&gt;</code> tag.</li>
-</ol>
-</div><div class="section slide level2" id="step-1-writing-the-manifest">
-<h1>Step 1: Writing the manifest</h1>
-<div class="section level3" id="cache-manifest-syntax">
-<h3>Cache manifest syntax</h3>
-<p>Writing a cache manifest file sounds simple—in premise. In its simplest:</p>
-<pre><code>CACHE MANIFEST
-
-CACHE:
-foo.jpg
-bar.png
-index.html
-ding/dong.html</code></pre>
-<div class="section level5" id="manifest.appcache">
-<h5>manifest.appcache</h5>
-</div>
-</div>
-</div><div class="section slide level2" id="step-2-serving-cache-manifests">
-<h1>Step 2: Serving cache manifests</h1>
-<p>Cache manifest files must be served as a particular <code>MIME</code> type (<code>text/cache-manifest</code>) or browsers will not recognize them.</p>
-<p>Often this can be handled by adding the following to your <code>.htaccess</code> or other Apache configuration file:</p>
-<p><code>AddType text/cache-manifest .appcache</code></p>
-<p>(Preferred extension is <code>.appcache</code>)</p>
-</div><div class="section slide level2" id="step-3-tell-the-browser-about-your-manifest">
-<h1>Step 3: Tell the browser about your manifest</h1>
-<p>There is a <code>manifest</code> attribute on the <code>html</code> element.</p>
-<p><code>&lt;html manifest=&quot;manifest.appcache&quot;&gt;</code></p>
-</div><div class="section slide level2" id="ways-things-end-up-in-appcache">
-<h1>Ways things end up in appCache</h1>
+<div class="section slide level2" id="html5-programmable-apis-and-goodies">
+<h1>HTML5 Programmable APIs and Goodies</h1>
 <ul>
-<li>Listed in the cache manifest file (explicit)</li>
-<li>Is a document with a manifest attribute defined (implicit)</li>
+<li>Drag and drop</li>
+<li>Web Workers</li>
+<li>Web Sockets</li>
+<li>Offline functionality via Application Cache and localStorage</li>
+<li>Media Capture (hey...wait...?)</li>
 </ul>
-</div><div class="section slide level2" id="be-very-wary">
-<h1>Be very wary</h1>
-<div class="section level3" id="illustration-danger">
-<h3>Illustration: Danger</h3>
-<div class="figure">
-<img src="images/07-danger.png" /><p class="caption"></p>
 </div>
-</div>
-</div><div class="section slide level2" id="beware">
-<h1>BEWARE</h1>
-<div class="section level4" id="if-an-html-document-is-in-the-cache-any-resource-it-references-images-css-whatever-must-be-declared-in-the-cache-manifest-file.">
-<h4>If an HTML document is in the cache, any resource it references (images, CSS, whatever) <em>must</em> be declared in the cache manifest file.</h4>
-</div>
-<div class="section level3" id="illustration-danger-1">
-<h3>Illustration: Danger</h3>
-<div class="figure">
-<img src="images/07-danger.png" /><p class="caption"></p>
-</div>
-</div>
-</div><div class="section slide level2" id="beware-1">
-<h1>BEWARE</h1>
-<div class="section level4" id="changes-to-files-listed-in-the-cache-manifest-will-be-ignored-by-browsers-unless-the-cache-manifest-file-itself-changes.">
-<h4>Changes to files listed in the cache manifest will be ignored by browsers unless the <em>cache manifest file</em> itself changes.</h4>
-</div>
-<div class="section level3" id="illustration-danger-2">
-<h3>Illustration: Danger</h3>
-<div class="figure">
-<img src="images/07-danger.png" /><p class="caption"></p>
-</div>
-</div>
-</div><div class="section slide level2" id="beware-2">
-<h1>BEWARE</h1>
-<div class="section level4" id="any-error-in-the-cache-manifest-will-cause-the-whole-thing-not-to-work.-a-single-404-can-also-wreak-havoc.">
-<h4>Any error in the cache manifest will cause the whole thing not to work. A single 404 can also wreak havoc.</h4>
-</div>
-<div class="section level3" id="illustration-danger-3">
-<h3>Illustration: Danger</h3>
-<div class="figure">
-<img src="images/07-danger.png" /><p class="caption"></p>
-</div>
-</div>
-</div><div class="section slide level2" id="beware-3">
-<h1>BEWARE</h1>
-<div class="section level4" id="a-changed-cache-manifest-requires-two-subsequent-requests-for-the-changes-to-be-visible.">
-<h4>A changed cache manifest requires <em>two</em> subsequent requests for the changes to be visible.</h4>
-</div>
-<div class="section level3" id="illustration-danger-4">
-<h3>Illustration: Danger</h3>
-<div class="figure">
-<img src="images/07-danger.png" /><p class="caption"></p>
-</div>
-</div>
-</div><div class="section slide level2" id="so-should-we-just-list-all-of-the-files-on-a-site-in-the-cache-manifest">
-<h1>So, should we just list all of the files on a site in the cache manifest?</h1>
+<div class="section slide level2" id="html5-elements">
+<h1>HTML5 Elements</h1>
 <ul>
-<li>This is of course a maintenance pain.</li>
-<li>More importantly, as soon as a browser gets a cache manifest file, it will <em>immediately</em> (asynchronously) download all of the resources in that cache manifest.</li>
+<li><code>&lt;section&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, etc.</li>
+<li>New support for many different <code>&lt;input&gt;</code> types—big yay for mobile!</li>
+<li>Embedding and objects: <code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code>, <code>&lt;canvas&gt;</code></li>
 </ul>
-</div><div class="section slide level2" id="conclusion">
-<h1>Conclusion</h1>
-<p>Cache manifest can be a good approach for creating offline modes of web sites and apps. It tends to be more manageable for smaller or app-like web sites.</p>
-</div><div class="section slide level2" id="clarence-has-something-to-say">
-<h1>Clarence has something to say</h1>
-<div class="figure">
-<img src="images/clarence.png" /><p class="caption"></p>
-</div>
-<blockquote>
-<p>&quot;I should mention, if we're worried about performance for our web sites, we should consider making some of the server-side tweaks that the ySlow tool suggests.&quot; —Clarence the Angry Performance Goat</p>
-</blockquote>
-</div><div class="section slide level2" id="when-in-battle-remember-three-things">
-<h1>When in battle, remember three things</h1>
-<p>Yahoo has 14 rules and there are even more things that improve performance, but majority of sites benefit most from four things:</p>
-<ol style="list-style-type: decimal">
-<li>Well-compressed images</li>
-<li>Turning on GZIP</li>
-<li>Reducing HTTP requests</li>
-<li>Setting Far Future Expires headers</li>
-</ol>
-</div><div class="section slide level2" id="drop-in-.htaccessapache-solutions">
-<h1>Drop-in .htaccess/Apache solutions</h1>
-<div class="section level3" id="turn-off-etags-and-turn-on-gzip">
-<h3>Turn off eTags and Turn <em>ON</em> GZip</h3>
-<pre><code>FileETag none
-
-&lt;IfModule mod_deflate.c&gt;
-  SetOutputFilter DEFLATE
-  # Don’t compress
-  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
-  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
-  #Dealing with proxy servers
-  &lt;IfModule mod_headers.c&gt;
-    Header append Vary User-Agent
-  &lt;/IfModule&gt;
-&lt;/IfModule&gt;
-
-AddOutputFilterByType DEFLATE image/x-icon</code></pre>
-<div class="section level5" id="htaccess">
-<h5>.htaccess</h5>
-</div>
-</div>
-</div><div class="section slide level2" id="configure-far-future-expires-headers">
-<h1>Configure far-future expires headers</h1>
-<pre><code>&lt;IfModule mod_expires.c&gt;
-ExpiresActive On
-ExpiresByType text/html &quot;access plus 1 seconds&quot;
-ExpiresByType image/gif &quot;access plus 2 years&quot;
-ExpiresByType image/jpeg &quot;access plus 2 years&quot;
-ExpiresByType image/png &quot;access plus 2 years&quot;
-ExpiresByType text/css &quot;access plus 2 years&quot;
-ExpiresByType text/javascript &quot;access plus 2 years&quot;
-ExpiresByType application/x-javascript &quot;access plus 2 years&quot;
-ExpiresByType image/x-icon &quot;access plus 2 years&quot;
-&lt;/IfModule&gt;</code></pre>
-<div class="section level5" id="htaccess-cont.">
-<h5>.htaccess (cont.)</h5>
-</div>
-</div><div class="section slide level2" id="hey-look-at-that">
-<h1>Hey, look at that</h1>
-<div class="section level3" id="figure-yslow-final-stats">
-<h3>Figure: ySlow Final stats</h3>
-<div class="figure">
-<img src="images/07-yslow-final.png" /><p class="caption"></p>
-</div>
-</div>
 </div>
 <div class="section titleslide slide level1" id="lets-have-a-bit-more-fun-with-geolocation"><h1>Let's have a bit more fun with Geolocation</h1></div><div class="section slide level2" id="w3c-geolocation-api">
 <h1>W3C Geolocation API</h1>
@@ -324,9 +175,149 @@ ExpiresByType image/x-icon &quot;access plus 2 years&quot;
 <span class="kw">function</span> onGeoError(error) {
   alert(<span class="kw">error</span>.<span class="fu">message</span>);
 }</code></pre>
+</div><div class="section slide level2" id="another-need-for-the-troops">
+<h1>Another need for the troops</h1>
+<blockquote>
+<p>&quot;Hey, it would be nice if Sigma Stronghold troops could access parts of the site even when they are not connected to the Internet. Service can be pretty flaky in our neighborhood, especially in the zombie-dense areas where they've knocked down the antennas.&quot; —Sergeant Dingus</p>
+</blockquote>
+<div class="section level3" id="illustration-dingus">
+<h3>Illustration: Dingus</h3>
+<div class="figure">
+<img src="images/dingus-small.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section titleslide slide level1" id="creating-an-offline-mode-using-applicationcache"><h1>Creating an Offline Mode using ApplicationCache</h1></div><div class="section slide level2" id="applicationcache">
+<h1>ApplicationCache</h1>
+<ul>
+<li>An API that is part of the HTML5 spec</li>
+<li>Define what resources should (or should not be) cached using a cache manifest</li>
+<li>ApplicationCache object and its methods exposed to JavaScript</li>
+</ul>
+<div class="section level4" id="the-idea-is-to-create-an-offline-mode-for-your-web-site-or-app-by-defining-which-resources-should-be-cached-by-the-browser-and-available-offline.">
+<h4>The idea is to create an <em>offline mode</em> for your web site or app by defining which resources should be cached by the browser and available offline.</h4>
+</div>
+</div><div class="section slide level2" id="cache-manifests">
+<h1>Cache manifests</h1>
+<p>A <em>cache manifest</em> is a text file that lets you tell the client about resources that should be cached.</p>
+<p>You use cache manifests to define what ends up in the ApplicationCache.</p>
+</div><div class="section slide level2" id="cache-manifests-at-a-glance">
+<h1>Cache manifests at a glance</h1>
+<p>To create and use a cache manifest:</p>
+<ol style="list-style-type: decimal">
+<li>Write a cache manifest file that lists resources on the site that the browser should cache.</li>
+<li>Configure your web server to serve the cache manifest as the correct <code>MIME</code> type. (This requirement is going away).</li>
+<li>Tell browsers about your manifest by using the <code>manifest</code> attribute on the <code>&lt;html&gt;</code> tag.</li>
+</ol>
+</div><div class="section slide level2" id="step-1-writing-the-manifest">
+<h1>Step 1: Writing the manifest</h1>
+<div class="section level3" id="cache-manifest-syntax">
+<h3>Cache manifest syntax</h3>
+<p>Writing a cache manifest file sounds simple—in premise. In its simplest:</p>
+<pre><code>CACHE MANIFEST
+
+CACHE:
+foo.jpg
+bar.png
+index.html
+ding/dong.html</code></pre>
+<div class="section level5" id="manifest.appcache">
+<h5>manifest.appcache</h5>
+</div>
+</div>
+</div><div class="section slide level2" id="step-2-serving-cache-manifests">
+<h1>Step 2: Serving cache manifests</h1>
+<p>Cache manifest files must be served as a particular <code>MIME</code> type (<code>text/cache-manifest</code>) or browsers will not recognize them.</p>
+<p>Often this can be handled by adding the following to your <code>.htaccess</code> or other Apache configuration file:</p>
+<p><code>AddType text/cache-manifest .appcache</code></p>
+<p>(Preferred extension is <code>.appcache</code>)</p>
+</div><div class="section slide level2" id="step-3-tell-the-browser-about-your-manifest">
+<h1>Step 3: Tell the browser about your manifest</h1>
+<p>There is a <code>manifest</code> attribute on the <code>html</code> element.</p>
+<p><code>&lt;html manifest=&quot;manifest.appcache&quot;&gt;</code></p>
+</div><div class="section slide level2" id="ways-things-end-up-in-appcache">
+<h1>Ways things end up in appCache</h1>
+<ul>
+<li>Listed in the cache manifest file (explicit)</li>
+<li>Is a document with a manifest attribute defined (implicit)</li>
+</ul>
+</div><div class="section slide level2" id="be-very-wary">
+<h1>Be very wary</h1>
+<div class="section level3" id="illustration-danger">
+<h3>Illustration: Danger</h3>
+<div class="figure">
+<img src="images/07-danger.png" alt="Make sure to read or watch Jake Archibald&#39;s &quot;AppCache: Douchebag&quot; presentation" /><p class="caption">Make sure to read or watch Jake Archibald's &quot;AppCache: Douchebag&quot; presentation</p>
+</div>
+</div>
+</div><div class="section slide level2" id="conclusion">
+<h1>Conclusion</h1>
+<p>Cache manifest can be a good approach for creating offline modes of web sites and apps. It tends to be more manageable for smaller or app-like web sites.</p>
+</div><div class="section slide level2" id="clarence-has-something-to-say">
+<h1>Clarence has something to say</h1>
+<div class="figure">
+<img src="images/clarence.png" /><p class="caption"></p>
+</div>
+<blockquote>
+<p>&quot;I should mention, if we're worried about performance for our web sites, we should consider making some of the server-side tweaks that the ySlow tool suggests.&quot; —Clarence the Angry Performance Goat</p>
+</blockquote>
+</div><div class="section slide level2" id="when-in-battle-remember-three-things">
+<h1>When in battle, remember three things</h1>
+<p>Yahoo has 14 rules and there are even more things that improve performance, but majority of sites benefit most from four things:</p>
+<ol style="list-style-type: decimal">
+<li>Well-compressed images</li>
+<li>Turning on GZIP</li>
+<li>Reducing HTTP requests</li>
+<li>Setting Far Future Expires headers</li>
+</ol>
+</div><div class="section slide level2" id="drop-in-.htaccessapache-solutions">
+<h1>Drop-in .htaccess/Apache solutions</h1>
+<div class="section level3" id="turn-off-etags-and-turn-on-gzip">
+<h3>Turn off eTags and Turn <em>ON</em> GZip</h3>
+<pre><code>FileETag none
+
+&lt;IfModule mod_deflate.c&gt;
+  SetOutputFilter DEFLATE
+  # Don’t compress
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+  #Dealing with proxy servers
+  &lt;IfModule mod_headers.c&gt;
+    Header append Vary User-Agent
+  &lt;/IfModule&gt;
+&lt;/IfModule&gt;
+
+AddOutputFilterByType DEFLATE image/x-icon</code></pre>
+<div class="section level5" id="htaccess">
+<h5>.htaccess</h5>
+</div>
+</div>
+</div><div class="section slide level2" id="configure-far-future-expires-headers">
+<h1>Configure far-future expires headers</h1>
+<pre><code>&lt;IfModule mod_expires.c&gt;
+ExpiresActive On
+ExpiresByType text/html &quot;access plus 1 seconds&quot;
+ExpiresByType image/gif &quot;access plus 2 years&quot;
+ExpiresByType image/jpeg &quot;access plus 2 years&quot;
+ExpiresByType image/png &quot;access plus 2 years&quot;
+ExpiresByType text/css &quot;access plus 2 years&quot;
+ExpiresByType text/javascript &quot;access plus 2 years&quot;
+ExpiresByType application/x-javascript &quot;access plus 2 years&quot;
+ExpiresByType image/x-icon &quot;access plus 2 years&quot;
+&lt;/IfModule&gt;</code></pre>
+<div class="section level5" id="htaccess-cont.">
+<h5>.htaccess (cont.)</h5>
+</div>
+</div><div class="section slide level2" id="hey-look-at-that">
+<h1>Hey, look at that</h1>
+<div class="section level3" id="figure-yslow-final-stats">
+<h3>Figure: ySlow Final stats</h3>
+<div class="figure">
+<img src="images/07-yslow-final.png" /><p class="caption"></p>
+</div>
+</div>
 </div><div class="section slide level2" id="so-this-doesnt-work-everywhere">
 <h1>So, this doesn't work everywhere</h1>
-<p>A lot of modern browsers implement the W3C geolocation API. But some don't. And who supports ApplicationCache? etc.? How can we tell?</p>
+<p>A lot of modern browsers implement the W3C geolocation API and Application Cache. But some don't. How can we tell?</p>
 </div>
 <div class="section titleslide slide level1" id="its-time-to-understand-our-browsers-and-devices"><h1>It's time to <a href="07-devices.html">understand our browsers and devices</a></h1></div>
 </body>
