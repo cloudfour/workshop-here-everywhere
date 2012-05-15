@@ -67,6 +67,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#responsive-images">Responsive images</a></li>
 </ul></li>
 <li><a href="#section-6-mobile-awesomesauce">Section 6: Mobile Awesomesauce</a><ul>
+<li><a href="#geolocation">Geolocation</a></li>
 <li><a href="#applicationcache">ApplicationCache</a><ul>
 <li><a href="#steps-to-appcache">Steps to AppCache</a></li>
 <li><a href="#snippet-reference-basic-cache-manifest">Snippet Reference: Basic Cache Manifest</a></li>
@@ -75,40 +76,25 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="#snippet-reference-manifest-attribute">Snippet Reference: <code>manifest</code> attribute</a></li>
 </ul></li>
-<li><a href="#exercise-2">Exercise</a><ul>
-<li><a href="#exercise-3">Exercise</a><ul>
-<li><a href="#htaccess-example">.htaccess example</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#geolocation">Geolocation</a></li>
 <li><a href="#references-3">References</a><ul>
 <li><a href="#applicationcache-1">ApplicationCache</a></li>
 <li><a href="#a-bit-on-font-face">A bit on <code>@font-face</code></a></li>
+<li><a href="#more-stuff">More Stuff</a></li>
 <li><a href="#geolocation-1">Geolocation</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#section-7-devices-devices-devices-and-browsers">Section 7: Devices, devices, devices (and browsers)</a><ul>
 <li><a href="#feature-detection-using-javascript">Feature Detection using JavaScript</a></li>
-<li><a href="#exercise-4">Exercise</a></li>
-<li><a href="#resources">Resources</a></li>
-</ul></li>
-<li><a href="#section-9-mobile-web-apps-with-frameworks-jquery-mobile">Section 9: Mobile Web Apps with Frameworks; jQuery Mobile</a><ul>
-<li><a href="#references-4">References</a></li>
-</ul></li>
-<li><a href="#section-10-advanced-mobile-web-apps">Section 10: Advanced Mobile Web Apps</a><ul>
-<li><a href="#references-5">References</a></li>
-</ul></li>
-<li><a href="#section-11-going-hybrid">Section 11: Going Hybrid</a><ul>
-<li><a href="#references-6">References</a></li>
-</ul></li>
-<li><a href="#section-12-testing">Section 12: Testing</a><ul>
+<li><a href="#exercise-2">Exercise</a></li>
+<li><a href="#testing">Testing</a></li>
 <li><a href="#a-decision-matrix-for-what-devices-to-support.">A decision matrix for what devices to support.</a><ul>
 <li><a href="#project-requirements">Project requirements</a></li>
 <li><a href="#audience-characteristics">Audience characteristics</a></li>
+<li><a href="#references-4">References</a></li>
 </ul></li>
-<li><a href="#references-7">References</a></li>
+<li><a href="#other-resources">Other Resources</a></li>
 </ul></li>
-<li><a href="#section-13-future-friendly">Section 13: Future Friendly</a></li>
+<li><a href="#section-8-future-friendly">Section 8: Future Friendly</a></li>
 </ul>
 </nav>
 <section class="level1" id="section-2-responsive-web-design-getting-fluid">
@@ -289,6 +275,21 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section class="level1" id="section-6-mobile-awesomesauce">
 <h1><a href="#TOC">Section 6: Mobile Awesomesauce</a></h1>
+<section class="level2" id="geolocation">
+<h2><a href="#TOC">Geolocation</a></h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
+} <span class="kw">else</span> {
+  alert(<span class="ch">&#39;Sorry, Geolocation not supported in this browser!&#39;</span>);
+}
+<span class="kw">function</span> onGeoSuccess(position) {
+  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
+  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
+}
+<span class="kw">function</span> onGeoError(error) {
+  alert(<span class="kw">error</span>.<span class="fu">message</span>);
+}</code></pre>
+</section>
 <section class="level2" id="applicationcache">
 <h2><a href="#TOC">ApplicationCache</a></h2>
 <section class="level3" id="steps-to-appcache">
@@ -321,36 +322,6 @@ ding/dong.html</code></pre>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> manifest=</span><span class="st">&quot;manifest.appcache&quot;</span><span class="kw">&gt;</span></code></pre>
 </section>
 </section>
-<section class="level2" id="exercise-2">
-<h2><a href="#TOC">Exercise</a></h2>
-<section class="level3" id="exercise-3">
-<h3><a href="#TOC">Exercise</a></h3>
-<ol type="1">
-<li>Open the <code>index.html</code> file for the Sigma Stronghold site in <code>examples/07/01-appcache</code>.</li>
-<li>Identify all of the resources we want to cache for the page. (<em>hint</em>: You'll also want to look at the CSS file, <code>styles.css</code>)</li>
-<li>Create a basic cache manifest file (<code>manifest.appcache</code>).</li>
-<li><em>Remember</em>: All referenced resources—images, JavaScript, CSS, etc.—must be listed in the Cache Manifest.</li>
-</ol>
-<section class="level5" id="htaccess-example">
-<h5><a href="#TOC">.htaccess example</a></h5>
-</section>
-</section>
-</section>
-<section class="level2" id="geolocation">
-<h2><a href="#TOC">Geolocation</a></h2>
-<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
-  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
-} <span class="kw">else</span> {
-  alert(<span class="ch">&#39;Sorry, Geolocation not supported in this browser!&#39;</span>);
-}
-<span class="kw">function</span> onGeoSuccess(position) {
-  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
-  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
-}
-<span class="kw">function</span> onGeoError(error) {
-  alert(<span class="kw">error</span>.<span class="fu">message</span>);
-}</code></pre>
-</section>
 <section class="level2" id="references-3">
 <h2><a href="#TOC">References</a></h2>
 <ul>
@@ -376,6 +347,16 @@ ding/dong.html</code></pre>
 <li><a href="http://www.fontsquirrel.com/fontface/generator">Font Squirrel</a></li>
 </ul>
 </section>
+<section class="level3" id="more-stuff">
+<h3><a href="#TOC">More Stuff</a></h3>
+<ul>
+<li><a href="http://www.jquerymobile.com">jQuery Mobile</a></li>
+<li><a href="http://westcoastlogic.com/lawnchair/">Lawnchair</a> Simple JSON storage</li>
+<li><a href="http://code.google.com/p/myroundcube/source/browse/plugins/calendar/program/js/date.format.js?spec=svn74&amp;r=70">date.format.js</a> on Google Code</li>
+<li><a href="http://code.google.com/p/geo-location-javascript/">geo-location-javascript</a> Cross-browser geolocation in JavaScript</li>
+<li><a href="http://coding.smashingmagazine.com/2010/10/11/local-storage-and-how-to-use-it/">Smashing Magazine Article on using LocalStorage</a></li>
+</ul>
+</section>
 <section class="level3" id="geolocation-1">
 <h3><a href="#TOC">Geolocation</a></h3>
 <ul>
@@ -398,7 +379,7 @@ ding/dong.html</code></pre>
 <li><code>05-flexbox</code>: Could Modernizr tests help us with our flexbox example?</li>
 </ul>
 </section>
-<section class="level2" id="exercise-4">
+<section class="level2" id="exercise-2">
 <h2><a href="#TOC">Exercise</a></h2>
 <p>Let’s do a test run using a device detection database.</p>
 <ol type="1">
@@ -408,60 +389,9 @@ ding/dong.html</code></pre>
 <li>Go to the <a href="http://www.tera-wurfl.com/explore/">ScientiaMobile WURFL Explorer</a> on your laptop</li>
 </ol>
 </section>
-<section class="level2" id="resources">
-<h2><a href="#TOC">Resources</a></h2>
-<ul>
-<li><a href="http://www.modernizr.com">Modernizr</a></li>
-<li><a href="http://modernizr.com/download/">Download Custom Modernizr Build</a></li>
-<li><a href="http://wurfl.sourceforge.net/">WURFL</a> (Wireless Universal Resource FiLe) by <a href="http://www.scientiamobile.com/">ScientiaMobile</a></li>
-<li><a href="http://deviceatlas.com/">DeviceAtlas</a> by <a href="http://mtld.mobi/">dotMobi</a></li>
-<li>New Apache <a href="http://wiki.apache.org/incubator/DeviceMapProposal">DeviceMap</a> Project</li>
-<li><a href="http://51degrees.mobi/Products/DeviceData.aspx">51degrees</a></li>
-<li><a href="http://www.lukew.com/ff/entry.asp?1392">RESS: Responsive Design + Server-Side Components</a> from Luke Wroblewski</li>
-</ul>
-<hr>
+<section class="level2" id="testing">
+<h2><a href="#TOC">Testing</a></h2>
 </section>
-</section>
-<section class="level1" id="section-9-mobile-web-apps-with-frameworks-jquery-mobile">
-<h1><a href="#TOC">Section 9: Mobile Web Apps with Frameworks; jQuery Mobile</a></h1>
-<section class="level2" id="references-4">
-<h2><a href="#TOC">References</a></h2>
-<ul>
-<li>See <code>examples/09/01-mockup</code> for an end result example</li>
-<li><a href="http://jquerymobile.com/demos/1.1.0/">jQuery Mobile 1.1 Documentation</a></li>
-<li><a href="http://html5doctor.com/html5-custom-data-attributes/">HTML5 data-* attribute</a> on the HTML5Doctor</li>
-</ul>
-<hr>
-</section>
-</section>
-<section class="level1" id="section-10-advanced-mobile-web-apps">
-<h1><a href="#TOC">Section 10: Advanced Mobile Web Apps</a></h1>
-<p>If you want to follow along, see <code>examples/10/01-functional</code>.</p>
-<section class="level2" id="references-5">
-<h2><a href="#TOC">References</a></h2>
-<ul>
-<li><a href="http://westcoastlogic.com/lawnchair/">Lawnchair</a> Simple JSON storage</li>
-<li><a href="http://westcoastlogic.com/lawnchair/adapters/">Lawnchair adapters</a> (We used the <code>dom</code> adapter in this example)</li>
-<li><a href="http://code.google.com/p/myroundcube/source/browse/plugins/calendar/program/js/date.format.js?spec=svn74&amp;r=70">date.format.js</a> on Google Code</li>
-<li><a href="http://code.google.com/p/geo-location-javascript/">geo-location-javascript</a> Cross-browser geolocation in JavaScript</li>
-<li><a href="http://coding.smashingmagazine.com/2010/10/11/local-storage-and-how-to-use-it/">Smashing Magazine Article on using LocalStorage</a></li>
-</ul>
-<hr>
-</section>
-</section>
-<section class="level1" id="section-11-going-hybrid">
-<h1><a href="#TOC">Section 11: Going Hybrid</a></h1>
-<section class="level2" id="references-6">
-<h2><a href="#TOC">References</a></h2>
-<ul>
-<li><a href="http://build.phonegap.com">PhoneGap Build</a></li>
-<li><a href="https://build.phonegap.com/docs/config-xml">PhoneGap config.xml syntax</a></li>
-</ul>
-<hr>
-</section>
-</section>
-<section class="level1" id="section-12-testing">
-<h1><a href="#TOC">Section 12: Testing</a></h1>
 <section class="level2" id="a-decision-matrix-for-what-devices-to-support.">
 <h2><a href="#TOC">A decision matrix for what devices to support.</a></h2>
 <section class="level3" id="project-requirements">
@@ -482,9 +412,8 @@ ding/dong.html</code></pre>
 <li>Demographics</li>
 </ul>
 </section>
-</section>
-<section class="level2" id="references-7">
-<h2><a href="#TOC">References</a></h2>
+<section class="level3" id="references-4">
+<h3><a href="#TOC">References</a></h3>
 <ul>
 <li><a href="http://blog.cloudfour.com/a-comprehensive-guide-to-mobile-statistics/">A “Comprehensive” Guide to Mobile Statistics</a></li>
 <li><a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/">User agent switcher</a></li>
@@ -501,11 +430,24 @@ ding/dong.html</code></pre>
 <li><a href="http://www.keynotedeviceanywhere.com/">Device Anywhere</a></li>
 <li><a href="http://www.perfectomobile.com/">Perfecto Mobile</a></li>
 </ul>
+</section>
+</section>
+<section class="level2" id="other-resources">
+<h2><a href="#TOC">Other Resources</a></h2>
+<ul>
+<li><a href="http://www.modernizr.com">Modernizr</a></li>
+<li><a href="http://modernizr.com/download/">Download Custom Modernizr Build</a></li>
+<li><a href="http://wurfl.sourceforge.net/">WURFL</a> (Wireless Universal Resource FiLe) by <a href="http://www.scientiamobile.com/">ScientiaMobile</a></li>
+<li><a href="http://deviceatlas.com/">DeviceAtlas</a> by <a href="http://mtld.mobi/">dotMobi</a></li>
+<li>New Apache <a href="http://wiki.apache.org/incubator/DeviceMapProposal">DeviceMap</a> Project</li>
+<li><a href="http://51degrees.mobi/Products/DeviceData.aspx">51degrees</a></li>
+<li><a href="http://www.lukew.com/ff/entry.asp?1392">RESS: Responsive Design + Server-Side Components</a> from Luke Wroblewski</li>
+</ul>
 <hr>
 </section>
 </section>
-<section class="level1" id="section-13-future-friendly">
-<h1><a href="#TOC">Section 13: Future Friendly</a></h1>
+<section class="level1" id="section-8-future-friendly">
+<h1><a href="#TOC">Section 8: Future Friendly</a></h1>
 <ul>
 <li><a href="http://futurefriend.ly">Future Friendly</a></li>
 </ul>

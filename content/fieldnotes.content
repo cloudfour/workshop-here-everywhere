@@ -180,6 +180,24 @@ Things that work:
 
 # Section 6: Mobile Awesomesauce
 
+
+## Geolocation
+
+~~~{.javascript}
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+} else {
+  alert('Sorry, Geolocation not supported in this browser!');
+}
+function onGeoSuccess(position) {
+  var coordinates = position.coords;
+  alert(coordinates.latitude + ", " + coordinates.longitude);
+}
+function onGeoError(error) {
+  alert(error.message);
+}
+~~~
+
 ## ApplicationCache
 
 ### Steps to AppCache
@@ -214,34 +232,6 @@ AddType text/cache-manifest .appcache
 <html manifest="manifest.appcache">
 ~~~
 
-## Exercise
-
-### Exercise
-
-1. Open the `index.html` file for the Sigma Stronghold site in `examples/07/01-appcache`.
-2. Identify all of the resources we want to cache for the page. (*hint*: You'll also want to look at the CSS file, `styles.css`)
-3. Create a basic cache manifest file (`manifest.appcache`).
-4. *Remember*: All referenced resources—images, JavaScript, CSS, etc.—must be listed in the Cache Manifest.
-
-##### .htaccess example
-
-## Geolocation
-
-~~~{.javascript}
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-} else {
-  alert('Sorry, Geolocation not supported in this browser!');
-}
-function onGeoSuccess(position) {
-  var coordinates = position.coords;
-  alert(coordinates.latitude + ", " + coordinates.longitude);
-}
-function onGeoError(error) {
-  alert(error.message);
-}
-~~~
-
 ## References
 
 * Final version of cache manifest file and font files can be found in `examples/07/02-appcache-fonts` (This includes final cache manifest file *and* updated .htaccess file with performance tweaks and appCache handler).
@@ -262,6 +252,13 @@ function onGeoError(error) {
 * Paul Irish's [Bulletproof @font-face](http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/)
 * [Font Squirrel](http://www.fontsquirrel.com/fontface/generator)
 
+### More Stuff
+
+* [jQuery Mobile](http://www.jquerymobile.com)
+* [Lawnchair](http://westcoastlogic.com/lawnchair/) Simple JSON storage
+* [date.format.js](http://code.google.com/p/myroundcube/source/browse/plugins/calendar/program/js/date.format.js?spec=svn74&r=70) on Google Code
+* [geo-location-javascript](http://code.google.com/p/geo-location-javascript/) Cross-browser geolocation in JavaScript
+* [Smashing Magazine Article on using LocalStorage](http://coding.smashingmagazine.com/2010/10/11/local-storage-and-how-to-use-it/)
 
 ### Geolocation
 
@@ -290,56 +287,7 @@ Let’s do a test run using a device detection database.
 3. Can you find the screen resolution of your phone?
 4. Go to the [ScientiaMobile WURFL Explorer][explorer] on your laptop
 
-## Resources
-
-* [Modernizr](http://www.modernizr.com)
-* [Download Custom Modernizr Build](http://modernizr.com/download/)
-* [WURFL][wurfl] (Wireless Universal Resource FiLe) by [ScientiaMobile][scientiamobile]
-* [DeviceAtlas][deviceatlas] by [dotMobi][dotmobi]
-* New Apache [DeviceMap][devicemap] Project
-* [51degrees][51]
-* [RESS: Responsive Design + Server-Side Components](http://www.lukew.com/ff/entry.asp?1392) from Luke Wroblewski
-
-
-[^wurfl]: You can get a free API key at <http://www.scientiamobile.com/cloud>. The capabilities used in the example are `is_touchscreen` and `has_cellular_radio`. This is likely more trouble than you want to go to to follow along; no worries!
-
---------------------------------------------------------------
-
-# Section 9: Mobile Web Apps with Frameworks; jQuery Mobile
-
-
-## References
-
-* See `examples/09/01-mockup` for an end result example
-* [jQuery Mobile 1.1 Documentation](http://jquerymobile.com/demos/1.1.0/)
-* [HTML5 data-* attribute](http://html5doctor.com/html5-custom-data-attributes/) on the HTML5Doctor
-
---------------------------------------------------------------------------
-
-# Section 10: Advanced Mobile Web Apps
-
-If you want to follow along, see `examples/10/01-functional`.
-
-## References
-
-* [Lawnchair](http://westcoastlogic.com/lawnchair/) Simple JSON storage
-* [Lawnchair adapters](http://westcoastlogic.com/lawnchair/adapters/) (We used the `dom` adapter in this example)
-* [date.format.js](http://code.google.com/p/myroundcube/source/browse/plugins/calendar/program/js/date.format.js?spec=svn74&r=70) on Google Code
-* [geo-location-javascript](http://code.google.com/p/geo-location-javascript/) Cross-browser geolocation in JavaScript
-* [Smashing Magazine Article on using LocalStorage](http://coding.smashingmagazine.com/2010/10/11/local-storage-and-how-to-use-it/)
-
--------------------------------------------------------------------------
-
-# Section 11: Going Hybrid
-
-## References
-
-* [PhoneGap Build](http://build.phonegap.com)
-* [PhoneGap config.xml syntax](https://build.phonegap.com/docs/config-xml)
-
--------------------------------------------------------------------------
-
-# Section 12: Testing
+## Testing
 
 ## A decision matrix for what devices to support.
 
@@ -357,7 +305,7 @@ If you want to follow along, see `examples/10/01-functional`.
 * Geographic Trends
 * Demographics
 
-## References
+### References
 
 * [A “Comprehensive” Guide to Mobile Statistics](http://blog.cloudfour.com/a-comprehensive-guide-to-mobile-statistics/)
 * [User agent switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/)
@@ -374,11 +322,22 @@ If you want to follow along, see `examples/10/01-functional`.
 * [Device Anywhere](http://www.keynotedeviceanywhere.com/)
 * [Perfecto Mobile](http://www.perfectomobile.com/)
 
+## Other Resources
 
+* [Modernizr](http://www.modernizr.com)
+* [Download Custom Modernizr Build](http://modernizr.com/download/)
+* [WURFL][wurfl] (Wireless Universal Resource FiLe) by [ScientiaMobile][scientiamobile]
+* [DeviceAtlas][deviceatlas] by [dotMobi][dotmobi]
+* New Apache [DeviceMap][devicemap] Project
+* [51degrees][51]
+* [RESS: Responsive Design + Server-Side Components](http://www.lukew.com/ff/entry.asp?1392) from Luke Wroblewski
+
+
+[^wurfl]: You can get a free API key at <http://www.scientiamobile.com/cloud>. The capabilities used in the example are `is_touchscreen` and `has_cellular_radio`. This is likely more trouble than you want to go to to follow along; no worries!
 
 -------------------------------------------------------------------------
 
-# Section 13: Future Friendly
+# Section 8: Future Friendly
 
 * [Future Friendly](http://futurefriend.ly)
 

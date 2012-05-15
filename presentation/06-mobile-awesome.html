@@ -252,67 +252,97 @@ ding/dong.html</code></pre>
 </div><div class="section slide level2" id="conclusion">
 <h1>Conclusion</h1>
 <p>Cache manifest can be a good approach for creating offline modes of web sites and apps. It tends to be more manageable for smaller or app-like web sites.</p>
-</div><div class="section slide level2" id="clarence-has-something-to-say">
-<h1>Clarence has something to say</h1>
+</div>
+<div class="section titleslide slide level1" id="but-wait-theres-more"><h1>But Wait, there's more</h1></div><div class="section slide level2" id="frameworks-and-tools-for-mobile-web">
+<h1>Frameworks and Tools for Mobile Web</h1>
+<ul>
+<li>jQuery Mobile</li>
+<li>Sencha Touch</li>
+<li>PhoneGap and PhoneGap Build (for hybrid apps)</li>
+<li>SproutCore</li>
+</ul>
+</div><div class="section slide level2" id="getting-a-leg-up-with-jqm">
+<h1>Getting a leg up with jQM</h1>
+<div class="section level3" id="figure-jqm">
+<h3>Figure: jQM</h3>
 <div class="figure">
-<img src="images/clarence.png" /><p class="caption"></p>
-</div>
-<blockquote>
-<p>&quot;I should mention, if we're worried about performance for our web sites, we should consider making some of the server-side tweaks that the ySlow tool suggests.&quot; —Clarence the Angry Performance Goat</p>
-</blockquote>
-</div><div class="section slide level2" id="when-in-battle-remember-three-things">
-<h1>When in battle, remember three things</h1>
-<p>Yahoo has 14 rules and there are even more things that improve performance, but majority of sites benefit most from four things:</p>
-<ol style="list-style-type: decimal">
-<li>Well-compressed images</li>
-<li>Turning on GZIP</li>
-<li>Reducing HTTP requests</li>
-<li>Setting Far Future Expires headers</li>
-</ol>
-</div><div class="section slide level2" id="drop-in-.htaccessapache-solutions">
-<h1>Drop-in .htaccess/Apache solutions</h1>
-<div class="section level3" id="turn-off-etags-and-turn-on-gzip">
-<h3>Turn off eTags and Turn <em>ON</em> GZip</h3>
-<pre><code>FileETag none
-
-&lt;IfModule mod_deflate.c&gt;
-  SetOutputFilter DEFLATE
-  # Don’t compress
-  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
-  SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
-  #Dealing with proxy servers
-  &lt;IfModule mod_headers.c&gt;
-    Header append Vary User-Agent
-  &lt;/IfModule&gt;
-&lt;/IfModule&gt;
-
-AddOutputFilterByType DEFLATE image/x-icon</code></pre>
-<div class="section level5" id="htaccess">
-<h5>.htaccess</h5>
+<img src="images/09-jquerymobile-com.png" /><p class="caption"></p>
 </div>
 </div>
-</div><div class="section slide level2" id="configure-far-future-expires-headers">
-<h1>Configure far-future expires headers</h1>
-<pre><code>&lt;IfModule mod_expires.c&gt;
-ExpiresActive On
-ExpiresByType text/html &quot;access plus 1 seconds&quot;
-ExpiresByType image/gif &quot;access plus 2 years&quot;
-ExpiresByType image/jpeg &quot;access plus 2 years&quot;
-ExpiresByType image/png &quot;access plus 2 years&quot;
-ExpiresByType text/css &quot;access plus 2 years&quot;
-ExpiresByType text/javascript &quot;access plus 2 years&quot;
-ExpiresByType application/x-javascript &quot;access plus 2 years&quot;
-ExpiresByType image/x-icon &quot;access plus 2 years&quot;
-&lt;/IfModule&gt;</code></pre>
-<div class="section level5" id="htaccess-cont.">
-<h5>.htaccess (cont.)</h5>
-</div>
-</div><div class="section slide level2" id="hey-look-at-that">
-<h1>Hey, look at that</h1>
-<div class="section level3" id="figure-yslow-final-stats">
-<h3>Figure: ySlow Final stats</h3>
+</div><div class="section slide level2" id="for-quick-prototyping-and-building-web-apps">
+<h1>For quick prototyping and building web apps</h1>
+<div class="section level3" id="figure-prototyping">
+<h3>Figure: Prototyping</h3>
 <div class="figure">
-<img src="images/07-yslow-final.png" /><p class="caption"></p>
+<img src="images/09-sketch.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="building-on-html5">
+<h1>Building on HTML5</h1>
+<div class="section level3" id="code">
+<h3>Code</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span> 
+<span class="kw">&lt;html&gt;</span> 
+    <span class="kw">&lt;head&gt;</span> 
+    <span class="kw">&lt;title&gt;</span>I Got One!<span class="kw">&lt;/title&gt;</span> 
+
+    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/jquery-1.6.4.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;gotone.css&quot;</span> <span class="kw">/&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Lawnchair.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;dom.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;date.format.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;geo.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;zombie.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;/head&gt;</span> 
+
+<span class="kw">&lt;body&gt;</span> 
+
+<span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;page&quot;</span><span class="ot"> id=</span><span class="st">&quot;nab-zombie&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>I got one!<span class="kw">&lt;/h1&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+
+  <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> data-role=</span><span class="st">&quot;fieldcontain&quot;</span><span class="kw">&gt;</span>
+      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;how-zombie&quot;</span><span class="kw">&gt;</span>How&#39;d you nab it?<span class="kw">&lt;/label&gt;</span>
+      <span class="kw">&lt;select</span><span class="ot"> name=</span><span class="st">&quot;how-zombie&quot;</span><span class="ot"> id=</span><span class="st">&quot;how-zombie&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;tank&quot;</span><span class="kw">&gt;</span>Tank<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;conflagration&quot;</span><span class="kw">&gt;</span>Conflagration<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;poison&quot;</span><span class="kw">&gt;</span>Poison<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;nukes&quot;</span><span class="kw">&gt;</span>Micro-nukes<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;trickery&quot;</span><span class="kw">&gt;</span>Trickery<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;corrosive&quot;</span><span class="kw">&gt;</span>Corrosive<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;dismemberment&quot;</span><span class="kw">&gt;</span>Dismemberment<span class="kw">&lt;/option&gt;</span>
+      <span class="kw">&lt;/select&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot;I got one!&quot;</span><span class="ot"> id=</span><span class="st">&quot;got-one&quot;</span><span class="ot"> data-theme=</span><span class="st">&quot;b&quot;</span> <span class="kw">/&gt;</span>
+
+    <span class="kw">&lt;ul</span><span class="ot"> data-role=</span><span class="st">&quot;listview&quot;</span><span class="ot"> data-inset=</span><span class="st">&quot;true&quot;</span><span class="ot"> id=</span><span class="st">&quot;zombielist&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;/ul&gt;</span>
+
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span>
+
+<span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+</div>
+</div><div class="section slide level2" id="getting-a-leg-up">
+<h1>Getting a leg up</h1>
+<div class="section level3" id="figure-structure">
+<h3>Figure: Structure</h3>
+<div class="figure">
+<img src="images/09-structure.png" /><p class="caption"></p>
+</div>
+</div>
+</div><div class="section slide level2" id="building-quickly">
+<h1>Building quickly</h1>
+<div class="section level3" id="figure-jqm-web-app">
+<h3>Figure: JQM Web App</h3>
+<div class="figure">
+<img src="images/09-done.png" alt="Example App" /><p class="caption"><a href="../examples/06/03-jquery-mobile-example">Example App</a></p>
 </div>
 </div>
 </div><div class="section slide level2" id="so-this-doesnt-work-everywhere">
