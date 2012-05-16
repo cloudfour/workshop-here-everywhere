@@ -147,10 +147,6 @@ We've heard what Sgt. Dingus has to say about the layout, but what about these i
 </div>
 ~~~
 
-## A little extra credit
-
-Can you think of a way to make the contact information even better? (*Hint*: This isn't mobile-specific).
-
 ### Illustration: Question
 
 ![](images/question.png)
@@ -238,9 +234,6 @@ With media queries, we can apply different CSS in different circumstances. For t
 
 ### Let's build a media-query driven layout for widths 700px width or narrower.
 
-#### Extra Credit
-
-Can someone tell me what the media query for this should look like?
 
 ## Our crafted media query
 

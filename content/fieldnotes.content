@@ -253,6 +253,7 @@ AddType text/cache-manifest .appcache
 
 ### ApplicationCache
 
+* [ApplicationCache: Douchebag](https://speakerdeck.com/u/jaffathecake/p/application-cache-douchebag) by Jake Archibald
 * [WHATWG Offline Web Applications Spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html) (AppCache spec)
 * [Beginner's Guide to AppCache](http://www.html5rocks.com/en/tutorials/appcache/beginner/) on HTML5Rocks
 * [AppCacheFacts.info](http://appcachefacts.info/)
@@ -284,7 +285,7 @@ AddType text/cache-manifest .appcache
 
 ## Feature Detection using JavaScript
 
-You can find the source code for these examples in `examples/08/`.
+You can find the source code for these examples in `examples/07/`.
 
 * `01-modernizr` : Touch event support via Modernizr.
 * `02-touch`: Using Modernizr touch support test to change layout of Sigma Stronghold.
