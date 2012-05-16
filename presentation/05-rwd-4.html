@@ -169,6 +169,14 @@ When RWD goes wrong
 <li>All of your images are being routed through a third-party service.</li>
 <li>How does Sencha know what size image to use anyways? It relies on device detection which some developers dislike.</li>
 </ul>
+</div><div class="section slide level2" id="what-we-really-need-to-solve-for-images">
+<h1>What we really need to solve for images</h1>
+<p>There are two separate issues when it comes to the img tag:</p>
+<ul>
+<li>Ability to authors to provide img art direction based on breakpoints</li>
+<li>Ensuring that the right image size is downloaded based on a combo of bandwidth, screen size, pixel density and user preference.</li>
+</ul>
+<p>The picture element is focused on solving the first issue. There are a lot of different ways to address the second.</p>
 </div><div class="section slide level2" id="only-real-solution-is-new-standard">
 <h1>Only real solution is new standard</h1>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;picture</span><span class="ot"> alt=</span><span class="st">&quot;Giraffe&quot;</span><span class="kw">&gt;</span>
@@ -177,14 +185,11 @@ When RWD goes wrong
   <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;giraffe-sml.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Giraffe&quot;</span> <span class="kw">/&gt;</span>
   <span class="kw">&lt;p&gt;</span>Long description<span class="kw">&lt;/p&gt;</span>
 <span class="kw">&lt;/picture&gt;</span></code></pre>
-</div><div class="section slide level2" id="picture-doesnt-solve-everything">
-<h1>Picture doesn’t solve everything</h1>
-<p>There are two separate issues when it comes to the img tag:</p>
-<ul>
-<li>Ability to authors to provide img art direction based on breakpoints</li>
-<li>Ensuring that the right image size is downloaded based on a combo of bandwidth, screen size, pixel density and user preference.</li>
-</ul>
-<p>The picture element is focused on solving the first issue. There are a lot of different ways to address the second.</p>
+<p>OR maybe</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;face-600-200 at 1.jpeg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;&quot;</span>
+<span class="ot">     srcset=</span><span class="st">&quot;face-600-200 at 1.jpeg 600w 200h 1x,</span>
+<span class="st">             face-600-200 at 2.jpeg 600w 200h 2x,</span>
+<span class="st">             face-icon.png          200w 200h&quot;</span><span class="kw">&gt;</span></code></pre>
 </div><div class="section slide level2" id="other-rwd-challenges">
 <h1>Other RWD Challenges</h1>
 <ul>
