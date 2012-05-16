@@ -1,5 +1,19 @@
 % Field Notes: From Here to Everywhere: Taking your web skills mobile
 
+# Welcome
+
+Welcome to WebVisions Portland! Today's workshop is going to be a whirlwind survey of techniques and practices to help get you started or accelerated on the mobile web. Topics we'll be covering today include:
+
+* *The mobile web landscape*: What the current state of affairs is and why it matters to get mobile.
+* *Responsive Web Design (RWD)*: We'll be spending a lot of time talking about responsive approaches to front-end web design and development. That's because it's one of the most straightforward ways to start making your websites mobile- and device-friendly. Elements of RWD include fluid layouts, fluid images and CSS3 media queries. But the philosophy of RWD—adaptation to a user's environment instead of imposing a one-size-fits-all structure—is even more key.
+* *Mobile- and content-first thinking*: Turning our old, desktop-centric way of thinking on its head and preparing ourselves for the device apocalypse—even beyond mobile.
+* *Performance*: Because it really, really matters. Performance tips will be sprinkled throughout the workshop today.
+* *HTML5, Programmatic APIs and Device APIs*: A high-level look at some of the stuff on the web that is especially awesome for mobile.
+* *Tools and Frameworks*: A very brief sojourn into the world of frameworks and tools that can help you get your mobile job done.
+* *Devices, browsers and detection*: Detecting information about your users' devices and browsers and feature support, both from the server side and in the browser itself. An introduction to content adaptation.
+* *Testing*: Ugh, testing. How to keep from going crazy and how to start building a device testing suite.
+* *The Future*: How to think in a future-friendly manner.
+
 # Section 2: Responsive Web Design: Getting Fluid
 
 * [Starting point](02/01-start) of Sigma Stronghold Website
