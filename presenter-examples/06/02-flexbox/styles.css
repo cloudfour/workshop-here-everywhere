@@ -164,6 +164,7 @@ footer {
     -moz-flex-order: 1;
     -o-flex-order: 1;
     flex-order: 1;
+    order: 1;
   }
 
   h4#menulink {
