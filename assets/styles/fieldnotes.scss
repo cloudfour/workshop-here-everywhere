@@ -4,6 +4,12 @@ body {
   max-width: 90%;
   margin: 0 auto;
 }
+h1 {
+  background-color: lighten($color-accent, 40%);
+  margin-left: -3em;
+  clear: both;
+  padding: .25em;
+}
 h2, h3 {
   text-align: left;
 }
