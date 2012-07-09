@@ -103,14 +103,16 @@ ol {
       margin: 1em 1em 1em -1em; }
 
 body {
-  max-width: 90%;
-  margin: 0 auto; }
+  max-width: 55em;
+  margin: 0 auto;
+  line-height: 1.3em;
+  padding: 1em; }
 
 h1 {
-  background-color: #fbd3c4;
-  margin-left: -3em;
+  background-color: #e4d6e1;
   clear: both;
-  padding: .25em; }
+  padding: .25em;
+  line-height: 1em; }
 
 h2, h3 {
   text-align: left; }
@@ -119,16 +121,19 @@ a, a:visited, a:active, a:hover {
   color: #58858b;
   text-decoration: none; }
 
-ul li {
-  list-style: none outside none;
-  padding: .25em;
-  display: block; }
-  ul li:before {
-    content: "\2217";
-    font-size: 1.75em;
-    margin-right: .5em; }
+ul {
+  max-width: 35em; }
+  ul li {
+    list-style: none outside none;
+    padding: .25em;
+    display: block; }
+    ul li:before {
+      content: "\2217";
+      font-size: 1.75em;
+      margin-right: .5em; }
 
 ol li {
+  line-height: 2em;
   margin: 1em 0; }
 
 hr {
@@ -140,8 +145,7 @@ hr {
 nav#TOC {
   border: 1px solid #bc98b4;
   padding: .5em;
-  width: 50%;
-  float: right;
+  max-width: 35em;
   margin: 1em; }
   nav#TOC ul li {
     line-height: 1em;
@@ -155,6 +159,12 @@ nav#TOC {
     font-size: 1.25em;
     font-style: italic;
     color: #534f44; }
+
+section[id^="exercise"] {
+  background-color: #d8ddca;
+  border-radius: .5em;
+  border: 0.1em dashed #58858b;
+  padding: .5em 1em 1em 1em; }
 
 pre {
   overflow: scroll;

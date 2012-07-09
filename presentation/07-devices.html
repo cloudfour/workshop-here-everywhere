@@ -43,15 +43,31 @@ Keeping ahead of the apocalypse
 </div>
 <div class="section slide level2" id="how-can-we-tell-who-supports-what">
 <h1>How can we tell who supports what?</h1>
+<div class="section level3" id="sometimes-we-want-to-know-something-about-our-zombies-before-we-lob-nukes-at-them">
+<h3>Sometimes we want to know something about our zombies before we lob nukes at them</h3>
 <ul>
-<li>Feature detection: client- or server-side</li>
-<li>Device detection: client- or server-side</li>
+<li>Feature detection: client- or server-side. <em>Get information about specific capabilities</em></li>
+<li>Device detection: client- or server-side <em>Get information about the device or browser as a whole</em></li>
 </ul>
 </div>
-<div class="section slide level2" id="super-basic-javascript-detection">
-<h1>Super-basic JavaScript detection</h1>
+</div>
+<div class="section slide level2" id="feature-detection-super-basic-javascript-detection">
+<h1>Feature Detection: Super-basic JavaScript detection</h1>
 <p>In the last section, we implemented a very basic JavaScript detection of the support for geolocation.</p>
 <div class="section level3" id="illustration-geolocation-detection">
+<h3>Illustration: Geolocation Detection</h3>
+<div class="figure">
+<img src="images/08-geolocation-detection.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="client-side-feature-detection">
+<h1>Client-side feature detection</h1>
+<div class="section level5" id="this-is-an-example-of-client-side-feature-detection">
+<h5>This is an example of <strong>client-side feature detection</strong></h5>
+<p>We used client-side tools—typically, this is JavaScript—to determine <em>real-time</em> information about whether the current client can support a <em>specific feature</em>.</p>
+</div>
+<div class="section level3" id="illustration-geolocation-detection-1">
 <h3>Illustration: Geolocation Detection</h3>
 <div class="figure">
 <img src="images/08-geolocation-detection.png" /><p class="caption"></p>
@@ -87,17 +103,47 @@ Keeping ahead of the apocalypse
 </ul>
 </div>
 </div>
+<div class="section slide level2" id="why-feature-detect">
+<h1>Why Feature Detect?</h1>
+<ul>
+<li>Key tactic for progressive enhancement</li>
+<li>Improve performance</li>
+<li>Deliver tailored experiences</li>
+</ul>
+</div>
 <div class="section slide level2" id="so-lets-say-we-want-to-enhance-something-for-touch-enabled-devices">
 <h1>So let's say we want to enhance something for touch-enabled devices</h1>
 <blockquote>
 <p>&quot;Hey, I realize this is sort of hypothetical, but we're between big zombie battles right now. What do you think about making it so all touch-enabled devices get the vertical navigation on the Sigma Stronghold site, even tablets?&quot; —Sgt. Dingus</p>
 </blockquote>
-<div class="section level4" id="we-can-use-modernizr-to-accomplish-this-mission">
-<h4>We can use Modernizr to accomplish this mission</h4>
+<div class="section level3" id="illustration-dingus">
+<h3>Illustration: Dingus</h3>
+<div class="figure">
+<img src="images/dingus-small.png" /><p class="caption"></p>
+</div>
+</div>
+</div>
+<div class="section slide level2" id="we-can-use-modernizr-to-accomplish-this-mission">
+<h1>We can use Modernizr to accomplish this mission</h1>
+<div class="section level5" id="mission-deliver-a-different-navigation-experience-to-touch-enabled-clients">
+<h5>Mission: Deliver a different navigation experience to touch-enabled clients</h5>
 <ol style="list-style-type: decimal">
 <li>We can go to <a href="http://modernizr.com/download/">http://modernizr.com/download/</a> and put together our custom Modernizr build.</li>
 <li>Include the Modernizr JavaScript in our web page.</li>
 <li>We're going to use the CSS classes it assigns...</li>
+</ol>
+</div>
+</div>
+<div class="section slide level2" id="our-custom-build-of-modernizr">
+<h1>Our custom build of Modernizr</h1>
+<p>Our build of Modernizr only tests for touch events support. We can drop it into any HTML page.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Modernizr-touch.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<div class="section level3" id="what-it-does">
+<h3>What it does</h3>
+<ol style="list-style-type: decimal">
+<li>Runs the appropriate JavaScript tests to ascertain touch support</li>
+<li>Updates the <code>class</code> attribute on the <code>html</code> tag (<code>.touch</code> or <code>.no-touch</code>)</li>
+<li>Makes the information available on the <code>Modernizr</code> JavaScript object (<code>Modernizr.touch</code>)</li>
 </ol>
 </div>
 </div>
@@ -128,37 +174,28 @@ Keeping ahead of the apocalypse
 </div>
 <div class="section slide level2" id="add-some-css-styling...">
 <h1>Add some CSS Styling...</h1>
-<div class="section level3" id="code">
-<h3>Code</h3>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="er">&lt;</span>!doctype html&gt;
-<span class="kw">&lt;html&gt;</span>
-<span class="kw">&lt;head&gt;</span>
-  <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
-  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Modernizr-touch.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-  <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;../../workshop.css&quot;</span> <span class="kw">/&gt;</span>
-  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-
-  <span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>
+<p>So, we have this <code>&lt;ul&gt;</code>:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;ul&gt;</span>
+  <span class="kw">&lt;li</span><span class="ot"> class=</span><span class="st">&quot;touchdetails&quot;</span><span class="ot"> id=</span><span class="st">&quot;details-notouch&quot;</span><span class="kw">&gt;</span>Does <span class="kw">&lt;em&gt;</span>not<span class="kw">&lt;/em&gt;</span> support touch events<span class="kw">&lt;/li&gt;</span>
+  <span class="kw">&lt;li</span><span class="ot"> class=</span><span class="st">&quot;touchdetails&quot;</span><span class="ot"> id=</span><span class="st">&quot;details-touch&quot;</span><span class="kw">&gt;&lt;em&gt;</span>Does<span class="kw">&lt;/em&gt;</span> support touch events<span class="kw">&lt;/li&gt;</span>
+<span class="kw">&lt;/ul&gt;</span></code></pre>
+<div class="section level3" id="we-need-to">
+<h3>We need to</h3>
+<ol style="list-style-type: decimal">
+<li>Make <code>#details-touch</code> visible when touch is supported</li>
+<li>Make <code>#details-notouch</code> visible when touch is <em>not</em> supported</li>
+</ol>
+<p>(Yes, this is a rather arbitrary example)</p>
+</div>
+</div>
+<div class="section slide level2" id="add-some-css-styling...-1">
+<h1>Add some CSS styling...</h1>
+<p>We can drop some CSS styling into our HTML document...</p>
+<pre class="sourceCode html"><code class="sourceCode html">  <span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>
     <span class="fl">.touchdetails</span> <span class="kw">{</span> <span class="kw">display:</span> <span class="dt">none</span><span class="kw">;</span> <span class="kw">}</span>
     <span class="fl">.touch</span> <span class="fl">#details-touch</span> <span class="kw">{</span> <span class="kw">display:</span> <span class="dt">list-item</span><span class="kw">;</span> <span class="kw">}</span>
     <span class="fl">.no-touch</span> <span class="fl">#details-notouch</span> <span class="kw">{</span> <span class="kw">display:</span> <span class="dt">list-item</span><span class="kw">;</span> <span class="kw">}</span>
-  <span class="kw">&lt;/style&gt;</span>
-
-  <span class="kw">&lt;title&gt;</span>Device and Feature Detection!<span class="kw">&lt;/title&gt;</span>
-<span class="kw">&lt;/head&gt;</span>
-<span class="kw">&lt;body&gt;</span>
-<span class="kw">&lt;h1&gt;&lt;strike&gt;</span>Device<span class="kw">&lt;/strike&gt;</span> Zombie Detection<span class="kw">&lt;/h1&gt;</span>
-
-<span class="kw">&lt;h2</span><span class="ot"> id=</span><span class="st">&quot;modernizr&quot;</span><span class="kw">&gt;</span>Current Browser: Modernizr<span class="kw">&lt;/h2&gt;</span>
-
-<span class="kw">&lt;ul&gt;</span>
-  <span class="kw">&lt;li</span><span class="ot"> class=</span><span class="st">&quot;touchdetails&quot;</span><span class="ot"> id=</span><span class="st">&quot;details-notouch&quot;</span><span class="kw">&gt;</span>Does <span class="kw">&lt;em&gt;</span>not<span class="kw">&lt;/em&gt;</span> support touch events<span class="kw">&lt;/li&gt;</span>
-  <span class="kw">&lt;li</span><span class="ot"> class=</span><span class="st">&quot;touchdetails&quot;</span><span class="ot"> id=</span><span class="st">&quot;details-touch&quot;</span><span class="kw">&gt;&lt;em&gt;</span>Does<span class="kw">&lt;/em&gt;</span> support touch events<span class="kw">&lt;/li&gt;</span>
-<span class="kw">&lt;/ul&gt;</span>
-
-<span class="kw">&lt;/body&gt;</span>
-<span class="kw">&lt;/html&gt;</span></code></pre>
-</div>
+  <span class="kw">&lt;/style&gt;</span></code></pre>
 </div>
 <div class="section slide level2" id="results">
 <h1>Results</h1>
@@ -167,6 +204,9 @@ Keeping ahead of the apocalypse
 </div>
 <div class="figure">
 <img src="images/08-touch.png" alt="From my iPhone (via Shadow)" /><p class="caption">From my iPhone (via Shadow)</p>
+</div>
+<div class="section level4" id="modernizr-1">
+<h4><code>07/01-modernizr</code></h4>
 </div>
 </div>
 <div class="section slide level2" id="classes-assigned">
@@ -177,7 +217,10 @@ Keeping ahead of the apocalypse
 <div class="figure">
 <img src="images/08-inspector-touch.png" /><p class="caption"></p>
 </div>
-<p>You can see these from the <a href="../examples/07/01-modernizr">Web Inspector in webkit</a>, for example.</p>
+<div class="section level3" id="inspecting">
+<h3>Inspecting</h3>
+<p>Modernizr assigns classes: You can see these from the <a href="../examples/07/01-modernizr">Web Inspector in webkit</a>, for example.</p>
+</div>
 </div>
 <div class="section slide level2" id="doing-some-good-with-it">
 <h1>Doing some good with it</h1>
@@ -192,15 +235,13 @@ Keeping ahead of the apocalypse
 <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;styles.css&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;title&gt;</span>Sigma Stronghold<span class="kw">&lt;/title&gt;</span>
 <span class="kw">&lt;/head&gt;</span></code></pre>
-<div class="section level5" id="index.html">
-<h5>index.html</h5>
+<div class="section level4" id="touchindex.html">
+<h4><code>07/02-touch/index.html</code></h4>
 </div>
 </div>
 </div>
 <div class="section slide level2" id="step-2-edit-css">
 <h1>Step 2: Edit CSS</h1>
-<div class="section level3" id="code-1">
-<h3>Code</h3>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Vertical navigation for touch devices */</span>
 html<span class="fl">.touch</span> <span class="fl">#header</span> <span class="kw">{</span>
   <span class="kw">padding:</span> <span class="dt">1em</span> <span class="dt">0</span><span class="kw">;</span>
@@ -218,9 +259,8 @@ html<span class="fl">.touch</span> <span class="fl">#header</span> nav ul li a <
   <span class="kw">margin:</span> <span class="dt">0</span><span class="kw">;</span>
   <span class="kw">padding:</span> <span class="dt">.75em</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-<div class="section level5" id="styles.css">
-<h5>styles.css</h5>
-</div>
+<div class="section level4" id="touchstyles.css">
+<h4><code>07/02-touch/styles.css</code></h4>
 </div>
 </div>
 <div class="section slide level2" id="and-now-touch-devices...">
@@ -248,28 +288,20 @@ html<span class="fl">.touch</span> <span class="fl">#header</span> nav ul li a <
 </div>
 <div class="section slide level2" id="and-doing-a-little-something-with-the-info">
 <h1>And doing a little something with the info</h1>
-<p>Going back to our simple HTML page...</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-
-<span class="kw">&lt;script&gt;</span>
-  $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+<p>Going back to our simple HTML page...extending example 01:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">  $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
     <span class="kw">if</span> (<span class="kw">window</span>.<span class="fu">devicePixelRatio</span>) {
-      <span class="kw">var</span> $li = $(<span class="ch">&#39;</span>&lt;<span class="ch">li</span>&gt;&lt;/<span class="ch">li</span>&gt;<span class="ch">&#39;</span>).<span class="fu">html</span>(<span class="ch">&#39;Device</span> <span class="ch">Pixel</span> <span class="ch">Ratio</span>: <span class="ch">&#39;</span> + <span class="kw">window</span>.<span class="fu">devicePixelRatio</span>);
-      $(<span class="st">&quot;</span>#<span class="st">javascript&quot;</span>).<span class="fu">next</span>(<span class="ch">&#39;ul&#39;</span>).<span class="fu">append</span>($li);
+      <span class="kw">var</span> $li = $(<span class="ch">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span>).<span class="fu">html</span>(<span class="ch">&#39;Device Pixel Ratio: &#39;</span> + <span class="kw">window</span>.<span class="fu">devicePixelRatio</span>);
+      $(<span class="st">&quot;#javascript&quot;</span>).<span class="fu">next</span>(<span class="ch">&#39;ul&#39;</span>).<span class="fu">append</span>($li);
     }
-  });
-<span class="kw">&lt;/script&gt;</span>
-
-<span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>
-  <span class="fl">.touchdetails</span> <span class="kw">{</span> <span class="kw">display:</span> <span class="dt">none</span><span class="kw">;</span> <span class="kw">}</span>
-  <span class="fl">.touch</span> <span class="fl">#details-touch</span> <span class="kw">{</span> <span class="kw">display:</span> <span class="dt">list-item</span><span class="kw">;</span> <span class="kw">}</span>
-  <span class="fl">.no-touch</span> <span class="fl">#details-notouch</span> <span class="kw">{</span> <span class="kw">display:</span> <span class="dt">list-item</span><span class="kw">;</span> <span class="kw">}</span>
-<span class="kw">&lt;/style&gt;</span>
-
-<span class="kw">&lt;title&gt;</span>Device and Feature Detection!<span class="kw">&lt;/title&gt;</span></code></pre>
+  });</code></pre>
+<div class="section level4" id="javascriptindex.html">
+<h4><code>07/03-javascript/index.html</code></h4>
+</div>
 </div>
 <div class="section slide level2" id="giving-it-a-ul-to-populate">
 <h1>Giving it a <code>&lt;ul&gt;</code> to Populate</h1>
+<p>(This is just jQuery decoration here)</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h2</span><span class="ot"> id=</span><span class="st">&quot;modernizr&quot;</span><span class="kw">&gt;</span>Current Browser: Modernizr<span class="kw">&lt;/h2&gt;</span>
 
 <span class="kw">&lt;ul&gt;</span>
@@ -285,11 +317,14 @@ html<span class="fl">.touch</span> <span class="fl">#header</span> nav ul li a <
 </div>
 <div class="section slide level2" id="et-voila">
 <h1>Et, Voila!</h1>
+<div class="section level4" id="javascript">
+<h4><code>07/03-javascript</code></h4>
 <div class="figure">
 <img src="images/08-pixel.png" /><p class="caption"></p>
 </div>
 <div class="figure">
 <img src="images/08-pixel-iphone.png" /><p class="caption"></p>
+</div>
 </div>
 </div>
 <div class="section slide level2" id="so-thats-client-side-detection-but-what-about-when...">
@@ -390,7 +425,7 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 <h1>Putting it to work</h1>
 <div class="section level3" id="writing-some-code-to-interact-with-the-wurfl-data">
 <h3>Writing some code to interact with the WURFL data</h3>
-<div class="section level4" id="code-2">
+<div class="section level4" id="code">
 <h4>Code</h4>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 
@@ -426,7 +461,7 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 </div>
 <div class="section slide level2" id="displaying-the-information-gathered">
 <h1>Displaying the information gathered</h1>
-<div class="section level3" id="code-3">
+<div class="section level3" id="code-1">
 <h3>Code</h3>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">require_once</span><span class="ot">(</span><span class="st">&#39;zombie-detect.php&#39;</span><span class="ot">);</span> <span class="kw">?&gt;</span>
 &lt;!doctype html&gt;
@@ -460,7 +495,7 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<div class="section level5" id="index.html-1">
+<div class="section level5" id="index.html">
 <h5>index.html</h5>
 </div>
 </div>
@@ -497,34 +532,6 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 </ul></li>
 <li>The devices and browsers that we explicitly support are the ones we need to test on.</li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="how-do-you-decide-what-devices-to-support"><h1>How do you decide what devices to support?</h1></div><div class="section slide level2" id="requirements">
-<h1>Requirements</h1>
-<ul>
-<li>Browser features</li>
-<li>Device capabilities</li>
-<li>Hardware performance</li>
-<li>Network speed &amp; availability</li>
-</ul>
-</div><div class="section slide level2" id="audience">
-<h1>Audience</h1>
-<ul>
-<li>Analytics</li>
-<li>Surveying</li>
-<li>Geographic Trends</li>
-<li>Demographics</li>
-</ul>
-</div><div class="section slide level2" id="a-comprehensive-guide-to-mobile-statistics">
-<h1>A “Comprehensive” Guide to Mobile Statistics</h1>
-<div class="figure">
-<img src="images/guide-to-mobile-stats.png" /><p class="caption"></p>
-</div>
-<p><a href="http://blog.cloudfour.com/a-comprehensive-guide-to-mobile-statistics/">http://blog.cloudfour.com/a-comprehensive-guide-to-mobile-statistics/</a></p>
-</div><div class="section slide level2" id="beware-of-the-analytics-trap">
-<h1>Beware of the analytics trap</h1>
-<blockquote>
-<p>We can’t predict future behavior from a current experience that sucks.</p>
-</blockquote>
 </div>
 <div class="section titleslide slide level1" id="tools-for-testing."><h1>Tools for testing.</h1></div><div class="section slide level2" id="beefing-up-your-desktop-browser">
 <h1>Beefing up your desktop browser</h1>

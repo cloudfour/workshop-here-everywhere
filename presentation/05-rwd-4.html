@@ -66,7 +66,7 @@ When RWD goes wrong
 <ul>
 <li>Hiding a background image by using display:none on the element will not prevent it from downloading.</li>
 <li>Large desktop-size images are delivered to all devices even if they never use the image at that size.</li>
-<li>Mediaqueries don’t impact JavaScript so even if you hide a Google Map, the code still downloads.</li>
+<li>Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads.</li>
 </ul>
 </div>
 <div class="section slide level2" id="get-your-media-queries-in-order">
@@ -98,8 +98,8 @@ When RWD goes wrong
 <h1>Prevent extra background image downloads</h1>
 <p>Things that work:</p>
 <ul>
-<li>Use display:none on the parent element</li>
-<li>Media queries that don’t overlap:</li>
+<li>Use <code>display:none</code> on the parent element</li>
+<li>Use media queries that don’t overlap (that is, are mutually exclusive):</li>
 </ul>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">500px)</span> <span class="dv">{</span>
     <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;small.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
@@ -122,8 +122,8 @@ When RWD goes wrong
 <div class="section titleslide slide level1" id="what-about-image-tags"><h1>What about image tags?</h1></div><div class="section slide level2" id="the-img-tag-conundrum">
 <h1>The <code>img</code> tag conundrum</h1>
 <ul>
-<li>&lt;img&gt; can only have one src attribute</li>
-<li>First load problem -- server knows nothing about the client. How do you know what src to use?</li>
+<li><code>&lt;img&gt;</code> can only have one src attribute</li>
+<li>First load problem: server knows nothing about the client. How do you know what <code>src</code> to use?</li>
 <li>Delivering the right-sized image can mean huge savings (up to 80%) on file size.</li>
 </ul>
 <p>Many people are seeking a solution for responsive images.</p>
@@ -144,7 +144,7 @@ When RWD goes wrong
 </div><div class="section slide level2" id="responsive-images-option-2">
 <h1>Responsive images: Option 2</h1>
 <ul>
-<li>Put small image inside noscript tag.</li>
+<li>Put small image inside <code>&lt;noscript&gt;</code> tag.</li>
 <li>Put info for other images in data-* on noscript tag.</li>
 <li>Use javascript to build correct img tag for screen size.</li>
 </ul>
@@ -190,16 +190,27 @@ When RWD goes wrong
 <span class="ot">     srcset=</span><span class="st">&quot;face-600-200 at 1.jpeg 600w 200h 1x,</span>
 <span class="st">             face-600-200 at 2.jpeg 600w 200h 2x,</span>
 <span class="st">             face-icon.png          200w 200h&quot;</span><span class="kw">&gt;</span></code></pre>
+</div><div class="section slide level2" id="the-challenge-is-real...hard">
+<h1>The challenge is real...hard</h1>
+<div class="section level3" id="some-other-things-to-consider">
+<h3>Some (other) things to consider</h3>
+<ol style="list-style-type: decimal">
+<li>Canonical URL for images</li>
+<li>HTTP headers</li>
+<li>Semantics</li>
+</ol>
+</div>
 </div><div class="section slide level2" id="other-rwd-challenges">
 <h1>Other RWD Challenges</h1>
 <ul>
 <li>Delivering the right size video</li>
 <li>Breakpoint management and zoom levels</li>
 <li>Progressively enhancing from XHTML-MP to HTML5</li>
-<li>Content ordering (Flexbox can’t come soon enough)</li>
+<li>Content ordering (Flexbox can’t come soon enough*)</li>
 <li>Third-party widgets (particularly ad networks)</li>
 <li>Integrating with content management systems</li>
 </ul>
+<p>* Or, at least, it can't stop <em>changing</em> soon enough</p>
 </div><div class="section slide level2" id="this-is-all-very-new">
 <h1>This is all very new</h1>
 <p>No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.</p>

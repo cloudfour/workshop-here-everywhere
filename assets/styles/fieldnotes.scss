@@ -1,99 +1,110 @@
 @import 'common';
 
 body {
-  max-width: 90%;
-  margin: 0 auto;
+  max-width          : 55em;
+  margin             : 0 auto;
+  line-height        : 1.3em;
+  padding            : 1em;
 }
 h1 {
-  background-color: lighten($color-accent, 40%);
-  margin-left: -3em;
-  clear: both;
-  padding: .25em;
+  background-color   : lighten($color-purple, 20%);
+  clear              : both;
+  padding            : .25em;
+  line-height        : 1em;
 }
 h2, h3 {
-  text-align: left;
+  text-align         : left;
 }
 
 a, a:visited, a:active, a:hover {
-  color: $color-title;
-  text-decoration: none;
+  color              : $color-title;
+  text-decoration    : none;
 }
 ul {
+  max-width          : 35em;
   li {
-    list-style: none outside none;
+    list-style       : none outside none;
 
-    padding: .25em;
-    display: block;
+    padding          : .25em;
+    display          : block;
     &:before {
-      content: "\2217";
-      font-size: 1.75em;
-      margin-right: .5em;
+      content        : "\2217";
+      font-size      : 1.75em;
+      margin-right   : .5em;
     }
 
   }
 }
 ol {
   li {
-    margin: 1em 0;
+    line-height      : 2em;
+    margin           : 1em 0;
   }
 }
 
 hr {
-  border: 0;
-  color: $color-text;
-  height: .1em;
-  background-color: $color-text;
+  border             : 0;
+  color              : $color-text;
+  height             : .1em;
+  background-color   : $color-text;
 }
 
 nav#TOC {
-  border: 1px solid $color-purple;
-  padding: .5em;
-  width: 50%;
-  float: right;
-  margin: 1em;
+  border             : 1px solid $color-purple;
+  padding            : .5em;
+  max-width          : 35em;
+  margin             : 1em;
   ul {
     li {
-      line-height: 1em;
-      margin: 0;
-      padding: 0 .25em;
+      line-height    : 1em;
+      margin         : 0;
+      padding        : 0 .25em;
     }
     li ul {
-      display: none;
+      display        : none;
     }
   }
   &:before {
-    display: block;
-    content: "Table of Contents";
-    font-size: 1.25em;
-    font-style: italic;
-    color: $color-text;
+    display          : block;
+    content          : "Table of Contents";
+    font-size        : 1.25em;
+    font-style       : italic;
+    color            : $color-text;
   }
 }
+
+section[id^="exercise"] {
+  background-color   : lighten($color-green, 25%);
+  border-radius      : .5em;
+  border             : .1em dashed $color-blue;
+  padding            : .5em 1em 1em 1em;
+}
+
 ///// CODE //////
 
 pre {
-  overflow:         scroll;
-  font-weight:      normal;
-  border:           .2em $color-green;
-  box-shadow:       inset 0 0 .5em $color-text;
-  background-color: $color-background-mid;
-  padding:          .5em;
-  line-height:      1.5em;
+  overflow           : scroll;
+  font-weight        : normal;
+  border             : .2em $color-green;
+  box-shadow         : inset 0 0 .5em $color-text;
+  background-color   : $color-background-mid;
+  padding            : .5em;
+  line-height        : 1.5em;
   code {
-    color:          $color-text;
-    border:         none;
-    padding:        0;
-    background-color: transparent;
+    color            : $color-text;
+    border           : none;
+    padding          : 0;
+    background-color : transparent;
   }
   .sourceCode {
-    color:          $color-text;
+    color            : $color-text;
   }
 }
 
 code {
-  background-color: $color-background-mid;
-  padding:          0 .35em;
-  border:           .1em dashed $color-pale;
+  background-color   : $color-background-mid;
+  padding            : 0 .35em;
+  border             : .1em dashed $color-pale;
 }
 
 // Syntax highlighting

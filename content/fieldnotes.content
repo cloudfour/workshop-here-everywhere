@@ -166,8 +166,8 @@ Or use a JavaScript Polyfill
 
 Things that work:
 
-* Use display:none on the parent element
-* Media queries that don’t overlap:
+* Use `display:none` on the parent element
+* Media queries that don’t overlap (are mutually exclusive):
 
 ~~~ {.css }
 @media all and (max-width: 500px) {
@@ -178,7 +178,30 @@ Things that work:
 }
 ~~~
 
-* [Comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
+## Proposed `<img>` tag standards in HTML
+
+### `<picture>` element
+
+~~~ {.html}
+<picture alt="Giraffe">
+  <source src="giraffe-sml.jpg" media="(max-width:480px)">
+  <source src="giraffe-lrg.jpg" media="(min-width:481px)">
+  <img src="giraffe-sml.jpg" alt="Giraffe" />
+  <p>Long description</p>
+</picture>
+~~~
+
+### `srcset` attribute
+
+~~~ {.html}
+<img src="face-600-200 at 1.jpeg" alt=""
+     srcset="face-600-200 at 1.jpeg 600w 200h 1x,
+             face-600-200 at 2.jpeg 600w 200h 2x,
+             face-icon.png          200w 200h">
+~~~
+
+
+* [Tim Kadlec: Comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
 
 ## Responsive images
 
@@ -189,6 +212,7 @@ Things that work:
 * [A framework for discussing responsive images solutions](http://blog.cloudfour.com/a-framework-for-discussing-responsive-images-solutions/)
 * [Responsive Images Community Group](http://www.w3.org/community/respimg/)
 * [Responsive Web Design Business Challenges](http://blog.cloudfour.com/responsive-web-design-business-challenges/)
+* [Which Responsive Images Solution Should You Use (CSS Tricks)](http://css-tricks.com/which-responsive-images-solution-should-you-use/)
 
 ------------------------------------------------------------
 

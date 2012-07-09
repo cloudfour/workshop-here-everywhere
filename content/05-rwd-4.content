@@ -24,7 +24,7 @@ On average, mobile is still slower than desktop. We shouldn’t be delivering la
 
 * Hiding a background image by using display:none on the element will not prevent it from downloading.
 * Large desktop-size images are delivered to all devices even if they never use the image at that size.
-* Mediaqueries don’t impact JavaScript so even if you hide a Google Map, the code still downloads.
+* Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads.
 
 ## Get your media queries in order
 
@@ -57,8 +57,8 @@ Respond is faster, but only contains a subset of CSS support. Start with it.
 
 Things that work:
 
-* Use display:none on the parent element
-* Media queries that don’t overlap:
+* Use `display:none` on the parent element
+* Use media queries that don’t overlap (that is, are mutually exclusive):
 
 ~~~ {.css }
 @media all and (max-width: 500px) {
@@ -84,8 +84,8 @@ But, display:none on the element itself still downloads images.
 
 ## The `img` tag conundrum
 
-* &lt;img&gt; can only have one src attribute
-* First load problem -- server knows nothing about the client. How do you know what src to use?
+* `<img>` can only have one src attribute
+* First load problem: server knows nothing about the client. How do you know what `src` to use?
 * Delivering the right-sized image can mean huge savings (up to 80%) on file size.
 
 Many people are seeking a solution for responsive images.
@@ -104,7 +104,7 @@ Many people are seeking a solution for responsive images.
 
 ## Responsive images: Option 2
 
-* Put small image inside noscript tag.
+* Put small image inside `<noscript>` tag.
 * Put info for other images in data-* on noscript tag.
 * Use javascript to build correct img tag for screen size.
 
@@ -164,14 +164,24 @@ OR maybe
              face-icon.png          200w 200h">
 ~~~
 
+## The challenge is real...hard
+
+### Some (other) things to consider
+
+1. Canonical URL for images
+2. HTTP headers
+3. Semantics
+
 ## Other RWD Challenges
 
 * Delivering the right size video
 * Breakpoint management and zoom levels
 * Progressively enhancing from XHTML-MP to HTML5
-* Content ordering (Flexbox can’t come soon enough)
+* Content ordering (Flexbox can’t come soon enough*)
 * Third-party widgets (particularly ad networks)
 * Integrating with content management systems
+
+\* Or, at least, it can't stop *changing* soon enough
 
 ## This is all very new
 
