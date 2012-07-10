@@ -1,0 +1,1 @@
+This directory is a working area for in-workshop demos. All files here except for this one are ignored by .git. This is avoid polluting the repo with my in-workshop-edited files. --LDG
