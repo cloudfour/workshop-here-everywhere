@@ -160,9 +160,17 @@ Look for ways to reduce the number of HTTP requests in your web pages. And, of c
 * High latency makes these HTTP requests expensive, remember.
 * Even more annoying if the requests don't get us anywhere.
 
+### Tip
+
+Be extra vigilant about 404s, as they are more painful to mobile users.
+
 ## Let's look at those stats again
 
 ![](images/02-yslow-2.png)
+
+### Tip
+
+Reduce overall payload of your pages. *Duh*, yes, but something that is often overlooked.
 
 ### Oh, how nice!
 
