@@ -6,6 +6,7 @@
 * `examples`: Files for attendees. `fieldnotes.html` outputs here (from `fieldnotes.content` in `content` directory). Any images necessary for fieldnotes should go in `examples/images`.
 * `presentation`: Presentation HTML files (slidy HTML5 presentation)
 * `presenter-examples`: Examples for presenters to use; not necessary for attendees
+* `scratch`: Working area for in-workshop demos. Any files here (except the `README`) are ignored by git.
 * `workshop.zip`: Doesn't exist at time of writing, but if it is there now, it's a ZIP of the `examples` directory for easier download.
 
 # Creating Slideshow Content
