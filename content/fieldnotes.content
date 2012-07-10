@@ -211,9 +211,11 @@ Things that work:
 ~~~
 
 
+## References
+
 * [Tim Kadlec: Comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
 
-## Responsive images
+### Responsive images
 
 * [Background on responsive images problem - multiple blog posts](http://blog.cloudfour.com/responsive-imgs/)
 * [Various responsive images solutions](http://blog.cloudfour.com/responsive-imgs-part-2/)
