@@ -295,12 +295,6 @@ AddType text/cache-manifest .appcache
 * Useful: Use `chrome://appcache-internals` to inspect the contents of AppCache in Chrome
 * Useful: Use WebInspector in other Webkit browsers to inspect AppCache
 
-### A bit on `@font-face`
-
-* [Essential Guide to @font-face](http://sixrevisions.com/css/font-face-guide/) (A bit out of date, but decent)
-* Paul Irish's [Bulletproof @font-face](http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/)
-* [Font Squirrel](http://www.fontsquirrel.com/fontface/generator)
-
 ### More Stuff
 
 * [jQuery Mobile](http://www.jquerymobile.com)
