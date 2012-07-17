@@ -153,9 +153,15 @@ Clarence the Angry Performance Goat butts in (hee hee) from time to time.
 
 Look for ways to reduce the number of HTTP requests in your web pages. And, of course, don't include things you're not using.
 
-## Goat: Missing things hurt mobile devices
+## Missing things hurt mobile devices
+
+### Figure: 404s
 
 ![](images/02-404s.png)
+
+## Goat: Missing things hurt mobile devices
+
+![](images/clarence.png)
 
 * High latency makes these HTTP requests expensive, remember.
 * Even more annoying if the requests don't get us anywhere.
@@ -586,7 +592,7 @@ body > div {
 
 We made a number of other improvements to the `index.html` file for the Sigma Stronghold website to make it adhere better to best practices (though it is not perfect yet!).
 
-Can you spot some of the improvements in `02/02-fluid/index.html`?
+Can you spot some of the improvements made in `02/02-fluid/index.html` (versus `02/01-start/index.html`)?
 
 ### Illustration: Question
 

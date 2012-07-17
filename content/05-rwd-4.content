@@ -110,7 +110,7 @@ Many people are seeking a solution for responsive images.
 
 ~~~ {.html}
 <noscript data-large="Koala.jpg" data-small="Koala-small.jpg" data-alt="Koala">
-<img scr="Koala.jpg" alt="Koala" />
+<img src="Koala.jpg" alt="Koala" />
 </noscript>
 ~~~
 
